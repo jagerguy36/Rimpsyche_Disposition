@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>*/ThoughtDef[defName = "Naked"]/workerClass</xpath>
+    <value>
+      <workerClass>Maux36.RimPsyche.Disposition.ThoughtWorker_PsychologicallyNudeMultiplied</workerClass>    
+  </value>
+  </Operation>
+</Patch>

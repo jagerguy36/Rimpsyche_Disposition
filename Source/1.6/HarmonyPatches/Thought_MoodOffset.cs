@@ -11,15 +11,37 @@ namespace Maux36.RimPsyche.Disposition
         {
             if (___pawn?.compPsyche() is not { } compPsyche || __result == 0f)
                 return;
-            float optimism = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism); // -1 ~ 1
             if (__result < 0f)
             {
-                __result *= (1f - optimism * 0.45f);
-            }
+                __result *= compPsyche.Personality.GetMultiplier(NegativeMoodOffsetMultiplier);
+            }            
             else
             {
-                __result *= (1f + optimism * 0.45f);
+                __result *= compPsyche.Personality.GetMultiplier(PositiveMoodOffsetMultiplier);
             }
         }
+
+
+        public static RimpsycheMultiplier PositiveMoodOffsetMultiplier = new(
+            "PositiveMoodOffsetMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float optimismMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * 0.45f;
+                float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * 0.4f;
+                return mult * optimismMult * emotionalityMult;
+            }
+        );
+
+        public static RimpsycheMultiplier NegativeMoodOffsetMultiplier = new(
+            "NegativeMoodOffsetMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float optimismMult = 1f - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * 0.45f;
+                float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * 0.4f;
+                return mult * optimismMult * emotionalityMult;
+            }
+        );
     }
 }

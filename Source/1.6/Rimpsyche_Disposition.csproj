@@ -59,9 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
+    <Compile Include="HarmonyPatches\SkillRecord_Learn.cs" />
     <Compile Include="HarmonyPatches\Thought_MoodOffset.cs" />
     <Compile Include="RimpsycheDisposition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThoughtWorker_PsychologicallyNudeMultiplied.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
