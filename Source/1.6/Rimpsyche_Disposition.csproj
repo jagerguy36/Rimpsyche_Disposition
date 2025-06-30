@@ -59,11 +59,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
+    <Compile Include="HarmonyPatches\NeedSeeker_NeedInterval.cs" />
+    <Compile Include="HarmonyPatches\QualityUtility_GenerateQualityCreatedByPawn.cs" />
     <Compile Include="HarmonyPatches\SkillRecord_Learn.cs" />
     <Compile Include="HarmonyPatches\Thought_MoodOffset.cs" />
     <Compile Include="RimpsycheDisposition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThoughtWorker_PsychologicallyNudeMultiplied.cs" />
+    <Compile Include="StatParts\RimpsycheStatPart.cs" />
+    <Compile Include="ThoughtWorkers\ThoughtWorker_PsychologicallyNudeMultiplied.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
