@@ -48,7 +48,6 @@ namespace Maux36.RimPsyche.Disposition
                 return codes;
             }
 
-            // Exposed method: takes pawn directly
             public static float GetMultiplier(Pawn pawn, bool isRising)
             {
                 if (pawn == null)
