@@ -42,7 +42,7 @@ namespace Maux36.RimPsyche.Disposition
 
             public static float GetAdjustedAddictionChance(Pawn pawn, float original)
             {
-                if (original.Approximately(0f) || pawn == null)
+                if (original >=1f || pawn == null)
                 {
                     return original;
                 }
@@ -60,7 +60,7 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     float mult = 1f;
                     float discipline = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Discipline, 0.5f);
-                    return mult * volatility;
+                    return mult * discipline;
                 }
             );
         }
