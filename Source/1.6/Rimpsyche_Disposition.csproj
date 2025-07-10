@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HarmonyPatches\CompDrug_PrePostIngested.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="HarmonyPatches\NeedSeeker_NeedInterval.cs" />
     <Compile Include="HarmonyPatches\QualityUtility_GenerateQualityCreatedByPawn.cs" />

@@ -1,4 +1,5 @@
 using HarmonyLib;
+using System.Reflection;
 using RimWorld;
 using System.Collections.Generic;
 using System.Reflection.Emit;
@@ -13,44 +14,64 @@ namespace Maux36.RimPsyche.Disposition
         {
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-
+                var getAddictivenessMethod = AccessTools.Method(typeof(DrugStatsUtility), nameof(DrugStatsUtility.GetAddictivenessAtTolerance));
                 var getAdjustedAddictionChanceMethod = AccessTools.Method(typeof(CompDrug_PrePostIngested_Patch), nameof(GetAdjustedAddictionChance));
+                var codes = new List<CodeInstruction>(instructions);
 
-                List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
                 for (int i = 0; i < codes.Count; i++)
                 {
-                    if (codes[i].opcode == OpCodes.Call && codes[i].operand is MethodInfo method &&
-                        method.DeclaringType == typeof(DrugStatsUtility) && method.Name == "GetAddictivenessAtTolerance")
+                    // We are looking for the call to GetAddictivenessAtTolerance
+                    if (codes[i].opcode == OpCodes.Call && codes[i].operand is MethodInfo method && method == getAddictivenessMethod)
                     {
-                        if (i + 1 < codes.Count && (codes[i + 1].opcode == OpCodes.Stloc_S || codes[i + 1].opcode == OpCodes.Stloc_2))
+                        // The original code stores the result of the call in local variable 4.
+                        // We want to intercept this value, pass it to our custom method,
+                        // and then store the *new* result back into the same local variable.
+
+                        // In the CIL, the call instruction will be followed by an instruction to store the result.
+                        // In this case, it is `stloc.s 4`.
+                        if (i + 1 < codes.Count && codes[i + 1].IsStloc())
                         {
+                            var localBuilder = codes[i + 1].operand; // This captures the correct local variable index.
+
+                            // We will insert our new instructions right after the original `stloc.s 4`.
                             int insertionIndex = i + 2;
 
-                            List<CodeInstruction> newInstructions = new List<CodeInstruction>();
-                            newInstructions.Add(new CodeInstruction(codes[i + 1].opcode == OpCodes.Stloc_S ? OpCodes.Ldloc_S : OpCodes.Ldloc_2, codes[i + 1].operand));
-                            newInstructions.Add(new CodeInstruction(OpCodes.Ldarg_1));
-                            newInstructions.Add(new CodeInstruction(OpCodes.Call, getAdjustedAddictionChanceMethod));
-                            newInstructions.Add(new CodeInstruction(OpCodes.Mul));
-                            newInstructions.Add(new CodeInstruction(codes[i + 1].opcode, codes[i + 1].operand));
+                            var newInstructions = new List<CodeInstruction>
+                    {
+                        // Load the addiction chance that was just calculated and stored.
+                        new CodeInstruction(OpCodes.Ldloc_S, localBuilder),
+                        // Load the 'ingester' (pawn), which is the first argument of the original method.
+                        new CodeInstruction(OpCodes.Ldarg_1),
+                        // Call our custom method to get the adjusted addiction chance.
+                        new CodeInstruction(OpCodes.Call, getAdjustedAddictionChanceMethod),
+                        // Store the new, adjusted value back into the same local variable.
+                        new CodeInstruction(OpCodes.Stloc_S, localBuilder)
+                    };
+
                             codes.InsertRange(insertionIndex, newInstructions);
+
+                            // Since we've found our target and patched the code, we can exit the loop.
                             break;
                         }
                     }
                 }
+
                 return codes;
             }
 
-            public static float GetAdjustedAddictionChance(Pawn pawn, float original)
+            // Note the change in the method signature to match our transpiler logic.
+            public static float GetAdjustedAddictionChance(float originalChance, Pawn pawn)
             {
-                if (original >=1f || pawn == null)
+                if (originalChance >= 1f || pawn == null)
                 {
-                    return original;
+                    return originalChance;
                 }
                 var psyche = pawn.compPsyche();
                 if (psyche == null)
-                    return original;
-
-                return original * psyche.Personality.GetMultiplier(AddictionChancedMultiplier);
+                {
+                    return originalChance;
+                }
+                return originalChance * psyche.Personality.GetMultiplier(AddictionChancedMultiplier);
             }
 
 
