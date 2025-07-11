@@ -20,37 +20,22 @@ namespace Maux36.RimPsyche.Disposition
 
                 for (int i = 0; i < codes.Count; i++)
                 {
-                    // We are looking for the call to GetAddictivenessAtTolerance
                     if (codes[i].opcode == OpCodes.Call && codes[i].operand is MethodInfo method && method == getAddictivenessMethod)
                     {
-                        // The original code stores the result of the call in local variable 4.
-                        // We want to intercept this value, pass it to our custom method,
-                        // and then store the *new* result back into the same local variable.
-
-                        // In the CIL, the call instruction will be followed by an instruction to store the result.
-                        // In this case, it is `stloc.s 4`.
                         if (i + 1 < codes.Count && codes[i + 1].IsStloc())
                         {
-                            var localBuilder = codes[i + 1].operand; // This captures the correct local variable index.
-
-                            // We will insert our new instructions right after the original `stloc.s 4`.
+                            var localBuilder = codes[i + 1].operand;
                             int insertionIndex = i + 2;
 
                             var newInstructions = new List<CodeInstruction>
                     {
-                        // Load the addiction chance that was just calculated and stored.
                         new CodeInstruction(OpCodes.Ldloc_S, localBuilder),
-                        // Load the 'ingester' (pawn), which is the first argument of the original method.
                         new CodeInstruction(OpCodes.Ldarg_1),
-                        // Call our custom method to get the adjusted addiction chance.
                         new CodeInstruction(OpCodes.Call, getAdjustedAddictionChanceMethod),
-                        // Store the new, adjusted value back into the same local variable.
                         new CodeInstruction(OpCodes.Stloc_S, localBuilder)
                     };
 
                             codes.InsertRange(insertionIndex, newInstructions);
-
-                            // Since we've found our target and patched the code, we can exit the loop.
                             break;
                         }
                     }
@@ -59,7 +44,6 @@ namespace Maux36.RimPsyche.Disposition
                 return codes;
             }
 
-            // Note the change in the method signature to match our transpiler logic.
             public static float GetAdjustedAddictionChance(float originalChance, Pawn pawn)
             {
                 if (originalChance >= 1f || pawn == null)
@@ -71,11 +55,11 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     return originalChance;
                 }
-                return originalChance * psyche.Personality.GetMultiplier(AddictionChancedMultiplier);
+                return originalChance * psyche.Personality.Evaluate(AddictionChancedMultiplier);
             }
 
 
-            public static RimpsycheMultiplier AddictionChancedMultiplier = new(
+            public static RimpsycheFormula AddictionChancedMultiplier = new(
                 "AddictionChancedMultiplier",
                 (tracker) =>
                 {

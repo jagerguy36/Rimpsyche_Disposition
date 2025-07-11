@@ -57,11 +57,11 @@ namespace Maux36.RimPsyche.Disposition
                 if (psyche == null)
                     return 1f;
 
-                return isRising ? psyche.Personality.GetMultiplier(MoodRisingSpeedMultiplier) : psyche.Personality.GetMultiplier(MoodFallingSpeedMultiplier);
+                return isRising ? psyche.Personality.Evaluate(MoodRisingSpeedMultiplier) : psyche.Personality.Evaluate(MoodFallingSpeedMultiplier);
             }
 
 
-            public static RimpsycheMultiplier MoodRisingSpeedMultiplier = new(
+            public static RimpsycheFormula MoodRisingSpeedMultiplier = new(
                 "MoodRisingSpeedMultiplier",
                 (tracker) =>
                 {
@@ -71,7 +71,7 @@ namespace Maux36.RimPsyche.Disposition
                 }
             );
 
-            public static RimpsycheMultiplier MoodFallingSpeedMultiplier = new(
+            public static RimpsycheFormula MoodFallingSpeedMultiplier = new(
                 "MoodFallingSpeedMultiplier",
                 (tracker) =>
                 {

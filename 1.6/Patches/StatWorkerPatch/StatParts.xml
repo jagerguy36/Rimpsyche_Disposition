@@ -4,7 +4,7 @@
   <Operation Class="PatchOperationConditional">
     <xpath>*/StatDef[defName = "MentalBreakThreshold"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "MentalBreakThreshold"]</xpath>
+      <xpath>*/StatDef[defName = "MentalBreakThreshold"]/parts</xpath>
         <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsycheVolatilityMentalBreakThreasholdOffset"/>
@@ -21,4 +21,25 @@
     </nomatch>
   </Operation>
   
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDiligenceWorkspeedOffset"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "WorkSpeedGlobal"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDiligenceWorkspeedOffset"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
 </Patch>

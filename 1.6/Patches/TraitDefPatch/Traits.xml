@@ -5,4 +5,32 @@
     <xpath>*/TraitDef[defName="Nerves"]/degreeDatas/li/statOffsets</xpath>
   </Operation>
 
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Industriousness"]/degreeDatas/li[degree=2]/statOffsets/WorkSpeedGlobal</xpath>
+    <value>
+      <WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Industriousness"]/degreeDatas/li[degree=1]/statOffsets/WorkSpeedGlobal</xpath>
+    <value>
+      <WorkSpeedGlobal>0.10</WorkSpeedGlobal>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Industriousness"]/degreeDatas/li[degree=-1]/statOffsets/WorkSpeedGlobal</xpath>
+    <value>
+      <WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Industriousness"]/degreeDatas/li[degree=-2]/statOffsets/WorkSpeedGlobal</xpath>
+    <value>
+      <WorkSpeedGlobal>-0.20</WorkSpeedGlobal>
+    </value>
+  </Operation>
+
 </Patch>

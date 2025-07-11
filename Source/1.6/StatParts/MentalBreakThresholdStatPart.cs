@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace Maux36.RimPsyche.Disposition
@@ -12,7 +13,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    val += VolatilityMentalBreakThresholdOffset(compPsyche);
+                    val += compPsyche.Personality.Evaluate(VolatilityMentalBreakThresholdOffset);
                 }
             }
         }
@@ -24,15 +25,19 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    return "RP_Stat_MentalBreakThreashold".Translate() + VolatilityMentalBreakThresholdOffset(compPsyche).ToStringPercent();
+                    return "RP_Stat_MentalBreakThreashold".Translate() + ": " + compPsyche.Personality.Evaluate(VolatilityMentalBreakThresholdOffset).ToStringPercentSigned();
                 }
             }
             return null;
         }
 
-        private float VolatilityMentalBreakThresholdOffset(CompPsyche compPsyche)
-        {
-            return compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Volatility)*0.2f;
-        }
+        public static RimpsycheFormula VolatilityMentalBreakThresholdOffset = new(
+            "VolatilityMentalBreakThresholdOffset",
+            (tracker) =>
+            {
+                float volatility = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Volatility) * 0.2f;
+                return volatility;
+            }
+        );
     }
 }

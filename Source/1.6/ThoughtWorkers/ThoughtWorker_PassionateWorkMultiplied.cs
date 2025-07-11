@@ -3,7 +3,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class ThoughtWorker_PsychologicallyNudeMultiplied : ThoughtWorker_PsychologicallyNude
+    public class ThoughtWorker_PassionateWorkMultiplied : ThoughtWorker_PassionateWork
     {
         public override float MoodMultiplier(Pawn p)
         {
@@ -11,16 +11,16 @@ namespace Maux36.RimPsyche.Disposition
             var compPsyche = p.compPsyche();
             if (compPsyche != null)
             {
-                return val * compPsyche.Personality.Evaluate(PrudishNakedMultiplier);
+                return val * compPsyche.Personality.Evaluate(PassionWorkMultiplier);
             }
             return val;
         }
 
-        public static RimpsycheFormula PrudishNakedMultiplier = new(
-            "PrudishNakedMultiplier",
+        public static RimpsycheFormula PassionWorkMultiplier = new(
+            "PassionWorkMultiplier",
             (tracker) =>
             {
-                float optimism = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Prudishness) * 0.7f;
+                float optimism = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion) * 0.5f;
                 return optimism;
             }
         );

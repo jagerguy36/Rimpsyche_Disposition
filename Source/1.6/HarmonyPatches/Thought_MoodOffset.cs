@@ -13,16 +13,16 @@ namespace Maux36.RimPsyche.Disposition
                 return;
             if (__result < 0f)
             {
-                __result *= compPsyche.Personality.GetMultiplier(NegativeMoodOffsetMultiplier);
+                __result *= compPsyche.Personality.Evaluate(NegativeMoodOffsetMultiplier);
             }            
             else
             {
-                __result *= compPsyche.Personality.GetMultiplier(PositiveMoodOffsetMultiplier);
+                __result *= compPsyche.Personality.Evaluate(PositiveMoodOffsetMultiplier);
             }
         }
 
 
-        public static RimpsycheMultiplier PositiveMoodOffsetMultiplier = new(
+        public static RimpsycheFormula PositiveMoodOffsetMultiplier = new(
             "PositiveMoodOffsetMultiplier",
             (tracker) =>
             {
@@ -33,7 +33,7 @@ namespace Maux36.RimPsyche.Disposition
             }
         );
 
-        public static RimpsycheMultiplier NegativeMoodOffsetMultiplier = new(
+        public static RimpsycheFormula NegativeMoodOffsetMultiplier = new(
             "NegativeMoodOffsetMultiplier",
             (tracker) =>
             {

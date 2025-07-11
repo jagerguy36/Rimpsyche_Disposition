@@ -6,4 +6,11 @@
       <workerClass>Maux36.RimPsyche.Disposition.ThoughtWorker_PsychologicallyNudeMultiplied</workerClass>    
   </value>
   </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>*/ThoughtDef[defName = "DoingPassionateWork"]/workerClass</xpath>
+    <value>
+      <workerClass>Maux36.RimPsyche.Disposition.ThoughtWorker_PassionateWorkMultiplied</workerClass>    
+  </value>
+  </Operation>
 </Patch>
