@@ -14,15 +14,18 @@ namespace Maux36.RimPsyche.Disposition
             float experimentChance = 0;
             float successChance = 0;
             var compPsyche = pawn.compPsyche();
+            float num = 0f;
             if (compPsyche?.Personality != null)
             {
                 var p = compPsyche.Personality;
-                var pSpontaneityF = (p.GetPersonality(PersonalityDefOf.Rimpsyche_Spontaneity) + 1f) * 0.05f; // 0~0.1
+                var pSpontaneityF = (p.GetPersonality(PersonalityDefOf.Rimpsyche_Spontaneity) + 1f) * 0.05f;
+                var pImaginationF = p.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.3f;  // -0.5~0.5
                 highVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierHigh) + Rand.Range(-pSpontaneityF, pSpontaneityF);
                 lowVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierLow) + Rand.Range(-pSpontaneityF, pSpontaneityF);
                 if (relevantSkill == SkillDefOf.Artistic)
                 {
                     successChance = 0.1f + relevantSkillLevel * p.Evaluate(ArtExperimentSuccessChanceMultiplier);
+                    num += pImaginationF;
                 }
                 else
                 {
@@ -30,7 +33,6 @@ namespace Maux36.RimPsyche.Disposition
                 }
                 experimentChance = p.Evaluate(ExperimentChanceMultiplier) * (successChance) + Rand.Range(-pSpontaneityF, pSpontaneityF);
             }
-            float num = 0f;
             switch (relevantSkillLevel)
             {
                 case 0:
