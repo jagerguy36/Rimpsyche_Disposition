@@ -9,10 +9,13 @@ namespace Maux36.RimPsyche.Disposition
     {
         private static void Prefix(Pawn ___pawn, int ___levelInt, ref float xp)
         {
-            var compPsyche = ___pawn.compPsyche();
-            float multiplier = compPsyche.Personality.Evaluate(SkillLearningMultiplier) * (float)(___levelInt - 10) + 1f;
-            xp = multiplier * xp;
-            compPsyche.lastProgressTick = Find.TickManager.TicksGame;
+            if (xp > 0f)
+            {
+                var compPsyche = ___pawn.compPsyche();
+                float multiplier = compPsyche.Personality.Evaluate(SkillLearningMultiplier) * (float)(___levelInt - 10) + 1f;
+                xp = multiplier * xp;
+                compPsyche.lastProgressTick = Find.TickManager.TicksGame;
+            }
         }
 
         public static RimpsycheFormula SkillLearningMultiplier = new(

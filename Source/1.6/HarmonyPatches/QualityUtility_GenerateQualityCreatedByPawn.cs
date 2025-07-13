@@ -1,6 +1,8 @@
 ﻿using HarmonyLib;
 using Verse;
 using RimWorld;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace Maux36.RimPsyche.Disposition
 {
@@ -9,11 +11,25 @@ namespace Maux36.RimPsyche.Disposition
     [HarmonyPatch(new[] { typeof(Pawn), typeof(SkillDef), typeof(bool) })]
     public static class QualityUtility_GenerateQualityCreatedByPawn_Patch
     {
-        [HarmonyPostfix]
-        public static void Postfix(QualityCategory __result, Pawn pawn, SkillDef relevantSkill)
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // Note: Using pawn.Name.ToStringShort is often better for logging.
-            Log.Message($"GenerateQualityCreatedByPawn postfix: Pawn={pawn.Name.ToStringShort}, Skill={relevantSkill.defName}, OriginalQuality={__result}");
+            var codes = new List<CodeInstruction>(instructions);
+            var originalMethod = AccessTools.Method(typeof(QualityUtility), "GenerateQualityCreatedByPawn", new[] { typeof(int), typeof(bool) });
+            var replacementMethod = AccessTools.Method(typeof(QualityUtil), "GenerateQualityCreatedByPawnWithPsyche");
+
+            for (int i = 0; i < codes.Count; i++)
+            {
+                if (codes[i].Calls(originalMethod))
+                {
+                    codes.Insert(i, new CodeInstruction(OpCodes.Ldarg_0));
+                    codes.Insert(i + 1, new CodeInstruction(OpCodes.Ldarg_1));
+                    codes[i + 2] = new CodeInstruction(OpCodes.Call, replacementMethod);
+                    break;
+                }
+            }
+            return codes;
         }
     }
+
 }

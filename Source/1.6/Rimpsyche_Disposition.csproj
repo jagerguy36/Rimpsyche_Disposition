@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QualityUtil.cs" />
     <Compile Include="HarmonyPatches\CompDrug_PrePostIngested.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="HarmonyPatches\JoyGiver_Skygaze_Patch.cs" />
