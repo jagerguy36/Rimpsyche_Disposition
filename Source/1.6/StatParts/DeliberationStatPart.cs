@@ -3,7 +3,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class PsycheVolatilityMentalBreakThreasholdOffset : StatPart// M 0.85 ~ 1.15
+    public class DeliberationStatPart : StatPart// M 0.85 ~ 1.15
     {
         public override void TransformValue(StatRequest req, ref float val)
         {
@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    val += compPsyche.Personality.Evaluate(VolatilityMentalBreakThresholdOffset);
+                    val += compPsyche.Personality.Evaluate(DeliberationWorkspeedOffset);
                 }
             }
         }
@@ -24,18 +24,18 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    return "RP_Stat_MentalBreakThreashold".Translate() + ": " + compPsyche.Personality.Evaluate(VolatilityMentalBreakThresholdOffset).ToStringPercentSigned();
+                    return "RP_Stat_DeliberationWorkspeed".Translate() + ": " + compPsyche.Personality.Evaluate(DeliberationWorkspeedOffset).ToStringPercentSigned();
                 }
             }
             return null;
         }
 
-        public static RimpsycheFormula VolatilityMentalBreakThresholdOffset = new(
-            "VolatilityMentalBreakThresholdOffset",
+        public static RimpsycheFormula DeliberationWorkspeedOffset = new(
+            "DeliberationWorkspeedOffset",
             (tracker) =>
             {
-                float volatility = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Volatility) * 0.2f;
-                return volatility;
+                float diligence = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.2f;
+                return diligence;
             }
         );
     }
