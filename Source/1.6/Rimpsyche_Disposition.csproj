@@ -71,10 +71,12 @@
     <Compile Include="HarmonyPatches\Thought_MoodOffset.cs" />
     <Compile Include="RimpsycheDisposition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatParts\PsycheDeliberationQualityStatPart.cs" />
     <Compile Include="StatParts\MentalBreakThresholdStatPart.cs" />
-    <Compile Include="StatParts\DeliberationStatPart.cs" />
-    <Compile Include="StatParts\ConstructSuccessChanceStatPart.cs" />
-    <Compile Include="StatParts\WorkspeedStatPart.cs" />
+    <Compile Include="StatParts\PsycheDeliberationWorkspeedStatPart.cs" />
+    <Compile Include="StatParts\PsycheDeliberationYieldChanceStatPart.cs" />
+    <Compile Include="StatParts\PsycheDeliberationOperationChanceStatPart.cs" />
+    <Compile Include="StatParts\PsycheDiligenceWorkspeedStatPart.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_PassionateWorkMultiplied.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_PsychologicallyNudeMultiplied.cs" />
   </ItemGroup>

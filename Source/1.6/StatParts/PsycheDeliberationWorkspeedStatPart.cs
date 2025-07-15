@@ -3,7 +3,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class PsycheDiligenceWorkspeedOffset : StatPart// M 0.85 ~ 1.15
+    public class PsycheDeliberationWorkspeedStatPart : StatPart// M 0.8 ~ 1.2
     {
         public override void TransformValue(StatRequest req, ref float val)
         {
@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    val += compPsyche.Personality.Evaluate(DiligenceWorkspeedOffset);
+                    val += compPsyche.Personality.Evaluate(DeliberationWorkspeedOffset);
                 }
             }
         }
@@ -24,17 +24,17 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    return "RP_Stat_DiligenceWorkspeed".Translate() + ": " + compPsyche.Personality.Evaluate(DiligenceWorkspeedOffset).ToStringPercentSigned();
+                    return "RP_Stat_DeliberationWorkspeed".Translate() + ": " + compPsyche.Personality.Evaluate(DeliberationWorkspeedOffset).ToStringPercentSigned();
                 }
             }
             return null;
         }
 
-        public static RimpsycheFormula DiligenceWorkspeedOffset = new(
-            "DiligenceWorkspeedOffset",
+        public static RimpsycheFormula DeliberationWorkspeedOffset = new(
+            "DeliberationWorkspeedOffset",
             (tracker) =>
             {
-                float diligence = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Diligence) * 0.2f;
+                float diligence = -tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.2f;
                 return diligence;
             }
         );

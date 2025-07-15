@@ -3,8 +3,9 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class ConstructSuccessChanceStatPart : StatPart// M 0.85 ~ 1.15
+    public class PsycheDeliberationQualityStatPart : StatPart
     {
+        public const float levelC = 35f;
         public override void TransformValue(StatRequest req, ref float val)
         {
             if (req.HasThing && req.Thing is Pawn pawn)
@@ -12,9 +13,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (pawn.skills != null && compPsyche != null)
                 {
-
-                    int level = pawn.skills.GetSkill(SkillDefOf.Construction).Level;
-                    val += (30 - level) * compPsyche.Personality.Evaluate(ConstructSuccessChanceDeliberationMultiplier);
+                    val += compPsyche.Personality.Evaluate(DeliberationQualityMultiplier);
                 }
             }
         }
@@ -26,17 +25,17 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    return "RP_Stat_DeliberationWorkspeed".Translate() + ": " + compPsyche.Personality.Evaluate(ConstructSuccessChanceDeliberationMultiplier).ToStringPercentSigned();
+                    return "RP_Stat_DeliberationYield".Translate() + ": " + compPsyche.Personality.Evaluate(DeliberationQualityMultiplier).ToStringPercentSigned();
                 }
             }
             return null;
         }
 
-        public static RimpsycheFormula ConstructSuccessChanceDeliberationMultiplier = new(
-            "ConstructSuccessChanceDeliberationMultiplier",
+        public static RimpsycheFormula DeliberationQualityMultiplier = new(
+            "DeliberationQualityMultiplier",
             (tracker) =>
             {
-                float diligence = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.0035f;
+                float diligence = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.2f;
                 return diligence;
             }
         );

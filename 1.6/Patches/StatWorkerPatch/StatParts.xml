@@ -20,7 +20,6 @@
         </value>
     </nomatch>
   </Operation>
-  
 
   <Operation Class="PatchOperationConditional">
     <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
@@ -28,7 +27,7 @@
       <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheDiligenceWorkspeedOffset"/>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDiligenceWorkspeedStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
@@ -36,7 +35,7 @@
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheDiligenceWorkspeedOffset"/>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDiligenceWorkspeedStatPart"/>
           </parts>
         </value>
     </nomatch>

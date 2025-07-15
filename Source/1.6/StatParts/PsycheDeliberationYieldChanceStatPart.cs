@@ -3,16 +3,19 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class DeliberationStatPart : StatPart// M 0.85 ~ 1.15
+    public class PsycheDeliberationYieldChanceStatPart : StatPart
     {
+        public const float levelC = 35f;
         public override void TransformValue(StatRequest req, ref float val)
         {
             if (req.HasThing && req.Thing is Pawn pawn)
             {
                 var compPsyche = pawn.compPsyche();
-                if (compPsyche != null)
+                if (pawn.skills != null && compPsyche != null)
                 {
-                    val += compPsyche.Personality.Evaluate(DeliberationWorkspeedOffset);
+
+                    int level = pawn.skills.GetSkill(SkillDefOf.Construction).Level;
+                    val += (levelC - level) * compPsyche.Personality.Evaluate(DeliberationYieldMultiplier);
                 }
             }
         }
@@ -24,17 +27,17 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    return "RP_Stat_DeliberationWorkspeed".Translate() + ": " + compPsyche.Personality.Evaluate(DeliberationWorkspeedOffset).ToStringPercentSigned();
+                    return "RP_Stat_DeliberationYield".Translate() + ": " + compPsyche.Personality.Evaluate(DeliberationYieldMultiplier).ToStringPercentSigned();
                 }
             }
             return null;
         }
 
-        public static RimpsycheFormula DeliberationWorkspeedOffset = new(
-            "DeliberationWorkspeedOffset",
+        public static RimpsycheFormula DeliberationYieldMultiplier = new(
+            "DeliberationYieldMultiplier",
             (tracker) =>
             {
-                float diligence = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.2f;
+                float diligence = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.003f;
                 return diligence;
             }
         );
