@@ -23,6 +23,10 @@ namespace Maux36.RimPsyche.Disposition
             {
                 __result *= compPsyche.Personality.Evaluate(MoralityMoodOffsetMultiplier);
             }
+            if(ThoughtUtil.MoodMultiplierDB.TryGetValue(___def.defName, out RimpsycheFormula multiplierMethod))
+            {
+                 __result *= compPsyche.Personality.Evaluate(multiplierMethod);
+            }
         }
 
 
@@ -58,6 +62,6 @@ namespace Maux36.RimPsyche.Disposition
             }
         );
 
-        
+
     }
 }
