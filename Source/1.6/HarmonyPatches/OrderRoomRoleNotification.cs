@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace Maux36.RimPsyche.Disposition
 {
@@ -18,13 +19,13 @@ namespace Maux36.RimPsyche.Disposition
     {
         static void Postfix(Toil __result)
         {
-            workout.AddFinishAction(delegate
+            __result.AddFinishAction(delegate
             {
-                NorifyToilFinish(__result.actor3);
+                NotifyToilFinished(__result.actor);
             });
         }
 
-        NorifyToilFinish(Pawn pawn)
+        public static void NotifyToilFinished(Pawn pawn)
         {
             Log.Message($"{pawn.Name} finished toil");
         }

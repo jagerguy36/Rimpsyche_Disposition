@@ -1,11 +1,60 @@
-using RimWorld;
-using UnityEngine;
-using Verse;
+using System.Collections.Generic;
 
 namespace Maux36.RimPsyche.Disposition
 {
     public static class ThoughtUtil
     {
+        public static RimpsycheFormula CompassionMoodMultiplier = new(
+            "CompassionMoodMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float compassionMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
+                return mult * compassionMult;
+            }
+        );
+
+        public static RimpsycheFormula LoyaltyCompassionMoodMultiplier = new(
+            "LoyaltyCompassionMoodMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float loyaltyCompassionMult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
+                return mult * loyaltyCompassionMult;
+            }
+        );
+
+        public static RimpsycheFormula SociabilityCompassionMoodMultiplier = new(
+            "SociabilityCompassionMoodMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float loyaltyCompassionMult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability)*0.5f;
+                return mult * loyaltyCompassionMult;
+            }
+        );
+
+        public static RimpsycheFormula CompassionPositiveMoodMultiplier = new(
+            "CompassionPositiveMoodMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float loyaltyCompassionMult = 1 - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
+                return mult * loyaltyCompassionMult;
+            }
+        );
+
+        public static RimpsycheFormula LoyaltyMoodMultiplier = new(
+            "LoyaltyMoodMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float loyaltyCompassionMult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
+                return mult * loyaltyCompassionMult;
+            }
+        );
+
+
         public static Dictionary<string, RimpsycheFormula> MoodMultiplierDB = new()
         {
             // Thoughts_Memory_Death
@@ -71,54 +120,5 @@ namespace Maux36.RimPsyche.Disposition
             { "MyKinLost", CompassionMoodMultiplier},
         };
 
-        public static RimpsycheFormula CompassionMoodMultiplier = new(
-            "CompassionMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1f;
-                float compassionMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
-                return mult * compassionMult;
-            }
-        );
-
-        public static RimpsycheFormula LoyaltyCompassionMoodMultiplier = new(
-            "LoyaltyCompassionMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1f;
-                float loyaltyCompassionMult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
-                return mult * loyaltyCompassionMult;
-            }
-        );
-
-        public static RimpsycheFormula SociabilityCompassionMoodMultiplier = new(
-            "SociabilityCompassionMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1f;
-                float loyaltyCompassionMult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Socialbility)*0.5f;
-                return mult * loyaltyCompassionMult;
-            }
-        );
-
-        public static RimpsycheFormula CompassionPositiveMoodMultiplier = new(
-            "CompassionPositiveMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1f;
-                float loyaltyCompassionMult = 1 - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
-                return mult * loyaltyCompassionMult;
-            }
-        );
-
-        public static RimpsycheFormula LoyaltyMoodMultiplier = new(
-            "LoyaltyMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1f;
-                float loyaltyCompassionMult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
-                return mult * loyaltyCompassionMult;
-            }
-        );
     }
 }

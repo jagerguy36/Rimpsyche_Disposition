@@ -7,7 +7,7 @@ namespace Maux36.RimPsyche.Disposition
     [HarmonyPatch(typeof(Thought), "MoodOffset")]
     public static class Thought_MoodOffset
     {
-        static void Postfix(ref float __result, Pawn ___pawn, ThoughtDef ___def)
+        static void Postfix(ref float __result, Pawn ___pawn, Thought __instance)
         {
             if (___pawn?.compPsyche() is not { } compPsyche || __result == 0f)
                 return;
@@ -19,13 +19,17 @@ namespace Maux36.RimPsyche.Disposition
             {
                 __result *= compPsyche.Personality.Evaluate(PositiveMoodOffsetMultiplier);
             }
-            if(___def.sourcePrecept != null)
+            if(__instance.sourcePrecept != null)
             {
                 __result *= compPsyche.Personality.Evaluate(MoralityMoodOffsetMultiplier);
             }
-            if(ThoughtUtil.MoodMultiplierDB.TryGetValue(___def.defName, out RimpsycheFormula multiplierMethod))
+            if (ThoughtUtil.MoodMultiplierDB.TryGetValue(__instance.def.defName, out RimpsycheFormula multiplierMethod))
             {
-                 __result *= compPsyche.Personality.Evaluate(multiplierMethod);
+                if(multiplierMethod != null)
+                {
+                    __result *= compPsyche.Personality.Evaluate(multiplierMethod);
+                }
+                
             }
         }
 

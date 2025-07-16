@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    val += compPsyche.Personality.Evaluate(VolatilityMentalBreakThresholdOffset);
+                    val += compPsyche.Personality.Evaluate(TensionMentalBreakThresholdOffset);
                 }
             }
         }
@@ -24,18 +24,18 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    return "RP_Stat_MentalBreakThreashold".Translate() + ": " + compPsyche.Personality.Evaluate(VolatilityMentalBreakThresholdOffset).ToStringPercentSigned();
+                    return "RP_Stat_MentalBreakThreashold".Translate() + ": " + compPsyche.Personality.Evaluate(TensionMentalBreakThresholdOffset).ToStringPercentSigned();
                 }
             }
             return null;
         }
 
-        public static RimpsycheFormula VolatilityMentalBreakThresholdOffset = new(
-            "VolatilityMentalBreakThresholdOffset",
+        public static RimpsycheFormula TensionMentalBreakThresholdOffset = new(
+            "TensionMentalBreakThresholdOffset",
             (tracker) =>
             {
-                float volatility = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Volatility) * 0.2f;
-                return volatility;
+                float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tension) * 0.2f;
+                return resilience;
             }
         );
     }

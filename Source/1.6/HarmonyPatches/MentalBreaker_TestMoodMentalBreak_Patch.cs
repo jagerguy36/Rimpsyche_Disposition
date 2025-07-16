@@ -52,7 +52,7 @@ namespace Maux36.RimPsyche.Disposition
             "MentalBreakIntervalMultiplier",
             (tracker) =>
             {
-                float discipline = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Tension, 0.5f);
+                float discipline = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Resilience, 2f);
                 return discipline;
             }
         );

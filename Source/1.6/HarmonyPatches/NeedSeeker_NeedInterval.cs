@@ -66,7 +66,7 @@ namespace Maux36.RimPsyche.Disposition
                 (tracker) =>
                 {
                     float mult = 1f;
-                    float volatility = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Volatility, 1.5f);
+                    float volatility = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Stability, 0.75f);
                     return mult * volatility;
                 }
             );
@@ -76,7 +76,7 @@ namespace Maux36.RimPsyche.Disposition
                 (tracker) =>
                 {
                     float mult = 1f;
-                    float volatility = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Volatility, 3f);
+                    float volatility = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Stability, 0.2f);
                     return mult * volatility;
                 }
             );

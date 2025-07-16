@@ -58,6 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HarmonyPatches\OrderRoomRoleNotification.cs" />
+    <Compile Include="HarmonyPatches\Thought_SituationalSocial_OpinionOffset.cs" />
     <Compile Include="QualityUtil.cs" />
     <Compile Include="HarmonyPatches\CompDrug_PrePostIngested.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="StatParts\PsycheDeliberationYieldChanceStatPart.cs" />
     <Compile Include="StatParts\PsycheDeliberationOperationChanceStatPart.cs" />
     <Compile Include="StatParts\PsycheDiligenceWorkspeedStatPart.cs" />
+    <Compile Include="ThoughtUtil.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_PassionateWorkMultiplied.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_PsychologicallyNudeMultiplied.cs" />
   </ItemGroup>
