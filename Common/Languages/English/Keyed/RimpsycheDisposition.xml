@@ -2,6 +2,6 @@
 <LanguageData>
   <LetterBrilliantSuccessLabel>Brilliant Success</LetterBrilliantSuccessLabel>
   <LetterBrilliantSuccessMessage>While working, {PAWN_labelShort} recognized a rare opportunity. Guided by {PAWN_possessive} experimental nature, {PAWN_pronoun} took a chance and crafted something truly exceptional.</LetterBrilliantSuccessMessage>
-  <MessageExplorationSuccess>{PAWN_labelShort}'s experimental attempt successfully increased the item's quality.</MessageExplorationSuccess>
-  <MessageExplorationFail>{PAWN_labelShort}'s experimental attempt failed and decreased the item's quality.</MessageExplorationFail>
+  <MessageExperimentSuccess>{PAWN_labelShort}'s experimental attempt successfully increased the item's quality.</MessageExperimentSuccess>
+  <MessageExperimentFail>{PAWN_labelShort}'s experimental attempt failed and decreased the item's quality.</MessageExperimentFail>
 </LanguageData>
