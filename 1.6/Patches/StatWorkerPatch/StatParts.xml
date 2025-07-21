@@ -41,4 +41,23 @@
     </nomatch>
   </Operation>
 
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
+        <order>Append</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheOrganizationRoomWorkspeedStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "WorkSpeedGlobal"]</xpath>
+        <order>Append</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheOrganizationRoomWorkspeedStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
 </Patch>

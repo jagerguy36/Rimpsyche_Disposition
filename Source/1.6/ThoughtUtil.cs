@@ -8,9 +8,8 @@ namespace Maux36.RimPsyche.Disposition
             "CompassionMoodMultiplier",
             (tracker) =>
             {
-                float mult = 1f;
-                float compassionMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
-                return mult * compassionMult;
+                float mult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
+                return mult;//0.5 ~ 1.5
             }
         );
 
@@ -18,9 +17,8 @@ namespace Maux36.RimPsyche.Disposition
             "LoyaltyCompassionMoodMultiplier",
             (tracker) =>
             {
-                float mult = 1f;
-                float loyaltyCompassionMult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
-                return mult * loyaltyCompassionMult;
+                float mult = (1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f) + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
+                return mult;//0.0 ~ 2.0
             }
         );
 
@@ -28,9 +26,8 @@ namespace Maux36.RimPsyche.Disposition
             "SociabilityCompassionMoodMultiplier",
             (tracker) =>
             {
-                float mult = 1f;
-                float loyaltyCompassionMult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability)*0.5f;
-                return mult * loyaltyCompassionMult;
+                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability)*0.5f;
+                return mult;//0.0 ~ 2.0
             }
         );
 
@@ -38,9 +35,8 @@ namespace Maux36.RimPsyche.Disposition
             "CompassionPositiveMoodMultiplier",
             (tracker) =>
             {
-                float mult = 1f;
-                float loyaltyCompassionMult = 1 - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
-                return mult * loyaltyCompassionMult;
+                float mult = 1 - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
+                return mult;//0.5 ~ 1.5
             }
         );
 
@@ -48,26 +44,47 @@ namespace Maux36.RimPsyche.Disposition
             "LoyaltyMoodMultiplier",
             (tracker) =>
             {
-                float mult = 1f;
-                float loyaltyCompassionMult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
-                return mult * loyaltyCompassionMult;
+                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
+                return mult;//0.5 ~ 1.5
+            }
+        );
+
+        public static RimpsycheFormula ExpectationMoodMultiplier = new(
+            "ExpectationMoodMultiplier",
+            (tracker) =>
+            {
+                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation) * 0.5f;
+                return mult;//0.5 ~ 1.5
+            }
+        );
+
+        public static RimpsycheFormula SociabilityMoodMultiplier = new(
+            "SociabilityMoodMultiplier",
+            (tracker) =>
+            {
+                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability) * 0.5f;
+                return mult;//0.5 ~ 1.5
+            }
+        );
+
+        public static RimpsycheFormula ImaginationMoodMultiplier = new(
+            "ImaginationMoodMultiplier",
+            (tracker) =>
+            {
+                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.5f;
+                return mult;//0.5 ~ 1.5
             }
         );
 
 
         public static Dictionary<string, RimpsycheFormula> MoodMultiplierDB = new()
         {
+            // CompassionMoodMultiplier
             // Thoughts_Memory_Death
             { "KnowGuestExecuted", CompassionMoodMultiplier},
             { "KnowColonistExecuted", CompassionMoodMultiplier},
             { "KnowPrisonerDiedInnocent", CompassionMoodMultiplier},
             { "KnowColonistDied", CompassionMoodMultiplier},
-
-            { "BondedAnimalDied", LoyaltyCompassionMoodMultiplier},
-
-            { "PawnWithGoodOpinionDied", SociabilityCompassionMoodMultiplier},
-            { "PawnWithBadOpinionDied", CompassionPositiveMoodMultiplier},
-
             { "MySonDied", CompassionMoodMultiplier},
             { "MyDaughterDied", CompassionMoodMultiplier},
             { "MyHusbandDied", CompassionMoodMultiplier},
@@ -88,16 +105,8 @@ namespace Maux36.RimPsyche.Disposition
             { "MyGrandparentDied", CompassionMoodMultiplier},
             { "MyCousinDied", CompassionMoodMultiplier},
             { "MyKinDied", CompassionMoodMultiplier},
-
             // Thoughts_Memory_Lost
             { "ColonistLost", CompassionMoodMultiplier},
-
-            { "BondedAnimalReleased", LoyaltyMoodMultiplier},
-            { "BondedAnimalLost", LoyaltyCompassionMoodMultiplier},
-
-            { "PawnWithGoodOpinionLost", SociabilityCompassionMoodMultiplier},
-            { "PawnWithBadOpinionLost", CompassionPositiveMoodMultiplier},
-
             { "MySonLost", CompassionMoodMultiplier},
             { "MyDaughterLost", CompassionMoodMultiplier},
             { "MyHusbandLost", CompassionMoodMultiplier},
@@ -118,6 +127,62 @@ namespace Maux36.RimPsyche.Disposition
             { "MyGrandparentLost", CompassionMoodMultiplier},
             { "MyCousinLost", CompassionMoodMultiplier},
             { "MyKinLost", CompassionMoodMultiplier},
+            // Thoughts_Memory_Misc
+            { "KnowGuestOrganHarvested", CompassionMoodMultiplier},
+            { "KnowColonistOrganHarvested", CompassionMoodMultiplier},
+
+            
+            // LoyaltyCompassionMoodMultiplier
+            // Thoughts_Memory_Death
+            { "BondedAnimalDied", LoyaltyCompassionMoodMultiplier},
+            // Thoughts_Memory_Lost
+            { "BondedAnimalLost", LoyaltyCompassionMoodMultiplier},
+            
+            // SociabilityCompassionMoodMultiplier
+            // Thoughts_Memory_Death
+            { "PawnWithGoodOpinionDied", SociabilityCompassionMoodMultiplier},
+            // Thoughts_Memory_Lost
+            { "PawnWithGoodOpinionLost", SociabilityCompassionMoodMultiplier},
+            
+            // CompassionPositiveMoodMultiplier
+            // Thoughts_Memory_Death
+            { "PawnWithBadOpinionDied", CompassionPositiveMoodMultiplier},
+            // Thoughts_Memory_Lost
+            { "PawnWithBadOpinionLost", CompassionPositiveMoodMultiplier},
+            // Thoughts_Memory_Misc
+            { "HarvestedOrgan_Bloodlust", CompassionPositiveMoodMultiplier},
+
+            // LoyaltyMoodMultiplier
+            // Thoughts_Memory_Lost
+            { "BondedAnimalReleased", LoyaltyMoodMultiplier},
+
+            // ExpectationMoodMultiplier
+            // Thoughts_Memory_Eating
+            { "AteLavishMeal", ExpectationMoodMultiplier},
+            { "AteFineMeal", ExpectationMoodMultiplier},
+            { "AteRawFood", ExpectationMoodMultiplier},
+            { "AteKibble", ExpectationMoodMultiplier},
+            { "AteCorpse", ExpectationMoodMultiplier},
+            { "AteHumanlikeMeatDirect", ExpectationMoodMultiplier},
+            { "AteHumanlikeMeatAsIngredient", ExpectationMoodMultiplier},
+            { "AteInsectMeatDirect", ExpectationMoodMultiplier},
+            { "AteInsectMeatAsIngredient", ExpectationMoodMultiplier},
+            { "AteRottenFood", ExpectationMoodMultiplier},
+            // Thoughts_Memory_Misc
+            { "AteWithoutTable", ExpectationMoodMultiplier},
+            { "SleptOutside", ExpectationMoodMultiplier},
+            { "SleptOnGround", ExpectationMoodMultiplier},
+            { "SleptInCold", ExpectationMoodMultiplier},
+            { "SleptInHeat", ExpectationMoodMultiplier},
+            
+            // SociabilityMoodMultiplier
+            // Thoughts_Memory_Gatherings
+            { "AttendedWedding", SociabilityMoodMultiplier},
+            { "AttendedParty", SociabilityMoodMultiplier},
+
+            // ImaginationMoodMultiplier
+            // Thoughts_Memory_Gatherings
+            { "AttendedConcert", ImaginationMoodMultiplier},
         };
 
     }
