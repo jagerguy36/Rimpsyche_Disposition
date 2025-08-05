@@ -3,9 +3,8 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class PsycheDeliberationQualityStatPart : StatPart
+    public class PsycheDeliberationQualityStatPart : StatPart //Tend Quality
     {
-        public const float levelC = 35f;
         public override void TransformValue(StatRequest req, ref float val)
         {
             if (req.HasThing && req.Thing is Pawn pawn)
@@ -13,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (pawn.skills != null && compPsyche != null)
                 {
-                    val += compPsyche.Personality.Evaluate(DeliberationQualityMultiplier);
+                    val *= compPsyche.Personality.Evaluate(DeliberationQualityMultiplier);
                 }
             }
         }
@@ -35,7 +34,7 @@ namespace Maux36.RimPsyche.Disposition
             "DeliberationQualityMultiplier",
             (tracker) =>
             {
-                float diligence = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.2f;
+                float diligence = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.2f; //Self-tend quality penalty is *0.7, so worst case is almost as bad as selftend
                 return diligence;
             }
         );
