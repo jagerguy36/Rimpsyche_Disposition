@@ -20,6 +20,26 @@
         </value>
     </nomatch>
   </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "DeepDrillingSpeed"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "DeepDrillingSpeed"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationWorkspeedStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "DeepDrillingSpeed"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationWorkspeedStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
 
   <Operation Class="PatchOperationConditional">
     <xpath>*/StatDef[defName = "AnimalGatherSpeed"]/parts</xpath>
@@ -72,26 +92,6 @@
     </match>
     <nomatch Class="PatchOperationAdd">
       <xpath>*/StatDef[defName = "ConstructionSpeed"]</xpath>
-        <order>Prepend</order>
-        <value>
-          <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationWorkspeedStatPart"/>
-          </parts>
-        </value>
-    </nomatch>
-  </Operation>
-
-  <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "HackingSpeed"]/parts</xpath>
-    <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "HackingSpeed"]/parts</xpath>
-        <order>Prepend</order>
-        <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationWorkspeedStatPart"/>
-        </value>
-    </match>
-    <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "HackingSpeed"]</xpath>
         <order>Prepend</order>
         <value>
           <parts>
@@ -319,6 +319,106 @@
         <value>
           <parts>
             <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "MedicalTendQuality"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "MedicalTendQuality"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationQualityStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "MedicalTendQuality"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationQualityStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "MedicalSurgerySuccessChance"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "MedicalSurgerySuccessChance"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationOperationChanceStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "MedicalSurgerySuccessChance"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationOperationChanceStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "FoodPoisonChance"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "FoodPoisonChance"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationFoodpoisonChanceStatpart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "FoodPoisonChance"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationFoodpoisonChanceStatpart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "ButcheryFleshEfficiency"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "ButcheryFleshEfficiency"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationButcherEfficiency"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "ButcheryFleshEfficiency"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationButcherEfficiency"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "ButcheryMechanoidEfficiency"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "ButcheryMechanoidEfficiency"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationButcherEfficiency"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "ButcheryMechanoidEfficiency"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationButcherEfficiency"/>
           </parts>
         </value>
     </nomatch>

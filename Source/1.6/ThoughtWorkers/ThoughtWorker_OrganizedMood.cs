@@ -20,6 +20,14 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return ThoughtState.ActiveAtStage(1);
             }
+            if (compPsyche.organizedMood == 2)
+            {
+                return ThoughtState.ActiveAtStage(2);
+            }
+            if (compPsyche.organizedMood == 3)
+            {
+                return ThoughtState.ActiveAtStage(3);
+            }
             return ThoughtState.Inactive;
         }
         public override float MoodMultiplier(Pawn p)
@@ -37,7 +45,7 @@ namespace Maux36.RimPsyche.Disposition
             "OrganizedRoomMood",
             (tracker) =>
             {
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Organization) * 7f;
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Organization) * 12f;
                 return optimism;
             }
         );

@@ -19,6 +19,7 @@
         <li>
             <packageId>maux36.rimpsyche</packageId>
             <displayName>Rimpsyche</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/3535112473</steamWorkshopUrl>
         </li>
     </modDependencies>
     <packageId>Maux36.Rimpsyche.Disposition</packageId>

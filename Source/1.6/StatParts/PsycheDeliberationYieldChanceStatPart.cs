@@ -27,7 +27,8 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche != null)
                 {
-                    return "RP_Stat_DeliberationYield".Translate() + ": " + compPsyche.Personality.Evaluate(DeliberationYieldMultiplier).ToStringPercentSigned();
+                    int level = pawn.skills.GetSkill(SkillDefOf.Construction).Level;
+                    return "RP_Stat_DeliberationYield".Translate() + ": " + ((levelC - level) * compPsyche.Personality.Evaluate(DeliberationYieldMultiplier)).ToStringPercentSigned();
                 }
             }
             return null;
