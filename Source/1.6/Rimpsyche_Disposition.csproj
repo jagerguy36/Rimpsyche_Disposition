@@ -67,7 +67,6 @@
     <Compile Include="HarmonyPatches\MentalBreaker_TestMoodMentalBreak_Patch.cs" />
     <Compile Include="HarmonyPatches\MentalBreakWorker_BingingDrug_Patch.cs" />
     <Compile Include="HarmonyPatches\NeedSeeker_NeedInterval.cs" />
-    <Compile Include="HarmonyPatches\NegativeInteractionUtility_Patch.cs" />
     <Compile Include="HarmonyPatches\QualityUtility_GenerateQualityCreatedByPawn.cs" />
     <Compile Include="HarmonyPatches\SkillRecord_Learn.cs" />
     <Compile Include="HarmonyPatches\Thought_MoodOffset.cs" />
