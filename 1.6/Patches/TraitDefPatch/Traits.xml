@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
 
-  <Operation Class="PatchOperationRemove">
-    <xpath>*/TraitDef[defName="Nerves"]/degreeDatas/li/statOffsets</xpath>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Nerves"]/degreeDatas/li[degree=2]/statOffsets/MentalBreakThreshold</xpath>
+    <value>
+      <MentalBreakThreshold>-6</MentalBreakThreshold>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Nerves"]/degreeDatas/li[degree=1]/statOffsets/MentalBreakThreshold</xpath>
+    <value>
+      <MentalBreakThreshold>-3</MentalBreakThreshold>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Nerves"]/degreeDatas/li[degree=-1]/statOffsets/MentalBreakThreshold</xpath>
+    <value>
+      <MentalBreakThreshold>2</MentalBreakThreshold>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Nerves"]/degreeDatas/li[degree=-2]/statOffsets/MentalBreakThreshold</xpath>
+    <value>
+      <MentalBreakThreshold>4</MentalBreakThreshold>
+    </value>
   </Operation>
 
   <Operation Class="PatchOperationReplace">
