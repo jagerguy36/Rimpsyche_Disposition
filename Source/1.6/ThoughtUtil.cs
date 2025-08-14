@@ -2,8 +2,36 @@ using System.Collections.Generic;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public static class ThoughtUtil
+    [StaticConstructorOnStartup]
+    public class ThoughtUtil
     {
+        static ThoughtUtil()
+        {
+            Initialize();
+            ModCompat();
+        }
+
+        public static void Initialize()
+        {
+            Log.Message("[Rimpsyche - Disposition] ThoughtUtil initialized.");
+        }
+
+        public static void ModCompat()
+        {
+            if (ModsConfig.IdeologyActive)
+            {
+                Log.Message("[Rimpsyche - Disposition] Ideology thoughts added.");
+                //SelfInterest
+                //Charity_Essential Charity_Important Charity_Worthwhile
+                
+                //Compassion
+                //Precepts_AnimalSlaughter
+
+                //Openmindedness
+                //Precepts_Apostasy.
+            }
+        }
+
         public static RimpsycheFormula CompassionMoodMultiplier = new(
             "CompassionMoodMultiplier",
             (tracker) =>
