@@ -1,3 +1,4 @@
+using RimWorld;
 using Verse;
 using Verse.AI;
 
@@ -7,14 +8,14 @@ public class JoyGiver_Meditate_Reflectiveness : JoyGiver_Meditate
 {
 	public override float GetChance(Pawn pawn)
 	{
-		compPsyche = pawn.compPsyche();
+		var compPsyche = pawn.compPsyche();
 		if(compPsyche == null)
 		{
 			return def.baseChance;
 		}
 		else
 		{
-			return def.baseChance*compPsyche.Personality.Evaluate(SkyGazeChanceMultiplier);;
+			return def.baseChance*compPsyche.Personality.Evaluate(MeditateChanceMultiplier);;
 		}
 	}
 
