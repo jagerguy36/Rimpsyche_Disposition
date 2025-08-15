@@ -18,14 +18,13 @@ namespace Maux36.RimPsyche.Disposition
             if (compPsyche?.Personality != null)
             {
                 var p = compPsyche.Personality;
-                var pSpontaneityF = (p.GetPersonality(PersonalityDefOf.Rimpsyche_Spontaneity) + 1f) * 0.05f;
-                var pImaginationF = p.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.3f;  // -0.5~0.5
+                var pSpontaneityF = (p.GetPersonality(PersonalityDefOf.Rimpsyche_Spontaneity) + 1f) * 0.05f; //0~[0.05]~0.1
                 highVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierHigh) + Rand.Range(-pSpontaneityF, pSpontaneityF);
                 lowVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierLow) + Rand.Range(-pSpontaneityF, pSpontaneityF);
                 if (relevantSkill == SkillDefOf.Artistic)
                 {
                     successChance = 0.1f + relevantSkillLevel * p.Evaluate(ArtExperimentSuccessChanceMultiplier);
-                    num += pImaginationF;
+                    num += p.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.3f;// -0.3~0.3
                 }
                 else
                 {
@@ -168,9 +167,8 @@ namespace Maux36.RimPsyche.Disposition
             "QualityVarianceMultiplierHigh",
             (tracker) =>
             {
-                float mult = 1f;
-                float experimentationMult = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Experimentation, 1.5f);
-                return mult * experimentationMult;
+                float experimentation = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Experimentation, 1.5f);
+                return experimentation;
             }
         );
 
@@ -188,7 +186,8 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float imagination = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination);
-                return 0.0125f * (1f + imagination);
+                float emotionality = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality);
+                return 0.0125f * (1f + (0.75f * imagination) + (0.25f * emotionality));
             }
         );
 
@@ -197,7 +196,8 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float imagination = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination);
-                return 0.0125f * (1f + (0.25f * imagination));
+                float deliberation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
+                return 0.0125f * (1f + (0.25f * imagination) + (0.5f * deliberation));
             }
         );
         public static RimpsycheFormula ExperimentChanceMultiplier = new(
