@@ -21,7 +21,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             if(__instance.sourcePrecept != null)
             {
-                __result *= compPsyche.Personality.Evaluate(MoralityMoodOffsetMultiplier);
+                __result *= compPsyche.Personality.Evaluate(PreceptMoodOffsetMultiplier);
             }
             if (ThoughtUtil.MoodMultiplierDB.TryGetValue(__instance.def.defName, out RimpsycheFormula multiplierMethod))
             {
@@ -56,13 +56,17 @@ namespace Maux36.RimPsyche.Disposition
             }
         );
 
-        public static RimpsycheFormula MoralityMoodOffsetMultiplier = new(
-            "MoralityMoodOffsetMultiplier",
+        public static RimpsycheFormula PreceptMoodOffsetMultiplier = new(
+            "PreceptMoodOffsetMultiplier",
             (tracker) =>
             {
                 float mult = 1f;
+                //Openness concerns what could be right/wrong. Morality adhering to the right/wrong.
+                //High open + High moral pawns will be open to question their right and wrong, but will still feel strongly about adhering to what is considered right.
+                //So openness's effect here is very little, just enough to reflect their 'doubt' about the moral standard.
                 float moralityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality) * 0.45f;
-                return mult * moralityMult;
+                float opennessMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness) * 0.1f;
+                return mult * moralityMult * opennessMult;
             }
         );
 
