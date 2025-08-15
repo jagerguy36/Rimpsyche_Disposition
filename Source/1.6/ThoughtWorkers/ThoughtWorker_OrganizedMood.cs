@@ -12,6 +12,10 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return ThoughtState.Inactive;
             }
+            if (compPsyche.organizedMood == -1)
+            {
+                return ThoughtState.Inactive;
+            }
             if (compPsyche.organizedMood == 0)
             {
                 return ThoughtState.ActiveAtStage(0);
