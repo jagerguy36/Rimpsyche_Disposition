@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="HarmonyPatches\OrganizationRoomRoleNotification.cs" />
     <Compile Include="HarmonyPatches\Thought_SituationalSocial_OpinionOffset.cs" />
+    <Compile Include="JoyGivers\JoyGiver_Meditate_Reflectiveness.cs" />
     <Compile Include="QualityUtil.cs" />
     <Compile Include="HarmonyPatches\CompDrug_PrePostIngested.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
@@ -72,15 +73,16 @@
     <Compile Include="HarmonyPatches\Thought_MoodOffset.cs" />
     <Compile Include="RimpsycheDisposition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatParts\PsycheDeliberationButcherEfficiency.cs" />
-    <Compile Include="StatParts\PsycheDeliberationQualityStatPart.cs" />
+    <Compile Include="StatParts\Deliberation\PsycheDeliberationButcherEfficiency.cs" />
+    <Compile Include="StatParts\Deliberation\PsycheDeliberationQualityStatPart.cs" />
     <Compile Include="StatParts\MentalBreakThresholdStatPart.cs" />
-    <Compile Include="StatParts\PsycheDeliberationWorkspeedStatPart.cs" />
-    <Compile Include="StatParts\PsycheDeliberationYieldChanceStatPart.cs" />
-    <Compile Include="StatParts\PsycheDeliberationFoodpoisonChanceStatpart.cs" />
-    <Compile Include="StatParts\PsycheDeliberationOperationChanceStatPart.cs" />
+    <Compile Include="StatParts\Deliberation\PsycheDeliberationWorkspeedStatPart.cs" />
+    <Compile Include="StatParts\Deliberation\PsycheDeliberationYieldChanceStatPart.cs" />
+    <Compile Include="StatParts\Deliberation\PsycheDeliberationFoodpoisonChanceStatpart.cs" />
+    <Compile Include="StatParts\Deliberation\PsycheDeliberationOperationChanceStatPart.cs" />
     <Compile Include="StatParts\PsycheDiligenceWorkspeedStatPart.cs" />
     <Compile Include="StatParts\PsycheOrganizationRoomWorkspeedStatPart.cs" />
+    <Compile Include="StatParts\PsycheReflectivenessMeditationFocusGain.cs" />
     <Compile Include="ThoughtUtil.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_OrganizedMood.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_PassionateWorkMultiplied.cs" />
@@ -89,5 +91,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
