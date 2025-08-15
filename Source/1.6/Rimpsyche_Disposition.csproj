@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormulaDB.cs" />
     <Compile Include="HarmonyPatches\OrganizationRoomRoleNotification.cs" />
     <Compile Include="HarmonyPatches\Thought_SituationalSocial_OpinionOffset.cs" />
     <Compile Include="JoyGivers\JoyGiver_Meditate_Reflectiveness.cs" />
@@ -85,8 +86,6 @@
     <Compile Include="StatParts\PsycheReflectivenessMeditationFocusGain.cs" />
     <Compile Include="ThoughtUtil.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_OrganizedMood.cs" />
-    <Compile Include="ThoughtWorkers\ThoughtWorker_PassionateWorkMultiplied.cs" />
-    <Compile Include="ThoughtWorkers\ThoughtWorker_PsychologicallyNudeMultiplied.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

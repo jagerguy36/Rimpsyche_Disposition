@@ -108,6 +108,11 @@ namespace Maux36.RimPsyche.Disposition
 
         public static Dictionary<string, RimpsycheFormula> MoodMultiplierDB = new()
         {
+            //Special Thoughts
+            { "Naked", FormulaDB.PrudishNakedMultiplier},
+            { "DoingPassionateWork", FormulaDB.PassionWorkMultiplier},
+
+
             // CompassionMoodMultiplier
             // Thoughts_Memory_Death
             { "KnowGuestExecuted", CompassionMoodMultiplier},
