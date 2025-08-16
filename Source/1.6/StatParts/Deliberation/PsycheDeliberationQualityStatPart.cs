@@ -10,7 +10,7 @@ namespace Maux36.RimPsyche.Disposition
             if (req.HasThing && req.Thing is Pawn pawn)
             {
                 var compPsyche = pawn.compPsyche();
-                if (pawn.skills != null && compPsyche != null)
+                if (compPsyche != null)
                 {
                     val *= compPsyche.Personality.Evaluate(DeliberationQualityMultiplier);
                 }

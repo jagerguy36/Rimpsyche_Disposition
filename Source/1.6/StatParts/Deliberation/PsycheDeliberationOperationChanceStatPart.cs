@@ -13,7 +13,6 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (pawn.skills != null && compPsyche != null)
                 {
-
                     int level = pawn.skills.GetSkill(SkillDefOf.Construction).Level;
                     val += (levelC - level) * compPsyche.Personality.Evaluate(DeliberationOperationMultiplier);
                 }

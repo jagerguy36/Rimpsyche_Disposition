@@ -12,7 +12,6 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (pawn.skills != null && compPsyche != null)
                 {
-
                     int level = pawn.skills.GetSkill(SkillDefOf.Cooking).Level;
                     var deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
                     val = val * (1 - deliberation * 0.2f);
