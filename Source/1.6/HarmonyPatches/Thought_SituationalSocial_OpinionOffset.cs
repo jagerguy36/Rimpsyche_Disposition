@@ -13,7 +13,7 @@ namespace Maux36.RimPsyche.Disposition
                 return;
             if(__instance.sourcePrecept != null)
             {
-                __result *= compPsyche.Personality.Evaluate(Thought_MoodOffset.PreceptMoodOffsetMultiplier);
+                __result *= compPsyche.Personality.Evaluate(FormulaDB.PreceptMoodOffsetMultiplier);
             }
         }
     }
@@ -27,7 +27,7 @@ namespace Maux36.RimPsyche.Disposition
                 return;
             if(__instance.sourcePrecept != null)
             {
-                __result *= compPsyche.Personality.Evaluate(Thought_MoodOffset.PreceptMoodOffsetMultiplier);
+                __result *= compPsyche.Personality.Evaluate(FormulaDB.PreceptMoodOffsetMultiplier);
             }
         }
     }

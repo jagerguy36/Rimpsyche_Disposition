@@ -18,42 +18,42 @@ namespace Maux36.RimPsyche.Disposition
             //Compassion (Dead or lost)
             foreach (var defName in compassionMoodMultiplierList)
             {
-                MoodMultiplierDB[defName] = MoodFormulaDB.CompassionMoodMultiplier;
+                MoodMultiplierDB[defName] = FormulaDB.CompassionMoodMultiplier;
             }
             //Loyalty + Compassion (Bonded dead or lost)
             foreach (var defName in LoyaltyCompassionMoodMultiplierList)
             {
-                MoodMultiplierDB[defName] = MoodFormulaDB.LoyaltyCompassionMoodMultiplier;
+                MoodMultiplierDB[defName] = FormulaDB.LoyaltyCompassionMoodMultiplier;
             }
             //Sociability + Compassion (Good opinion dead or lost)
             foreach (var defName in SociabilityCompassionMoodMultiplierList)
             {
-                MoodMultiplierDB[defName] = MoodFormulaDB.SociabilityCompassionMoodMultiplier;
+                MoodMultiplierDB[defName] = FormulaDB.SociabilityCompassionMoodMultiplier;
             }
             //Compassion Positive (schadenfeude)
             foreach (var defName in CompassionPositiveMoodMultiplierList)
             {
-                MoodMultiplierDB[defName] = MoodFormulaDB.CompassionPositiveMoodMultiplier;
+                MoodMultiplierDB[defName] = FormulaDB.CompassionPositiveMoodMultiplier;
             }
             //Loyalty (Bonded released)
             foreach (var defName in LoyaltyMoodMultiplierList)
             {
-                MoodMultiplierDB[defName] = MoodFormulaDB.LoyaltyMoodMultiplier;
+                MoodMultiplierDB[defName] = FormulaDB.LoyaltyMoodMultiplier;
             }
             //Expectation (Eating, Sleeping)
             foreach (var defName in ExpectationMoodMultiplierList)
             {
-                MoodMultiplierDB[defName] = MoodFormulaDB.ExpectationMoodMultiplier;
+                MoodMultiplierDB[defName] = FormulaDB.ExpectationMoodMultiplier;
             }
             //Sociability (Gathering)
             foreach (var defName in SociabilityMoodMultiplierList)
             {
-                MoodMultiplierDB[defName] = MoodFormulaDB.SociabilityMoodMultiplier;
+                MoodMultiplierDB[defName] = FormulaDB.SociabilityMoodMultiplier;
             }
             //Imagination (Concert)
             foreach (var defName in ImaginationMoodMultiplierList)
             {
-                MoodMultiplierDB[defName] = MoodFormulaDB.ImaginationMoodMultiplier;
+                MoodMultiplierDB[defName] = FormulaDB.ImaginationMoodMultiplier;
             }
         }
 
@@ -76,8 +76,8 @@ namespace Maux36.RimPsyche.Disposition
         public static Dictionary<string, RimpsycheFormula> MoodMultiplierDB = new()
         {
             //Special Thoughts
-            { "Naked", MoodFormulaDB.PrudishNakedMultiplier},
-            { "DoingPassionateWork", MoodFormulaDB.PassionWorkMultiplier},
+            { "Naked", FormulaDB.PrudishNakedMultiplier},
+            { "DoingPassionateWork", FormulaDB.PassionWorkMultiplier},
         };
 
         private static readonly List<string> compassionMoodMultiplierList = new(
