@@ -15,13 +15,53 @@ namespace Maux36.RimPsyche.Disposition
         public static void Initialize()
         {
             Log.Message("[Rimpsyche - Disposition] ThoughtUtil initialized.");
+            //Compassion (Dead or lost)
+            foreach (var defName in compassionMoodMultiplierList)
+            {
+                MoodMultiplierDB[defName] = MoodFormulaDB.CompassionMoodMultiplier;
+            }
+            //Loyalty + Compassion (Bonded dead or lost)
+            foreach (var defName in LoyaltyCompassionMoodMultiplierList)
+            {
+                MoodMultiplierDB[defName] = MoodFormulaDB.LoyaltyCompassionMoodMultiplier;
+            }
+            //Sociability + Compassion (Good opinion dead or lost)
+            foreach (var defName in SociabilityCompassionMoodMultiplierList)
+            {
+                MoodMultiplierDB[defName] = MoodFormulaDB.SociabilityCompassionMoodMultiplier;
+            }
+            //Compassion Positive (schadenfeude)
+            foreach (var defName in CompassionPositiveMoodMultiplierList)
+            {
+                MoodMultiplierDB[defName] = MoodFormulaDB.CompassionPositiveMoodMultiplier;
+            }
+            //Loyalty (Bonded released)
+            foreach (var defName in LoyaltyMoodMultiplierList)
+            {
+                MoodMultiplierDB[defName] = MoodFormulaDB.LoyaltyMoodMultiplier;
+            }
+            //Expectation (Eating, Sleeping)
+            foreach (var defName in ExpectationMoodMultiplierList)
+            {
+                MoodMultiplierDB[defName] = MoodFormulaDB.ExpectationMoodMultiplier;
+            }
+            //Sociability (Gathering)
+            foreach (var defName in SociabilityMoodMultiplierList)
+            {
+                MoodMultiplierDB[defName] = MoodFormulaDB.SociabilityMoodMultiplier;
+            }
+            //Imagination (Concert)
+            foreach (var defName in ImaginationMoodMultiplierList)
+            {
+                MoodMultiplierDB[defName] = MoodFormulaDB.ImaginationMoodMultiplier;
+            }
         }
 
         public static void ModCompat()
         {
             if (ModsConfig.IdeologyActive)
             {
-                Log.Message("[Rimpsyche - Disposition] Ideology thoughts added.");
+                //Log.Message("[Rimpsyche - Disposition] Ideology thoughts added.");
                 //SelfInterest
                 //Charity_Essential Charity_Important Charity_Worthwhile
                 
@@ -33,191 +73,131 @@ namespace Maux36.RimPsyche.Disposition
             }
         }
 
-        public static RimpsycheFormula CompassionMoodMultiplier = new(
-            "CompassionMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
-                return mult;//0.5 ~ 1.5
-            }
-        );
-
-        public static RimpsycheFormula LoyaltyCompassionMoodMultiplier = new(
-            "LoyaltyCompassionMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = (1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f) + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
-                return mult;//0.0 ~ 2.0
-            }
-        );
-
-        public static RimpsycheFormula SociabilityCompassionMoodMultiplier = new(
-            "SociabilityCompassionMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability)*0.5f;
-                return mult;//0.0 ~ 2.0
-            }
-        );
-
-        public static RimpsycheFormula CompassionPositiveMoodMultiplier = new(
-            "CompassionPositiveMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1 - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion)*0.5f;
-                return mult;//0.5 ~ 1.5
-            }
-        );
-
-        public static RimpsycheFormula LoyaltyMoodMultiplier = new(
-            "LoyaltyMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty)*0.5f;
-                return mult;//0.5 ~ 1.5
-            }
-        );
-
-        public static RimpsycheFormula ExpectationMoodMultiplier = new(
-            "ExpectationMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation) * 0.5f;
-                return mult;//0.5 ~ 1.5
-            }
-        );
-
-        public static RimpsycheFormula SociabilityMoodMultiplier = new(
-            "SociabilityMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability) * 0.5f;
-                return mult;//0.5 ~ 1.5
-            }
-        );
-
-        public static RimpsycheFormula ImaginationMoodMultiplier = new(
-            "ImaginationMoodMultiplier",
-            (tracker) =>
-            {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.5f;
-                return mult;//0.5 ~ 1.5
-            }
-        );
-
-
         public static Dictionary<string, RimpsycheFormula> MoodMultiplierDB = new()
         {
             //Special Thoughts
-            { "Naked", FormulaDB.PrudishNakedMultiplier},
-            { "DoingPassionateWork", FormulaDB.PassionWorkMultiplier},
-
-
-            // CompassionMoodMultiplier
-            // Thoughts_Memory_Death
-            { "KnowGuestExecuted", CompassionMoodMultiplier},
-            { "KnowColonistExecuted", CompassionMoodMultiplier},
-            { "KnowPrisonerDiedInnocent", CompassionMoodMultiplier},
-            { "KnowColonistDied", CompassionMoodMultiplier},
-            { "MySonDied", CompassionMoodMultiplier},
-            { "MyDaughterDied", CompassionMoodMultiplier},
-            { "MyHusbandDied", CompassionMoodMultiplier},
-            { "MyWifeDied", CompassionMoodMultiplier},
-            { "MyFianceDied", CompassionMoodMultiplier},
-            { "MyFianceeDied", CompassionMoodMultiplier},
-            { "MyLoverDied", CompassionMoodMultiplier},
-            { "MyBrotherDied", CompassionMoodMultiplier},
-            { "MySisterDied", CompassionMoodMultiplier},
-            { "MyGrandchildDied", CompassionMoodMultiplier},
-            { "MyFatherDied", CompassionMoodMultiplier},
-            { "MyMotherDied", CompassionMoodMultiplier},
-            { "MyNieceDied", CompassionMoodMultiplier},
-            { "MyNephewDied", CompassionMoodMultiplier},
-            { "MyHalfSiblingDied", CompassionMoodMultiplier},
-            { "MyAuntDied", CompassionMoodMultiplier},
-            { "MyUncleDied", CompassionMoodMultiplier},
-            { "MyGrandparentDied", CompassionMoodMultiplier},
-            { "MyCousinDied", CompassionMoodMultiplier},
-            { "MyKinDied", CompassionMoodMultiplier},
-            // Thoughts_Memory_Lost
-            { "ColonistLost", CompassionMoodMultiplier},
-            { "MySonLost", CompassionMoodMultiplier},
-            { "MyDaughterLost", CompassionMoodMultiplier},
-            { "MyHusbandLost", CompassionMoodMultiplier},
-            { "MyWifeLost", CompassionMoodMultiplier},
-            { "MyFianceLost", CompassionMoodMultiplier},
-            { "MyFianceeLost", CompassionMoodMultiplier},
-            { "MyLoverLost", CompassionMoodMultiplier},
-            { "MyBrotherLost", CompassionMoodMultiplier},
-            { "MySisterLost", CompassionMoodMultiplier},
-            { "MyGrandchildLost", CompassionMoodMultiplier},
-            { "MyFatherLost", CompassionMoodMultiplier},
-            { "MyMotherLost", CompassionMoodMultiplier},
-            { "MyNieceLost", CompassionMoodMultiplier},
-            { "MyNephewLost", CompassionMoodMultiplier},
-            { "MyHalfSiblingLost", CompassionMoodMultiplier},
-            { "MyAuntLost", CompassionMoodMultiplier},
-            { "MyUncleLost", CompassionMoodMultiplier},
-            { "MyGrandparentLost", CompassionMoodMultiplier},
-            { "MyCousinLost", CompassionMoodMultiplier},
-            { "MyKinLost", CompassionMoodMultiplier},
-            // Thoughts_Memory_Misc
-            { "KnowGuestOrganHarvested", CompassionMoodMultiplier},
-            { "KnowColonistOrganHarvested", CompassionMoodMultiplier},
-
-            
-            // LoyaltyCompassionMoodMultiplier
-            // Thoughts_Memory_Death
-            { "BondedAnimalDied", LoyaltyCompassionMoodMultiplier},
-            // Thoughts_Memory_Lost
-            { "BondedAnimalLost", LoyaltyCompassionMoodMultiplier},
-            
-            // SociabilityCompassionMoodMultiplier
-            // Thoughts_Memory_Death
-            { "PawnWithGoodOpinionDied", SociabilityCompassionMoodMultiplier},
-            // Thoughts_Memory_Lost
-            { "PawnWithGoodOpinionLost", SociabilityCompassionMoodMultiplier},
-            
-            // CompassionPositiveMoodMultiplier
-            // Thoughts_Memory_Death
-            { "PawnWithBadOpinionDied", CompassionPositiveMoodMultiplier},
-            // Thoughts_Memory_Lost
-            { "PawnWithBadOpinionLost", CompassionPositiveMoodMultiplier},
-            // Thoughts_Memory_Misc
-            { "HarvestedOrgan_Bloodlust", CompassionPositiveMoodMultiplier},
-
-            // LoyaltyMoodMultiplier
-            // Thoughts_Memory_Lost
-            { "BondedAnimalReleased", LoyaltyMoodMultiplier},
-
-            // ExpectationMoodMultiplier
-            // Thoughts_Memory_Eating
-            { "AteLavishMeal", ExpectationMoodMultiplier},
-            { "AteFineMeal", ExpectationMoodMultiplier},
-            { "AteRawFood", ExpectationMoodMultiplier},
-            { "AteKibble", ExpectationMoodMultiplier},
-            { "AteCorpse", ExpectationMoodMultiplier},
-            { "AteHumanlikeMeatDirect", ExpectationMoodMultiplier},
-            { "AteHumanlikeMeatAsIngredient", ExpectationMoodMultiplier},
-            { "AteInsectMeatDirect", ExpectationMoodMultiplier},
-            { "AteInsectMeatAsIngredient", ExpectationMoodMultiplier},
-            { "AteRottenFood", ExpectationMoodMultiplier},
-            // Thoughts_Memory_Misc
-            { "AteWithoutTable", ExpectationMoodMultiplier},
-            { "SleptOutside", ExpectationMoodMultiplier},
-            { "SleptOnGround", ExpectationMoodMultiplier},
-            { "SleptInCold", ExpectationMoodMultiplier},
-            { "SleptInHeat", ExpectationMoodMultiplier},
-            
-            // SociabilityMoodMultiplier
-            // Thoughts_Memory_Gatherings
-            { "AttendedWedding", SociabilityMoodMultiplier},
-            { "AttendedParty", SociabilityMoodMultiplier},
-
-            // ImaginationMoodMultiplier
-            // Thoughts_Memory_Gatherings
-            { "AttendedConcert", ImaginationMoodMultiplier},
+            { "Naked", MoodFormulaDB.PrudishNakedMultiplier},
+            { "DoingPassionateWork", MoodFormulaDB.PassionWorkMultiplier},
         };
 
+        private static readonly List<string> compassionMoodMultiplierList = new(
+            [
+                // Thoughts_Memory_Death
+                "KnowGuestExecuted",
+                "KnowColonistExecuted",
+                "KnowPrisonerDiedInnocent",
+                "KnowColonistDied",
+                "MySonDied",
+                "MyDaughterDied",
+                "MyHusbandDied",
+                "MyWifeDied",
+                "MyFianceDied",
+                "MyFianceeDied",
+                "MyLoverDied",
+                "MyBrotherDied",
+                "MySisterDied",
+                "MyGrandchildDied",
+                "MyFatherDied",
+                "MyMotherDied",
+                "MyNieceDied",
+                "MyNephewDied",
+                "MyHalfSiblingDied",
+                "MyAuntDied",
+                "MyUncleDied",
+                "MyGrandparentDied",
+                "MyCousinDied",
+                "MyKinDied",            
+                // Thoughts_Memory_Lost
+                "ColonistLost",
+                "MySonLost",
+                "MyDaughterLost",
+                "MyHusbandLost",
+                "MyWifeLost",
+                "MyFianceLost",
+                "MyFianceeLost",
+                "MyLoverLost",
+                "MyBrotherLost",
+                "MySisterLost",
+                "MyGrandchildLost",
+                "MyFatherLost",
+                "MyMotherLost",
+                "MyNieceLost",
+                "MyNephewLost",
+                "MyHalfSiblingLost",
+                "MyAuntLost",
+                "MyUncleLost",
+                "MyGrandparentLost",
+                "MyCousinLost",
+                "MyKinLost",
+                // Thoughts_Memory_Misc
+                "KnowGuestOrganHarvested",
+                "KnowColonistOrganHarvested"
+            ]
+        );
+        private static readonly List<string> LoyaltyCompassionMoodMultiplierList = new(
+            [
+                // Thoughts_Memory_Death
+                "BondedAnimalDied",
+                "BondedAnimalLost"
+            ]
+        );
+        private static readonly List<string> SociabilityCompassionMoodMultiplierList = new(
+            [
+                // Thoughts_Memory_Death
+                "PawnWithGoodOpinionDied",
+                // Thoughts_Memory_Lost
+                "PawnWithGoodOpinionLost"
+            ]
+        );
+        private static readonly List<string> CompassionPositiveMoodMultiplierList = new(
+            [
+                // Thoughts_Memory_Death
+                "PawnWithBadOpinionDied",
+                // Thoughts_Memory_Lost
+                "PawnWithBadOpinionLost",
+                // Thoughts_Memory_Misc
+                "HarvestedOrgan_Bloodlust"
+            ]
+        );
+        private static readonly List<string> LoyaltyMoodMultiplierList = new(
+            [
+                // Thoughts_Memory_Lost
+                "BondedAnimalReleased"
+            ]
+        );
+        private static readonly List<string> ExpectationMoodMultiplierList = new(
+            [
+                // Thoughts_Memory_Eating
+                "AteLavishMeal",
+                "AteFineMeal",
+                "AteRawFood",
+                "AteKibble",
+                "AteCorpse",
+                "AteHumanlikeMeatDirect",
+                "AteHumanlikeMeatAsIngredient",
+                "AteInsectMeatDirect",
+                "AteInsectMeatAsIngredient",
+                "AteRottenFood",
+                // Thoughts_Memory_Misc
+                "AteWithoutTable",
+                "SleptOutside",
+                "SleptOnGround",
+                "SleptInCold",
+                "SleptInHeat"
+            ]
+        );
+        private static readonly List<string> SociabilityMoodMultiplierList = new(
+            [
+                // Thoughts_Memory_Gatherings
+                "AttendedWedding",
+                "AttendedParty"
+            ]
+        );
+        private static readonly List<string> ImaginationMoodMultiplierList = new(
+            [
+                // Thoughts_Memory_Gatherings
+                "AttendedConcert"
+            ]
+        );
     }
 }

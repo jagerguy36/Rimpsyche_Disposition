@@ -58,7 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormulaDB.cs" />
+    <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable_Patch.cs" />
+    <Compile Include="MoodFormulaDB.cs" />
     <Compile Include="HarmonyPatches\OrganizationRoomRoleNotification.cs" />
     <Compile Include="HarmonyPatches\Thought_SituationalSocial_OpinionOffset.cs" />
     <Compile Include="JoyGivers\JoyGiver_Meditate_Reflectiveness.cs" />
@@ -83,7 +84,7 @@
     <Compile Include="StatParts\Deliberation\PsycheDeliberationOperationChanceStatPart.cs" />
     <Compile Include="StatParts\PsycheDiligenceWorkspeedStatPart.cs" />
     <Compile Include="StatParts\PsycheOrganizationRoomWorkspeedStatPart.cs" />
-    <Compile Include="StatParts\PsycheReflectivenessMeditationFocusGain.cs" />
+    <Compile Include="StatParts\PsycheReflectivenessMeditationFocusGainStatPart.cs" />
     <Compile Include="ThoughtUtil.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_OrganizedMood.cs" />
   </ItemGroup>
