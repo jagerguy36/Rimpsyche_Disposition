@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/JoyGiverDef[defName="Meditate"]/giverClass</xpath>
+    <value>
+      <giverClass>Maux36.RimPsyche.Disposition.JoyGiver_Meditate_Reflectiveness</giverClass>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/JoyGiverDef[defName="Meditate"]/pctPawnsEverDo</xpath>
+  </Operation>
+
+</Patch>

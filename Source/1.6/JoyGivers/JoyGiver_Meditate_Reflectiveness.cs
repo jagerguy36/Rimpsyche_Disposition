@@ -23,9 +23,10 @@ public class JoyGiver_Meditate_Reflectiveness : JoyGiver_Meditate
 		"MeditateChanceMultiplier",
 		(tracker) =>
 		{
-			float mult = 1f;
-			float imaginationMult = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Reflectiveness, 1.5f);
-			return mult * imaginationMult;
+			float r = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Reflectiveness);
+			float c = -2.5f * r * (r - 2f);
+			if (c > 0) return c;
+			return 0f;
 		}
 	);
 }

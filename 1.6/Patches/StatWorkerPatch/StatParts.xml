@@ -60,4 +60,24 @@
         </value>
     </nomatch>
   </Operation>
+
+  <Operation Class="PatchOperationConditional" MayRequireAnyOf="Ludeon.RimWorld.Royalty,Ludeon.RimWorld.Biotech">
+    <xpath>*/StatDef[defName = "MeditationFocusGain"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "MeditationFocusGain"]/parts</xpath>
+        <order>Append</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheReflectivenessMeditationFocusGainStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "MeditationFocusGain"]</xpath>
+        <order>Append</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheReflectivenessMeditationFocusGainStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
 </Patch>
