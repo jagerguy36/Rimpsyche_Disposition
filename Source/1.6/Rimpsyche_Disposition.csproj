@@ -58,7 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable_Patch.cs" />
+    <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable.cs" />
     <Compile Include="FormulaDB.cs" />
     <Compile Include="HarmonyPatches\OrganizationRoomRoleNotification.cs" />
     <Compile Include="HarmonyPatches\Thought_SituationalSocial_OpinionOffset.cs" />
