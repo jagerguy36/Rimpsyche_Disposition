@@ -54,7 +54,7 @@ namespace Maux36.RimPsyche.Disposition
                     return 1f;
 
                 var psyche = pawn.compPsyche();
-                if (psyche == null)
+                if (psyche?.Enabled != true)
                     return 1f;
 
                 return isRising ? psyche.Personality.Evaluate(MoodRisingSpeedMultiplier) : psyche.Personality.Evaluate(MoodFallingSpeedMultiplier);

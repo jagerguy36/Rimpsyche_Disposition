@@ -8,30 +8,31 @@ namespace Maux36.RimPsyche.Disposition
     {
         public static QualityCategory GenerateQualityCreatedByPawnWithPsyche(int relevantSkillLevel, bool inspired, Pawn pawn, SkillDef relevantSkill)
         {
-            bool experimented = false;
-            float highVarianceMultiplier = 1f;
-            float lowVarianceMultiplier = 1f;
-            float experimentChance = 0;
-            float successChance = 0;
             var compPsyche = pawn.compPsyche();
-            float num = 0f;
-            if (compPsyche?.Personality != null)
+            if (compPsyche?.Enabled != true)
             {
-                var p = compPsyche.Personality;
-                var pSpontaneityF = (p.GetPersonality(PersonalityDefOf.Rimpsyche_Spontaneity) + 1f) * 0.05f; //0~[0.05]~0.1
-                highVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierHigh) + Rand.Range(-pSpontaneityF, pSpontaneityF);
-                lowVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierLow) + Rand.Range(-pSpontaneityF, pSpontaneityF);
-                if (relevantSkill == SkillDefOf.Artistic)
-                {
-                    successChance = 0.1f + relevantSkillLevel * p.Evaluate(ArtExperimentSuccessChanceMultiplier);
-                    num += p.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.3f;// -0.3~0.3
-                }
-                else
-                {
-                    successChance = 0.1f + relevantSkillLevel * p.Evaluate(CraftExperimentSuccessChanceMultiplier);
-                }
-                experimentChance = p.Evaluate(ExperimentChanceMultiplier) * (successChance) + Rand.Range(-pSpontaneityF, pSpontaneityF);
+                return QualityUtility.GenerateQualityCreatedByPawn(relevantSkillLevel, inspired);
             }
+            bool experimented = false;
+            float highVarianceMultiplier;
+            float lowVarianceMultiplier;
+            float experimentChance;
+            float successChance;
+            float num = 0f;
+            var p = compPsyche.Personality;
+            var pSpontaneityF = (p.GetPersonality(PersonalityDefOf.Rimpsyche_Spontaneity) + 1f) * 0.05f; //0~[0.05]~0.1
+            highVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierHigh) + Rand.Range(-pSpontaneityF, pSpontaneityF);
+            lowVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierLow) + Rand.Range(-pSpontaneityF, pSpontaneityF);
+            if (relevantSkill == SkillDefOf.Artistic)
+            {
+                successChance = 0.1f + relevantSkillLevel * p.Evaluate(ArtExperimentSuccessChanceMultiplier);
+                num += p.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.3f;// -0.3~0.3
+            }
+            else
+            {
+                successChance = 0.1f + relevantSkillLevel * p.Evaluate(CraftExperimentSuccessChanceMultiplier);
+            }
+            experimentChance = p.Evaluate(ExperimentChanceMultiplier) * (successChance) + Rand.Range(-pSpontaneityF, pSpontaneityF);
             switch (relevantSkillLevel)
             {
                 case 0:

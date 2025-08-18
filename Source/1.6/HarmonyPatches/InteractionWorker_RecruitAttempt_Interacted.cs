@@ -51,7 +51,7 @@ namespace Maux36.RimPsyche.Disposition
         public static float ResistanceMultiplier(Pawn recipient)
         {
             var compPsyche = recipient.compPsyche();
-            if (compPsyche == null)
+            if (compPsyche?.Enabled != true)
             {
                 return 1f;
             }

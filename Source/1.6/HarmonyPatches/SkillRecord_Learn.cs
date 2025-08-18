@@ -12,9 +12,12 @@ namespace Maux36.RimPsyche.Disposition
             if (xp > 0f)
             {
                 var compPsyche = ___pawn.compPsyche();
-                float multiplier = compPsyche.Personality.Evaluate(SkillLearningMultiplier) * (float)(___levelInt - 10) + 1f;
-                xp = multiplier * xp;
-                compPsyche.lastProgressTick = Find.TickManager.TicksGame;
+                if (compPsyche?.Enabled == true)
+                {
+                    float multiplier = compPsyche.Personality.Evaluate(SkillLearningMultiplier) * (float)(___levelInt - 10) + 1f;
+                    xp = multiplier * xp;
+                    compPsyche.lastProgressTick = Find.TickManager.TicksGame;
+                }
             }
         }
 

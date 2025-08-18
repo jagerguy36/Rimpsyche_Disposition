@@ -63,7 +63,7 @@ namespace Maux36.RimPsyche.Disposition
         public static float PsycheResistanceRange(Pawn pawn)
         {
             var compPsyche = pawn.compPsyche();
-            if (compPsyche == null)
+            if (compPsyche?.Enabled != true)
             {
                 return pawn.kindDef.initialResistanceRange.Value.RandomInRange;
             }

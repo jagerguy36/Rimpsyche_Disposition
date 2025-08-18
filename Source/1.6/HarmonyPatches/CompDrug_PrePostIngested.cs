@@ -51,7 +51,7 @@ namespace Maux36.RimPsyche.Disposition
                     return originalChance;
                 }
                 var psyche = pawn.compPsyche();
-                if (psyche == null)
+                if (psyche?.Enabled != true)
                 {
                     return originalChance;
                 }

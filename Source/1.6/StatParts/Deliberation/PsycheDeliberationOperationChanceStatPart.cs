@@ -11,7 +11,7 @@ namespace Maux36.RimPsyche.Disposition
             if (req.HasThing && req.Thing is Pawn pawn)
             {
                 var compPsyche = pawn.compPsyche();
-                if (pawn.skills != null && compPsyche != null)
+                if (pawn.skills != null && compPsyche?.Enabled == true)
                 {
                     int level = pawn.skills.GetSkill(SkillDefOf.Construction).Level;
                     val += (levelC - level) * compPsyche.Personality.Evaluate(DeliberationOperationMultiplier);
@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
             if (req.HasThing && req.Thing is Pawn pawn)
             {
                 var compPsyche = pawn.compPsyche();
-                if (compPsyche != null)
+                if (compPsyche?.Enabled == true)
                 {
                     return "RP_Stat_DeliberationOperationChance".Translate() + ": " + compPsyche.Personality.Evaluate(DeliberationOperationMultiplier).ToStringPercentSigned();
                 }

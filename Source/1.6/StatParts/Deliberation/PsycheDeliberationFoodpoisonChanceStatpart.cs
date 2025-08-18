@@ -10,7 +10,7 @@ namespace Maux36.RimPsyche.Disposition
             if (req.HasThing && req.Thing is Pawn pawn)
             {
                 var compPsyche = pawn.compPsyche();
-                if (pawn.skills != null && compPsyche != null)
+                if (pawn.skills != null && compPsyche?.Enabled == true)
                 {
                     int level = pawn.skills.GetSkill(SkillDefOf.Cooking).Level;
                     var deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
@@ -25,7 +25,7 @@ namespace Maux36.RimPsyche.Disposition
             if (req.HasThing && req.Thing is Pawn pawn)
             {
                 var compPsyche = pawn.compPsyche();
-                if (compPsyche != null)
+                if (compPsyche?.Enabled == true)
                 {
                     int level = pawn.skills.GetSkill(SkillDefOf.Cooking).Level;
                     var deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);

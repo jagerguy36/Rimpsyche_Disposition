@@ -24,6 +24,7 @@ namespace Maux36.RimPsyche.Disposition
                 if (room != null && !room.PsychologicallyOutdoors)
                 {
                     var compPsyche = billDoer.compPsyche();
+                    if (compPsyche?.Enabled != true) return;
                     var organization = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Organization);
                     if (room.Role != billGiver.def.building.workTableRoomRole) //Wrong room
                     {

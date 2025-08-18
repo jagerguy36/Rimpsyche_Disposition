@@ -9,7 +9,7 @@ public class JoyGiver_Meditate_Reflectiveness : JoyGiver_Meditate
 	public override float GetChance(Pawn pawn)
 	{
 		var compPsyche = pawn.compPsyche();
-		if(compPsyche == null)
+		if(compPsyche.Enabled != true)
 		{
 			return def.baseChance;
 		}

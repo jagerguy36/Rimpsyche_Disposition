@@ -10,6 +10,7 @@ namespace Maux36.RimPsyche.Disposition
         private static void Postfix(ref float __result, Pawn pawn)
         {
             var compPsyche = pawn.compPsyche();
+            if (compPsyche?.Enabled != true) return;
             float multiplier = compPsyche.Personality.Evaluate(DisciplineBingingMultiplier);
             __result = multiplier * __result;
         }

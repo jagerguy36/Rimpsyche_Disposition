@@ -8,7 +8,7 @@ namespace Maux36.RimPsyche.Disposition
         protected override ThoughtState CurrentStateInternal(Pawn p)
         {
             var compPsyche = p.compPsyche();
-            if (compPsyche == null)
+            if (compPsyche?.Enabled == true)
             {
                 return ThoughtState.Inactive;
             }
@@ -38,7 +38,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             float val = base.MoodMultiplier(p);
             var compPsyche = p.compPsyche();
-            if (compPsyche != null)
+            if (compPsyche?.Enabled == true)
             {
                 return val * compPsyche.Personality.Evaluate(OrganizedRoomMood);
             }

@@ -10,7 +10,7 @@ namespace Maux36.RimPsyche.Disposition
             if (req.HasThing && req.Thing is Pawn pawn)
             {
                 var compPsyche = pawn.compPsyche();
-                if (compPsyche != null)
+                if (compPsyche?.Enabled == true)
                 {
                     val += compPsyche.Personality.Evaluate(TensionMentalBreakThresholdOffset);
                 }
@@ -22,7 +22,7 @@ namespace Maux36.RimPsyche.Disposition
             if (req.HasThing && req.Thing is Pawn pawn)
             {
                 var compPsyche = pawn.compPsyche();
-                if (compPsyche != null)
+                if (compPsyche?.Enabled == true)
                 {
                     return "RP_Stat_MentalBreakThreashold".Translate() + ": " + compPsyche.Personality.Evaluate(TensionMentalBreakThresholdOffset).ToStringPercentSigned();
                 }

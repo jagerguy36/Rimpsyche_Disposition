@@ -9,8 +9,8 @@ namespace Maux36.RimPsyche.Disposition
     {
         static void Postfix(ref float __result, Pawn pawn)
         {
-            if (pawn?.compPsyche() is not { } compPsyche || __result == 0f)
-                return;
+            if (pawn?.compPsyche() is not { } compPsyche || __result == 0f) return;
+            if (compPsyche?.Enabled != true) return;
             __result *= compPsyche.Personality.Evaluate(SkyGazeChanceMultiplier);
         }
 

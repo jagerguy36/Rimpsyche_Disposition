@@ -11,6 +11,8 @@ namespace Maux36.RimPsyche.Disposition
         {
             if (___pawn?.compPsyche() is not { } compPsyche || __result == 0f)
                 return;
+            if (compPsyche.Enabled != true)
+                return;
             if (__instance.sourcePrecept != null)
             {
                 __result *= compPsyche.Personality.Evaluate(FormulaDB.PreceptMoodOffsetMultiplier);
