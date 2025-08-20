@@ -80,4 +80,89 @@
         </value>
     </nomatch>
   </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "NegotiationAbility"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "NegotiationAbility"]/parts</xpath>
+        <order>Append</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheNegotiationAbilityStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "NegotiationAbility"]</xpath>
+        <order>Append</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheNegotiationAbilityStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "TradePriceImprovement"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "TradePriceImprovement"]/parts</xpath>
+        <order>Append</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheTradePriceImprovementStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "TradePriceImprovement"]</xpath>
+        <order>Append</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheTradePriceImprovementStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "PainShockThreshold"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "PainShockThreshold"]/parts</xpath>
+        <order>Append</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsychePainshockThresholdStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "PainShockThreshold"]</xpath>
+        <order>Append</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsychePainshockThresholdStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <nomatch Class="PatchOperationConditional">
+      <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
+      <match Class="PatchOperationAdd">
+        <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
+          <order>Append</order>
+          <value>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheShootingAccuracyPawnStatPart"/>
+          </value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]</xpath>
+          <order>Append</order>
+          <value>
+            <parts>
+              <li Class="Maux36.RimPsyche.Disposition.PsycheShootingAccuracyPawnStatPart"/>
+            </parts>
+          </value>
+      </nomatch>
+    </nomatch>
+  </Operation>
 </Patch>

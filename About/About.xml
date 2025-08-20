@@ -8,6 +8,8 @@
     <modVersion>1.0.0</modVersion>
     <loadAfter>
         <li>brrainz.harmony</li>
+        <li>ceteam.combatextended</li>
+        <li>maux36.rimpsyche</li>
     </loadAfter>
     <modDependencies>
         <li>

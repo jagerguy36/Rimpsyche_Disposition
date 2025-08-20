@@ -57,4 +57,11 @@
     </value>
   </Operation>
 
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Wimp"]/degreeDatas/li/statOffsets/PainShockThreshold</xpath>
+    <value>
+      <PainShockThreshold>-0.40</PainShockThreshold>
+    </value>
+  </Operation>
+
 </Patch>
