@@ -64,4 +64,51 @@
     </value>
   </Operation>
 
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <nomatch Class="PatchOperationReplace">
+      <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=1]/statOffsets/AimingDelayFactor</xpath>
+      <value>
+        <AimingDelayFactor>0.15</AimingDelayFactor>
+      </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <nomatch Class="PatchOperationReplace">
+      <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=1]/statOffsets/ShootingAccuracyPawn</xpath>
+      <value>
+        <ShootingAccuracyPawn>3</ShootingAccuracyPawn>
+      </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <nomatch Class="PatchOperationReplace">
+      <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=-1]/statOffsets/AimingDelayFactor</xpath>
+      <value>
+        <AimingDelayFactor>-0.4</AimingDelayFactor>
+      </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <nomatch Class="PatchOperationReplace">
+      <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=-1]/statOffsets/ShootingAccuracyPawn</xpath>
+      <value>
+        <ShootingAccuracyPawn>-3</ShootingAccuracyPawn>
+      </value>
+    </nomatch>
+  </Operation>
 </Patch>

@@ -1,0 +1,42 @@
+﻿using RimWorld;
+using Verse;
+
+namespace Maux36.RimPsyche.Disposition
+{
+    public class PsycheAimingDelayFactorPawnStatPart : StatPart// M 0.8 ~ 1.2
+    {
+        public override void TransformValue(StatRequest req, ref float val)
+        {
+            if (req.HasThing && req.Thing is Pawn pawn)
+            {
+                var compPsyche = pawn.compPsyche();
+                if (compPsyche?.Enabled == true)
+                {
+                    val += compPsyche.Personality.Evaluate(AimingDelayFactorOffset);
+                }
+            }
+        }
+
+        public override string ExplanationPart(StatRequest req)
+        {
+            if (req.HasThing && req.Thing is Pawn pawn)
+            {
+                var compPsyche = pawn.compPsyche();
+                if (compPsyche?.Enabled == true)
+                {
+                    return "RP_Stat_AimingDelayFactorOffset".Translate() + ": " + compPsyche.Personality.Evaluate(AimingDelayFactorOffset).ToStringPercentSigned();
+                }
+            }
+            return null;
+        }
+
+        public static RimpsycheFormula AimingDelayFactorOffset = new(
+            "AimingDelayFactorOffset",
+            (tracker) =>
+            {
+                float diligence = 0.15f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
+                return diligence;
+            }
+        );
+    }
+}

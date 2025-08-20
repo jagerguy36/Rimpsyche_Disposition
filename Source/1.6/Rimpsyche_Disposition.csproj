@@ -84,6 +84,7 @@
     <Compile Include="StatParts\Deliberation\PsycheDeliberationFoodpoisonChanceStatpart.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationOperationChanceStatPart.cs" />
     <Compile Include="StatParts\PsycheDiligenceWorkspeedStatPart.cs" />
+    <Compile Include="StatParts\PsycheAimingDelayFactorPawnStatPart.cs" />
     <Compile Include="StatParts\PsycheShootingAccuracyPawnStatPart.cs" />
     <Compile Include="StatParts\PsychePainShockThresholdStatPart.cs" />
     <Compile Include="StatParts\PsycheTradePriceImprovementStatPart.cs" />
