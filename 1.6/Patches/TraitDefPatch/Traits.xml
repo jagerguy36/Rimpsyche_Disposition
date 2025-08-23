@@ -4,28 +4,28 @@
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="Nerves"]/degreeDatas/li[degree=2]/statOffsets/MentalBreakThreshold</xpath>
     <value>
-      <MentalBreakThreshold>-6</MentalBreakThreshold>
+      <MentalBreakThreshold>-0.10</MentalBreakThreshold>
     </value>
   </Operation>
 
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="Nerves"]/degreeDatas/li[degree=1]/statOffsets/MentalBreakThreshold</xpath>
     <value>
-      <MentalBreakThreshold>-3</MentalBreakThreshold>
+      <MentalBreakThreshold>-0.04</MentalBreakThreshold>
     </value>
   </Operation>
 
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="Nerves"]/degreeDatas/li[degree=-1]/statOffsets/MentalBreakThreshold</xpath>
     <value>
-      <MentalBreakThreshold>2</MentalBreakThreshold>
+      <MentalBreakThreshold>0.03</MentalBreakThreshold>
     </value>
   </Operation>
 
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="Nerves"]/degreeDatas/li[degree=-2]/statOffsets/MentalBreakThreshold</xpath>
     <value>
-      <MentalBreakThreshold>4</MentalBreakThreshold>
+      <MentalBreakThreshold>0.08</MentalBreakThreshold>
     </value>
   </Operation>
 

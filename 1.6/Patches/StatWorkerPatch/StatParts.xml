@@ -7,7 +7,7 @@
       <xpath>*/StatDef[defName = "MentalBreakThreshold"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheVolatilityMentalBreakThreasholdOffset"/>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheMentalBreakThresholdStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
@@ -15,7 +15,7 @@
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheVolatilityMentalBreakThreasholdOffset"/>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheMentalBreakThresholdStatPart"/>
           </parts>
         </value>
     </nomatch>
@@ -56,6 +56,26 @@
         <value>
           <parts>
             <li Class="Maux36.RimPsyche.Disposition.PsycheOrganizationRoomWorkspeedStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "ResearchSpeed"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "ResearchSpeed"]/parts</xpath>
+        <order>Append</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheResearchSpeedStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "ResearchSpeed"]</xpath>
+        <order>Append</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheResearchSpeedStatPart"/>
           </parts>
         </value>
     </nomatch>

@@ -3,7 +3,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class PsycheShootingAccuracyPawnStatPart : StatPart// M 0.8 ~ 1.2
+    public class PsycheShootingAccuracyPawnStatPart : StatPart
     {
         public override void TransformValue(StatRequest req, ref float val)
         {
@@ -34,7 +34,7 @@ namespace Maux36.RimPsyche.Disposition
             "ShootingAccuracyPawnOffset",
             (tracker) =>
             {
-                float diligence = 3f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
+                float diligence = 4f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
                 return diligence;
             }
         );

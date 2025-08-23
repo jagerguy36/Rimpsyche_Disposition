@@ -3,7 +3,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class PsycheVolatilityMentalBreakThreasholdOffset : StatPart// M 0.86 ~ 1.14
+    public class PsycheMentalBreakThresholdStatPart : StatPart
     {
         public override void TransformValue(StatRequest req, ref float val)
         {
@@ -34,7 +34,7 @@ namespace Maux36.RimPsyche.Disposition
             "TensionMentalBreakThresholdOffset",
             (tracker) =>
             {
-                float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tension) * 0.14f;
+                float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tension) * 0.1f;
                 return resilience;
             }
         );

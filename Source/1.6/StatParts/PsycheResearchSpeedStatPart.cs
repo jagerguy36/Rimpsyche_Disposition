@@ -1,9 +1,9 @@
-﻿using RimWorld;
+using RimWorld;
 using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class PsychePainShockThresholdStatPart : StatPart
+    public class PsycheResearchSpeedStatPart : StatPart
     {
         public override void TransformValue(StatRequest req, ref float val)
         {
@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    val += compPsyche.Personality.Evaluate(PainShockThresholdOffset);
+                    val += compPsyche.Personality.Evaluate(ReflectivenessResearchSpeedMult);
                 }
             }
         }
@@ -24,18 +24,18 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_PainShockThresholdOffset".Translate() + ": " + compPsyche.Personality.Evaluate(PainShockThresholdOffset).ToStringPercentSigned();
+                    return "RP_Stat_ReflectivenessResearchSpeed".Translate() + ": " + compPsyche.Personality.Evaluate(ReflectivenessResearchSpeedMult).ToStringPercentSigned();
                 }
             }
             return null;
         }
 
-        public static RimpsycheFormula PainShockThresholdOffset = new(
-            "PainShockThresholdOffset",
+        public static RimpsycheFormula ReflectivenessResearchSpeedMult = new(
+            "ReflectivenessResearchSpeedMult",
             (tracker) =>
             {
-                float diligence = 0.2f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery) + 0.15f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
-                return diligence;
+                float reflectiveness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Reflectiveness) * 0.1f;
+                return reflectiveness;
             }
         );
     }

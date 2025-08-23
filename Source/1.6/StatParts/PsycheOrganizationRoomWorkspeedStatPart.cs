@@ -3,7 +3,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class PsycheOrganizationRoomWorkspeedStatPart : StatPart// M 0.8 ~ 1.2
+    public class PsycheOrganizationRoomWorkspeedStatPart : StatPart
     {
         public override void TransformValue(StatRequest req, ref float val)
         {

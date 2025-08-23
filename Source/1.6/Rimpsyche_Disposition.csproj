@@ -58,10 +58,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\PsycheExtension.cs" />
     <Compile Include="HarmonyPatches\InteractionWorker_RecruitAttempt_Interacted.cs" />
     <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable.cs" />
     <Compile Include="FormulaDB.cs" />
     <Compile Include="HarmonyPatches\OrganizationRoomRoleNotification.cs" />
+    <Compile Include="HarmonyPatches\ResearchManager_FinishProject.cs" />
     <Compile Include="HarmonyPatches\Thought_SituationalSocial_OpinionOffset.cs" />
     <Compile Include="JoyGivers\JoyGiver_Meditate_Reflectiveness.cs" />
     <Compile Include="QualityUtil.cs" />
@@ -78,13 +80,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationButcherEfficiency.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationQualityStatPart.cs" />
-    <Compile Include="StatParts\MentalBreakThresholdStatPart.cs" />
+    <Compile Include="StatParts\PsycheMentalBreakThresholdStatPart.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationWorkspeedStatPart.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationYieldChanceStatPart.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationFoodpoisonChanceStatpart.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationOperationChanceStatPart.cs" />
     <Compile Include="StatParts\PsycheDiligenceWorkspeedStatPart.cs" />
     <Compile Include="StatParts\PsycheAimingDelayFactorPawnStatPart.cs" />
+    <Compile Include="StatParts\PsycheResearchSpeedStatPart.cs" />
     <Compile Include="StatParts\PsycheShootingAccuracyPawnStatPart.cs" />
     <Compile Include="StatParts\PsychePainShockThresholdStatPart.cs" />
     <Compile Include="StatParts\PsycheTradePriceImprovementStatPart.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="StatParts\PsycheOrganizationRoomWorkspeedStatPart.cs" />
     <Compile Include="StatParts\PsycheReflectivenessMeditationFocusGainStatPart.cs" />
     <Compile Include="ThoughtUtil.cs" />
+    <Compile Include="ThoughtWorkers\ThoughtWorker_AmbitionMood.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_OrganizedMood.cs" />
   </ItemGroup>
   <ItemGroup>

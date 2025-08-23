@@ -8,7 +8,7 @@ namespace Maux36.RimPsyche.Disposition
         protected override ThoughtState CurrentStateInternal(Pawn p)
         {
             var compPsyche = p.compPsyche();
-            if (compPsyche?.Enabled == true)
+            if (compPsyche?.Enabled != true)
             {
                 return ThoughtState.Inactive;
             }
@@ -49,8 +49,8 @@ namespace Maux36.RimPsyche.Disposition
             "OrganizedRoomMood",
             (tracker) =>
             {
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Organization) * 12f;
-                return optimism;
+                float mult = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Organization) * 12f;
+                return mult;
             }
         );
     }

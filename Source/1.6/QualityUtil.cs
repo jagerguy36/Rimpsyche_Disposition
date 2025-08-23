@@ -161,7 +161,75 @@ namespace Maux36.RimPsyche.Disposition
             value = Mathf.Clamp(value, 0, 6);
             QualityCategory qualityCategory = (QualityCategory)value;
 
+
+            //Ambition Check
+            float expectation = ExpectedQMean(relevantSkillLevel);
+            int higherExpectation = (int)(expectation + p.Evaluate(QualityExpectationHighOffset));
+            //int lowerExpectatino = (int)(expectation + p.Evaluate(QualityExpectationLowOffset));
+            //Log.Message($"value: {value}| level {relevantSkillLevel} expectation w/ ambition {p.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition)}:  {lowerExpectatino}~[{expectation}]~{higherExpectation}");
+            if (value >= higherExpectation)
+            {
+                int qOffset = (value - higherExpectation) + 1;
+                compPsyche.ProgressMade(3f * qOffset);
+                //Log.Message($"value higher than good expectation. Setting Progressday {3f * qOffset}. This should give {1.2f * (p.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f) * (3f * qOffset)} mood");
+            }
+            else if (value >= (int)(expectation + p.Evaluate(QualityExpectationLowOffset)))
+            {
+                compPsyche.ProgressMade(0f);
+                //Log.Message($"value good enough. Setting Progressday {0}");
+            }
+
             return qualityCategory;
+        }
+        public static float ExpectedQMean(int relevantSkillLevel)
+        {
+            switch (relevantSkillLevel)
+            {
+                case 0:
+                    return 0.41f;
+                case 1:
+                    return 0.70f;
+                case 2:
+                    return 1.09f;
+                case 3:
+                    return 1.38f;
+                case 4:
+                    return 1.56f;
+                case 5:
+                    return 1.78f;
+                case 6:
+                    return 1.99f;
+                case 7:
+                    return 2.19f;
+                case 8:
+                    return 2.38f;
+                case 9:
+                    return 2.51f;
+                case 10:
+                    return 2.66f;
+                case 11:
+                    return 2.82f;
+                case 12:
+                    return 2.96f;
+                case 13:
+                    return 3.06f;
+                case 14:
+                    return 3.15f;
+                case 15:
+                    return 3.24f;
+                case 16:
+                    return 3.32f;
+                case 17:
+                    return 3.40f;
+                case 18:
+                    return 3.48f;
+                case 19:
+                    return 3.58f;
+                case 20:
+                    return 3.67f;
+                default:
+                    return 0f;
+            }
         }
 
         public static RimpsycheFormula QualityVarianceMultiplierHigh = new(
@@ -207,6 +275,22 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float experimentation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Experimentation);
                 return 0.2f * (experimentation + 1f) * (experimentation + 1f);
+            }
+        );
+        public static RimpsycheFormula QualityExpectationHighOffset = new(
+            "QualityExpectationHighOffset",
+            (tracker) =>
+            {
+                float offset = 0.5f + 0.8f*tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
+                return offset;
+            }
+        );
+        public static RimpsycheFormula QualityExpectationLowOffset = new(
+            "QualityExpectationLowOffset",
+            (tracker) =>
+            {
+                float offset = -0.2f + 0.3f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
+                return offset;
             }
         );
     }
