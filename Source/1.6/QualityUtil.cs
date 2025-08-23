@@ -170,12 +170,12 @@ namespace Maux36.RimPsyche.Disposition
             if (value >= higherExpectation)
             {
                 int qOffset = (value - higherExpectation) + 1;
-                compPsyche.ProgressMade(3f * qOffset);
+                compPsyche.ProgressMade(3f * qOffset, 2);
                 //Log.Message($"value higher than good expectation. Setting Progressday {3f * qOffset}. This should give {1.2f * (p.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f) * (3f * qOffset)} mood");
             }
             else if (value >= (int)(expectation + p.Evaluate(QualityExpectationLowOffset)))
             {
-                compPsyche.ProgressMade(0f);
+                compPsyche.ProgressMade(0f, 2);
                 //Log.Message($"value good enough. Setting Progressday {0}");
             }
 

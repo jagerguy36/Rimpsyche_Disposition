@@ -23,7 +23,7 @@ namespace Maux36.RimPsyche.Disposition
             int pTick = compPsyche.progressTick - Find.TickManager.TicksGame;
             if (0 <= pTick)
             {
-                return ThoughtState.ActiveAtStage(1);
+                return ThoughtState.ActiveAtStage(compPsyche.progressLastCauseIndex);
             }
             else
             {
@@ -45,6 +45,10 @@ namespace Maux36.RimPsyche.Disposition
                 var pTick = compPsyche.progressTick - curTick;
                 if (0 <= pTick)
                 {
+                    // Positive mood ambition -1 -> 0
+                    // Positive mood ambition 0 -> 1.2*days
+                    // Positive mood ambition 1 -> 2.4*days
+                    // Content pawns can feel satisfaction too.
                     return val * personality.Evaluate(AmbitionAccomplishmentMood) * pTick;
                 }
                 var mult = (Mathf.Max(maxMinusTick, pTick) - compPsyche.Personality.Evaluate(AmbitionDissatisfactionTick)) / halfDayTick; // In days: x - (8*A - 10)
@@ -52,6 +56,11 @@ namespace Maux36.RimPsyche.Disposition
 
             }
             return val;
+        }
+
+        public override string PostProcessDescription(Pawn p, string description)
+        {
+            return description;
         }
 
         public static RimpsycheFormula AmbitionAccomplishmentMood = new(

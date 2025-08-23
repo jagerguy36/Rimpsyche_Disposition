@@ -9,7 +9,31 @@ namespace Maux36.RimPsyche.Disposition
     {
         private static void Postfix(ResearchProjectDef proj, Pawn researcher)
         {
-            Log.Message($"project {proj.defName} w/ cost: {proj.Cost} finished. Pawn: {researcher?.Name}");
+            if (researcher != null)
+            {
+                Log.Message($"project {proj.defName} w/ cost: {proj.Cost} finished. Pawn: {researcher?.Name}");
+                foreach (Pawn p in researcher.MapHeld.mapPawns.FreeColonistsSpawned)
+                {
+                    var compPsyche = p.compPsyche();
+                    if (compPsyche?.Enabled == true)
+                    {
+                        Log.Message($"{p.Name} prospect: {proj.Cost / compPsyche.Personality.Evaluate(AmbitionResearchBaseTick)}");
+                        compPsyche.ProgressMade(proj.Cost/compPsyche.Personality.Evaluate(AmbitionResearchBaseTick), 3);
+                    }
+
+                }
+
+            }
+
         }
+
+        public static RimpsycheFormula AmbitionResearchBaseTick = new(
+            "AmbitionResearchBaseTick",
+            (tracker) =>
+            {
+                float mult = 500f * (0.2f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f);
+                return mult;
+            }
+        );
     }
 }

@@ -33,12 +33,22 @@
     <stages>
       <li>
         <label>ambition frustrated</label>
-        <description>I'm not making any meaningful progress. It feels like I'm just spinning my wheels.</description>
+        <description>Nothing seems to be moving forward. It feels like I'm just spinning my wheels.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+      <li>
+        <label>sense of achievement</label>
+        <description>I'm making real progress. It's nice to see my own growth.</description>
         <baseMoodEffect>1</baseMoodEffect>
       </li>
       <li>
         <label>sense of accomplishment</label>
-        <description>I'm making real progress. It's nice to feel productive.</description>
+        <description>I've made something I'm proud of. It's nice to feel productive.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+      <li>
+        <label>sense of progress</label>
+        <description>It's great to see things moving ahead. Feels good to be part of something that's growing.</description>
         <baseMoodEffect>1</baseMoodEffect>
       </li>
     </stages>
