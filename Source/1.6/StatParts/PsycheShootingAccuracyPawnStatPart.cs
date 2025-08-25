@@ -24,7 +24,8 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_ShootingAccuracyPawnOffset".Translate() + ": " + compPsyche.Personality.Evaluate(ShootingAccuracyPawnOffset).ToStringSign();
+                    float val = compPsyche.Personality.Evaluate(ShootingAccuracyPawnOffset);
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_ShootingAccuracyPawnOffset".Translate() + ": " + val.ToStringSign() + val.ToString("F1")+"\n";
                 }
             }
             return null;

@@ -265,26 +265,6 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "DrugHarvestYield"]/parts</xpath>
-    <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "DrugHarvestYield"]/parts</xpath>
-        <order>Prepend</order>
-        <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
-        </value>
-    </match>
-    <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "DrugHarvestYield"]</xpath>
-        <order>Prepend</order>
-        <value>
-          <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
-          </parts>
-        </value>
-    </nomatch>
-  </Operation>
-
-  <Operation Class="PatchOperationConditional">
     <xpath>*/StatDef[defName = "ConstructSuccessChance"]/parts</xpath>
     <match Class="PatchOperationAdd">
       <xpath>*/StatDef[defName = "ConstructSuccessChance"]/parts</xpath>
