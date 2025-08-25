@@ -5,7 +5,8 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class PsycheDeliberationYieldChanceStatPart : StatPart
     {
-        public const float levelC = 35f;
+        public SkillDef skill;
+        public const float levelC = 6f;
         public override void TransformValue(StatRequest req, ref float val)
         {
             if (req.HasThing && req.Thing is Pawn pawn)
@@ -13,8 +14,8 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (pawn.skills != null && compPsyche?.Enabled == true)
                 {
-                    int level = pawn.skills.GetSkill(SkillDefOf.Construction).Level;
-                    val += (levelC - level) * compPsyche.Personality.Evaluate(DeliberationYieldMultiplier);
+                    int level = pawn.skills.GetSkill(skill).Level;
+                    val *= 1 + compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) / (levelC + level);
                 }
             }
         }
@@ -27,19 +28,10 @@ namespace Maux36.RimPsyche.Disposition
                 if (compPsyche?.Enabled == true)
                 {
                     int level = pawn.skills.GetSkill(SkillDefOf.Construction).Level;
-                    return "RP_Stat_DeliberationYield".Translate() + ": " + ((levelC - level) * compPsyche.Personality.Evaluate(DeliberationYieldMultiplier)).ToStringPercentSigned();
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationYield".Translate() + ": x" + (1 + compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) / (levelC + level)).ToStringPercent() + "\n";
                 }
             }
             return null;
         }
-
-        public static RimpsycheFormula DeliberationYieldMultiplier = new(
-            "DeliberationYieldMultiplier",
-            (tracker) =>
-            {
-                float diligence = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.003f;
-                return diligence;
-            }
-        );
     }
 }

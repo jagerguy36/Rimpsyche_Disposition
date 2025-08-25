@@ -210,7 +210,9 @@
       <xpath>*/StatDef[defName = "MiningYield"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Mining</skill>
+          </li>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
@@ -218,7 +220,9 @@
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Mining</skill>
+          </li>
           </parts>
         </value>
     </nomatch>
@@ -230,7 +234,9 @@
       <xpath>*/StatDef[defName = "AnimalGatherYield"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Animals</skill>
+          </li>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
@@ -238,7 +244,9 @@
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Animals</skill>
+          </li>
           </parts>
         </value>
     </nomatch>
@@ -250,7 +258,9 @@
       <xpath>*/StatDef[defName = "PlantHarvestYield"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Plants</skill>
+          </li>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
@@ -258,7 +268,9 @@
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Plants</skill>
+          </li>
           </parts>
         </value>
     </nomatch>
@@ -270,7 +282,9 @@
       <xpath>*/StatDef[defName = "ConstructSuccessChance"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Construction</skill>
+          </li>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
@@ -278,7 +292,9 @@
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Construction</skill>
+          </li>
           </parts>
         </value>
     </nomatch>
@@ -290,7 +306,9 @@
       <xpath>*/StatDef[defName = "FixBrokenDownBuildingSuccessChance"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Construction</skill>
+          </li>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
@@ -298,7 +316,9 @@
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart"/>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationYieldChanceStatPart">
+            <skill>Construction</skill>
+          </li>
           </parts>
         </value>
     </nomatch>

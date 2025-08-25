@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "DeliberationButcherEfficiencyy".Translate() + ": x" + compPsyche.Personality.Evaluate(DeliberationButcherEfficiencyyMultiplier).ToStringPercent();
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "DeliberationButcherEfficiency".Translate() + ": x" + compPsyche.Personality.Evaluate(DeliberationButcherEfficiencyyMultiplier).ToStringPercent()+"\n";
                 }
             }
             return null;

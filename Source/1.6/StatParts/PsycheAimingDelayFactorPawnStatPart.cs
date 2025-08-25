@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_AimingDelayFactorOffset".Translate() + ": " + compPsyche.Personality.Evaluate(AimingDelayFactorOffset).ToStringPercentSigned();
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_AimingDelayFactorOffset".Translate() + ": " + compPsyche.Personality.Evaluate(AimingDelayFactorOffset).ToStringPercentSigned() + "\n";
                 }
             }
             return null;

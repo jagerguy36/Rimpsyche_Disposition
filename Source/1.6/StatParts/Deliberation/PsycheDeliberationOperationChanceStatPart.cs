@@ -5,7 +5,7 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class PsycheDeliberationOperationChanceStatPart : StatPart
     {
-        public const float levelC = 30f;
+        public const float levelC = 0.9f;
         public override void TransformValue(StatRequest req, ref float val)
         {
             if (req.HasThing && req.Thing is Pawn pawn)
@@ -13,8 +13,8 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (pawn.skills != null && compPsyche?.Enabled == true)
                 {
-                    int level = pawn.skills.GetSkill(SkillDefOf.Construction).Level;
-                    val += (levelC - level) * compPsyche.Personality.Evaluate(DeliberationOperationMultiplier);
+                    int level = pawn.skills.GetSkill(SkillDefOf.Medicine).Level;
+                    val += 1 + compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) / (levelC + level);
                 }
             }
         }
@@ -26,19 +26,11 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_DeliberationOperationChance".Translate() + ": " + compPsyche.Personality.Evaluate(DeliberationOperationMultiplier).ToStringPercentSigned();
+                    int level = pawn.skills.GetSkill(SkillDefOf.Construction).Level;
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationOperationChance".Translate() + ": x" + (1 + compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) / (levelC + level)).ToStringPercent() + "\n";
                 }
             }
             return null;
         }
-
-        public static RimpsycheFormula DeliberationOperationMultiplier = new(
-            "DeliberationOperationMultiplier",
-            (tracker) =>
-            {
-                float diligence = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.0035f;
-                return diligence;
-            }
-        );
     }
 }

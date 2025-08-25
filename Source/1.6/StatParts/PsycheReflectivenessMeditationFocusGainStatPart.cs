@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_ReflectivenessMeditation".Translate() + ": " + compPsyche.Personality.Evaluate(ReflectivenessMeditationMult).ToStringPercentSigned();
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_ReflectivenessMeditation".Translate() + ": " + compPsyche.Personality.Evaluate(ReflectivenessMeditationMult).ToStringPercentSigned() + "\n";
                 }
             }
             return null;

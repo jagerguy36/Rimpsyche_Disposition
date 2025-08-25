@@ -25,7 +25,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_NegotiationAbilityOffset".Translate() + ": " + compPsyche.Personality.Evaluate(NegotiationAbilityOffset).ToStringPercentSigned();
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_NegotiationAbilityOffset".Translate() + ": " + compPsyche.Personality.Evaluate(NegotiationAbilityOffset).ToStringPercentSigned() + "\n";
                 }
             }
             return null;
