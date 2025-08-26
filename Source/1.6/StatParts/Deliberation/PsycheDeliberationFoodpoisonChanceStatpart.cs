@@ -13,9 +13,8 @@ namespace Maux36.RimPsyche.Disposition
                 if (pawn.skills != null && compPsyche?.Enabled == true)
                 {
                     int level = pawn.skills.GetSkill(SkillDefOf.Cooking).Level;
-                    var deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
-                    val = val * (1 - deliberation * 0.2f);
-                    val += additionalValue(level, deliberation);
+                    float deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
+                    val *= FoodPoisonMultiplier(level, deliberation);
                 }
             }
         }
@@ -28,26 +27,24 @@ namespace Maux36.RimPsyche.Disposition
                 if (compPsyche?.Enabled == true)
                 {
                     int level = pawn.skills.GetSkill(SkillDefOf.Cooking).Level;
-                    var deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
-                    float offset = additionalValue(level, deliberation);
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationFoodpoison".Translate() + ": x" + (1 - deliberation * 0.2f).ToStringPercent() + "\n    " + "RP_Stat_DeliberationFoodpoisonOffset".Translate()+ ": " + offset.ToStringSign() + offset.ToStringPercent() + "\n";
+                    float deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationFoodpoison".Translate() + ": x" + FoodPoisonMultiplier(level, deliberation).ToStringPercent()"\n";
                 }
             }
             return null;
         }
 
-        public float additionalValue(int level, float deliberation)
+        public float FoodPoisonMultiplier(int level, float deliberation)
         {
-            float addition;
+            float mult;
             if (deliberation >= 0f)
             {
-                addition = -level * deliberation * 0.00005f;
-            }
+                mult = 1 - deliberation * (0.2f + 0.02f*level);
             else
             {
-                addition = deliberation * (level * 0.0002f - 0.005f);
+                mult = 1 - deliberation * (0.5f - 0.01f*level);
             }
-            return addition;
+            return mult;
 
         }
     }
