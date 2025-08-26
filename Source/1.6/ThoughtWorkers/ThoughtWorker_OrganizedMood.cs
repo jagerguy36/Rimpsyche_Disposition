@@ -16,23 +16,7 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return ThoughtState.Inactive;
             }
-            if (compPsyche.organizedMood == 0)
-            {
-                return ThoughtState.ActiveAtStage(0);
-            }
-            if (compPsyche.organizedMood == 1)
-            {
-                return ThoughtState.ActiveAtStage(1);
-            }
-            if (compPsyche.organizedMood == 2)
-            {
-                return ThoughtState.ActiveAtStage(2);
-            }
-            if (compPsyche.organizedMood == 3)
-            {
-                return ThoughtState.ActiveAtStage(3);
-            }
-            return ThoughtState.Inactive;
+            return ThoughtState.ActiveAtStage(compPsyche.organizedMood);
         }
         public override float MoodMultiplier(Pawn p)
         {
