@@ -28,7 +28,7 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     int level = pawn.skills.GetSkill(SkillDefOf.Cooking).Level;
                     float deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationFoodpoison".Translate() + ": x" + FoodPoisonMultiplier(level, deliberation).ToStringPercent()"\n";
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationFoodpoison".Translate() + ": x" + FoodPoisonMultiplier(level, deliberation).ToStringPercent()+"\n";
                 }
             }
             return null;
@@ -39,10 +39,11 @@ namespace Maux36.RimPsyche.Disposition
             float mult;
             if (deliberation >= 0f)
             {
-                mult = 1 - deliberation * (0.2f + 0.02f*level);
+                mult = 1 - deliberation * (0.2f + 0.02f * level);
+            }
             else
             {
-                mult = 1 - deliberation * (0.5f - 0.01f*level);
+                mult = 1 - deliberation * (0.5f - 0.01f * level);
             }
             return mult;
 

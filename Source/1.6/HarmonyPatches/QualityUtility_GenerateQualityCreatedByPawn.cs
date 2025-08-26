@@ -24,7 +24,8 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     codes.Insert(i, new CodeInstruction(OpCodes.Ldarg_0));
                     codes.Insert(i + 1, new CodeInstruction(OpCodes.Ldarg_1));
-                    codes[i + 2] = new CodeInstruction(OpCodes.Call, replacementMethod);
+                    codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldc_R4, 0f));
+                    codes[i + 3] = new CodeInstruction(OpCodes.Call, replacementMethod);
                     break;
                 }
             }

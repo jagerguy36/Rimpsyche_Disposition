@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Extensions\PsycheExtension.cs" />
     <Compile Include="HarmonyPatches\InteractionWorker_RecruitAttempt_Interacted.cs" />
+    <Compile Include="HarmonyPatches\MiscModPatches\VTE_Patches.cs" />
     <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable.cs" />
     <Compile Include="FormulaDB.cs" />
     <Compile Include="HarmonyPatches\OrganizationRoomRoleNotification.cs" />

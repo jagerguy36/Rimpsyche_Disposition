@@ -6,7 +6,7 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class QualityUtil
     {
-        public static QualityCategory GenerateQualityCreatedByPawnWithPsyche(int relevantSkillLevel, bool inspired, Pawn pawn, SkillDef relevantSkill)
+        public static QualityCategory GenerateQualityCreatedByPawnWithPsyche(int relevantSkillLevel, bool inspired, Pawn pawn, SkillDef relevantSkill, float numOffset = 0f)
         {
             var compPsyche = pawn.compPsyche();
             if (compPsyche?.Enabled != true)
@@ -18,7 +18,7 @@ namespace Maux36.RimPsyche.Disposition
             float lowVarianceMultiplier;
             float experimentChance;
             float successChance;
-            float num = 0f;
+            float num = numOffset;
             var p = compPsyche.Personality;
             var pSpontaneityF = (p.GetPersonality(PersonalityDefOf.Rimpsyche_Spontaneity) + 1f) * 0.05f; //0~[0.05]~0.1
             highVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierHigh) + Rand.Range(-pSpontaneityF, pSpontaneityF);
