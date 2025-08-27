@@ -12,6 +12,50 @@ namespace Maux36.RimPsyche.Disposition
             ModCompat();
         }
 
+        public static bool TestResilientSpirit(MentalBreakDef mentalbreak, Pawn pawn)
+        {
+            if (!causedByMood)
+            {
+                return false;
+            }
+            var compPsyche = pawn.compPsyche();
+            if (compPsyche?.Enabled!=true)
+            {
+                return false;
+            }
+            if (compPsyche.lastResilientSpiritTick + 3600000 > Find.TickManager.TicksGame)
+            {
+                return false;
+            }
+            if (Rand.Chance(compPsyche.Personality.Evaluate(ResilientSpiritChance)))
+            {
+                compPsyche.lastResilientSpiritTick = Find.TickManager.TicksGame+180000; //3days
+                //Add thought
+                pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOf.PsycheResilientSpirit);
+                //Send letter
+                if (!PawnUtility.ShouldSendNotificationAbout(pawn))
+                {
+                    return true;
+                }
+                TaggedString label = "RP_ResilientSpiritLabel".Translate() + ": " + pawn.LabelShortCap;
+                TaggedString taggedString = "RP_ResilientSpiritMessage".Translate(pawn.Label, pawn.Named("PAWN"), mentalbreak.Named("MENTALBREAK")).CapitalizeFirst();
+                taggedString = taggedString.AdjustedFor(pawn);
+                Find.LetterStack.ReceiveLetter(label, taggedString, LetterDefOf.PositiveEvent, pawn);
+                return true;
+            }
+            return false;
+
+        }
+        public static RimpsycheFormula ResilientSpiritChance = new(
+            "ResilientSpiritChance",
+            (tracker) =>
+            {
+                float mult = (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience));
+                //Discipline
+                return mult;
+            }
+        );
+
         public static void Initialize()
         {
             Log.Message("[Rimpsyche - Disposition] ThoughtUtil initialized.");
