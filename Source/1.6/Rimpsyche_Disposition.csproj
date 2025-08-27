@@ -82,6 +82,7 @@
     <Compile Include="ResilienceUtil.cs" />
     <Compile Include="RimpsycheDisposition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RimpsycheDispositionSettings.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationButcherEfficiency.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationQualityStatPart.cs" />
     <Compile Include="StatParts\PsycheMentalBreakThresholdStatPart.cs" />
