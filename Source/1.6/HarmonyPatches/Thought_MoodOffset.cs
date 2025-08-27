@@ -22,7 +22,7 @@ namespace Maux36.RimPsyche.Disposition
                 __result *= compPsyche.Personality.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
                 if (Find.TickManager.TicksGame < compPsyche.lastResilientSpiritTick)
                 {
-                    __result *= 0.5
+                    __result *= 0.5f;
                 }
             }            
             else

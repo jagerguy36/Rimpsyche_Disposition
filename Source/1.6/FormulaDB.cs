@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
             "PrudishNakedMultiplier",
             (tracker) =>
             {
-                float optimism = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Prudishness) * 0.7f;
+                float optimism = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness) * 0.7f;
                 return optimism;
             }
         );
