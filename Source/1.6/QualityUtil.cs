@@ -144,7 +144,10 @@ namespace Maux36.RimPsyche.Disposition
                     if (Rand.Value < successChance)
                     {
                         //Successful Experimentation
-                        Messages.Message("MessageExperimentSuccess".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
+                        if (RimpsycheDispositionSettings.sendExperimentMessage)
+                        {
+                            Messages.Message("MessageExperimentSuccess".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
+                        }
                         value += 1;
                     }
                     else
@@ -152,7 +155,10 @@ namespace Maux36.RimPsyche.Disposition
                         if (value > 0)
                         {
                             //Failed Experimentation
-                            Messages.Message("MessageExperimentFail".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
+                            if (RimpsycheDispositionSettings.sendExperimentMessage)
+                            {
+                                Messages.Message("MessageExperimentFail".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
+                            }
                             value -= 1;
                         }
                     }
