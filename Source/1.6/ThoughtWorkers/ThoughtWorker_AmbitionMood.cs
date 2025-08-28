@@ -9,8 +9,13 @@ namespace Maux36.RimPsyche.Disposition
         private const int dayTick = 60000;
         private const int maxMinusTick = -600000;
         private const float halfDayTick = 30000f;
+        private static bool useThought = RimpsycheDispositionSettings.useSenseOfProgress;
         protected override ThoughtState CurrentStateInternal(Pawn p)
         {
+            if (!useThought)
+            {
+                return ThoughtState.Inactive;
+            }
             if (p.Faction?.IsPlayer != true)
             {
                 return ThoughtState.Inactive;

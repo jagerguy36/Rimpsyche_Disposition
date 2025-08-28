@@ -7,6 +7,7 @@ using Verse.AI;
 
 namespace Maux36.RimPsyche.Disposition
 {
+    [HarmonyPatchCategory("ResilientSpirit")]
     [HarmonyPatch(typeof(MentalBreaker), nameof(MentalBreaker.TryDoMentalBreak))]
     public static class MentalBreaker_TryDoMentalBreak
     {

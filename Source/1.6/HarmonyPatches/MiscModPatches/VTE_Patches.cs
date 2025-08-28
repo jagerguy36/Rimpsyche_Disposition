@@ -8,6 +8,7 @@ namespace Maux36.RimPsyche.Disposition
     public static class IntegrationDatabase
     {
         public static TraitDef VTE_Perfectionist = DefDatabase<TraitDef>.GetNamedSilentFail("VTE_Perfectionist");
+
         static IntegrationDatabase()
         {
 

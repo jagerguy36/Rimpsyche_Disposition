@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 
 namespace Maux36.RimPsyche.Disposition
 {
+    [HarmonyPatchCategory("Experimentation")]
     [HarmonyPatch(typeof(QualityUtility))]
     [HarmonyPatch("GenerateQualityCreatedByPawn")]
     [HarmonyPatch(new[] { typeof(Pawn), typeof(SkillDef), typeof(bool) })]
