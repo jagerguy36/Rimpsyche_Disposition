@@ -49,6 +49,7 @@
       <li>
         <label>sense of progress</label>
         <description>It's great to see things moving ahead. Feels good to be part of something that's growing.</description>
+        <!-- Negative is applied by the multiplier -->
         <baseMoodEffect>1</baseMoodEffect>
       </li>
     </stages>

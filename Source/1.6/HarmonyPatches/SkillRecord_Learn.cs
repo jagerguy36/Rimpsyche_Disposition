@@ -39,14 +39,14 @@ namespace Maux36.RimPsyche.Disposition
             "SkillMoodBuffxp",
             (tracker) =>
             {
-                return 200f + 300f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
+                return 400f + 200f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
             }
         );
         public static RimpsycheFormula SkillNeutralxp = new(
             "SkillNeutralxp",
             (tracker) =>
             {
-                return 100f + 100f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
+                return 150f + 100f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
             }
         );
     }

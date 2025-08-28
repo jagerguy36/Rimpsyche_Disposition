@@ -32,7 +32,8 @@ namespace Maux36.RimPsyche.Disposition
             }
             else
             {
-                if (pTick <= compPsyche.Personality.Evaluate(AmbitionDissatisfactionTick))
+                //Pawns with ambition < 0 will never be in this state due to cut-off point
+                if (Mathf.Max(maxMinusTick, pTick) < compPsyche.Personality.Evaluate(AmbitionDissatisfactionTick))
                 {
                     return ThoughtState.ActiveAtStage(0);
                 }
@@ -56,7 +57,7 @@ namespace Maux36.RimPsyche.Disposition
                     // Content pawns can feel satisfaction too.
                     return val * personality.Evaluate(AmbitionAccomplishmentMood) * pTick;
                 }
-                var mult = (Mathf.Max(maxMinusTick, pTick) - compPsyche.Personality.Evaluate(AmbitionDissatisfactionTick)) / halfDayTick; // In days: x - (8*A - 10)
+                var mult = Mathf.Min(0f, Mathf.Max(maxMinusTick, pTick) - compPsyche.Personality.Evaluate(AmbitionDissatisfactionTick)) / halfDayTick; // In days: 2*(x - (8*A - 10))
                 return mult;
 
             }
@@ -85,7 +86,7 @@ namespace Maux36.RimPsyche.Disposition
                 //Ambition 1 -> -120000 (-2days)
                 //Ambition 0.5 -> -360000 (-6days)
                 //Ambition 0 -> -600000 (-10days) (This is the cut-off)
-                //Ambition -1 -> -1800000 (-30days)
+                //Ambition -1 -> -1800000 (-30days) (Doesn't matter)
                 float tick = (480000f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition)) - 600000f; 
                 return tick;
             }
