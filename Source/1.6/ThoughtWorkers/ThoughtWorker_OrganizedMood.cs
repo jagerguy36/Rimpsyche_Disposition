@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
             var compPsyche = p.compPsyche();
             if (compPsyche?.Enabled == true)
             {
-                return val * compPsyche.Personality.Evaluate(OrganizedRoomMood);
+                return val * compPsyche.Evaluate(OrganizedRoomMood);
             }
             return val;
         }
@@ -35,7 +35,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Organization) * 12f;
                 return mult;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

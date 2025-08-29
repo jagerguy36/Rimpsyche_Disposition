@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
@@ -6,5 +7,9 @@ namespace Maux36.RimPsyche.Disposition
     public static class DefOfDisposition
     {
         public static ThoughtDef Rimpsyche_ResilientSpirit;
+
+        public static ThingDef RimpsycheMote_ExperimentGood;
+        public static ThingDef RimpsycheMote_ExperimentBad;
+        public static ThingDef RimpsycheMote_ResilientSpirit;
     }
 }

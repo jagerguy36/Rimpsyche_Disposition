@@ -45,7 +45,7 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return 1f;
             }
-            return psyche.Personality.Evaluate(MentalBreakIntervalMultiplier);
+            return psyche.Evaluate(MentalBreakIntervalMultiplier);
         }
 
         public static RimpsycheFormula MentalBreakIntervalMultiplier = new(
@@ -54,7 +54,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float discipline = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Resilience, 2f);
                 return discipline;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

@@ -11,7 +11,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             var compPsyche = pawn.compPsyche();
             if (compPsyche?.Enabled != true) return;
-            float multiplier = compPsyche.Personality.Evaluate(DisciplineBingingMultiplier);
+            float multiplier = compPsyche.Evaluate(DisciplineBingingMultiplier);
             __result = multiplier * __result;
         }
 
@@ -21,7 +21,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float discipline = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Discipline);
                 return 3f/( discipline -3f) +2f;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

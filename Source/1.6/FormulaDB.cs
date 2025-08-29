@@ -14,7 +14,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float optimism = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness) * 0.7f;
                 return optimism;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula PassionWorkMultiplier = new(
@@ -23,7 +24,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float optimism = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion) * 0.5f;
                 return optimism;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula PositiveMoodOffsetMultiplier = new(
@@ -34,7 +36,8 @@ namespace Maux36.RimPsyche.Disposition
                 float optimismMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * 0.45f;
                 float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * 0.4f;
                 return mult * optimismMult * emotionalityMult;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula NegativeMoodOffsetMultiplier = new(
@@ -45,7 +48,8 @@ namespace Maux36.RimPsyche.Disposition
                 float optimismMult = 1f - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * 0.45f;
                 float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * 0.4f;
                 return mult * optimismMult * emotionalityMult;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula PreceptMoodOffsetMultiplier = new(
@@ -55,7 +59,8 @@ namespace Maux36.RimPsyche.Disposition
                 float mult = 1f;
                 float moralityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality) * 0.55f;
                 return mult * moralityMult;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula PreceptOpinionOffsetMultiplier = new(
@@ -69,7 +74,8 @@ namespace Maux36.RimPsyche.Disposition
                 float moralityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality) * 0.45f;
                 float opennessMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness) * 0.1f;
                 return mult * moralityMult * opennessMult;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
 
@@ -79,7 +85,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion) * 0.5f;
                 return mult;//0.5 ~ 1.5
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula LoyaltyCompassionMoodMultiplier = new(
@@ -88,7 +95,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = (1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion) * 0.5f) + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty) * 0.5f;
                 return mult;//0.0 ~ 2.0
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula SociabilityCompassionMoodMultiplier = new(
@@ -97,7 +105,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion) * 0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability) * 0.5f;
                 return mult;//0.0 ~ 2.0
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula CompassionPositiveMoodMultiplier = new(
@@ -106,7 +115,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = 1 - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion) * 0.5f;
                 return mult;//0.5 ~ 1.5
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula LoyaltyMoodMultiplier = new(
@@ -115,7 +125,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty) * 0.5f;
                 return mult;//0.5 ~ 1.5
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula ExpectationMoodMultiplier = new(
@@ -124,7 +135,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation) * 0.5f;
                 return mult;//0.5 ~ 1.5
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula SociabilityMoodMultiplier = new(
@@ -133,7 +145,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability) * 0.5f;
                 return mult;//0.5 ~ 1.5
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula ImaginationMoodMultiplier = new(
@@ -142,7 +155,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.5f;
                 return mult;//0.5 ~ 1.5
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

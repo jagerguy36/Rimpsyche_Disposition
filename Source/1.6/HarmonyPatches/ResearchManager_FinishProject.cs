@@ -17,8 +17,8 @@ namespace Maux36.RimPsyche.Disposition
                     var compPsyche = p.compPsyche();
                     if (compPsyche?.Enabled == true)
                     {
-                        Log.Message($"{p.Name} prospect: {proj.Cost / compPsyche.Personality.Evaluate(AmbitionResearchBaseTick)}");
-                        compPsyche.ProgressMade(proj.Cost/compPsyche.Personality.Evaluate(AmbitionResearchBaseTick), 3);
+                        Log.Message($"{p.Name} prospect: {proj.Cost / compPsyche.Evaluate(AmbitionResearchBaseTick)}");
+                        compPsyche.ProgressMade(proj.Cost / compPsyche.Evaluate(AmbitionResearchBaseTick), 3);
                     }
 
                 }
@@ -33,7 +33,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = 500f * (0.2f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f);
                 return mult;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

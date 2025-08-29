@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    val += compPsyche.Personality.Evaluate(ReflectivenessMeditationMult);
+                    val += compPsyche.Evaluate(ReflectivenessMeditationMult);
                 }
             }
         }
@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_ReflectivenessMeditation".Translate() + ": " + compPsyche.Personality.Evaluate(ReflectivenessMeditationMult).ToStringPercentSigned() + "\n";
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_ReflectivenessMeditation".Translate() + ": " + compPsyche.Evaluate(ReflectivenessMeditationMult).ToStringPercentSigned() + "\n";
                 }
             }
             return null;
@@ -36,7 +36,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float reflectiveness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Reflectiveness) * 0.2f;
                 return reflectiveness;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

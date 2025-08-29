@@ -13,6 +13,8 @@ namespace Maux36.RimPsyche.Disposition
         public static bool sendExperimentMessage = true;
         public static bool showExperimentMote = true;
 
+        public static bool showResilientSpiritMote = true;
+
         public override void ExposeData()
         {
             base.ExposeData();
@@ -22,6 +24,7 @@ namespace Maux36.RimPsyche.Disposition
             
             Scribe_Values.Look(ref sendExperimentMessage, "Rimpsyche_sendExperimentMessage", true, true);
             Scribe_Values.Look(ref showExperimentMote, "Rimpsyche_showExperimentMote", true, true);
+            Scribe_Values.Look(ref showResilientSpiritMote, "Rimpsyche_showResilientSpiritMote", true, true);
         }
     }
 }

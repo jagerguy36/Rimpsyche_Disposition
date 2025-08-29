@@ -42,7 +42,7 @@ namespace Maux36.RimPsyche.Disposition
                     else //Correct room
                     {
                         Log.Message($"{billDoer.Name} correct room.");
-                        var correctFactor = compPsyche.Personality.Evaluate(OrganizationRightRoomWorkspeedMultiplier);
+                        var correctFactor = compPsyche.Evaluate(OrganizationRightRoomWorkspeedMultiplier);
                         if (correctFactor > 1f)
                         {
                             compPsyche.roomRoleFactor = correctFactor;
@@ -67,7 +67,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float organization = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Organization) * 0.1f;
                 return organization;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 

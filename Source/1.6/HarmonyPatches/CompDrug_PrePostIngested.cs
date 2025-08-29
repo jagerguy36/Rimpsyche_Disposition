@@ -55,7 +55,7 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     return originalChance;
                 }
-                return originalChance * psyche.Personality.Evaluate(AddictionChancedMultiplier);
+                return originalChance * psyche.Evaluate(AddictionChancedMultiplier);
             }
 
 
@@ -66,7 +66,8 @@ namespace Maux36.RimPsyche.Disposition
                     float mult = 1f;
                     float discipline = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Discipline, 0.5f);
                     return mult * discipline;
-                }
+                },
+            RimpsycheFormulaManager.FormulaIdDict
             );
         }
     }

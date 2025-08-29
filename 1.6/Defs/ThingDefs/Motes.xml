@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="MoteBase" Name="Rimpsyche_MoteBase" Abstract="True">
+		<thingClass>MoteBubble</thingClass>
+		<altitudeLayer>MetaOverlays</altitudeLayer>
+		<graphicData>
+			<drawSize>1.0</drawSize>
+		</graphicData>
+		<mote>
+			<attachedDrawOffset>(0.75, 1, 0.75)</attachedDrawOffset>
+			<fadeInTime>0.25</fadeInTime>
+			<solidTime>3</solidTime>
+			<fadeOutTime>1.2</fadeOutTime>
+		</mote>
+	</ThingDef>
+
+	<ThingDef ParentName="Rimpsyche_MoteBase">
+		<defName>RimpsycheMote_ExperimentGood</defName>
+		<graphicData>
+			<texPath>Things/Mote/ExperimentGood</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="Rimpsyche_MoteBase">
+		<defName>RimpsycheMote_ExperimentBad</defName>
+		<graphicData>
+			<texPath>Things/Mote/ExperimentBad</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="Rimpsyche_MoteBase">
+		<defName>RimpsycheMote_ResilientSpirit</defName>
+		<graphicData>
+			<texPath>Things/Mote/ResilientSpirit</texPath>
+		</graphicData>
+	</ThingDef>
+</Defs>

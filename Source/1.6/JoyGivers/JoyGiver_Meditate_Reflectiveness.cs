@@ -15,7 +15,7 @@ public class JoyGiver_Meditate_Reflectiveness : JoyGiver_Meditate
 		}
 		else
 		{
-			return def.baseChance*compPsyche.Personality.Evaluate(MeditateChanceMultiplier);;
+			return def.baseChance*compPsyche.Evaluate(MeditateChanceMultiplier);;
 		}
 	}
 
@@ -27,6 +27,7 @@ public class JoyGiver_Meditate_Reflectiveness : JoyGiver_Meditate
 			float c = -2.5f * r * (r - 2f);
 			if (c > 0) return c;
 			return 0f;
-		}
-	);
+		},
+            RimpsycheFormulaManager.FormulaIdDict
+    );
 }

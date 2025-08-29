@@ -11,7 +11,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             if (pawn?.compPsyche() is not { } compPsyche || __result == 0f) return;
             if (compPsyche?.Enabled != true) return;
-            __result *= compPsyche.Personality.Evaluate(SkyGazeChanceMultiplier);
+            __result *= compPsyche.Evaluate(SkyGazeChanceMultiplier);
         }
 
 
@@ -22,7 +22,8 @@ namespace Maux36.RimPsyche.Disposition
                 float mult = 1f;
                 float imaginationMult = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Imagination, 1.5f);
                 return mult * imaginationMult;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

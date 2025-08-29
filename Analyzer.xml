@@ -1,0 +1,10 @@
+<Analyzer>
+    <RimPsycheDisposition>
+        <Types>
+            <li>Maux36.RimPsyche.SkillRecord_Learn</li>
+        </Types>
+        <Types>
+            <li>Maux36.RimPsyche.TaleRecorder_RecordTale</li>
+        </Types>
+    </RimPsycheDisposition>
+</Analyzer>

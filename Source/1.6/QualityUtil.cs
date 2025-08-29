@@ -4,7 +4,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class QualityUtil
+    public static class QualityUtil
     {
         public static QualityCategory GenerateQualityCreatedByPawnWithPsyche(int relevantSkillLevel, bool inspired, Pawn pawn, SkillDef relevantSkill, float numOffset = 0f)
         {
@@ -21,18 +21,18 @@ namespace Maux36.RimPsyche.Disposition
             float num = numOffset;
             var p = compPsyche.Personality;
             var pSpontaneityF = (p.GetPersonality(PersonalityDefOf.Rimpsyche_Spontaneity) + 1f) * 0.05f; //0~[0.05]~0.1
-            highVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierHigh) + Rand.Range(-pSpontaneityF, pSpontaneityF);
-            lowVarianceMultiplier = p.Evaluate(QualityVarianceMultiplierLow) + Rand.Range(-pSpontaneityF, pSpontaneityF);
+            highVarianceMultiplier = compPsyche.Evaluate(QualityVarianceMultiplierHigh) + Rand.Range(-pSpontaneityF, pSpontaneityF);
+            lowVarianceMultiplier = compPsyche.Evaluate(QualityVarianceMultiplierLow) + Rand.Range(-pSpontaneityF, pSpontaneityF);
             if (relevantSkill == SkillDefOf.Artistic)
             {
-                successChance = 0.1f + relevantSkillLevel * p.Evaluate(ArtExperimentSuccessChanceMultiplier);
+                successChance = 0.1f + relevantSkillLevel * compPsyche.Evaluate(ArtExperimentSuccessChanceMultiplier);
                 num += p.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.3f;// -0.3~0.3
             }
             else
             {
-                successChance = 0.1f + relevantSkillLevel * p.Evaluate(CraftExperimentSuccessChanceMultiplier);
+                successChance = 0.1f + relevantSkillLevel * compPsyche.Evaluate(CraftExperimentSuccessChanceMultiplier);
             }
-            experimentChance = p.Evaluate(ExperimentChanceMultiplier) * (successChance) + Rand.Range(-pSpontaneityF, pSpontaneityF);
+            experimentChance = compPsyche.Evaluate(ExperimentChanceMultiplier) * (successChance) + Rand.Range(-pSpontaneityF, pSpontaneityF);
             switch (relevantSkillLevel)
             {
                 case 0:
@@ -144,6 +144,12 @@ namespace Maux36.RimPsyche.Disposition
                     if (Rand.Value < successChance)
                     {
                         //Successful Experimentation
+                        if (RimpsycheDispositionSettings.showExperimentMote)
+                        {
+                            MoteBubble mote = (MoteBubble)ThingMaker.MakeThing(DefOfDisposition.RimpsycheMote_ExperimentGood, null);
+                            mote.Attach(pawn);
+                            GenSpawn.Spawn(mote, pawn.Position, pawn.Map);
+                        }
                         if (RimpsycheDispositionSettings.sendExperimentMessage)
                         {
                             Messages.Message("MessageExperimentSuccess".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
@@ -155,6 +161,12 @@ namespace Maux36.RimPsyche.Disposition
                         if (value > 0)
                         {
                             //Failed Experimentation
+                            if (RimpsycheDispositionSettings.showExperimentMote)
+                            {
+                                MoteBubble mote = (MoteBubble)ThingMaker.MakeThing(DefOfDisposition.RimpsycheMote_ExperimentBad, null);
+                                mote.Attach(pawn);
+                                GenSpawn.Spawn(mote, pawn.Position, pawn.Map);
+                            }
                             if (RimpsycheDispositionSettings.sendExperimentMessage)
                             {
                                 Messages.Message("MessageExperimentFail".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
@@ -170,7 +182,7 @@ namespace Maux36.RimPsyche.Disposition
 
             //Ambition Check
             float expectation = ExpectedQMean(relevantSkillLevel);
-            int higherExpectation = (int)(expectation + p.Evaluate(QualityExpectationHighOffset));
+            int higherExpectation = (int)(expectation + compPsyche.Evaluate(QualityExpectationHighOffset));
             //int lowerExpectatino = (int)(expectation + p.Evaluate(QualityExpectationLowOffset));
             //Log.Message($"value: {value}| level {relevantSkillLevel} expectation w/ ambition {p.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition)}:  {lowerExpectatino}~[{expectation}]~{higherExpectation}");
             if (value >= higherExpectation)
@@ -179,7 +191,7 @@ namespace Maux36.RimPsyche.Disposition
                 compPsyche.ProgressMade(3f * qOffset, 2);
                 //Log.Message($"value higher than good expectation. Setting Progressday {3f * qOffset}. This should give {1.2f * (p.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f) * (3f * qOffset)} mood");
             }
-            else if (value >= (int)(expectation + p.Evaluate(QualityExpectationLowOffset)))
+            else if (value >= (int)(expectation + compPsyche.Evaluate(QualityExpectationLowOffset)))
             {
                 compPsyche.ProgressMade(0f, 2);
                 //Log.Message($"value good enough. Setting Progressday {0}");
@@ -244,7 +256,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float experimentation = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Experimentation, 1.5f);
                 return experimentation;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula QualityVarianceMultiplierLow = new(
@@ -253,7 +266,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float experimentation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Experimentation);
                 return (-1.5f/(experimentation + 2f)) + 1.75f;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula ArtExperimentSuccessChanceMultiplier = new(
@@ -263,7 +277,8 @@ namespace Maux36.RimPsyche.Disposition
                 float imagination = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination);
                 float emotionality = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality);
                 return 0.0125f * (1f + (0.75f * imagination) + (0.25f * emotionality));
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula CraftExperimentSuccessChanceMultiplier = new(
@@ -273,7 +288,8 @@ namespace Maux36.RimPsyche.Disposition
                 float imagination = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination);
                 float deliberation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
                 return 0.0125f * (1f + (0.25f * imagination) + (0.5f * deliberation));
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
         public static RimpsycheFormula ExperimentChanceMultiplier = new(
             "ExperimentChanceMultiplier",
@@ -281,7 +297,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float experimentation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Experimentation);
                 return 0.2f * (experimentation + 1f) * (experimentation + 1f);
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
         public static RimpsycheFormula QualityExpectationHighOffset = new(
             "QualityExpectationHighOffset",
@@ -289,7 +306,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float offset = 0.5f + 0.8f*tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
                 return offset;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
         public static RimpsycheFormula QualityExpectationLowOffset = new(
             "QualityExpectationLowOffset",
@@ -297,7 +315,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float offset = -0.2f + 0.3f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
                 return offset;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

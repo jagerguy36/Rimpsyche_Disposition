@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    val *= compPsyche.Personality.Evaluate(DeliberationQualityMultiplier);
+                    val *= compPsyche.Evaluate(DeliberationQualityMultiplier);
                 }
             }
         }
@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationTendQuality".Translate() + ": x" + compPsyche.Personality.Evaluate(DeliberationQualityMultiplier).ToStringPercent()+"\n";
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationTendQuality".Translate() + ": x" + compPsyche.Evaluate(DeliberationQualityMultiplier).ToStringPercent()+"\n";
                 }
             }
             return null;
@@ -36,7 +36,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float diligence = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.2f; //Self-tend quality penalty is *0.7, so worst case is almost as bad as selftend
                 return diligence;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

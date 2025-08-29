@@ -15,11 +15,11 @@ namespace Maux36.RimPsyche.Disposition
                 return;
             if (__instance.sourcePrecept != null)
             {
-                __result *= compPsyche.Personality.Evaluate(FormulaDB.PreceptMoodOffsetMultiplier);
+                __result *= compPsyche.Evaluate(FormulaDB.PreceptMoodOffsetMultiplier);
             }
             if (__result < 0f)
             {
-                __result *= compPsyche.Personality.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
+                __result *= compPsyche.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
                 if (Find.TickManager.TicksGame < compPsyche.lastResilientSpiritTick)
                 {
                     __result *= 0.5f;
@@ -27,13 +27,13 @@ namespace Maux36.RimPsyche.Disposition
             }            
             else
             {
-                __result *= compPsyche.Personality.Evaluate(FormulaDB.PositiveMoodOffsetMultiplier);
+                __result *= compPsyche.Evaluate(FormulaDB.PositiveMoodOffsetMultiplier);
             }
             if (ThoughtUtil.MoodMultiplierDB.TryGetValue(__instance.def.defName, out RimpsycheFormula multiplierMethod))
             {
                 if (multiplierMethod != null)
                 {
-                    __result *= compPsyche.Personality.Evaluate(multiplierMethod);
+                    __result *= compPsyche.Evaluate(multiplierMethod);
                 }
             }
         }

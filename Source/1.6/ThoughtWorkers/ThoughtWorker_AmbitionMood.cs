@@ -33,7 +33,7 @@ namespace Maux36.RimPsyche.Disposition
             else
             {
                 //Pawns with ambition < 0 will never be in this state due to cut-off point
-                if (Mathf.Max(maxMinusTick, pTick) < compPsyche.Personality.Evaluate(AmbitionDissatisfactionTick))
+                if (Mathf.Max(maxMinusTick, pTick) < compPsyche.Evaluate(AmbitionDissatisfactionTick))
                 {
                     return ThoughtState.ActiveAtStage(0);
                 }
@@ -46,7 +46,6 @@ namespace Maux36.RimPsyche.Disposition
             var compPsyche = p.compPsyche();
             if (compPsyche?.Enabled == true)
             {
-                var personality = compPsyche.Personality;
                 var curTick = Find.TickManager.TicksGame;
                 var pTick = compPsyche.progressTick - curTick;
                 if (0 <= pTick)
@@ -55,9 +54,9 @@ namespace Maux36.RimPsyche.Disposition
                     // Positive mood ambition 0 -> 1.2*days
                     // Positive mood ambition 1 -> 2.4*days
                     // Content pawns can feel satisfaction too.
-                    return val * personality.Evaluate(AmbitionAccomplishmentMood) * pTick;
+                    return val * compPsyche.Evaluate(AmbitionAccomplishmentMood) * pTick;
                 }
-                var mult = Mathf.Min(0f, Mathf.Max(maxMinusTick, pTick) - compPsyche.Personality.Evaluate(AmbitionDissatisfactionTick)) / halfDayTick; // In days: 2*(x - (8*A - 10))
+                var mult = Mathf.Min(0f, Mathf.Max(maxMinusTick, pTick) - compPsyche.Evaluate(AmbitionDissatisfactionTick)) / halfDayTick; // In days: 2*(x - (8*A - 10))
                 return mult;
 
             }
@@ -75,7 +74,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float mult = 0.00002f * (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f);
                 return mult;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
 
         public static RimpsycheFormula AmbitionDissatisfactionTick = new(
@@ -89,7 +89,8 @@ namespace Maux36.RimPsyche.Disposition
                 //Ambition -1 -> -1800000 (-30days) (Doesn't matter)
                 float tick = (480000f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition)) - 600000f; 
                 return tick;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

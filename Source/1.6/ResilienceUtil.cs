@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
                 Log.Message($"Too recent");
                 return false;
             }
-            if (Rand.Chance(compPsyche.Personality.Evaluate(ResilientSpiritChance)))
+            if (Rand.Chance(compPsyche.Evaluate(ResilientSpiritChance)))
             {
                 Log.Message($"Chance Success");
                 compPsyche.lastResilientSpiritTick = Find.TickManager.TicksGame + 180000; //3days
@@ -34,6 +34,13 @@ namespace Maux36.RimPsyche.Disposition
                 if (!PawnUtility.ShouldSendNotificationAbout(pawn))
                 {
                     return true;
+                }
+
+                if (RimpsycheDispositionSettings.showResilientSpiritMote)
+                {
+                    MoteBubble mote = (MoteBubble)ThingMaker.MakeThing(DefOfDisposition.RimpsycheMote_ResilientSpirit, null);
+                    mote.Attach(pawn);
+                    GenSpawn.Spawn(mote, pawn.Position, pawn.Map);
                 }
                 TaggedString label = "RP_ResilientSpiritLabel".Translate() + ": " + pawn.LabelShortCap;
                 TaggedString taggedString = "RP_ResilientSpiritMessage".Translate(pawn.Label, pawn.Named("PAWN"), mentalbreak.Named("MENTALBREAK")).CapitalizeFirst();
@@ -45,14 +52,16 @@ namespace Maux36.RimPsyche.Disposition
             return false;
 
         }
+        //TODO: determine formula
         public static RimpsycheFormula ResilientSpiritChance = new(
             "ResilientSpiritChance",
             (tracker) =>
             {
-                float mult = (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience));
+                float mult = 0.3f * (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience));
                 //Discipline
-                return 1; //mult;
-            }
+                return mult;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

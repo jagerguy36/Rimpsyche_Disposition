@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    val += compPsyche.Personality.Evaluate(DeliberationWorkspeedOffset);
+                    val += compPsyche.Evaluate(DeliberationWorkspeedOffset);
                 }
             }
         }
@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationWorkspeed".Translate() + ": " + compPsyche.Personality.Evaluate(DeliberationWorkspeedOffset).ToStringPercentSigned() + "\n";
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationWorkspeed".Translate() + ": " + compPsyche.Evaluate(DeliberationWorkspeedOffset).ToStringPercentSigned() + "\n";
                 }
             }
             return null;
@@ -36,7 +36,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float diligence = -tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) * 0.2f;
                 return diligence;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

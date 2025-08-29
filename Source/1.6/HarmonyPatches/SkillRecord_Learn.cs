@@ -14,13 +14,13 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = ___pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    float multiplier = compPsyche.Personality.Evaluate(SkillLearningMultiplier) * (float)(___levelInt - 10) + 1f;
+                    float multiplier = compPsyche.Evaluate(SkillLearningMultiplier) * (float)(___levelInt - 10) + 1f;
                     xp = multiplier * xp;
-                    if (___xpSinceMidnight > compPsyche.Personality.Evaluate(SkillMoodBuffxp))
+                    if (___xpSinceMidnight > compPsyche.Evaluate(SkillMoodBuffxp))
                     {
                         compPsyche.ProgressMade(1f);
                     }
-                    else if (___xpSinceMidnight > compPsyche.Personality.Evaluate(SkillNeutralxp))
+                    else if (___xpSinceMidnight > compPsyche.Evaluate(SkillNeutralxp))
                     {
                         compPsyche.ProgressMade(0f);
                     }
@@ -33,21 +33,24 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 return tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Focus) * 0.05f;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
         public static RimpsycheFormula SkillMoodBuffxp = new(
             "SkillMoodBuffxp",
             (tracker) =>
             {
                 return 400f + 200f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
         public static RimpsycheFormula SkillNeutralxp = new(
             "SkillNeutralxp",
             (tracker) =>
             {
                 return 150f + 100f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }

@@ -57,7 +57,7 @@ namespace Maux36.RimPsyche.Disposition
                 if (psyche?.Enabled != true)
                     return 1f;
 
-                return isRising ? psyche.Personality.Evaluate(MoodRisingSpeedMultiplier) : psyche.Personality.Evaluate(MoodFallingSpeedMultiplier);
+                return isRising ? psyche.Evaluate(MoodRisingSpeedMultiplier) : psyche.Evaluate(MoodFallingSpeedMultiplier);
             }
 
 
@@ -68,7 +68,8 @@ namespace Maux36.RimPsyche.Disposition
                     float mult = 1f;
                     float volatility = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Stability, 0.75f);
                     return mult * volatility;
-                }
+                },
+                RimpsycheFormulaManager.FormulaIdDict
             );
 
             public static RimpsycheFormula MoodFallingSpeedMultiplier = new(
@@ -78,7 +79,8 @@ namespace Maux36.RimPsyche.Disposition
                     float mult = 1f;
                     float volatility = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Stability, 0.2f);
                     return mult * volatility;
-                }
+                },
+                RimpsycheFormulaManager.FormulaIdDict
             );
         }
     }

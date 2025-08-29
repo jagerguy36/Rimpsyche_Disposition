@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    val += compPsyche.Personality.Evaluate(ShootingAccuracyPawnOffset);
+                    val += compPsyche.Evaluate(ShootingAccuracyPawnOffset);
                 }
             }
         }
@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    float val = compPsyche.Personality.Evaluate(ShootingAccuracyPawnOffset);
+                    float val = compPsyche.Evaluate(ShootingAccuracyPawnOffset);
                     return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_ShootingAccuracyPawnOffset".Translate() + ": " + val.ToStringSign() + val.ToString("F1")+"\n";
                 }
             }
@@ -37,7 +37,8 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float diligence = 4f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
                 return diligence;
-            }
+            },
+            RimpsycheFormulaManager.FormulaIdDict
         );
     }
 }
