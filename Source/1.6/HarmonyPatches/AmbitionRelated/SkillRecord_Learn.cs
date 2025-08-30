@@ -4,6 +4,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
+    [HarmonyPatchCategory("SenseOfProgress")]
     [HarmonyPatch(typeof(SkillRecord), "Learn")]
     public static class SkillRecord_Learn
     {

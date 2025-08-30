@@ -11,8 +11,9 @@ namespace Maux36.RimPsyche.Disposition
 
         //UI
         public static bool sendExperimentMessage = true;
+        
+        //Motes
         public static bool showExperimentMote = true;
-
         public static bool showResilientSpiritMote = true;
 
         public override void ExposeData()

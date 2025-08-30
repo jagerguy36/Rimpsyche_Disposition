@@ -8,7 +8,7 @@ namespace Maux36.RimPsyche.Disposition
         const int dayTick = 60000;
         const int maxDay = 10;
         const int maxDayTicks = 600000;
-        public static void ProgressMade(this CompPsyche compPsyche, float days, int causeIndex = 1)
+        public static void ProgressMade(this CompPsyche compPsyche, float days, int causeIndex = 1, string reason = null)
         {
             if (days >= 0f)
             {
@@ -17,6 +17,11 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     compPsyche.progressTick = prospect;
                     compPsyche.progressLastCauseIndex = causeIndex;
+                    if (reason != null)
+                    {
+                        Log.Message($"reason: {reason}");
+                    }
+                    compPsyche.progressLastCause = reason;
                 }
                 
             }

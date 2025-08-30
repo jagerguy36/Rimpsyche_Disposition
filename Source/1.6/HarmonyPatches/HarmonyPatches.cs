@@ -36,6 +36,10 @@ namespace Maux36.RimPsyche.Disposition
             {
                 harmony.PatchCategory("ResilientSpirit");
             }
+            if (RimpsycheDispositionSettings.useSenseOfProgress)
+            {
+                harmony.PatchCategory("SenseOfProgress");
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Maux36.RimPsyche.Disposition
         private const int dayTick = 60000;
         private const int maxMinusTick = -600000;
         //private const float halfDayTick = 30000f;
-        private static bool useThought = RimpsycheDispositionSettings.useSenseOfProgress;
+        private static readonly bool useThought = RimpsycheDispositionSettings.useSenseOfProgress;
         protected override ThoughtState CurrentStateInternal(Pawn p)
         {
             if (!useThought)
@@ -65,6 +65,11 @@ namespace Maux36.RimPsyche.Disposition
 
         public override string PostProcessDescription(Pawn p, string description)
         {
+            var compPsyche = p.compPsyche();
+            if (compPsyche?.Enabled == true && compPsyche.progressLastCause != null)
+            {
+                return description + "\n\n(" + compPsyche.progressLastCause + ")";
+            }
             return description;
         }
 

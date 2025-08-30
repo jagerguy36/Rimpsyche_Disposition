@@ -4,6 +4,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
+    [HarmonyPatchCategory("SenseOfProgress")]
     [HarmonyPatch(typeof(ResearchManager), nameof(ResearchManager.FinishProject))]
     public static class ResearchManager_FinishProject
     {
@@ -18,7 +19,8 @@ namespace Maux36.RimPsyche.Disposition
                     if (compPsyche?.Enabled == true)
                     {
                         Log.Message($"{p.Name} prospect: {proj.Cost / compPsyche.Evaluate(AmbitionResearchBaseTick)}");
-                        compPsyche.ProgressMade(proj.Cost / compPsyche.Evaluate(AmbitionResearchBaseTick), 3);
+                        //base tick: 400(-1)~[500]~600(1). Progress 1 per base tick
+                        compPsyche.ProgressMade(proj.Cost / compPsyche.Evaluate(AmbitionResearchBaseTick), 3, "RP_Researched".Translate(proj.LabelCap));
                     }
 
                 }

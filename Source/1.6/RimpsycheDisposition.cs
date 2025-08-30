@@ -6,12 +6,73 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class Rimpsyche : Mod
     {
+        public static RimpsycheDispositionSettings settings;
         public Rimpsyche(ModContentPack content) : base(content)
         {
+            settings = GetSettings<RimpsycheDispositionSettings>();
             if (!ModsConfig.IsActive("maux36.rimpsyche"))
             {
                 Log.Error("[Rimpsyche Disposition] Rimpsyche not loaded. The dependency was not met and the game will not run correctly");
             }
+        }
+        public override string SettingsCategory()
+        {
+            return "RimpsycheDispositionSettingCategory".Translate();
+        }
+
+        private static Vector2 scrollPosition = new Vector2(0f, 0f);
+        private static float totalContentHeight = ModsConfig.BiotechActive ? 770f : 720f;
+        private const float ScrollBarWidthMargin = 18f;
+        public override void DoSettingsWindowContents(Rect inRect)
+        {
+            Rect outerRect = inRect.ContractedBy(10f);
+            bool scrollBarVisible = totalContentHeight > outerRect.height;
+            var scrollViewTotal = new Rect(0f, 0f, outerRect.width - (scrollBarVisible ? ScrollBarWidthMargin : 0), totalContentHeight);
+            Widgets.BeginScrollView(outerRect, ref scrollPosition, scrollViewTotal);
+
+            var listing_Standard = new Listing_Standard();
+            listing_Standard.Begin(new Rect(0f, 0f, scrollViewTotal.width, 9999f));
+            listing_Standard.Gap(12f);
+
+            listing_Standard.Label("RimpsycheDispositionContentSetting".Translate());
+            listing_Standard.Gap(12f);
+            listing_Standard.Label("RimpsycheDispositionRestartNeeded".Translate());
+            listing_Standard.Gap(12f);
+            listing_Standard.CheckboxLabeled("RimpsycheUseExperimentation".Translate(), ref RimpsycheDispositionSettings.useExperimentation, "RimpsycheUseExperimentationTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheUseSenseOfProgress".Translate(), ref RimpsycheDispositionSettings.useSenseOfProgress, "RimpsycheUseSenseOfProgressTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheUseResilientSpirit".Translate(), ref RimpsycheDispositionSettings.useResilientSpirit, "RimpsycheUseResilientSpiritTooltip".Translate());
+            listing_Standard.Gap(24f);
+
+            listing_Standard.Label("RimpsycheDispositionMessageSetting".Translate());
+            listing_Standard.Gap(12f);
+            listing_Standard.CheckboxLabeled("RimpsycheSendExperimentMessage".Translate(), ref RimpsycheDispositionSettings.sendExperimentMessage, "RimpsycheUseSendExperimentMessageTooltip".Translate());
+            listing_Standard.Gap(24f);
+
+            listing_Standard.Label("RimpsycheDispositionMoteSetting".Translate());
+            listing_Standard.Gap(12f);
+            listing_Standard.CheckboxLabeled("RimpsycheShowExperimentMote".Translate(), ref RimpsycheDispositionSettings.showExperimentMote, "RimpsycheShowExperimentMoteTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheShowResilientSpiritMote".Translate(), ref RimpsycheDispositionSettings.showResilientSpiritMote, "RimpsycheShowResilientSpiritMoteTooltip".Translate());
+            listing_Standard.Gap(24f);
+
+            if (listing_Standard.ButtonText("RimpsycheDispositionDefaultSetting".Translate(), "RimpsycheDispositionDefaultSettingTooltip".Translate()))
+            {
+                RimpsycheDispositionSettings.useExperimentation = true;
+                RimpsycheDispositionSettings.useSenseOfProgress = true;
+                RimpsycheDispositionSettings.useResilientSpirit = true;
+
+                //UI
+                RimpsycheDispositionSettings.sendExperimentMessage = true;
+
+                //Motes
+                RimpsycheDispositionSettings.showExperimentMote = true;
+                RimpsycheDispositionSettings.showResilientSpiritMote = true;
+    }
+
+            listing_Standard.End();
+            Widgets.EndScrollView();
         }
     }
 }
