@@ -276,7 +276,7 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float imagination = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination);
                 float emotionality = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality);
-                return 0.0125f * (1f + (0.75f * imagination) + (0.25f * emotionality));
+                return 0.0125f * (1f + (0.5f * imagination) + (0.25f * emotionality));
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
