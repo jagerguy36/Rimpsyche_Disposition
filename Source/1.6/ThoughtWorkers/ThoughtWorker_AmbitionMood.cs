@@ -8,7 +8,7 @@ namespace Maux36.RimPsyche.Disposition
     {
         private const int dayTick = 60000;
         private const int maxMinusTick = -600000;
-        private const float halfDayTick = 30000f;
+        //private const float halfDayTick = 30000f;
         private static bool useThought = RimpsycheDispositionSettings.useSenseOfProgress;
         protected override ThoughtState CurrentStateInternal(Pawn p)
         {
@@ -51,12 +51,12 @@ namespace Maux36.RimPsyche.Disposition
                 if (0 <= pTick)
                 {
                     // Positive mood ambition -1 -> 0
-                    // Positive mood ambition 0 -> 1.2*days
-                    // Positive mood ambition 1 -> 2.4*days
+                    // Positive mood ambition 0 -> 0.6*days
+                    // Positive mood ambition 1 -> 1.2*days
                     // Content pawns can feel satisfaction too.
                     return val * compPsyche.Evaluate(AmbitionAccomplishmentMood) * pTick;
                 }
-                var mult = Mathf.Min(0f, Mathf.Max(maxMinusTick, pTick) - compPsyche.Evaluate(AmbitionDissatisfactionTick)) / halfDayTick; // In days: 2*(x - (8*A - 10))
+                var mult = Mathf.Min(0f, Mathf.Max(maxMinusTick, pTick) - compPsyche.Evaluate(AmbitionDissatisfactionTick)) / dayTick; // In days: (x - (8*A - 10))
                 return mult;
 
             }
@@ -72,7 +72,7 @@ namespace Maux36.RimPsyche.Disposition
             "AmbitionAccomplishmentMood",
             (tracker) =>
             {
-                float mult = 0.00002f * (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f);
+                float mult = 0.00001f * (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f);
                 return mult;
             },
             RimpsycheFormulaManager.FormulaIdDict
