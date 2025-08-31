@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <InteractionDef>
+    <defName>Rimpsyche_Shamed</defName>
+    <label>feel ashamed</label>
+    <workerClass>Maux36.RimPsyche.Disposition.InteractionWorker_ShameOverwhelmed</workerClass>
+    <symbol>Things/Mote/SpeechSymbols/Ashamed</symbol>
+    <initiatorThought>Rimpsyche_ShameOverwhelmed</initiatorThought>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] could not bear being seen naked.</li>
+        <li>r_logentry->[INITIATOR_nameDef] was overwhelmed by shame for being seen naked.</li>
+      </rulesStrings>
+    </logRulesInitiator>
+  </InteractionDef>
+</Defs>

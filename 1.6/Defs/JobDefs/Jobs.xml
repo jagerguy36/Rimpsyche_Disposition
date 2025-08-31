@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <JobDef>
+    <defName>RimPsyche_FleeInShame</defName>
+    <driverClass>JobDriver_FleeAndCower</driverClass>
+    <reportString>Fleeing in shame.</reportString>
+    <playerInterruptible>false</playerInterruptible>
+    <casualInterruptible>false</casualInterruptible>
+    <suspendable>false</suspendable>
+  </JobDef>
+</Defs>

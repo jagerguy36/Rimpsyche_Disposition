@@ -11,5 +11,7 @@ namespace Maux36.RimPsyche.Disposition
         public static ThingDef RimpsycheMote_ExperimentGood;
         public static ThingDef RimpsycheMote_ExperimentBad;
         public static ThingDef RimpsycheMote_ResilientSpirit;
+
+        public static JobDef RimPsyche_FleeInShame;
     }
 }

@@ -13,4 +13,18 @@
       </li>
     </stages>
   </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Rimpsyche_ShameOverwhelmed</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>5</stackLimit>
+    <developmentalStageFilter>Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>overwhelmed by shame</label>
+        <description>I can't take this anymore.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
 </Defs>
