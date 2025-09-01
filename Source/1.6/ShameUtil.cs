@@ -8,6 +8,11 @@ namespace Maux36.RimPsyche.Disposition
 {
     public static class ShameUtil
     {
+        private const float sightDistance = 13f; //Interaction HorDistance is 6, flee all pawn flee distance is 23
+        private const float runDistanceMax = 50;
+        private const float maxDistSquared = 63f*63f;
+        private const float sightDistSquared = 13f*13f;
+
         //Also check TryFindDirectFleeDestination
         public static IntVec3 FindHideInShameLocation(Pawn pawn)
         {
@@ -23,12 +28,9 @@ namespace Maux36.RimPsyche.Disposition
                 }
             }
 
-            float sightDistance = 13f; //Interaction HorDistance is 6, flee all pawn flee distance is 23
-            float runDistanceMax = 50;
-            float maxDistSquared = 2500;
             FloatRange temperature = pawn.ComfortableTemperatureRange();
             List<Pawn> all_pawns = pawn.Map.mapPawns.AllPawnsSpawned.Where(x
-                => x.Position.DistanceTo(pawn.Position) < 63f //sight+rundist
+                => x.Position.DistanceToSquared(pawn.Position) < maxDistSquared //sight+rundist
                 && x.RaceProps.Humanlike
                 && x != pawn
                 ).ToList();
@@ -48,7 +50,7 @@ namespace Maux36.RimPsyche.Disposition
 
                 int score = 0;
                 Room room = candidate.GetRoom(pawn.Map);
-                bool might_be_seen = MightBeSeen(all_pawns, candidate, pawn, sightDistance);
+                bool might_be_seen = MightBeSeen(all_pawns, candidate, pawn, sightDistSquared);
 
                 if (might_be_seen)
                     continue;
@@ -86,11 +88,11 @@ namespace Maux36.RimPsyche.Disposition
             return bestCell;
         }
 
-        public static bool MightBeSeen(List<Pawn> otherPawns, IntVec3 cell, Pawn pawn, int dist=13)
+        public static bool MightBeSeen(List<Pawn> otherPawns, IntVec3 cell, Pawn pawn, int distSquared=169)
         {
             return otherPawns.Any(x
                     => x.Awake()
-                    && x.Position.DistanceTo(cell) < dist
+                    && x.Position.DistanceToSquared(cell) < distSquared
                     && GenSight.LineOfSight(x.Position, cell, pawn.Map)
                     );
         }
