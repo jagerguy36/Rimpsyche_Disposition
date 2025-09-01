@@ -23,21 +23,26 @@ namespace Maux36.RimPsyche.Disposition
                         {
                             if (!ThoughtUtility.ThoughtNullified(___pawn, def))
                             {
-                                Log.Message($"{___pawn.Name} has shame thoguhts");
+                                //Log.Message($"{___pawn.Name} has shame thoguhts");
                                 //Adjust the interval based on shame
                                 if (compPsyche.lastOverwhelmedTick + 1000 < Find.TickManager.TicksGame)
                                 {
-                                    List<Pawn> all_pawns = ___pawn.Map.mapPawns.AllPawnsSpawned.Where(x
-                                        => x.Position.DistanceTo(___pawn.Position) < 100
-                                        && x.RaceProps.Humanlike
-                                        && x != ___pawn
-                                        ).ToList();
-                                    
-                                    if (ShameUtil.MightBeSeen(all_pawns, ___pawn.Position, ___pawn))
+                                    if (ShameUtil.BeingSeen(___pawn))
                                     {
-                                        var fleeDest = ShameUtil.FindHideInShameLocation(___pawn);
-                                        Log.Message($"Location at: {fleeDest}");
-                                        ___pawn.jobs.StartJob(new Job(DefOfDisposition.RimPsyche_FleeInShame, fleeDest), JobCondition.InterruptForced, null, false, true, null);
+                                        Log.Message($"{___pawn.Name} BeingSeen");
+                                        //bool shouldRun = compPsyche.AddShame(___pawn);
+                                        compPsyche.lastOverwhelmedTick = Find.TickManager.TicksGame + 1000;
+                                        if (true)
+                                        {
+                                            PlayLogEntry_Interaction playLogEntry = new PlayLogEntry_Interaction(DefOfDisposition.Rimpsyche_Shamed, ___pawn, ___pawn, null);
+                                            Find.PlayLog.Add(playLogEntry);
+                                            var fleeDest = ShameUtil.FindHideInShameLocation(___pawn);
+                                            Log.Message($"Location at: {fleeDest}");
+                                            var runawayjob = new Job(DefOfDisposition.RimPsyche_FleeInShame, fleeDest);
+                                            runawayjob.mote = MoteMaker.MakeThoughtBubble(___pawn, "Things/Mote/SpeechSymbols/Ashamed", maintain: true);
+                                            ___pawn.jobs.StartJob(runawayjob, JobCondition.InterruptForced, null, false, true, null);
+                                        }
+
                                         //Todo: Make new jobdriver that 1) go to the target 2) See if that place might be seen--> go somewhere else. 3) Cower at the place
                                         //Set the last overwhelmed tick to current+alpha.
                                         //While current < overwhelmedTick, they should flee and cower. When the overwhelmedTick < current, the fleeing stops.

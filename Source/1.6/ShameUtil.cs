@@ -3,15 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using Verse.AI;
 
 namespace Maux36.RimPsyche.Disposition
 {
     public static class ShameUtil
     {
-        private const float sightDistance = 13f; //Interaction HorDistance is 6, flee all pawn flee distance is 23
-        private const float runDistanceMax = 50;
-        private const float maxDistSquared = 63f*63f;
-        private const float sightDistSquared = 13f*13f;
+        private const int sightDistance = 13; //Interaction HorDistance is 6, flee all pawn flee distance is 23
+        private const int runDistanceMax = 50;
+        private const int maxDistSquared = 63*63;
+        private const int sightDistSquared = 13*13;
 
         //Also check TryFindDirectFleeDestination
         public static IntVec3 FindHideInShameLocation(Pawn pawn)
@@ -22,18 +23,14 @@ namespace Maux36.RimPsyche.Disposition
             if (pawn.ownership.OwnedBed != null)
             {
                 IntVec3 bedPosition = pawn.ownership.OwnedBed.Position;
-                if ((pawn.Position - bedPosition).LengthHorizontalSquared =< 75f)
+                if ((pawn.Position - bedPosition).LengthHorizontalSquared <= 75)
                 {
-                    return bedPosition
+                    return bedPosition;
                 }
             }
 
             FloatRange temperature = pawn.ComfortableTemperatureRange();
-            List<Pawn> all_pawns = pawn.Map.mapPawns.AllPawnsSpawned.Where(x
-                => x.Position.DistanceToSquared(pawn.Position) < maxDistSquared //sight+rundist
-                && x.RaceProps.Humanlike
-                && x != pawn
-                ).ToList();
+            List<Pawn> all_pawns = ScanObservers(pawn, maxDistSquared);
 
             // Find best candidate
             for (int i = 0; i < 20; i++)
@@ -55,17 +52,17 @@ namespace Maux36.RimPsyche.Disposition
                 if (might_be_seen)
                     continue;
 
-                if (random_cell.GetTemperature(pawn.Map) > temperature.min && random_cell.GetTemperature(pawn.Map) < temperature.max)
+                if (candidate.GetTemperature(pawn.Map) > temperature.min && candidate.GetTemperature(pawn.Map) < temperature.max)
                     score += 20;
                 else
                     score -= 20;
-                if (random_cell.GetDangerFor(pawn, pawn.Map) == Danger.Some)
+                if (candidate.GetDangerFor(pawn, pawn.Map) == Danger.Some)
                     score -= 25;
-                else if (random_cell.GetDangerFor(pawn, pawn.Map) == Danger.None)
+                else if (candidate.GetDangerFor(pawn, pawn.Map) == Danger.None)
                     score += 5;
-                if (random_cell.GetTerrain(pawn.Map) == TerrainDefOf.WaterShallow ||
-                    random_cell.GetTerrain(pawn.Map) == TerrainDefOf.WaterMovingShallow ||
-                    random_cell.GetTerrain(pawn.Map) == TerrainDefOf.WaterOceanShallow)
+                if (candidate.GetTerrain(pawn.Map) == TerrainDefOf.WaterShallow ||
+                    candidate.GetTerrain(pawn.Map) == TerrainDefOf.WaterMovingShallow ||
+                    candidate.GetTerrain(pawn.Map) == TerrainDefOf.WaterOceanShallow)
                     score -= 20;
                 if (!room.Owners.Any())
                     score += 10;
@@ -88,6 +85,16 @@ namespace Maux36.RimPsyche.Disposition
             return bestCell;
         }
 
+        public static List<Pawn> ScanObservers(Pawn pawn, int distSquared = 169)
+        {
+            List<Pawn> all_pawns = pawn.Map.mapPawns.AllPawnsSpawned.Where(x
+                => x.RaceProps.Humanlike
+                && x.Position.DistanceToSquared(pawn.Position) < distSquared //sight+rundist
+                && x != pawn
+                ).ToList();
+            return all_pawns;
+        }
+
         public static bool MightBeSeen(List<Pawn> otherPawns, IntVec3 cell, Pawn pawn, int distSquared=169)
         {
             return otherPawns.Any(x
@@ -95,6 +102,20 @@ namespace Maux36.RimPsyche.Disposition
                     && x.Position.DistanceToSquared(cell) < distSquared
                     && GenSight.LineOfSight(x.Position, cell, pawn.Map)
                     );
+        }
+        public static bool BeingSeen(Pawn pawn, int distSquared = 169)
+        {
+            foreach (var otherPawn in pawn.Map.mapPawns.AllPawnsSpawned)
+            {
+                if (otherPawn.RaceProps.Humanlike
+                    && otherPawn != pawn
+                    && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared
+                    && GenSight.LineOfSight(otherPawn.Position, pawn.Position, pawn.Map))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }
