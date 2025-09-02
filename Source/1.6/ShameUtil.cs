@@ -123,13 +123,13 @@ namespace Maux36.RimPsyche.Disposition
             return false;
         }
 
-        public static List<Pawn> ExistingLovePartners(Pawn pawn)
+        public static HashSet<Pawn> ExistingLovePartners(Pawn pawn)
         {
             tmpLovePartners.Clear();
             List<DirectPawnRelation> directRelations = pawn.relations.DirectRelations;
             for (int i = 0; i < directRelations.Count; i++)
             {
-                if (IsLovePartnerRelation(directRelations[i].def) && (!directRelations[i].otherPawn.Spawned))
+                if (LovePartnerRelationUtility.IsLovePartnerRelation(directRelations[i].def) && (!directRelations[i].otherPawn.Spawned))
                 {
                     tmpLovePartners.Add(directRelations[i].otherPawn);
                 }

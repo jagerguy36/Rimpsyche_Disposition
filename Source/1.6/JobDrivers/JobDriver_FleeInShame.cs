@@ -1,5 +1,5 @@
 ﻿using RimWorld;
-using UnityEngine;
+using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
@@ -10,6 +10,11 @@ namespace Maux36.RimPsyche.Disposition
     //Also add produced thought to naked memories, naked multiplier should implement shame too.
     public class JobDriver_FleeInShame: JobDriver
     {
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        {
+            return true;
+        }
+
         public override string GetReport()
         {
             if (pawn.CurJob == job && pawn.Position == job.GetTarget(TargetIndex.A).Cell)
@@ -22,7 +27,11 @@ namespace Maux36.RimPsyche.Disposition
         protected override IEnumerable<Toil> MakeNewToils()
         {
             var compPsyche = pawn.compPsyche();
-            this.AddEndCondition(() => (compPsyche.Shame <= 0 ? JobCondition.Succeeded : JobCondition.Ongoing));
+            this.AddEndCondition(() => (compPsyche.shame <= 0 ? JobCondition.Succeeded : JobCondition.Ongoing));
+            this.AddFinishAction((condition) =>
+            {
+                Log.Message($"FleeInShame job ended for {pawn} with condition: {condition}");
+            });
             Toil gotoToil = Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
             gotoToil.socialMode = RandomSocialMode.Off;
             gotoToil.FailOn(() => pawn.Downed);
@@ -37,11 +46,12 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     if (ShameUtil.BeingSeen(pawn))
                     {
-                        LocalTargetInfo newTarget;
-                        if (TryFindTarget(pawn, out newTarget))
+                        LocalTargetInfo newTarget = ShameUtil.FindHideInShameLocation(pawn);
+                        if (newTarget != TargetLocA)
                         {
                             job.SetTarget(TargetIndex.A, newTarget);
-                            waitToil.JumpToToil(gotoToil);
+                            Log.Message($"New hide location: {newTarget}");
+                            JumpToToil(gotoToil);
                         }
                     }
                     else
@@ -50,15 +60,9 @@ namespace Maux36.RimPsyche.Disposition
                     }
                 }
             };
-            wiatToil.socialMode = RandomSocialMode.Off;
+            waitToil.socialMode = RandomSocialMode.Off;
 
             yield return waitToil;
-        }
-
-        public override void Cleanup(JobCondition condition)
-        {
-            base.Cleanup(condition);
-            Log.Message("Ended Flee");
         }
     }
 }

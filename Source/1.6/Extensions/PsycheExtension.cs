@@ -29,7 +29,7 @@ namespace Maux36.RimPsyche.Disposition
 
         public static bool CanFeelShame(this CompPsyche compPsyche)
         {
-            if (compPsyche.parentPawn.mentalStateHandler.InMentalState)
+            if (compPsyche.parentPawn.InMentalState)
             {
                 return false;
             }
@@ -38,6 +38,40 @@ namespace Maux36.RimPsyche.Disposition
                 return false;
             }
             return true;
+        }
+        public static bool GainShame(this CompPsyche compPsyche)
+        {
+            var shame = compPsyche.shame;
+            var shameAmount = compPsyche.Evaluate(FormulaDB.ModestShameGain);
+            if (shameAmount > 0f)
+            {
+                if (shameAmount + shame > 1f)
+                {
+                    Log.Message("Shame gained. it is now : 1. Flee!");
+                    compPsyche.shame = 1f;
+                    return true;
+                }
+                else
+                {
+                    compPsyche.shame += shameAmount;
+                    Log.Message($"Shame gained. it is now : {compPsyche.shame}");
+                }
+            }
+            return false;
+
+        }
+        public static void LoseShame(this CompPsyche compPsyche)
+        {
+            var shame = compPsyche.shame;
+            var shameAmount = compPsyche.Evaluate(FormulaDB.ModestShameLose);
+            if (shame - shameAmount >= 0f)
+            {
+                compPsyche.shame -= shameAmount;
+            }
+            else
+            {
+                compPsyche.shame = 0f;
+            }
         }
     }
 }

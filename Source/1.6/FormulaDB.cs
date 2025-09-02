@@ -3,18 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Maux36.RimPsyche.Disposition
 {
     public static class FormulaDB
     {
-        public static RimpsycheFormula PrudishShameGain = new(
-            "PrudishShameGain",
+        public static RimpsycheFormula ModestShameGain = new(
+            "ModestShameGain",
             (tracker) =>
             {
                 float p = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness);
                 if (p <= 0.35f) return 0f; //Pretty meaningless to calculate under 0.35f 
-                return p*p*p*(p-0.25f)*0.25f;
+                return p*p*p*(p-0.25f)*0.4f;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
+        public static RimpsycheFormula ModestShameLose = new(
+            "ModestShameLose",
+            (tracker) =>
+            {
+                float p = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness);
+                if (p <= 0) return 2;
+                var p1 = 1 / (4f * p + 1f);
+                return p1 * p1;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
