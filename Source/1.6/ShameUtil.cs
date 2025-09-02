@@ -13,6 +13,7 @@ namespace Maux36.RimPsyche.Disposition
         private const int runDistanceMax = 50;
         private const int maxDistSquared = 63*63;
         private const int sightDistSquared = 13*13;
+        private static HashSet<Pawn> tmpLovePartners = new HashSet<Pawn>{};
 
         //Also check TryFindDirectFleeDestination
         public static IntVec3 FindHideInShameLocation(Pawn pawn)
@@ -87,10 +88,12 @@ namespace Maux36.RimPsyche.Disposition
 
         public static List<Pawn> ScanObservers(Pawn pawn, int distSquared = 169)
         {
+            var loverHash = ExistingLovePartners(pawn);
             List<Pawn> all_pawns = pawn.Map.mapPawns.AllPawnsSpawned.Where(x
                 => x.RaceProps.Humanlike
                 && x.Position.DistanceToSquared(pawn.Position) < distSquared //sight+rundist
                 && x != pawn
+                && !loverHash.Contains(x)
                 ).ToList();
             return all_pawns;
         }
@@ -105,10 +108,12 @@ namespace Maux36.RimPsyche.Disposition
         }
         public static bool BeingSeen(Pawn pawn, int distSquared = 169)
         {
+            var loverHash = ExistingLovePartners(pawn);
             foreach (var otherPawn in pawn.Map.mapPawns.AllPawnsSpawned)
             {
                 if (otherPawn.RaceProps.Humanlike
                     && otherPawn != pawn
+                    && !loverHash.Contains(otherPawn)
                     && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared
                     && GenSight.LineOfSight(otherPawn.Position, pawn.Position, pawn.Map))
                 {
@@ -116,6 +121,20 @@ namespace Maux36.RimPsyche.Disposition
                 }
             }
             return false;
+        }
+
+        public static List<Pawn> ExistingLovePartners(Pawn pawn)
+        {
+            tmpLovePartners.Clear();
+            List<DirectPawnRelation> directRelations = pawn.relations.DirectRelations;
+            for (int i = 0; i < directRelations.Count; i++)
+            {
+                if (IsLovePartnerRelation(directRelations[i].def) && (!directRelations[i].otherPawn.Spawned))
+                {
+                    tmpLovePartners.Add(directRelations[i].otherPawn);
+                }
+            }
+            return tmpLovePartners;
         }
 
     }

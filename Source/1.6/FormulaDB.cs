@@ -8,12 +8,23 @@ namespace Maux36.RimPsyche.Disposition
 {
     public static class FormulaDB
     {
+        public static RimpsycheFormula PrudishShameGain = new(
+            "PrudishShameGain",
+            (tracker) =>
+            {
+                float p = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness);
+                if (p <= 0.35f) return 0f; //Pretty meaningless to calculate under 0.35f 
+                return p*p*p*(p-0.25f)*0.25f;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
         public static RimpsycheFormula PrudishNakedMultiplier = new(
             "PrudishNakedMultiplier",
             (tracker) =>
             {
-                float optimism = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness) * 0.7f;
-                return optimism;
+                float mult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness) * 0.7f;
+                return mult;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
@@ -22,8 +33,8 @@ namespace Maux36.RimPsyche.Disposition
             "PassionWorkMultiplier",
             (tracker) =>
             {
-                float optimism = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion) * 0.5f;
-                return optimism;
+                float mult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion) * 0.5f;
+                return mult;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );

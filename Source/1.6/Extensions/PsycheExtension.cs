@@ -26,5 +26,18 @@ namespace Maux36.RimPsyche.Disposition
                 
             }
         }
+
+        public static bool CanFeelShame(this CompPsyche compPsyche)
+        {
+            if (compPsyche.parentPawn.mentalStateHandler.InMentalState)
+            {
+                return false;
+            }
+            if (compPsyche.overhwelmRecoveryTick > Find.TickManager.TicksGame)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
