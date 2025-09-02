@@ -2,7 +2,7 @@
 <Defs>
   <JobDef>
     <defName>RimPsyche_FleeInShame</defName>
-    <driverClass>JobDriver_FleeAndCower</driverClass>
+    <driverClass>Maux36.RimPsyche.JobDriver_FleeInShame</driverClass>
     <reportString>Fleeing in shame.</reportString>
     <playerInterruptible>false</playerInterruptible>
     <casualInterruptible>false</casualInterruptible>

@@ -10,6 +10,15 @@ namespace Maux36.RimPsyche.Disposition
     //Also add produced thought to naked memories, naked multiplier should implement shame too.
     public class JobDriver_FleeInShame: JobDriver
     {
+        public override string GetReport()
+        {
+            if (pawn.CurJob == job && pawn.Position == job.GetTarget(TargetIndex.A).Cell)
+            {
+                return "ReportCowering".Translate();
+            }
+            return base.GetReport();
+        }
+        
         protected override IEnumerable<Toil> MakeNewToils()
         {
             var compPsyche = pawn.compPsyche();
