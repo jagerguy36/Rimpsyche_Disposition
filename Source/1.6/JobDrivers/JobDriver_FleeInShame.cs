@@ -1,16 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RimWorld;
+using UnityEngine;
+using Verse;
+using Verse.AI;
 
-namespace Maux36.RimPsyche.Disposition.JobDrivers
+namespace Maux36.RimPsyche.Disposition
 {
-    internal class JobDriver_FleeInShame
+
+    //Set the last overwhelmed tick to current+alpha.\
+    //Also add produced thought to naked memories, naked multiplier should implement shame too.
+    public class JobDriver_FleeInShame: JobDriver
     {
-        //Todo: Make new jobdriver that 1) go to the target 2) See if that place might be seen--> go somewhere else. 3) Cower at the place
-        //Set the last overwhelmed tick to current+alpha.\
-        //Also add produced thought to naked memories, naked multiplier should implement shame too.
-        //toil.socialMode = RandomSocialMode.Off;
+        protected override IEnumerable<Toil> MakeNewToils()
+        {
+            var compPsyche = pawn.compPsyche();
+            this.AddEndCondition(() => (compPsyche.Shame <= 0 ? JobCondition.Succeeded : JobCondition.Ongoing));
+            Toil gotoToil = Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
+            gotoToil.socialMode = RandomSocialMode.Off;
+            gotoToil.FailOn(() => pawn.Downed);
+            yield return gotoToil;
+
+            Toil waitToil = ToilMaker.MakeToil("WaitWithCheck");
+            waitToil.defaultCompleteMode = ToilCompleteMode.Delay;
+            waitToil.defaultDuration = 4000;
+            waitToil.tickAction = delegate
+            {
+                if (pawn.IsHashIntervalTick(150))
+                {
+                    if (ShameUtil.BeingSeen(pawn))
+                    {
+                        LocalTargetInfo newTarget;
+                        if (TryFindTarget(pawn, out newTarget))
+                        {
+                            job.SetTarget(TargetIndex.A, newTarget);
+                            waitToil.JumpToToil(gotoToil);
+                        }
+                    }
+                    else
+                    {
+                        compPsyche.LoseShame();
+                    }
+                }
+            };
+            wiatToil.socialMode = RandomSocialMode.Off;
+
+            yield return waitToil;
+        }
+
+        public override void Cleanup(JobCondition condition)
+        {
+            base.Cleanup(condition);
+            Log.Message("Ended Flee");
+        }
     }
 }
