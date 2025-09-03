@@ -156,6 +156,10 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return false;
             }
+            if (HealthAIUtility.ShouldSeekMedicalRest(pawn))
+            {
+                return false;
+            }
             compPsyche.isOverwhelmed = true;
             PlayLogEntry_Interaction playLogEntry = new PlayLogEntry_Interaction(DefOfDisposition.Rimpsyche_Shamed, pawn, pawn, null);
             Find.PlayLog.Add(playLogEntry);
@@ -200,6 +204,5 @@ namespace Maux36.RimPsyche.Disposition
             }
             return tmpLovePartners;
         }
-
     }
 }
