@@ -17,7 +17,7 @@ namespace Maux36.RimPsyche.Disposition
             var codes = new List<CodeInstruction>(instructions);
             MethodInfo getWorkerMethod = AccessTools.Method(typeof(MentalBreakDef), "get_Worker");
             FieldInfo pawnField = AccessTools.Field(typeof(MentalBreaker), "pawn");
-            MethodInfo customMethod = AccessTools.Method(typeof(ResilienceUtil), "TestResilientSpirit");
+            MethodInfo customMethod = AccessTools.Method(typeof(Maux36.RimPsyche.Disposition.ResilienceUtil), "TestResilientSpirit");
             var skiplabel = generator.DefineLabel();
             var normallabel = generator.DefineLabel();
 

@@ -15,6 +15,24 @@ namespace Maux36.RimPsyche.Disposition
         private const int sightDistSquared = 13*13;
         private static HashSet<Pawn> tmpLovePartners = new HashSet<Pawn>{};
 
+        public static bool CanFeelShame(Pawn pawn)
+        {
+            if (pawn.InMentalState)
+            {
+                return false;
+            }
+            var bed = pawn.CurrentBed();
+            if (bed != null) //Cover yourself with sheets
+            {
+                return false;
+            }
+            if (!pawn.Awake())
+            {
+                return false;
+            }
+            return true;
+        }
+
         //Also check TryFindDirectFleeDestination
         public static IntVec3 FindHideInShameLocation(Pawn pawn)
         {
@@ -121,6 +139,52 @@ namespace Maux36.RimPsyche.Disposition
                 }
             }
             return false;
+        }
+
+        public static bool TryGiveFleeInShameJob(Pawn pawn)
+        {
+            if (pawn.Downed)
+            {
+                return false;
+            }
+            var compPsyche = pawn.compPsyche();
+            if (compPsyche?.Enabled != true)
+            {
+                return false;
+            }
+            if (compPsyche.isOverwhelmed)
+            {
+                return false;
+            }
+            compPsyche.isOverwhelmed = true;
+            PlayLogEntry_Interaction playLogEntry = new PlayLogEntry_Interaction(DefOfDisposition.Rimpsyche_Shamed, pawn, pawn, null);
+            Find.PlayLog.Add(playLogEntry);
+            var fleeDest = FindHideInShameLocation(pawn);
+            Log.Message($"Start running! Location at: {fleeDest}");
+            var runawayjob = new Job(DefOfDisposition.RimPsyche_FleeInShame, fleeDest);
+            runawayjob.mote = MoteMaker.MakeThoughtBubble(pawn, "Things/Mote/SpeechSymbols/Ashamed", maintain: true);
+            pawn.jobs.StartJob(runawayjob, JobCondition.InterruptForced, null, false, true, null);
+            if (RimpsycheDispositionSettings.sendShameMessage)
+            {
+                Messages.Message("MessageShamed".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
+            }
+            return true;
+        }
+
+        public static bool TryDoRandomShameCausedMentalBreak(Pawn pawn)
+        {
+            var breaker = pawn.mindState.mentalBreaker;
+            if (!breaker.CanHaveMentalBreak())
+            {
+                return false;
+            }
+            //TODO: chose mentalbreak intensity based on pawn's current mood
+            if (!breaker.TryGetRandomMentalBrea(MentalBreakIntensity.Major, out MentalBreakDef result))
+            {
+                return false;
+            }
+            TaggedString taggedString = "MentalStateReason_Shame".Translate();
+            return TryDoMentalBreak(taggedString, result);
         }
 
         public static HashSet<Pawn> ExistingLovePartners(Pawn pawn)

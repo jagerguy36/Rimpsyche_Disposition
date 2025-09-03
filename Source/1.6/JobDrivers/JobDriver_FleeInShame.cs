@@ -6,8 +6,8 @@ using Verse.AI;
 namespace Maux36.RimPsyche.Disposition
 {
 
-    //Set the last overwhelmed tick to current+alpha.\
     //Also add produced thought to naked memories, naked multiplier should implement shame too.
+    //Should transition into random mood-caused mental break after 7500 tick (three hours)
     public class JobDriver_FleeInShame: JobDriver
     {
         public override bool TryMakePreToilReservations(bool errorOnFailed)

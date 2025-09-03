@@ -27,29 +27,21 @@ namespace Maux36.RimPsyche.Disposition
             }
         }
 
-        public static bool CanFeelShame(this CompPsyche compPsyche)
-        {
-            if (compPsyche.parentPawn.InMentalState)
-            {
-                return false;
-            }
-            if (compPsyche.overhwelmRecoveryTick > Find.TickManager.TicksGame)
-            {
-                return false;
-            }
-            return true;
-        }
         public static bool GainShame(this CompPsyche compPsyche)
         {
             var shame = compPsyche.shame;
             var shameAmount = compPsyche.Evaluate(FormulaDB.ModestShameGain);
             if (shameAmount > 0f)
             {
-                if (shameAmount + shame > 1f)
+                if (shame + shameAmount >= 1f)
                 {
-                    Log.Message("Shame gained. it is now : 1. Flee!");
+                    Log.Message("Shame gained. it is now : 1");
                     compPsyche.shame = 1f;
-                    return true;
+                    //Don't give job again if they are already fleeing.
+                    if (!compPsyche.isOverwhelmed)
+                    {
+                        return true;
+                    }
                 }
                 else
                 {

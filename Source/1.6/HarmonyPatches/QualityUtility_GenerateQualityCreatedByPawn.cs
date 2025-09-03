@@ -17,7 +17,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             var codes = new List<CodeInstruction>(instructions);
             var originalMethod = AccessTools.Method(typeof(QualityUtility), "GenerateQualityCreatedByPawn", new[] { typeof(int), typeof(bool) });
-            var replacementMethod = AccessTools.Method(typeof(QualityUtil), "GenerateQualityCreatedByPawnWithPsyche");
+            var replacementMethod = AccessTools.Method(typeof(Maux36.RimPsyche.Disposition.QualityUtil), "GenerateQualityCreatedByPawnWithPsyche");
 
             for (int i = 0; i < codes.Count; i++)
             {
