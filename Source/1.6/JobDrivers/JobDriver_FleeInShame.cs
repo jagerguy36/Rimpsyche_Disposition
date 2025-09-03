@@ -31,6 +31,7 @@ namespace Maux36.RimPsyche.Disposition
             this.AddFinishAction((condition) =>
             {
                 Log.Message($"FleeInShame job ended for {pawn} with condition: {condition}");
+                compPsyche.isOverwhelmed = false;
             });
             Toil gotoToil = Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
             gotoToil.socialMode = RandomSocialMode.Off;
