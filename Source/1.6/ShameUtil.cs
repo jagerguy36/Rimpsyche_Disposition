@@ -178,17 +178,13 @@ namespace Maux36.RimPsyche.Disposition
         public static bool TryDoRandomShameCausedMentalBreak(Pawn pawn)
         {
             var breaker = pawn.mindState.mentalBreaker;
-            if (!breaker.CanHaveMentalBreak())
-            {
-                return false;
-            }
             //TODO: chose mentalbreak intensity based on pawn's current mood
-            if (!breaker.TryGetRandomMentalBrea(MentalBreakIntensity.Major, out MentalBreakDef result))
+            if (!breaker.TryGetRandomMentalBreak(MentalBreakIntensity.Major, out MentalBreakDef result))
             {
                 return false;
             }
             TaggedString taggedString = "MentalStateReason_Shame".Translate();
-            return TryDoMentalBreak(taggedString, result);
+            return breaker.TryDoMentalBreak(taggedString, result);
         }
 
         public static HashSet<Pawn> ExistingLovePartners(Pawn pawn)

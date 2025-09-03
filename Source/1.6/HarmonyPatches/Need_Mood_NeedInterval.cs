@@ -19,7 +19,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = ___pawn.compPsyche();
                 if (compPsyche?.Enabled == true && ___pawn.DevelopmentalStage == DevelopmentalStage.Adult)
                 {
-                    if (compPsyche.ShameThoughts.Count > 0 && CanFeelShame(___pawn))
+                    if (compPsyche.ShameThoughts.Count > 0 && ShameUtil.CanFeelShame(___pawn))
                     {
                         foreach ((var def, var count) in compPsyche.ShameThoughts)
                         {

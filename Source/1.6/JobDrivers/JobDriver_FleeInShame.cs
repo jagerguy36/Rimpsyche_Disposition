@@ -28,7 +28,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             var compPsyche = pawn.compPsyche();
             this.AddEndCondition(() => (compPsyche.shame <= 0 ? JobCondition.Succeeded : JobCondition.Ongoing));
-            this.AddFailCondition(pawn.Downed)
+            this.AddFailCondition(() => (pawn.Downed));
             this.AddFinishAction((condition) =>
             {
                 Log.Message($"FleeInShame job ended for {pawn} with condition: {condition}");
@@ -38,7 +38,7 @@ namespace Maux36.RimPsyche.Disposition
             gotoToil.AddPreTickAction(delegate
             {
                 ticksLeft--;
-                CheckTick()
+                CheckTick();
             });
             gotoToil.socialMode = RandomSocialMode.Off;
             yield return gotoToil;
@@ -49,7 +49,7 @@ namespace Maux36.RimPsyche.Disposition
             waitToil.AddPreTickAction(delegate
             {
                 ticksLeft--;
-                CheckTick()
+                CheckTick();
             });
             waitToil.tickAction = delegate
             {
