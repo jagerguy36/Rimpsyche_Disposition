@@ -64,6 +64,7 @@
     <Compile Include="HarmonyPatches\AmbitionRelated\RecordsUtility_Notify_PawnKilled.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\RecruitUtility_Recruit.cs" />
     <Compile Include="HarmonyPatches\InteractionWorker_RecruitAttempt_Interacted.cs" />
+    <Compile Include="HarmonyPatches\MentalStateHandler_Notify_DamageTaken.cs" />
     <Compile Include="HarmonyPatches\Need_Mood_NeedInterval.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\VTE_Patches.cs" />
     <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="InteractionWorkers\InteractionWorker_ShameOverwhelmed.cs" />
     <Compile Include="JobDrivers\JobDriver_FleeInShame.cs" />
     <Compile Include="JoyGivers\JoyGiver_Meditate_Reflectiveness.cs" />
+    <Compile Include="MentalState\FleeInFear.cs" />
     <Compile Include="ShameUtil.cs" />
     <Compile Include="QualityUtil.cs" />
     <Compile Include="HarmonyPatches\CompDrug_PrePostIngested.cs" />
