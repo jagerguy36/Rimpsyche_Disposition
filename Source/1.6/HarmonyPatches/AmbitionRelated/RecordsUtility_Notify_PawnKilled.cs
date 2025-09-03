@@ -4,6 +4,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
+    //TODO: compassion checks for gain, gain amount depends on aggressiveness
     [HarmonyPatchCategory("SenseOfProgress")]
     [HarmonyPatch(typeof(RecordsUtility), nameof(RecordsUtility.Notify_PawnKilled))]
     public static class RecordsUtility_Notify_PawnKilled
@@ -26,6 +27,9 @@ namespace Maux36.RimPsyche.Disposition
             "AmbitionKilledProgress",
             (tracker) =>
             {
+                //Check for compassion.
+                //gentle pawns can also gain progress if compassion <0
+                //(gentle but cold-hearted: doesn't enjoy brutality but believes killing enemies is a progress)
                 float mult = 0.5f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Aggressiveness);
                 return mult;
             },
