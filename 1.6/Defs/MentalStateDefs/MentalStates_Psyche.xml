@@ -4,7 +4,7 @@
   <MentalStateDef ParentName="BaseMentalState">
     <defName>Rimpsyche_PanicAttack</defName>
     <label>panic attack</label>
-    <stateClass>MentalState_PanicFlee</stateClass>
+    <stateClass>Maux36.RimPsyche.Disposition.MentalState_PanicAttack</stateClass>
     <category>Misc</category>
     <nameColor>(0.65, 0.9, 0.93)</nameColor>
     <beginLetterLabel>flee</beginLetterLabel>
