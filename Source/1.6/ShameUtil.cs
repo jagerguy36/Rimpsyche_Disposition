@@ -130,15 +130,36 @@ namespace Maux36.RimPsyche.Disposition
             foreach (var otherPawn in pawn.Map.mapPawns.AllPawnsSpawned)
             {
                 if (otherPawn.RaceProps.Humanlike
+                    && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared
                     && otherPawn != pawn
                     && !loverHash.Contains(otherPawn)
-                    && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared
                     && GenSight.LineOfSight(otherPawn.Position, pawn.Position, pawn.Map))
                 {
                     return true;
                 }
             }
             return false;
+        }
+        public static bool BeingSeen_R(Pawn pawn, int distSquared = 169)
+        {
+            var loverHash = ExistingLovePartners(pawn);
+            Region region = pawn.GetRegion();
+            if (region == null)
+            {
+                return false;
+            }
+            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region reg) => reg.door == null || reg.door.Open, delegate(Region reg)
+            {
+                List<Thing> list = reg.ListerThings.ThingsInGroup(ThingRequestGroup.AttackTarget);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i] != pawn && list[i] is Pawn otherPawn && (otherPawn.RaceProps.Humanlike) && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared && loverHash.Contains(otherPawn) GenSight.LineOfSightToThing(pawn.Position, otherPawn, pawn.Map))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }, 9);
         }
 
         public static bool TryGiveFleeInShameJob(Pawn pawn)
