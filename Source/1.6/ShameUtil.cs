@@ -14,6 +14,7 @@ namespace Maux36.RimPsyche.Disposition
         private const int maxDistSquared = 63*63;
         private const int sightDistSquared = 13*13;
         private static HashSet<Pawn> tmpLovePartners = new HashSet<Pawn>{};
+        private static HashSet<int> tmpInvIds = new HashSet<int> { };
 
         public static bool CanFeelShame(Pawn pawn)
         {
@@ -33,6 +34,7 @@ namespace Maux36.RimPsyche.Disposition
             return true;
         }
 
+        //TODO: RegionBased search with better performance and better location selection.
         //Also check TryFindDirectFleeDestination
         public static IntVec3 FindHideInShameLocation(Pawn pawn)
         {
@@ -63,6 +65,7 @@ namespace Maux36.RimPsyche.Disposition
                 if (candidate.GetDangerFor(pawn, pawn.Map) == Danger.Deadly) continue;
                 if (candidate.ContainsTrap(pawn.Map)) continue;
                 if (candidate.ContainsStaticFire(pawn.Map)) continue;
+                if (candidate.GetTerrain(pawn.Map).dangerous) continue;
 
                 int score = 0;
                 Room room = candidate.GetRoom(pawn.Map);
@@ -103,7 +106,6 @@ namespace Maux36.RimPsyche.Disposition
             }
             return bestCell;
         }
-
         public static List<Pawn> ScanObservers(Pawn pawn, int distSquared = 169)
         {
             var loverHash = ExistingLovePartners(pawn);
@@ -119,47 +121,44 @@ namespace Maux36.RimPsyche.Disposition
         public static bool MightBeSeen(List<Pawn> otherPawns, IntVec3 cell, Pawn pawn, int distSquared=169)
         {
             return otherPawns.Any(x
-                    => x.Awake()
-                    && x.Position.DistanceToSquared(cell) < distSquared
+                    => x.Position.DistanceToSquared(cell) < distSquared
+                    && x.Awake()
                     && GenSight.LineOfSight(x.Position, cell, pawn.Map)
                     );
         }
         public static bool BeingSeen(Pawn pawn, int distSquared = 169)
         {
+            tmpInvIds.Clear();
+            tmpInvIds.Add(pawn.thingIDNumber);
             var loverHash = ExistingLovePartners(pawn);
-            foreach (var otherPawn in pawn.Map.mapPawns.AllPawnsSpawned)
-            {
-                if (otherPawn.RaceProps.Humanlike
-                    && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared
-                    && otherPawn != pawn
-                    && !loverHash.Contains(otherPawn)
-                    && GenSight.LineOfSight(otherPawn.Position, pawn.Position, pawn.Map))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        public static bool BeingSeen_R(Pawn pawn, int distSquared = 169)
-        {
-            var loverHash = ExistingLovePartners(pawn);
+            bool foundObserver = false;
             Region region = pawn.GetRegion();
             if (region == null)
             {
                 return false;
             }
-            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region reg) => reg.door == null || reg.door.Open, delegate(Region reg)
+            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region to) => (to.door == null || to.door.Open) && (to.extentsClose.ClosestDistSquaredTo(pawn.Position) <= distSquared), delegate (Region reg)
             {
-                List<Thing> list = reg.ListerThings.ThingsInGroup(ThingRequestGroup.AttackTarget);
+                List<Thing> list = reg.ListerThings.ThingsInGroup(ThingRequestGroup.Pawn);
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (list[i] != pawn && list[i] is Pawn otherPawn && (otherPawn.RaceProps.Humanlike) && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared && loverHash.Contains(otherPawn) GenSight.LineOfSightToThing(pawn.Position, otherPawn, pawn.Map))
+                    if (!tmpInvIds.Contains(list[i].thingIDNumber)
+                        && list[i] is Pawn otherPawn
+                        && (otherPawn.RaceProps.Humanlike)
+                        && !loverHash.Contains(otherPawn)
+                        && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared
+                        && otherPawn.Awake()
+                        && GenSight.LineOfSightToThing(pawn.Position, otherPawn, pawn.Map)
+                    )
                     {
-                        return true;
+                        foundObserver = true;
+                        break;
                     }
+                    tmpInvIds.Add(list[i].thingIDNumber);
                 }
-                return false;
+                return foundObserver;
             }, 9);
+            return foundObserver;
         }
 
         public static bool TryGiveFleeInShameJob(Pawn pawn)
