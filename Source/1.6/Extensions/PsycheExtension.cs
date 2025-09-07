@@ -35,18 +35,12 @@ namespace Maux36.RimPsyche.Disposition
             {
                 if (shame + shameAmount >= 1f)
                 {
-                    Log.Message("Shame gained. it is now : 1");
                     compPsyche.shame = 1f;
-                    //Don't give job again if they are already fleeing.
-                    if (!compPsyche.isOverwhelmed)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
                 else
                 {
                     compPsyche.shame += shameAmount;
-                    Log.Message($"Shame gained. it is now : {compPsyche.shame}");
                 }
             }
             return false;

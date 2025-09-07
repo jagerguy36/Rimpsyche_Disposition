@@ -10,9 +10,9 @@ namespace Maux36.RimPsyche.Disposition
     public static class ShameUtil
     {
         private const int sightDistance = 13; //Interaction HorDistance is 6, flee all pawn flee distance is 23
-        private const int runDistanceMax = 50;
-        private const int maxDistSquared = 63*63;
-        private const int sightDistSquared = 13*13;
+        private const int runDistanceMax = 50; //How far the pawn will move
+        private const int maxDistSquared = (sightDistance + runDistanceMax) * (sightDistance + runDistanceMax);
+        private const int sightDistSquared = sightDistance * sightDistance;
         private static HashSet<Pawn> tmpLovePartners = new HashSet<Pawn>{};
         private static HashSet<int> tmpInvIds = new HashSet<int> { };
 
@@ -44,7 +44,7 @@ namespace Maux36.RimPsyche.Disposition
             if (pawn.ownership.OwnedBed != null)
             {
                 IntVec3 bedPosition = pawn.ownership.OwnedBed.Position;
-                if ((pawn.Position - bedPosition).LengthHorizontalSquared <= 75)
+                if ((pawn.Position - bedPosition).LengthHorizontalSquared <= runDistanceMax * runDistanceMax)
                 {
                     return bedPosition;
                 }
@@ -106,7 +106,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             return bestCell;
         }
-        public static List<Pawn> ScanObservers(Pawn pawn, int distSquared = 169)
+        public static List<Pawn> ScanObservers(Pawn pawn, int distSquared = sightDistSquared)
         {
             var loverHash = ExistingLovePartners(pawn);
             List<Pawn> all_pawns = pawn.Map.mapPawns.AllPawnsSpawned.Where(x
@@ -118,7 +118,7 @@ namespace Maux36.RimPsyche.Disposition
             return all_pawns;
         }
 
-        public static bool MightBeSeen(List<Pawn> otherPawns, IntVec3 cell, Pawn pawn, int distSquared=169)
+        public static bool MightBeSeen(List<Pawn> otherPawns, IntVec3 cell, Pawn pawn, int distSquared = sightDistSquared)
         {
             return otherPawns.Any(x
                     => x.Position.DistanceToSquared(cell) < distSquared
@@ -126,7 +126,7 @@ namespace Maux36.RimPsyche.Disposition
                     && GenSight.LineOfSight(x.Position, cell, pawn.Map)
                     );
         }
-        public static bool BeingSeen(Pawn pawn, int distSquared = 169)
+        public static bool BeingSeen(Pawn pawn, int distSquared = sightDistSquared)
         {
             tmpInvIds.Clear();
             tmpInvIds.Add(pawn.thingIDNumber);
@@ -157,11 +157,11 @@ namespace Maux36.RimPsyche.Disposition
                     tmpInvIds.Add(list[i].thingIDNumber);
                 }
                 return foundObserver;
-            }, 9);
+            }, 99999);
             return foundObserver;
         }
 
-        public static bool TryGiveFleeInShameJob(Pawn pawn)
+        public static bool TryGiveFleeInShameJob(Pawn pawn, bool continuedJob=false)
         {
             if (pawn.Downed)
             {
@@ -172,26 +172,25 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return false;
             }
-            if (compPsyche.isOverwhelmed)
-            {
-                return false;
-            }
             if (HealthAIUtility.ShouldSeekMedicalRest(pawn))
             {
                 return false;
             }
-            compPsyche.isOverwhelmed = true;
-            PlayLogEntry_Interaction playLogEntry = new PlayLogEntry_Interaction(DefOfDisposition.Rimpsyche_Shamed, pawn, pawn, null);
-            Find.PlayLog.Add(playLogEntry);
+            if (!continuedJob)
+            {
+                PlayLogEntry_Interaction playLogEntry = new PlayLogEntry_Interaction(DefOfDisposition.Rimpsyche_Shamed, pawn, pawn, null);
+                Find.PlayLog.Add(playLogEntry);
+                if (RimpsycheDispositionSettings.sendShameMessage)
+                {
+                    Messages.Message("MessageShamed".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
+                }
+            }
             var fleeDest = FindHideInShameLocation(pawn);
             Log.Message($"Start running! Location at: {fleeDest}");
             var runawayjob = new Job(DefOfDisposition.RimPsyche_FleeInShame, fleeDest);
-            runawayjob.mote = MoteMaker.MakeThoughtBubble(pawn, "Things/Mote/SpeechSymbols/Ashamed", maintain: true);
+            runawayjob.mote = MoteMaker.MakeThoughtBubble(pawn, "Things/Mote/Flecks/Embarrassed", maintain: true);
             pawn.jobs.StartJob(runawayjob, JobCondition.InterruptForced, null, false, true, null);
-            if (RimpsycheDispositionSettings.sendShameMessage)
-            {
-                Messages.Message("MessageShamed".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
-            }
+            compPsyche.isOverwhelmed = true;
             return true;
         }
 

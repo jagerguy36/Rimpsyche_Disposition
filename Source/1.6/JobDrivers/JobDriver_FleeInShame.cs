@@ -51,26 +51,6 @@ namespace Maux36.RimPsyche.Disposition
                 ticksLeft--;
                 CheckTick();
             });
-            waitToil.tickAction = delegate
-            {
-                if (pawn.IsHashIntervalTick(150))
-                {
-                    if (ShameUtil.BeingSeen(pawn))
-                    {
-                        LocalTargetInfo newTarget = ShameUtil.FindHideInShameLocation(pawn);
-                        if (newTarget != TargetLocA)
-                        {
-                            job.SetTarget(TargetIndex.A, newTarget);
-                            Log.Message($"New hide location: {newTarget}");
-                            JumpToToil(gotoToil);
-                        }
-                    }
-                    else
-                    {
-                        compPsyche.LoseShame();
-                    }
-                }
-            };
             waitToil.socialMode = RandomSocialMode.Off;
 
             yield return waitToil;

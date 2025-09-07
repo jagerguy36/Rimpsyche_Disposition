@@ -28,7 +28,14 @@ namespace Maux36.RimPsyche.Disposition
                                 if (ShameUtil.BeingSeen(___pawn)) //Being watched: gain shame
                                 {
                                     bool overwhelm = compPsyche.GainShame();
-                                    if (overwhelm && !compPsyche.isOverwhelmed)
+                                    if (compPsyche.isOverwhelmed)
+                                    {
+                                        if (___pawn.jobs.curJob.targetA.Cell == ___pawn.Position)
+                                        {
+                                            ShameUtil.TryGiveFleeInShameJob(___pawn, true);
+                                        }
+                                    }
+                                    else if (overwhelm)
                                     {
                                         //If pawn can't start fleeing job, their shame will still stay at 1 as long as they are being seen and keep on trying to give job.
                                         ShameUtil.TryGiveFleeInShameJob(___pawn);
