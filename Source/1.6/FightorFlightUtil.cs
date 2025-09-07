@@ -10,10 +10,10 @@ namespace Maux36.RimPsyche.Disposition
         private static List<Thing> tmpThreats = new List<Thing>();
         private static HashSet<int> tmpInvIds = new HashSet<int> { };
         private const int threatDistance = 25; //"Medium" range tiles
-        private const int threatDistSquared = 25 * 25;
+        private const int threatDistSquared = threatDistance * threatDistance;
         private const int runDistanceMax = 23;
-        private const int potentialThreatDistance = 48;
-        private const int potentialThreatDistSquared = 48 * 48;
+        private const int potentialThreatDistance = threatDistance + runDistanceMax;
+        private const int potentialThreatDistSquared = potentialThreatDistance * potentialThreatDistance;
 
         public static bool ShouldInduceFear(Thing t, Pawn pawn, int distSquared)
         {

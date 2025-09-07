@@ -34,6 +34,9 @@ namespace Maux36.RimPsyche.Disposition
         );
 
         //Fight or Flight mechanics
+        //Flight condition:
+        //bravery <= -0.4
+        //resilience < 0
         public static RimpsycheFormula FlightChance = new(
             "FlightChance",
             (tracker) =>
@@ -49,7 +52,7 @@ namespace Maux36.RimPsyche.Disposition
             RimpsycheFormulaManager.FormulaIdDict
         );
 
-        public static RimpsycheFormula FlightThreshold = new(
+        public static RimpsycheFormula FlightThreshold = new( 
             "FlightThreshold",
             (tracker) =>
             {
@@ -63,6 +66,11 @@ namespace Maux36.RimPsyche.Disposition
             RimpsycheFormulaManager.FormulaIdDict
         );
 
+        //Adrenaline condition:
+        //bravery, tension, resilience
+        //bravery >= -0.3
+        //Adrenaline gain
+        //aggressiveness, stability
         public static RimpsycheFormula AdrenalineGain = new(
             "AdrenalineGain",
             (tracker) =>
