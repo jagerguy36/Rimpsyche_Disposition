@@ -34,4 +34,26 @@
 			<texPath>Things/Mote/ResilientSpirit</texPath>
 		</graphicData>
 	</ThingDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>RimpsycheMote_PanicAttack</defName>
+		<graphicData>
+			<texPath>Things/Mote/Flecks/PanicAttack</texPath>
+		</graphicData>
+		<altitudeLayer>MetaOverlays</altitudeLayer>
+		<fadeInTime>0.08</fadeInTime>
+		<solidTime>1.4</solidTime>
+		<fadeOutTime>1.5</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>RimpsycheMote_Embarrassed</defName>
+		<graphicData>
+			<texPath>Things/Mote/Flecks/Embarrassed</texPath>
+		</graphicData>
+		<altitudeLayer>MetaOverlays</altitudeLayer>
+		<fadeInTime>0.08</fadeInTime>
+		<solidTime>1.4</solidTime>
+		<fadeOutTime>1.5</fadeOutTime>
+	</FleckDef>
 </Defs>

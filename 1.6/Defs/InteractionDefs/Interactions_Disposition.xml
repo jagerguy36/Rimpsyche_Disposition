@@ -4,7 +4,7 @@
     <defName>Rimpsyche_Shamed</defName>
     <label>feel ashamed</label>
     <workerClass>Maux36.RimPsyche.Disposition.InteractionWorker_ShameOverwhelmed</workerClass>
-    <symbol>Things/Mote/SpeechSymbols/Ashamed</symbol>
+    <symbol>Things/Mote/Symbols/Ashamed</symbol>
     <initiatorThought>Rimpsyche_ShameOverwhelmed</initiatorThought>
     <logRulesInitiator>
       <rulesStrings>
