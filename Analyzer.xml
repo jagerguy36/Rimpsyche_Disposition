@@ -1,10 +1,19 @@
 <Analyzer>
     <RimPsycheDisposition>
         <Types>
-            <li>Maux36.RimPsyche.SkillRecord_Learn</li>
+            <li>Maux36.RimPsyche.Disposition.SkillRecord_Learn</li>
         </Types>
         <Types>
-            <li>Maux36.RimPsyche.TaleRecorder_RecordTale</li>
+            <li>Maux36.RimPsyche.Disposition.TaleRecorder_RecordTale</li>
+        </Types>
+        <Types>
+            <li>Maux36.RimPsyche.Disposition.JobGivers_PanicAttack</li>
+        </Types>
+        <Types>
+            <li>Maux36.RimPsyche.Disposition.JobDriver_PanicAttackFlee</li>
+        </Types>
+        <Types>
+            <li>Maux36.RimPsyche.Disposition.JobDriver_FleeInShame</li>
         </Types>
     </RimPsycheDisposition>
 </Analyzer>
