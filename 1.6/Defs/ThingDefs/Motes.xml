@@ -45,4 +45,17 @@
 		<solidTime>1.4</solidTime>
 		<fadeOutTime>1.5</fadeOutTime>
 	</FleckDef>
+
+	<ThingDef ParentName="Rimpsyche_MoteBase">
+		<defName>RimpsycheMote_AdrenalineRush</defName>
+		<graphicData>
+			<texPath>Things/Mote/Flecks/AdrenalineRush</texPath>
+		</graphicData>
+		<mote>
+			<attachedDrawOffset>(0.75, 1, 0.75)</attachedDrawOffset>
+			<fadeInTime>0.2</fadeInTime>
+			<solidTime>0.05</solidTime>
+			<fadeOutTime>0.55</fadeOutTime>
+		</mote>
+	</ThingDef>
 </Defs>

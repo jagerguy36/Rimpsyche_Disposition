@@ -74,6 +74,7 @@
     <Compile Include="HarmonyPatches\AmbitionRelated\ResearchManager_FinishProject.cs" />
     <Compile Include="HarmonyPatches\MentalBreaker_TryDoMentalBreak.cs" />
     <Compile Include="HarmonyPatches\Thought_SituationalSocial_OpinionOffset.cs" />
+    <Compile Include="Hediff\Hediff_AdrenalineRush.cs" />
     <Compile Include="InteractionWorkers\InteractionWorker_ShameOverwhelmed.cs" />
     <Compile Include="JobDrivers\JobDriver_FleeInShame.cs" />
     <Compile Include="JobDrivers\JobDriver_PanicAttackFlee.cs" />
