@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
 
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThinkTreeDef[defName="MentalStateNonCritical"]/thinkRoot/subNodes</xpath>
+        <order>Append</order>
+        <value>
+	        <li Class="ThinkNode_ConditionalMentalState">
+	          <state>Rimpsyche_PanicAttack</state>
+	          <subNodes>
+	            <li Class="Maux36.RimPsyche.Disposition.JobGivers_PanicAttack" />
+	            <li Class="JobGiver_WanderAnywhere">
+	              <maxDanger>Some</maxDanger>
+	              <locomotionUrgency>Sprint</locomotionUrgency>
+	            </li>
+	          </subNodes>
+	        </li>
+        </value>
+    </Operation>
+
 </Patch>

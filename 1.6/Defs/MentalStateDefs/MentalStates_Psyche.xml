@@ -12,7 +12,7 @@
     <recoveryMessage>{0} is no longer fleeing in panic.</recoveryMessage>
     <baseInspectLine>Mental state: Fleeing in panic</baseInspectLine>
     <blockNormalThoughts>true</blockNormalThoughts>
-    <minTicksBeforeRecovery>60</minTicksBeforeRecovery>
+    <minTicksBeforeRecovery>3000</minTicksBeforeRecovery>
   </MentalStateDef>
 
 </Defs>

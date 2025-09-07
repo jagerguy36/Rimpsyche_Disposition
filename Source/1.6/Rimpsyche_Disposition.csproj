@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FightorFlightUtil.cs" />
     <Compile Include="DefOfDisposition.cs" />
     <Compile Include="Extensions\PsycheExtension.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\QuestManager_Notify_PawnBorn.cs" />
@@ -75,6 +76,8 @@
     <Compile Include="HarmonyPatches\Thought_SituationalSocial_OpinionOffset.cs" />
     <Compile Include="InteractionWorkers\InteractionWorker_ShameOverwhelmed.cs" />
     <Compile Include="JobDrivers\JobDriver_FleeInShame.cs" />
+    <Compile Include="JobDrivers\JobDriver_PanicAttackFlee.cs" />
+    <Compile Include="JoyGivers\JobGivers_PanicAttack.cs" />
     <Compile Include="JoyGivers\JoyGiver_Meditate_Reflectiveness.cs" />
     <Compile Include="MentalState\PanicAttack.cs" />
     <Compile Include="ShameUtil.cs" />

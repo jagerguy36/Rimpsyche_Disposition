@@ -8,4 +8,12 @@
     <casualInterruptible>false</casualInterruptible>
     <suspendable>false</suspendable>
   </JobDef>
+
+  <JobDef>
+    <defName>RimPsyche_PanicAttackFlee</defName>
+    <driverClass>Maux36.RimPsyche.Disposition.JobDriver_PanicAttackFlee</driverClass>
+    <reportString>Fleeing in panic.</reportString>
+    <checkOverrideOnDamage>OnlyIfInstigatorNotJobTarget</checkOverrideOnDamage>
+    <isIdle>true</isIdle>
+  </JobDef>
 </Defs>

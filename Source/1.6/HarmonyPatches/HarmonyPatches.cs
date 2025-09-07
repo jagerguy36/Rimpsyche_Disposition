@@ -40,6 +40,10 @@ namespace Maux36.RimPsyche.Disposition
             {
                 harmony.PatchCategory("SenseOfProgress");
             }
+            if (RimpsycheDispositionSettings.useFightorFlight)
+            {
+                harmony.PatchCategory("FightorFlight");
+            }
         }
     }
 }

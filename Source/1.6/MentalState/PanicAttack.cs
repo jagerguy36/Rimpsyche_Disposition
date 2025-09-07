@@ -9,7 +9,5 @@ namespace Maux36.RimPsyche.Disposition
         {
             return RandomSocialMode.Off;
         }
-
-        //TODO: Add recovery condition
     }
 }

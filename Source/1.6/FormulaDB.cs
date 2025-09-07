@@ -9,6 +9,7 @@ namespace Maux36.RimPsyche.Disposition
 {
     public static class FormulaDB
     {
+        //Shame mechanics
         public static RimpsycheFormula ModestShameGain = new(
             "ModestShameGain",
             (tracker) =>
@@ -31,6 +32,52 @@ namespace Maux36.RimPsyche.Disposition
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
+
+        //Fight or Flight mechanics
+        public static RimpsycheFormula FlightChance = new(
+            "FlightChance",
+            (tracker) =>
+            {
+                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
+                float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
+                if (bravery <= -0.7f + (-0.3f * resilience) && resilience< 0f)
+                {
+                    return 0.18f * (bravery - 1f) * (resilience -0.5f);
+                }
+                return 0f;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
+        public static RimpsycheFormula FlightThreshold = new(
+            "FlightThreshold",
+            (tracker) =>
+            {
+                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
+                if (bravery <= -0.4f)
+                {
+                    return 0.6f - 0.4f * (bravery + 0.4f);
+                }
+                return 0f;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
+        public static RimpsycheFormula AdrenalineGain = new(
+            "AdrenalineGain",
+            (tracker) =>
+            {
+                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
+                float aggresiveness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Aggressiveness);
+                if (bravery >= 0.4f - aggresiveness * 0.1f)
+                {
+                    return 1;
+                }
+                return 0f;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
 
         public static RimpsycheFormula PrudishNakedMultiplier = new(
             "PrudishNakedMultiplier",
@@ -102,6 +149,7 @@ namespace Maux36.RimPsyche.Disposition
             RimpsycheFormulaManager.FormulaIdDict
         );
 
+        //Mood
 
         public static RimpsycheFormula CompassionMoodMultiplier = new(
             "CompassionMoodMultiplier",
