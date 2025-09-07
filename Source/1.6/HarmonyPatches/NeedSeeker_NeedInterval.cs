@@ -65,9 +65,8 @@ namespace Maux36.RimPsyche.Disposition
                 "MoodRisingSpeedMultiplier",
                 (tracker) =>
                 {
-                    float mult = 1f;
-                    float volatility = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Stability, 0.75f);
-                    return mult * volatility;
+                    float mult = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Stability, 0.75f); //-1: 1.3333 || 1: 0.75
+                    return mult;
                 },
                 RimpsycheFormulaManager.FormulaIdDict
             );
@@ -76,9 +75,8 @@ namespace Maux36.RimPsyche.Disposition
                 "MoodFallingSpeedMultiplier",
                 (tracker) =>
                 {
-                    float mult = 1f;
-                    float volatility = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Stability, 0.2f);
-                    return mult * volatility;
+                    float mult = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Stability, 0.2f); //-1: 5 || 1: 0.2
+                    return mult;
                 },
                 RimpsycheFormulaManager.FormulaIdDict
             );
