@@ -10,7 +10,7 @@ namespace Maux36.RimPsyche.Disposition
     //Also add produced thought to naked memories, naked multiplier should implement shame too.
     public class JobDriver_PanicAttackFlee : JobDriver
     {
-        private int ticksLeft = 5000; //Two hours
+        private int ticks = 0; //Two hours
         private Vector3 pawnNudge = Vector3.zero;
         public override Vector3 ForcedBodyOffset
         {
@@ -40,8 +40,7 @@ namespace Maux36.RimPsyche.Disposition
             Toil gotoToil = Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
             gotoToil.AddPreTickAction(delegate
             {
-                ticksLeft--;
-                CheckTick();
+                ticks++;
                 if (pawn.IsHashIntervalTick(75))
                 {
                     FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, DefOfDisposition.RimpsycheMote_PanicAttack);
@@ -54,8 +53,7 @@ namespace Maux36.RimPsyche.Disposition
             waitToil.defaultDuration = 8750;
             waitToil.AddPreTickAction(delegate
             {
-                ticksLeft--;
-                CheckTick();
+                ticks++;
             });
             waitToil.tickAction = delegate
             {
@@ -73,7 +71,7 @@ namespace Maux36.RimPsyche.Disposition
                         }
                     }
                 }
-                float xJitter = (Rand.RangeSeeded(-0.03f, 0.03f, ticksLeft));
+                float xJitter = (Rand.RangeSeeded(-0.03f, 0.03f, ticks));
                 Vector3 JitterVector = IntVec3.West.RotatedBy(pawn.Rotation).ToVector3() * xJitter;
                 pawnNudge = JitterVector;
             };
@@ -82,18 +80,24 @@ namespace Maux36.RimPsyche.Disposition
             yield return waitToil;
         }
 
-        private void CheckTick()
+        public override void Notify_DamageTaken(DamageInfo dinfo)
         {
-            if (ticksLeft <= 0)
+            base.Notify_DamageTaken(dinfo);
+            if (pawn.Position == TargetLocA)
             {
-                pawn.MentalState.RecoverFromState();
+                Log.Message("Interrupt job because damage taken");
+                EndJobWith(JobCondition.InterruptForced);
+            }
+            else
+            {
+                Log.Message("damage taken but still moving.");
             }
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref ticksLeft, "ticksLeft", 0);
+            Scribe_Values.Look(ref ticks, "ticks", 0);
             Scribe_Values.Look(ref pawnNudge, "pawnNudge", Vector3.zero);
         }
     }

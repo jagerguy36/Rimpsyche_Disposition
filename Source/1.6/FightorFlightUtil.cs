@@ -5,7 +5,7 @@ using Verse.AI;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class FightorFlightUtil
+    public static class FightorFlightUtil
     {
         private static List<Thing> tmpThreats = new List<Thing>();
         private static HashSet<int> tmpInvIds = new HashSet<int> { };
@@ -88,7 +88,16 @@ namespace Maux36.RimPsyche.Disposition
                 }
                 return false;
             }, 99999);
-            position = CellFinderLoose.GetFleeDest(pawn, tmpThreats, potentialThreatDistance);
+            if (tmpThreats.Count > 0)
+            {
+                position = CellFinderLoose.GetFleeDest(pawn, tmpThreats, potentialThreatDistance);
+            }
+            else
+            {
+                Log.Message("no threat found. random dest");
+                position = RCellFinder.RandomWanderDestFor(pawn, pawn.Position, 7f, (pawn, loc, root) => WanderRoomUtility.IsValidWanderDest(pawn, loc, root), Danger.Deadly);
+                Log.Message($"random dest: {position}");
+            }
             return position;
         }
     }

@@ -7,7 +7,6 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class JobGivers_PanicAttack : ThinkNode_JobGiver//From Flee all pawns
     {
-        private static readonly List<Thing> tmpPawns = new List<Thing>();
         protected override Job TryGiveJob(Pawn pawn)
         {
             Log.Message("trying to give panic Attack job");
@@ -21,6 +20,7 @@ namespace Maux36.RimPsyche.Disposition
             Log.Message($"New location: {fleeDest}");
             if (fleeDest.IsValid)
             {
+                Log.Message($"making job with new valid destination: {fleeDest}");
                 Job job = JobMaker.MakeJob(DefOfDisposition.RimPsyche_PanicAttackFlee, fleeDest);
                 return job;
             }
