@@ -45,15 +45,4 @@
 		<solidTime>1.4</solidTime>
 		<fadeOutTime>1.5</fadeOutTime>
 	</FleckDef>
-
-	<FleckDef ParentName="FleckBase_Thrown">
-		<defName>RimpsycheMote_Embarrassed</defName>
-		<graphicData>
-			<texPath>Things/Mote/Flecks/Embarrassed</texPath>
-		</graphicData>
-		<altitudeLayer>MetaOverlays</altitudeLayer>
-		<fadeInTime>0.08</fadeInTime>
-		<solidTime>1.4</solidTime>
-		<fadeOutTime>1.5</fadeOutTime>
-	</FleckDef>
 </Defs>
