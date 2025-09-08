@@ -42,10 +42,11 @@ namespace Maux36.RimPsyche.Disposition
                                 }
                             }
                         }
-                        //Fight
-                        if (false)
+                        //Flight
+                        float gain = compPsyche.Evaluate(FormulaDB.AdrenalineGain);
+                        if (gain > 0f)
                         {
-                            HealthUtility.AdjustSeverity(___pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, 0.1f);
+                            HealthUtility.AdjustSeverity(___pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
                             return false;
                         }
                     }
