@@ -37,31 +37,37 @@ namespace Maux36.RimPsyche.Disposition
         //Flight condition:
         //bravery <= -0.4
         //resilience < 0
+        public static RimpsycheFormula FlightThreshold = new( // 0.92 ~ 0.568
+            "FlightThreshold",
+            (tracker) =>
+            {
+                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
+                float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
+                resilience = (1f - 0.2f * resilience);
+                if (bravery <= -0.4f)
+                {
+                    return 0.6f - 0.4f * (bravery * resilience + 0.4f);
+                }
+                return -1f;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
         public static RimpsycheFormula FlightChance = new(
             "FlightChance",
             (tracker) =>
             {
                 float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
+                if (bravery > 0.4f)
+                {
+                    return 0f;
+                }
+                float aggresiveness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Aggressiveness);
+                aggresiveness = (1f - 0.5f * aggresiveness);
                 float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
-                if (bravery <= -0.7f + (-0.3f * resilience) && resilience< 0f)
-                {
-                    return 0.18f * (bravery - 1f) * (resilience -0.5f);
-                }
-                return 0f;
-            },
-            RimpsycheFormulaManager.FormulaIdDict
-        );
-
-        public static RimpsycheFormula FlightThreshold = new( 
-            "FlightThreshold",
-            (tracker) =>
-            {
-                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
-                if (bravery <= -0.4f)
-                {
-                    return 0.6f - 0.4f * (bravery + 0.4f);
-                }
-                return 0f;
+                resilience = (1f - 0.2f * resilience);
+                float mult = (-0.5f * bravery * resilience) + 0.1f; //0.26~0.7
+                return mult * aggresiveness;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
