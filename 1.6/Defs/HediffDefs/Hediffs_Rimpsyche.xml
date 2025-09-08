@@ -6,6 +6,8 @@
     <description>adrenaline rush</description>
     <hediffClass>Maux36.RimPsyche.Disposition.Hediff_AdrenalineRush</hediffClass>
     <defaultLabelColor>(1, 0.2, 0.2)</defaultLabelColor>
+    <initialSeverity>0</initialSeverity>
+    <minSeverity>0</minSeverity>
     <maxSeverity>1</maxSeverity>
     <isBad>false</isBad>
     <comps>
