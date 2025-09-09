@@ -49,14 +49,17 @@ namespace Maux36.RimPsyche.Disposition
         public static void LoseShame(this CompPsyche compPsyche)
         {
             var shame = compPsyche.shame;
-            var shameAmount = compPsyche.Evaluate(FormulaDB.ModestShameLose);
-            if (shame - shameAmount >= 0f)
+            if (shame > 0f)
             {
-                compPsyche.shame -= shameAmount;
-            }
-            else
-            {
-                compPsyche.shame = 0f;
+                var shameAmount = compPsyche.Evaluate(FormulaDB.ModestShameLose);
+                if (shame - shameAmount >= 0f)
+                {
+                    compPsyche.shame -= shameAmount;
+                }
+                else
+                {
+                    compPsyche.shame = 0f;
+                }
             }
         }
     }

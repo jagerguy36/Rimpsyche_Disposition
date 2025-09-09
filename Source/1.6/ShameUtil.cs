@@ -14,6 +14,7 @@ namespace Maux36.RimPsyche.Disposition
         private const int maxDistSquared = (sightDistance + runDistanceMax) * (sightDistance + runDistanceMax);
         private const int sightDistSquared = sightDistance * sightDistance;
         private static HashSet<Pawn> tmpLovePartners = new HashSet<Pawn>{};
+        private static List<Pawn> tmpObservers = new List<Pawn>();
         private static HashSet<int> tmpInvIds = new HashSet<int> { };
 
         public static bool CanFeelShame(Pawn pawn)
@@ -40,28 +41,29 @@ namespace Maux36.RimPsyche.Disposition
         {
             IntVec3 position = pawn.Position;
             IntVec3 bestCell = position;
-            int bestScore = -100;
-            if (pawn.ownership.OwnedBed != null)
-            {
-                IntVec3 bedPosition = pawn.ownership.OwnedBed.Position;
-                if ((pawn.Position - bedPosition).LengthHorizontalSquared <= runDistanceMax * runDistanceMax)
-                {
-                    return bedPosition;
-                }
-            }
-
             FloatRange temperature = pawn.ComfortableTemperatureRange();
             List<Pawn> all_pawns = ScanObservers(pawn, maxDistSquared);
 
             // Find best candidate
+            int bestScore = -100;
+            if (pawn.ownership.OwnedBed != null)
+            {
+                IntVec3 bedPosition = pawn.ownership.OwnedBed.Position;
+                float distToBed = (pawn.Position - bedPosition).LengthHorizontalSquared;
+                if (distToBed <= runDistanceMax * runDistanceMax
+                    && bedPosition.InAllowedArea(pawn)
+                    && !MightBeSeen(all_pawns, bedPosition, pawn, sightDistSquared))
+                    {
+                        return bedPosition;
+                    }
+            }
             for (int i = 0; i < 20; i++)
             {
                 IntVec3 candidate = position + IntVec3.FromVector3(
                     Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360)) * Rand.RangeInclusive(1, runDistanceMax));
 
-                if (!candidate.InBounds(pawn.Map)) continue;
                 if (!candidate.Standable(pawn.Map)) continue;
-                if (!candidate.InAllowedArea(pawn)) continue;
+                if (!pawn.Map.pawnDestinationReservationManager.CanReserve(c, pawn)) continue;
                 if (candidate.GetDangerFor(pawn, pawn.Map) == Danger.Deadly) continue;
                 if (candidate.ContainsTrap(pawn.Map)) continue;
                 if (candidate.ContainsStaticFire(pawn.Map)) continue;
@@ -111,11 +113,44 @@ namespace Maux36.RimPsyche.Disposition
             var loverHash = ExistingLovePartners(pawn);
             List<Pawn> all_pawns = pawn.Map.mapPawns.AllPawnsSpawned.Where(x
                 => x.RaceProps.Humanlike
-                && x.Position.DistanceToSquared(pawn.Position) < distSquared //sight+rundist
+                && x.Position.DistanceToSquared(pawn.Position) < distSquared
+                && otherPawn.Awake()
                 && x != pawn
                 && !loverHash.Contains(x)
                 ).ToList();
             return all_pawns;
+        }
+        public static List<Pawn> ScanObservers_R(Pawn pawn, int distSquared = sightDistSquared)
+        {
+            tmpObservers.Clear();
+            tmpInvIds.Clear();
+            tmpInvIds.Add(pawn.thingIDNumber);
+            var loverHash = ExistingLovePartners(pawn);
+            Region region = pawn.GetRegion();
+            if (region == null)
+            {
+                return false;
+            }
+            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region to) => (to.extentsClose.ClosestDistSquaredTo(pawn.Position) <= distSquared), delegate (Region reg)
+            {
+                List<Thing> list = reg.ListerThings.ThingsInGroup(ThingRequestGroup.Pawn);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (!tmpInvIds.Contains(list[i].thingIDNumber)
+                        && list[i] is Pawn otherPawn
+                        && (otherPawn.RaceProps.Humanlike)
+                        && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared
+                        && otherPawn.Awake()
+                        && !loverHash.Contains(otherPawn)
+                    )
+                    {
+                        tmpObservers.Add(otherPawn);
+                    }
+                    tmpInvIds.Add(list[i].thingIDNumber);
+                }
+                return false;
+            }, 99999);
+            return tmpObservers;
         }
 
         public static bool MightBeSeen(List<Pawn> otherPawns, IntVec3 cell, Pawn pawn, int distSquared = sightDistSquared)
