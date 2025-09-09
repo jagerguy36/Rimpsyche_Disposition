@@ -38,18 +38,20 @@ namespace Maux36.RimPsyche.Disposition
                                     {
                                         ___pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee, null, forced: false, forceWake: false, causedByMood: false, null, transitionSilently: false, causedByDamage: true);
                                     }
-                                    return false;
+                                    return false; //Mentalstate started. Should block adrenaline gain
                                 }
                             }
                         }
                         //Fight
-                        float gain = compPsyche.Evaluate(FormulaDB.AdrenalineGain);
+                        float adrenalineMult = compPsyche.Evaluate(FormulaDB.AdrenalineGain);
+                        float dmgPercent = dinfo.Amount/___pawn.health.LethalDamageThreshold;
+                        float gain = adrenalineMult * dmgPercent;
                         if (gain > 0f)
                         {
-                            Log.Message($"gained: {gain}");
+                            Log.Message($"dmgPercent: {dmgPercent}, mult: {adrenalineMult} | gained: {gain}");
                             HealthUtility.AdjustSeverity(___pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
-                            return false;
                         }
+                        return false;
                     }
                     else
                     {

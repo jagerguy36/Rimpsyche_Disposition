@@ -25,6 +25,7 @@ namespace Maux36.RimPsyche.Disposition
                         {
                             if (!ThoughtUtility.ThoughtNullified(___pawn, def)) //Found at least one active shame thought
                             {
+                                //TODO: consider ___pawn sight. blind pawns should not be aware unless close enough to interact
                                 if (ShameUtil.BeingSeen(___pawn)) //Being watched: gain shame
                                 {
                                     bool overwhelm = compPsyche.GainShame();
