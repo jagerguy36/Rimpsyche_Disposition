@@ -63,7 +63,7 @@ namespace Maux36.RimPsyche.Disposition
                     Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360)) * Rand.RangeInclusive(1, runDistanceMax));
 
                 if (!candidate.Standable(pawn.Map)) continue;
-                if (!pawn.Map.pawnDestinationReservationManager.CanReserve(c, pawn)) continue;
+                if (!pawn.Map.pawnDestinationReservationManager.CanReserve(candidate, pawn)) continue;
                 if (candidate.GetDangerFor(pawn, pawn.Map) == Danger.Deadly) continue;
                 if (candidate.ContainsTrap(pawn.Map)) continue;
                 if (candidate.ContainsStaticFire(pawn.Map)) continue;
@@ -114,7 +114,7 @@ namespace Maux36.RimPsyche.Disposition
             List<Pawn> all_pawns = pawn.Map.mapPawns.AllPawnsSpawned.Where(x
                 => x.RaceProps.Humanlike
                 && x.Position.DistanceToSquared(pawn.Position) < distSquared
-                && otherPawn.Awake()
+                && x.Awake()
                 && x != pawn
                 && !loverHash.Contains(x)
                 ).ToList();
@@ -129,7 +129,7 @@ namespace Maux36.RimPsyche.Disposition
             Region region = pawn.GetRegion();
             if (region == null)
             {
-                return false;
+                return tmpObservers;
             }
             RegionTraverser.BreadthFirstTraverse(region, (Region from, Region to) => (to.extentsClose.ClosestDistSquaredTo(pawn.Position) <= distSquared), delegate (Region reg)
             {

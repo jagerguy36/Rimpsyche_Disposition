@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "SlaveSuppressionFallRate"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "SlaveSuppressionFallRate"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheResilienceSuppressionFallStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "SlaveSuppressionFallRate"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheResilienceSuppressionFallStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+</Patch>

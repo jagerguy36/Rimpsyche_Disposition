@@ -87,7 +87,7 @@ namespace Maux36.RimPsyche.Disposition
                 float stability = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Stability, 1.2f);
                 if (bravery > -0.4f && aggresiveness > 0f && bravery+aggresiveness > 0f)
                 {
-                    return 0.02f * aggresiveness * tension * stability;
+                    return 5f * aggresiveness * tension * stability;
                 }
                 return 0f;
             },
