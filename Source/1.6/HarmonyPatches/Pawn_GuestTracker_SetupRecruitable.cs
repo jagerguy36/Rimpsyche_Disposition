@@ -30,6 +30,7 @@ namespace Maux36.RimPsyche.Disposition
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
+            FieldInfo targetField = AccessTools.Field(typeof(PawnKindDef), "initialResistanceRange");
             MethodInfo originalMethod = AccessTools.Method(typeof(FloatRange), "get_RandomInRange");
             MethodInfo customMethod = AccessTools.Method(typeof(RimPsycheGuestTracker), "PsycheResistanceRange");
             bool found = false;
@@ -37,7 +38,11 @@ namespace Maux36.RimPsyche.Disposition
             {
                 if (codes[i].opcode == OpCodes.Call && codes[i].operand as MethodInfo == originalMethod && !found)
                 {
-                    if (codes[i-1].opcode == OpCodes.Ldloca_S && codes[i-2].opcode == OpCodes.Stloc_S && codes[i-3].opcode == OpCodes.Call && codes[i-4].opcode == OpCodes.Ldflda && codes[i-5].opcode == OpCodes.Ldfld)
+                    if (codes[i-1].opcode == OpCodes.Ldloca_S
+                        && codes[i-2].opcode == OpCodes.Stloc_S
+                        && codes[i-3].opcode == OpCodes.Call
+                        && codes[i-4].operand as FieldInfo == targetField
+                        && codes[i-5].opcode == OpCodes.Ldfld)
                     {
                         found = true;
                         codes[i].operand = customMethod;

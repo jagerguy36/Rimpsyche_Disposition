@@ -20,4 +20,45 @@
         </value>
     </nomatch>
   </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "Terror"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "Terror"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheBraveryTerrorStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "Terror"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheBraveryTerrorStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "SuppressionPower"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "SuppressionPower"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheAggressivenessSuppressionStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "SuppressionPower"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheAggressivenessSuppressionStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
 </Patch>

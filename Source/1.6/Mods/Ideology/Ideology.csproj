@@ -63,7 +63,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DispositionIdeology.cs" />
+    <Compile Include="HarmonyInit.cs" />
+    <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable.cs" />
+    <Compile Include="HarmonyPatches\SlaveRebellionUtility_IncrementSuppression.cs" />
+    <Compile Include="StatParts\PsycheBraveryTerrorStatPart.cs" />
+    <Compile Include="StatParts\PsycheResilienceSuppressionFallStatPart - Copy.cs" />
     <Compile Include="StatParts\PsycheResilienceSuppressionFallStatPart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
