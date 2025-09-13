@@ -1,22 +1,28 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using System.Collections.Generic;
+using System.Reflection;
 using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    [HarmonyPatch(typeof(Thought), "MoodOffset")]
+    [HarmonyPatch]
     public static class Thought_MoodOffset
     {
+        private static readonly bool useIndividualThoughtsSetting = RimpsycheDispositionSettings.useIndividualThoughts;
+        static IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return AccessTools.Method(typeof(Thought), nameof(Thought.MoodOffset));
+            yield return AccessTools.Method(typeof(Thought_Situational_Precept_SlavesInColony), nameof(Thought_Situational_Precept_SlavesInColony.MoodOffset));
+        }
+
         static void Postfix(ref float __result, Pawn ___pawn, Thought __instance)
         {
             if (___pawn?.compPsyche() is not { } compPsyche || __result == 0f)
                 return;
             if (compPsyche.Enabled != true)
                 return;
-            if (__instance.sourcePrecept != null)
-            {
-                __result *= compPsyche.Evaluate(FormulaDB.PreceptMoodOffsetMultiplier);
-            }
+            //General Mood multiplier
             if (__result < 0f)
             {
                 __result *= compPsyche.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
@@ -29,15 +35,38 @@ namespace Maux36.RimPsyche.Disposition
             {
                 __result *= compPsyche.Evaluate(FormulaDB.PositiveMoodOffsetMultiplier);
             }
-            if (ThoughtUtil.MoodMultiplierDB.TryGetValue(__instance.def.defName, out RimpsycheFormula multiplierMethod))
+            //Ideo thought multiplier
+            if (__instance.sourcePrecept != null)
             {
-                if (multiplierMethod != null)
+                __result *= compPsyche.Evaluate(FormulaDB.PreceptMoodOffsetMultiplier);
+            }
+
+            //Individual thought multiplier
+            if (useIndividualThoughtsSetting)
+            {
+                //Thought specific multiplier
+                if (ThoughtUtil.MoodMultiplierDB.TryGetValue(__instance.def.defName, out RimpsycheFormula multiplierMethod))
                 {
-                    __result *= compPsyche.Evaluate(multiplierMethod);
+                    if (multiplierMethod != null)
+                    {
+                        __result *= compPsyche.Evaluate(multiplierMethod);
+                    }
+                }
+
+                //Thought-stage-specific multiplier
+                else if (StageThoughtUtil.StageMoodMultiplierDB.TryGetValue(__instance.def.defName, out var stageFormulas))
+                {
+                    int stageIndex = __instance.CurStageIndex;
+                    if ((uint)stageIndex < (uint)stageFormulas.Length)
+                    {
+                        var formula = stageFormulas[stageIndex];
+                        if (formula != null)
+                        {
+                            __result *= compPsyche.Evaluate(formula);
+                        }
+                    }
                 }
             }
         }
-
-
     }
 }

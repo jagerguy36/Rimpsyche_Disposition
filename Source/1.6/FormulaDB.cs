@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Maux36.RimPsyche.Disposition
 {
@@ -34,9 +29,6 @@ namespace Maux36.RimPsyche.Disposition
         );
 
         //Fight or Flight mechanics
-        //Flight condition:
-        //bravery <= -0.4
-        //resilience < 0
         public static RimpsycheFormula FlightThreshold = new( // 0.92 ~ 0.568
             "FlightThreshold",
             (tracker) =>
@@ -72,11 +64,7 @@ namespace Maux36.RimPsyche.Disposition
             RimpsycheFormulaManager.FormulaIdDict
         );
 
-        //Adrenaline condition:
-        //bravery, tension, resilience
-        //bravery >= -0.3
-        //Adrenaline gain
-        //aggressiveness, stability
+        //Adrenaline mechanics
         public static RimpsycheFormula AdrenalineGain = new(
             "AdrenalineGain",
             (tracker) =>
@@ -93,6 +81,69 @@ namespace Maux36.RimPsyche.Disposition
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
+
+        //General mood
+        private static readonly float optimismC = RimpsycheDispositionSettings.moodOptimismC;
+        public static readonly float emotionalityC = RimpsycheDispositionSettings.moodEmotionalityC;
+        private static readonly float preceptC = RimpsycheDispositionSettings.moodPreceptC;
+        public static RimpsycheFormula PositiveMoodOffsetMultiplier = new(
+            "PositiveMoodOffsetMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float optimismMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * optimismC;
+                float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * emotionalityC;
+                return mult * optimismMult * emotionalityMult;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
+        public static RimpsycheFormula NegativeMoodOffsetMultiplier = new(
+            "NegativeMoodOffsetMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float optimismMult = 1f - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * optimismC;
+                float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * emotionalityC;
+                return mult * optimismMult * emotionalityMult;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
+        //Precept mood
+        public static RimpsycheFormula PreceptMoodOffsetMultiplier = new(
+            "PreceptMoodOffsetMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                float moralityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality) * preceptC;
+                return mult * moralityMult;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
+        public static RimpsycheFormula PreceptOpinionOffsetMultiplier = new(
+            "PreceptOpinionOffsetMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f;
+                //Openness concerns what could be right/wrong. Morality adhering to the right/wrong.
+                //High open + High moral pawns will be open to question their right and wrong, but will still feel strongly about adhering to what is considered right.
+                //So openness's effect here is very little, just enough to reflect their 'doubt' about the moral standard.
+                float moralityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality) * preceptC;
+                float opennessMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness) * 0.1f;
+                return mult * moralityMult * opennessMult;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
+
+
+        //=================
+
+        //Specific Mood
+
+        //=================
 
 
         public static RimpsycheFormula PrudishNakedMultiplier = new(
@@ -115,134 +166,268 @@ namespace Maux36.RimPsyche.Disposition
             RimpsycheFormulaManager.FormulaIdDict
         );
 
-        public static RimpsycheFormula PositiveMoodOffsetMultiplier = new(
-            "PositiveMoodOffsetMultiplier",
+        public static RimpsycheFormula Mood_Bond = new(
+            "Mood_Bond",
             (tracker) =>
             {
-                float mult = 1f;
-                float optimismMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * 0.45f;
-                float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * 0.4f;
-                return mult * optimismMult * emotionalityMult;
+                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
+                return ThoughtUtil.MoodMultCurve(loyalty);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
 
-        public static RimpsycheFormula NegativeMoodOffsetMultiplier = new(
-            "NegativeMoodOffsetMultiplier",
+
+        //Died
+        public static RimpsycheFormula Mood_Died = new(
+            "Mood_Died",
             (tracker) =>
             {
-                float mult = 1f;
-                float optimismMult = 1f - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * 0.45f;
-                float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * 0.4f;
-                return mult * optimismMult * emotionalityMult;
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                return ThoughtUtil.MoodMultCurve(compassion);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Died_Innocent = new(
+            "Mood_Died_Innocent",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float morality = Mathf.Max(0f,tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality));
+                return ThoughtUtil.MoodMultCurve(compassion + morality);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Died_Bond = new(
+            "Mood_Died_Bond",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
+                return ThoughtUtil.MoodMultCurve(compassion + Mathf.Max(0f, loyalty));
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Died_Loved = new(
+            "Mood_Died_Loved",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
+                float passion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion);
+                float loverScore = Mathf.Max(0f, loyalty) * (passion + 3f) * 0.5f;
+                return ThoughtUtil.MoodMultCurve(compassion + loverScore);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Died_Kin = new(
+            "Mood_Died_Kin",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
+                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
+                float kinScore = Mathf.Max(0f, loyalty) * (-openness + 2f) * 0.5f;
+                return ThoughtUtil.MoodMultCurve(compassion + kinScore);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Died_Social = new(
+            "Mood_Died_Social",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                return ThoughtUtil.MoodMultCurve(compassion + Mathf.Max(0f, sociability));
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Died_Glad_Social = new(
+            "Mood_Died_Glad_Social",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                return ThoughtUtil.MoodMultCurve(-compassion + Mathf.Max(0f, sociability));
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
 
-        public static RimpsycheFormula PreceptMoodOffsetMultiplier = new(
-            "PreceptMoodOffsetMultiplier",
+        //Lost
+        public static RimpsycheFormula Mood_Lost = new(
+            "Mood_Lost",
             (tracker) =>
             {
-                float mult = 1f;
-                float moralityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality) * 0.55f;
-                return mult * moralityMult;
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                float lostScore = compassion * (2f - optimism) * 0.5f;
+                return ThoughtUtil.MoodMultCurve(lostScore);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Lost_Bond = new(
+            "Mood_Lost_Bond",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
+                float lostScore = compassion * (2f - optimism) * 0.5f;
+                return ThoughtUtil.MoodMultCurve(lostScore + Mathf.Max(0f, loyalty));
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Lost_Loved = new(
+            "Mood_Lost_Loved",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
+                float passion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion);
+                float lostScore = compassion * (2f - optimism) * 0.5f;
+                float loverScore = Mathf.Max(0f, loyalty) * (passion + 3f) * 0.5f;
+                return ThoughtUtil.MoodMultCurve(lostScore + loverScore);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Lost_Kin = new(
+            "Mood_Lost_Kin",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
+                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
+                float lostScore = compassion * (2f - optimism) * 0.5f;
+                float kinScore = Mathf.Max(0f, loyalty) * (-openness + 2f) * 0.5f;
+                return ThoughtUtil.MoodMultCurve(lostScore + kinScore);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Lost_Social = new(
+            "Mood_Lost_Social",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                float lostScore = compassion * (2f - optimism) * 0.5f;
+                return ThoughtUtil.MoodMultCurve(lostScore + Mathf.Max(0f, sociability));
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Lost_Glad_Social = new(
+            "Mood_Lost_Glad_Social",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                float lostScore = compassion * (2f - optimism) * 0.5f;
+                return ThoughtUtil.MoodMultCurve(-lostScore + Mathf.Max(0f, sociability));
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Lost_Trust = new(
+            "Mood_Lost_Trust",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                float trust = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Trust);
+                float lostScore = compassion * (2f - optimism) * 0.5f;
+                return ThoughtUtil.MoodMultCurve(lostScore + Mathf.Min(0f, trust));
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
 
-        public static RimpsycheFormula PreceptOpinionOffsetMultiplier = new(
-            "PreceptOpinionOffsetMultiplier",
+        //Expect
+        public static RimpsycheFormula Mood_Expect = new(
+            "Mood_Expect",
             (tracker) =>
             {
-                float mult = 1f;
-                //Openness concerns what could be right/wrong. Morality adhering to the right/wrong.
-                //High open + High moral pawns will be open to question their right and wrong, but will still feel strongly about adhering to what is considered right.
-                //So openness's effect here is very little, just enough to reflect their 'doubt' about the moral standard.
-                float moralityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality) * 0.45f;
-                float opennessMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness) * 0.1f;
-                return mult * moralityMult * opennessMult;
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                return ThoughtUtil.MoodMultCurve(expectation);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-
-        //Mood
-
-        public static RimpsycheFormula CompassionMoodMultiplier = new(
-            "CompassionMoodMultiplier",
+        public static RimpsycheFormula Mood_Expect_Human = new(
+            "Mood_Expect_Human",
             (tracker) =>
             {
-                float mult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion) * 0.5f;
-                return mult;//0.5 ~ 1.5
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                return ThoughtUtil.MoodMultCurve(expectation + Mathf.Max(0f, compassion));
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-
-        public static RimpsycheFormula LoyaltyCompassionMoodMultiplier = new(
-            "LoyaltyCompassionMoodMultiplier",
+        public static RimpsycheFormula Mood_Expect_Glad_Human = new(
+            "Mood_Expect_Glad_Human",
             (tracker) =>
             {
-                float mult = (1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion) * 0.5f) + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty) * 0.5f;
-                return mult;//0.0 ~ 2.0
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                return ThoughtUtil.MoodMultCurve(- Mathf.Max(0f, compassion));
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-
-        public static RimpsycheFormula SociabilityCompassionMoodMultiplier = new(
-            "SociabilityCompassionMoodMultiplier",
+        public static RimpsycheFormula Mood_Expect_Organize = new(
+            "Mood_Expect_Organize",
             (tracker) =>
             {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion) * 0.5f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability) * 0.5f;
-                return mult;//0.0 ~ 2.0
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float organization = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Organization);
+                return ThoughtUtil.MoodMultCurve(expectation  + organization);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-
-        public static RimpsycheFormula CompassionPositiveMoodMultiplier = new(
-            "CompassionPositiveMoodMultiplier",
+        public static RimpsycheFormula Mood_Expect_Need = new(
+            "Mood_Expect_Need",
             (tracker) =>
             {
-                float mult = 1 - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion) * 0.5f;
-                return mult;//0.5 ~ 1.5
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float tension = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tension);
+                return ThoughtUtil.MoodMultCurve(expectation + tension);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-
-        public static RimpsycheFormula LoyaltyMoodMultiplier = new(
-            "LoyaltyMoodMultiplier",
+        public static RimpsycheFormula Mood_Expect_Need_Fear = new(
+            "Mood_Expect_Need_Fear",
             (tracker) =>
             {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty) * 0.5f;
-                return mult;//0.5 ~ 1.5
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float tension = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tension);
+                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
+                return ThoughtUtil.MoodMultCurve(expectation + tension - Mathf.Min(0f, bravery));
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-
-        public static RimpsycheFormula ExpectationMoodMultiplier = new(
-            "ExpectationMoodMultiplier",
+        public static RimpsycheFormula Mood_Expect_Joy = new(
+            "Mood_Expect_Joy",
             (tracker) =>
             {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation) * 0.5f;
-                return mult;//0.5 ~ 1.5
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float playfulness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Playfulness);
+                return ThoughtUtil.MoodMultCurve(expectation + playfulness);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-
-        public static RimpsycheFormula SociabilityMoodMultiplier = new(
-            "SociabilityMoodMultiplier",
+        public static RimpsycheFormula Mood_Expect_Art = new(
+            "Mood_Expect_Art",
             (tracker) =>
             {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability) * 0.5f;
-                return mult;//0.5 ~ 1.5
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float imagination = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination);
+                return ThoughtUtil.MoodMultCurve(expectation + imagination);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-
-        public static RimpsycheFormula ImaginationMoodMultiplier = new(
-            "ImaginationMoodMultiplier",
+        public static RimpsycheFormula Mood_Drug = new(
+            "Mood_Drug",
             (tracker) =>
             {
-                float mult = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination) * 0.5f;
-                return mult;//0.5 ~ 1.5
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float discipline = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Discipline);
+                return ThoughtUtil.MoodMultCurve(expectation - Mathf.Max(0f, discipline));
             },
             RimpsycheFormulaManager.FormulaIdDict
         );

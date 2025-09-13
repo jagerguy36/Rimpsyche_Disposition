@@ -6,6 +6,26 @@ namespace Maux36.RimPsyche.Disposition
     [StaticConstructorOnStartup]
     public class ThoughtUtil
     {
+
+        private static readonly float MoodCurveC = RimpsycheDispositionSettings.individualThoughtC;
+        public static float MoodMultCurve(float mood)
+        {
+            if (mood >= 0)
+            {
+                return 1f + (MoodCurveC - (MoodCurveC / ((2f * mood) + 1f)));
+            }
+            else
+            {
+                return 1f + ((MoodCurveC / (1f - (2f * mood))) - MoodCurveC);
+            }
+        }
+        public static Dictionary<string, RimpsycheFormula> MoodMultiplierDB = new()
+        {
+            //Special Thoughts
+            { "Naked", FormulaDB.PrudishNakedMultiplier},
+            { "DoingPassionateWork", FormulaDB.PassionWorkMultiplier},
+        };
+
         static ThoughtUtil()
         {
             Initialize();
@@ -15,189 +35,174 @@ namespace Maux36.RimPsyche.Disposition
         public static void Initialize()
         {
             Log.Message("[Rimpsyche - Disposition] ThoughtUtil initialized.");
-            //Compassion (Dead or lost)
-            foreach (var defName in compassionMoodMultiplierList)
-            {
-                MoodMultiplierDB[defName] = FormulaDB.CompassionMoodMultiplier;
-            }
-            //Loyalty + Compassion (Bonded dead or lost)
-            foreach (var defName in LoyaltyCompassionMoodMultiplierList)
-            {
-                MoodMultiplierDB[defName] = FormulaDB.LoyaltyCompassionMoodMultiplier;
-            }
-            //Sociability + Compassion (Good opinion dead or lost)
-            foreach (var defName in SociabilityCompassionMoodMultiplierList)
-            {
-                MoodMultiplierDB[defName] = FormulaDB.SociabilityCompassionMoodMultiplier;
-            }
-            //Compassion Positive (schadenfeude)
-            foreach (var defName in CompassionPositiveMoodMultiplierList)
-            {
-                MoodMultiplierDB[defName] = FormulaDB.CompassionPositiveMoodMultiplier;
-            }
-            //Loyalty (Bonded released)
-            foreach (var defName in LoyaltyMoodMultiplierList)
-            {
-                MoodMultiplierDB[defName] = FormulaDB.LoyaltyMoodMultiplier;
-            }
-            //Expectation (Eating, Sleeping)
-            foreach (var defName in ExpectationMoodMultiplierList)
-            {
-                MoodMultiplierDB[defName] = FormulaDB.ExpectationMoodMultiplier;
-            }
-            //Sociability (Gathering)
-            foreach (var defName in SociabilityMoodMultiplierList)
-            {
-                MoodMultiplierDB[defName] = FormulaDB.SociabilityMoodMultiplier;
-            }
-            //Imagination (Concert)
-            foreach (var defName in ImaginationMoodMultiplierList)
-            {
-                MoodMultiplierDB[defName] = FormulaDB.ImaginationMoodMultiplier;
-            }
+            AddBaseThoughts();
         }
 
         public static void ModCompat()
         {
-            if (ModsConfig.IdeologyActive)
-            {
-                //Log.Message("[Rimpsyche - Disposition] Ideology thoughts added.");
-                //SelfInterest
-                //Charity_Essential Charity_Important Charity_Worthwhile
-                
-                //Compassion
-                //Precepts_AnimalSlaughter
-
-                //Openmindedness
-                //Precepts_Apostasy.
-            }
+            Log.Message("[Rimpsyche - Disposition] Compatibility Thoughts added.");
         }
 
-        public static Dictionary<string, RimpsycheFormula> MoodMultiplierDB = new()
+        private static void AddBaseThoughts()
         {
-            //Special Thoughts
-            { "Naked", FormulaDB.PrudishNakedMultiplier},
-            { "DoingPassionateWork", FormulaDB.PassionWorkMultiplier},
-        };
+            //Died
+            MoodMultiplierDB["KnowColonistDied"] = FormulaDB.Mood_Died;
+            MoodMultiplierDB["KnowPrisonerDiedInnocent"] = FormulaDB.Mood_Died_Innocent;
+            MoodMultiplierDB["BondedAnimalDied"] = FormulaDB.Mood_Died_Bond;
+            MoodMultiplierDB["PawnWithGoodOpinionDied"] = FormulaDB.Mood_Died_Social;
+            MoodMultiplierDB["PawnWithBadOpinionDied"] = FormulaDB.Mood_Died_Glad_Social;
+            foreach (var defName in moodList_Mood_Died_Kin)
+            {
+                MoodMultiplierDB[defName] = FormulaDB.Mood_Died_Kin;
+            }
+            foreach (var defName in moodList_Mood_Died_Loved)
+            {
+                MoodMultiplierDB[defName] = FormulaDB.Mood_Died_Loved;
+            }
 
-        private static readonly List<string> compassionMoodMultiplierList = new(
-            [
-                // Thoughts_Memory_Death
-                "KnowGuestExecuted",
-                "KnowColonistExecuted",
-                "KnowPrisonerDiedInnocent",
-                "KnowColonistDied",
-                "MySonDied",
-                "MyDaughterDied",
-                "MyHusbandDied",
-                "MyWifeDied",
-                "MyFianceDied",
-                "MyFianceeDied",
-                "MyLoverDied",
-                "MyBrotherDied",
-                "MySisterDied",
-                "MyGrandchildDied",
-                "MyFatherDied",
-                "MyMotherDied",
-                "MyNieceDied",
-                "MyNephewDied",
-                "MyHalfSiblingDied",
-                "MyAuntDied",
-                "MyUncleDied",
-                "MyGrandparentDied",
-                "MyCousinDied",
-                "MyKinDied",            
-                // Thoughts_Memory_Lost
-                "ColonistLost",
-                "MySonLost",
-                "MyDaughterLost",
-                "MyHusbandLost",
-                "MyWifeLost",
-                "MyFianceLost",
-                "MyFianceeLost",
-                "MyLoverLost",
-                "MyBrotherLost",
-                "MySisterLost",
-                "MyGrandchildLost",
-                "MyFatherLost",
-                "MyMotherLost",
-                "MyNieceLost",
-                "MyNephewLost",
-                "MyHalfSiblingLost",
-                "MyAuntLost",
-                "MyUncleLost",
-                "MyGrandparentLost",
-                "MyCousinLost",
-                "MyKinLost",
-                // Thoughts_Memory_Misc
-                "KnowGuestOrganHarvested",
-                "KnowColonistOrganHarvested"
-            ]
+            //Lost
+            MoodMultiplierDB["ColonistLost"] = FormulaDB.Mood_Lost;
+            MoodMultiplierDB["ColonistBanished"] = FormulaDB.Mood_Lost;
+            MoodMultiplierDB["ColonistBanishedToDie"] = FormulaDB.Mood_Lost;
+            MoodMultiplierDB["BondedAnimalReleased"] = FormulaDB.Mood_Bond;
+            MoodMultiplierDB["BondedAnimalLost"] = FormulaDB.Mood_Lost_Bond;
+            MoodMultiplierDB["BondedAnimalBanished"] = FormulaDB.Mood_Lost_Bond;
+            MoodMultiplierDB["PawnWithGoodOpinionLost"] = FormulaDB.Mood_Lost_Social;
+            MoodMultiplierDB["PawnWithBadOpinionLost"] = FormulaDB.Mood_Lost_Glad_Social;
+            MoodMultiplierDB["DeniedJoining"] = FormulaDB.Mood_Lost_Trust;
+            MoodMultiplierDB["PrisonerBanishedToDie"] = FormulaDB.Mood_Lost_Trust;
+            MoodMultiplierDB["FailedToRescueRelative"] = FormulaDB.Mood_Lost_Kin;
+            foreach (var defName in moodList_Mood_Lost_Kin)
+            {
+                MoodMultiplierDB[defName] = FormulaDB.Mood_Lost_Kin;
+            }
+            foreach (var defName in moodList_Mood_Lost_Loved)
+            {
+                MoodMultiplierDB[defName] = FormulaDB.Mood_Lost_Loved;
+            }
+
+            //Expect
+            MoodMultiplierDB["NeedJoy"] = FormulaDB.Mood_Expect_Joy;
+            MoodMultiplierDB["NeedBeauty"] = FormulaDB.Mood_Expect_Art;
+            MoodMultiplierDB["AteWithoutTable"] = FormulaDB.Mood_Expect_Organize;
+            MoodMultiplierDB["EnvironmentDark"] = FormulaDB.Mood_Expect_Need_Fear;
+            MoodMultiplierDB["DeadMansApparel"] = FormulaDB.Mood_Expect_Need_Fear;
+            MoodMultiplierDB["HumanLeatherApparelSad"] = FormulaDB.Mood_Expect_Human;
+            MoodMultiplierDB["HumanLeatherApparelHappy"] = FormulaDB.Mood_Expect_Glad_Human;
+            foreach (var defName in moodList_Mood_Expect)
+            {
+                MoodMultiplierDB[defName] = FormulaDB.Mood_Expect;
+            }
+            foreach (var defName in moodList_Mood_Expect_Human)
+            {
+                MoodMultiplierDB[defName] = FormulaDB.Mood_Expect_Human;
+            }
+            foreach (var defName in moodList_Mood_Expect_Need)
+            {
+                MoodMultiplierDB[defName] = FormulaDB.Mood_Expect_Need;
+            }
+            foreach (var defName in moodList_Mood_Drug)
+            {
+                MoodMultiplierDB[defName] = FormulaDB.Mood_Drug;
+            }
+
+            //Misc Situation
+
+        }
+        private static readonly List<string> moodList_Mood_Died_Kin = new(
+            ["MySonDied",
+            "MyDaughterDied",
+            "MyBrotherDied",
+            "MySisterDied",
+            "MyGrandchildDied",
+            "MyFatherDied",
+            "MyMotherDied",
+            "MyNieceDied",
+            "MyNephewDied",
+            "MyHalfSiblingDied",
+            "MyAuntDied",
+            "MyUncleDied",
+            "MyGrandparentDied",
+            "MyCousinDied",
+            "MyKinDied"]
         );
-        private static readonly List<string> LoyaltyCompassionMoodMultiplierList = new(
-            [
-                // Thoughts_Memory_Death
-                "BondedAnimalDied",
-                "BondedAnimalLost"
-            ]
+        private static readonly List<string> moodList_Mood_Died_Loved = new(
+            ["MyHusbandDied",
+            "MyWifeDied",
+            "MyFianceDied",
+            "MyFianceeDied",
+            "MyLoverDied"]
         );
-        private static readonly List<string> SociabilityCompassionMoodMultiplierList = new(
-            [
-                // Thoughts_Memory_Death
-                "PawnWithGoodOpinionDied",
-                // Thoughts_Memory_Lost
-                "PawnWithGoodOpinionLost"
-            ]
+        private static readonly List<string> moodList_Mood_Lost_Kin = new(
+            ["MySonLost",
+            "MyDaughterLost",
+            "MyBrotherLost",
+            "MySisterLost",
+            "MyGrandchildLost",
+            "MyFatherLost",
+            "MyMotherLost",
+            "MyNieceLost",
+            "MyNephewLost",
+            "MyHalfSiblingLost",
+            "MyAuntLost",
+            "MyUncleLost",
+            "MyGrandparentLost",
+            "MyCousinLost",
+            "MyKinLost"]
         );
-        private static readonly List<string> CompassionPositiveMoodMultiplierList = new(
-            [
-                // Thoughts_Memory_Death
-                "PawnWithBadOpinionDied",
-                // Thoughts_Memory_Lost
-                "PawnWithBadOpinionLost",
-                // Thoughts_Memory_Misc
-                "HarvestedOrgan_Bloodlust"
-            ]
+        private static readonly List<string> moodList_Mood_Lost_Loved = new(
+            ["MyHusbandLost",
+            "MyWifeLost",
+            "MyFianceLost",
+            "MyFianceeLost",
+            "MyLoverLost"]
         );
-        private static readonly List<string> LoyaltyMoodMultiplierList = new(
-            [
-                // Thoughts_Memory_Lost
-                "BondedAnimalReleased"
-            ]
+        private static readonly List<string> moodList_Mood_Expect = new(
+            ["AteLavishMeal",
+            "AteFineMeal",
+            "AteRawFood",
+            "AteKibble",
+            "AteCorpse",
+            "AteInsectMeatDirect",
+            "AteInsectMeatAsIngredient",
+            "AteRottenFood",
+            "AteInImpressiveDiningRoom",
+            "JoyActivityInImpressiveRecRoom",
+            "SleptInBedroom",
+            "SleptInBarracks",
+            "PrisonCell",
+            "PrisonBarracks",
+            "HospitalPatientRoomStats",
+            "NeedRoomSize"]
         );
-        private static readonly List<string> ExpectationMoodMultiplierList = new(
-            [
-                // Thoughts_Memory_Eating
-                "AteLavishMeal",
-                "AteFineMeal",
-                "AteRawFood",
-                "AteKibble",
-                "AteCorpse",
-                "AteHumanlikeMeatDirect",
-                "AteHumanlikeMeatAsIngredient",
-                "AteInsectMeatDirect",
-                "AteInsectMeatAsIngredient",
-                "AteRottenFood",
-                // Thoughts_Memory_Misc
-                "AteWithoutTable",
-                "SleptOutside",
-                "SleptOnGround",
-                "SleptInCold",
-                "SleptInHeat"
-            ]
+        private static readonly List<string> moodList_Mood_Expect_Human = new(
+            ["AteHumanlikeMeatDirect",
+            "AteHumanlikeMeatDirectCannibal",
+            "AteHumanlikeMeatAsIngredient",
+            "AteHumanlikeMeatAsIngredientCannibal"]
         );
-        private static readonly List<string> SociabilityMoodMultiplierList = new(
-            [
-                // Thoughts_Memory_Gatherings
-                "AttendedWedding",
-                "AttendedParty"
-            ]
+        private static readonly List<string> moodList_Mood_Expect_Need = new(
+            ["SleepDisturbed",
+            "SleptOutside",
+            "SleptOnGround",
+            "SleptInCold",
+            "SleptInHeat",
+            "MyOrganHarvested",
+            "SoakingWet",
+            "ApparelDamaged",
+            "EnvironmentCold",
+            "EnvironmentHot",
+            "NeedFood",
+            "NeedRest",
+            "NeedComfort",
+            "NeedOutdoors",
+            "NeedIndoors"]
         );
-        private static readonly List<string> ImaginationMoodMultiplierList = new(
-            [
-                // Thoughts_Memory_Gatherings
-                "AttendedConcert"
-            ]
+        private static readonly List<string> moodList_Mood_Drug = new(
+            ["DrugDesireFascination",
+            "DrugDesireFascinationSatisfied",
+            "DrugDesireInterest",
+            "DrugDesireInterestSatisfied",]
         );
     }
 }
