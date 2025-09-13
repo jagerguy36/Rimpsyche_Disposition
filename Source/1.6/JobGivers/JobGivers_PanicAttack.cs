@@ -3,43 +3,28 @@ using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
-namespace Embergarden
+namespace Maux36.RimPsyche.Disposition
 {
     public class JobGivers_PanicAttack : ThinkNode_JobGiver//From Flee all pawns
     {
-        private static readonly List<Thing> tmpPawns = new List<Thing>();
-
         protected override Job TryGiveJob(Pawn pawn)
         {
+            Log.Message("trying to give panic Attack job");
             Region region = pawn.GetRegion();
             if (region == null)
             {
                 return null;
             }
-            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region reg) => reg.door == null || reg.door.Open, delegate (Region reg)
+            Log.Message("trying to find location");
+            IntVec3 fleeDest = FightorFlightUtil.FindHideInFearLocation(pawn);
+            Log.Message($"New location: {fleeDest}");
+            if (fleeDest.IsValid)
             {
-                List<Thing> list = reg.ListerThings.ThingsInGroup(ThingRequestGroup.AttackTarget);
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (list[i] != pawn && list[i] is IAttackTarget attackTarget && !attackTarget.ThreatDisabled(null) && list[i] is Pawn pawn2 && pawn2.HostileTo(pawn) && GenSight.LineOfSightToThing(pawn.Position, pawn2, pawn.Map, skipFirstCell: true))
-                    {
-                        tmpPawns.Add(pawn2);
-                    }
-                }
-                return false;
-            }, 9);
-            if (tmpPawns.Any())
-            {
-                IntVec3 fleeDest = CellFinderLoose.GetFleeDest(pawn, tmpPawns);
-                tmpPawns.Clear();
-                if (fleeDest.IsValid && fleeDest != pawn.Position)
-                {
-                    Job job = JobMaker.MakeJob(JobDefOf.FleeAndCower, fleeDest);
-                    job.checkOverrideOnExpire = true;
-                    job.expiryInterval = 65;
-                    return job;
-                }
+                Log.Message($"making job with new valid destination: {fleeDest}");
+                Job job = JobMaker.MakeJob(DefOfDisposition.RimPsyche_PanicAttackFlee, fleeDest);
+                return job;
             }
+            Log.Message("end with null");
             return null;
         }
     }

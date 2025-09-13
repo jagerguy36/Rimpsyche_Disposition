@@ -59,7 +59,10 @@ namespace Maux36.RimPsyche.Disposition
             {
                 if (pawn.IsHashIntervalTick(75))
                 {
-                    FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, DefOfDisposition.RimpsycheMote_PanicAttack);
+                    if (RimpsycheDispositionSettings.showPanicMote)
+                    {
+                        FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, DefOfDisposition.RimpsycheMote_PanicAttack);
+                    }
                     //check if the target loc is the current loc first, eh?
                     if (FightorFlightUtil.DangerousToBeAt(pawn, pawn.Position))
                     {

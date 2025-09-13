@@ -24,6 +24,8 @@ namespace Maux36.RimPsyche.Disposition
         //Motes
         public static bool showExperimentMote = true;
         public static bool showResilientSpiritMote = true;
+        public static bool showAdrenalineMote = true;
+        public static bool showPanicMote = true;
 
         public override void ExposeData()
         {
@@ -47,6 +49,8 @@ namespace Maux36.RimPsyche.Disposition
 
             Scribe_Values.Look(ref showExperimentMote, "Rimpsyche_showExperimentMote", true, true);
             Scribe_Values.Look(ref showResilientSpiritMote, "Rimpsyche_showResilientSpiritMote", true, true);
+            Scribe_Values.Look(ref showAdrenalineMote, "Rimpsyche_showAdrenalineMote", true, true);
+            Scribe_Values.Look(ref showPanicMote, "Rimpsyche_showPanicMote", true, true);
         }
     }
 }

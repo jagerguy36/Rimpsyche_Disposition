@@ -58,11 +58,17 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.CheckboxLabeled("RimpsycheUseSenseOfProgress".Translate(), ref RimpsycheDispositionSettings.useSenseOfProgress, "RimpsycheUseSenseOfProgressTooltip".Translate());
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseResilientSpirit".Translate(), ref RimpsycheDispositionSettings.useResilientSpirit, "RimpsycheUseResilientSpiritTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheUseFightorFlight".Translate(), ref RimpsycheDispositionSettings.useFightorFlight, "RimpsycheUseFightorFlightTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheEnemyFightorFlight".Translate(), ref RimpsycheDispositionSettings.enemyFightorFlight, "RimpsycheEnemyFightorFlightTooltip".Translate());
             listing_Standard.Gap(24f);
 
             listing_Standard.Label("RimpsycheDispositionMessageSetting".Translate());
             listing_Standard.Gap(12f);
             listing_Standard.CheckboxLabeled("RimpsycheSendExperimentMessage".Translate(), ref RimpsycheDispositionSettings.sendExperimentMessage, "RimpsycheUseSendExperimentMessageTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheSendShameMessage".Translate(), ref RimpsycheDispositionSettings.sendShameMessage, "RimpsycheUseSendShameMessageTooltip".Translate());
             listing_Standard.Gap(24f);
 
             listing_Standard.Label("RimpsycheDispositionMoteSetting".Translate());
@@ -70,21 +76,36 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.CheckboxLabeled("RimpsycheShowExperimentMote".Translate(), ref RimpsycheDispositionSettings.showExperimentMote, "RimpsycheShowExperimentMoteTooltip".Translate());
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheShowResilientSpiritMote".Translate(), ref RimpsycheDispositionSettings.showResilientSpiritMote, "RimpsycheShowResilientSpiritMoteTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheShowAdrenalineMote".Translate(), ref RimpsycheDispositionSettings.showAdrenalineMote, "RimpsycheShowAdrenalineMoteTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheShowPanicMote".Translate(), ref RimpsycheDispositionSettings.showPanicMote, "RimpsycheShowPanicMoteTooltip".Translate());
             listing_Standard.Gap(24f);
 
             if (listing_Standard.ButtonText("RimpsycheDispositionDefaultSetting".Translate(), "RimpsycheDispositionDefaultSettingTooltip".Translate()))
             {
+                //General Moods
+                RimpsycheDispositionSettings.moodEmotionalityC = 0.3f;
+                RimpsycheDispositionSettings.moodOptimismC = 0.3f;
+                RimpsycheDispositionSettings.moodPreceptC = 0.3f;
+                RimpsycheDispositionSettings.individualThoughtC = 0.45f;
+
                 RimpsycheDispositionSettings.useExperimentation = true;
                 RimpsycheDispositionSettings.useSenseOfProgress = true;
                 RimpsycheDispositionSettings.useResilientSpirit = true;
+                RimpsycheDispositionSettings.useFightorFlight = true;
+                RimpsycheDispositionSettings.enemyFightorFlight = false;
 
                 //UI
                 RimpsycheDispositionSettings.sendExperimentMessage = true;
+                RimpsycheDispositionSettings.sendShameMessage = true;
 
                 //Motes
                 RimpsycheDispositionSettings.showExperimentMote = true;
                 RimpsycheDispositionSettings.showResilientSpiritMote = true;
-    }
+                RimpsycheDispositionSettings.showAdrenalineMote = true;
+                RimpsycheDispositionSettings.showPanicMote = true;
+            }
 
             listing_Standard.End();
             Widgets.EndScrollView();
