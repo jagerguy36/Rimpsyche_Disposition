@@ -9,7 +9,7 @@ namespace Maux36.RimPsyche.Disposition
 {
     public static class ShameUtil
     {
-        private const int sightDistance = 13; //Interaction HorDistance is 6, flee all pawn flee distance is 23
+        private const int sightDistance = 13; //Interaction HorDistance is 6, witnessed distance is 12, flee all pawn flee distance is 23
         private const int runDistanceMax = 50; //How far the pawn will move
         private const int maxDistSquared = (sightDistance + runDistanceMax) * (sightDistance + runDistanceMax);
         private const int sightDistSquared = sightDistance * sightDistance;
