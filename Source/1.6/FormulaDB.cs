@@ -166,6 +166,7 @@ namespace Maux36.RimPsyche.Disposition
             RimpsycheFormulaManager.FormulaIdDict
         );
 
+        //Bond
         public static RimpsycheFormula Mood_Bond = new(
             "Mood_Bond",
             (tracker) =>
@@ -431,5 +432,80 @@ namespace Maux36.RimPsyche.Disposition
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
+
+        //Prisoner
+        public static RimpsycheFormula Mood_Prisoner_Sold = new(
+            "Mood_Prisoner_Sold",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float selfInterest = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest);
+                return ThoughtUtil.MoodMultCurve(compassion - Mathf.Max(0f, selfInterest));
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Prisoner_Released = new(
+            "Mood_Prisoner_Released",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float trust = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Trust);
+                return ThoughtUtil.MoodMultCurve(compassion + Mathf.Min(0f, trust));
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
+        //Social
+        public static RimpsycheFormula Mood_Social = new(
+            "Mood_Social",
+            (tracker) =>
+            {
+                float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                return ThoughtUtil.MoodMultCurve(sociability);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Social_Play = new(
+            "Mood_Social_Play",
+            (tracker) =>
+            {
+                float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                float playfulness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Playfulness);
+                return ThoughtUtil.MoodMultCurve(sociability + playfulness);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Social_Art = new(
+            "Mood_Social_Art",
+            (tracker) =>
+            {
+                float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                float imagination = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination);
+                return ThoughtUtil.MoodMultCurve(sociability + imagination);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
+        //Ambition
+        public static RimpsycheFormula Mood_Ambition = new(
+            "Mood_Ambition",
+            (tracker) =>
+            {
+                float ambition = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
+                return ThoughtUtil.MoodMultCurve(ambition);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Mood_Ambition_New = new(
+            "Mood_Ambition_New",
+            (tracker) =>
+            {
+                float ambition = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
+                float experimentation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Experimentation);
+                return ThoughtUtil.MoodMultCurve(ambition + experimentation);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
     }
 }
