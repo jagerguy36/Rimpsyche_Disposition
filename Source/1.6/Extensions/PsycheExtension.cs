@@ -17,10 +17,6 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     compPsyche.progressTick = prospect;
                     compPsyche.progressLastCauseIndex = causeIndex;
-                    if (reason != null)
-                    {
-                        Log.Message($"reason: {reason}");
-                    }
                     compPsyche.progressLastCause = reason;
                 }
                 

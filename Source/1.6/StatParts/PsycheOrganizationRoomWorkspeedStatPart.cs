@@ -29,7 +29,7 @@ namespace Maux36.RimPsyche.Disposition
                     {
                         return null;
                     }
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_OrganizationRoomWorkspeed".Translate() + ": x" + roomRoleFactor.ToStringPercent()+"\n";
+                    return "RP_Stat_OrganizationRoomWorkspeed".Translate() + ": x" + roomRoleFactor.ToStringPercent()+"\n";
                 }
             }
             return null;

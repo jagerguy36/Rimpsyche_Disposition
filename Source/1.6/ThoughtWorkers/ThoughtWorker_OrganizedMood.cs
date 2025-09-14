@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace Maux36.RimPsyche.Disposition
@@ -34,7 +35,7 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float mult = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Organization) * 12f;
-                return mult;
+                return Mathf.Max(0f, mult);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );

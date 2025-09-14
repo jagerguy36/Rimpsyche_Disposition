@@ -26,7 +26,7 @@ namespace Maux36.RimPsyche.Disposition
                 return ThoughtState.Inactive;
             }
             int pTick = compPsyche.progressTick - Find.TickManager.TicksGame;
-            if (0 <= pTick)
+            if (0 < pTick)
             {
                 return ThoughtState.ActiveAtStage(compPsyche.progressLastCauseIndex);
             }

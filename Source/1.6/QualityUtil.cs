@@ -178,76 +178,57 @@ namespace Maux36.RimPsyche.Disposition
             }
             value = Mathf.Clamp(value, 0, 6);
             QualityCategory qualityCategory = (QualityCategory)value;
-
+            
 
             //Ambition Check
-            float expectation = ExpectedQMean(relevantSkillLevel);
-            int higherExpectation = (int)(expectation + compPsyche.Evaluate(QualityExpectationHighOffset));
-            //int lowerExpectatino = (int)(expectation + p.Evaluate(QualityExpectationLowOffset));
-            //Log.Message($"value: {value}| level {relevantSkillLevel} expectation w/ ambition {p.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition)}:  {lowerExpectatino}~[{expectation}]~{higherExpectation}");
-            if (value >= higherExpectation)
+            if (RimpsycheDispositionSettings.useSenseOfProgress)
             {
-                int qOffset = (value - higherExpectation) + 1;
-                compPsyche.ProgressMade(3f * qOffset, 2);
-                //Log.Message($"value higher than good expectation. Setting Progressday {3f * qOffset}. This should give {1.2f * (p.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f) * (3f * qOffset)} mood");
-            }
-            else if (value >= (int)(expectation + compPsyche.Evaluate(QualityExpectationLowOffset)))
-            {
-                compPsyche.ProgressMade(0f, 2);
-                //Log.Message($"value good enough. Setting Progressday {0}");
+                float expectation = ExpectedQMean(relevantSkillLevel);
+                int higherExpectation = (int)(expectation + compPsyche.Evaluate(QualityExpectationHighOffset));
+                //int lowerExpectatino = (int)(expectation + p.Evaluate(QualityExpectationLowOffset));
+                //Log.Message($"value: {value}| level {relevantSkillLevel} expectation w/ ambition {p.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition)}:  {lowerExpectatino}~[{expectation}]~{higherExpectation}");
+                if (value >= higherExpectation)
+                {
+                    int qOffset = (value - higherExpectation) + 1;
+                    compPsyche.ProgressMade(3f * qOffset, 2, "RP_Crafted".Translate(qualityCategory.GetLabel()));
+                    //Log.Message($"value higher than good expectation. Setting Progressday {3f * qOffset}. This should give {1.2f * (p.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) + 1f) * (3f * qOffset)} mood");
+                }
+                else if (value >= (int)(expectation + compPsyche.Evaluate(QualityExpectationLowOffset)))
+                {
+                    compPsyche.ProgressMade(0f, 2, "RP_Crafted".Translate(qualityCategory.GetLabel()));
+                    //Log.Message($"value good enough. Setting Progressday {0}");
+                }
             }
 
             return qualityCategory;
         }
         public static float ExpectedQMean(int relevantSkillLevel)
         {
-            switch (relevantSkillLevel)
+            return relevantSkillLevel switch
             {
-                case 0:
-                    return 0.41f;
-                case 1:
-                    return 0.70f;
-                case 2:
-                    return 1.09f;
-                case 3:
-                    return 1.38f;
-                case 4:
-                    return 1.56f;
-                case 5:
-                    return 1.78f;
-                case 6:
-                    return 1.99f;
-                case 7:
-                    return 2.19f;
-                case 8:
-                    return 2.38f;
-                case 9:
-                    return 2.51f;
-                case 10:
-                    return 2.66f;
-                case 11:
-                    return 2.82f;
-                case 12:
-                    return 2.96f;
-                case 13:
-                    return 3.06f;
-                case 14:
-                    return 3.15f;
-                case 15:
-                    return 3.24f;
-                case 16:
-                    return 3.32f;
-                case 17:
-                    return 3.40f;
-                case 18:
-                    return 3.48f;
-                case 19:
-                    return 3.58f;
-                case 20:
-                    return 3.67f;
-                default:
-                    return 0f;
-            }
+                0 => 0.41f,
+                1 => 0.70f,
+                2 => 1.09f,
+                3 => 1.38f,
+                4 => 1.56f,
+                5 => 1.78f,
+                6 => 1.99f,
+                7 => 2.19f,
+                8 => 2.38f,
+                9 => 2.51f,
+                10 => 2.66f,
+                11 => 2.82f,
+                12 => 2.96f,
+                13 => 3.06f,
+                14 => 3.15f,
+                15 => 3.24f,
+                16 => 3.32f,
+                17 => 3.40f,
+                18 => 3.48f,
+                19 => 3.58f,
+                20 => 3.67f,
+                _ => 0f,
+            };
         }
 
         public static RimpsycheFormula QualityVarianceMultiplierHigh = new(
