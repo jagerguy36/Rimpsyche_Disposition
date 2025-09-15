@@ -35,21 +35,30 @@ namespace Maux36.RimPsyche.Disposition
             {
                 __result *= compPsyche.Evaluate(FormulaDB.PositiveMoodOffsetMultiplier);
             }
+
+            //Individual Thoughts
+            float indiv_val = 0f;
             //Ideo thought multiplier
-            if (__instance.sourcePrecept != null)
+            if (__instance.sourcePrecept?.def.issue != null)
             {
-                __result *= compPsyche.Evaluate(FormulaDB.PreceptMoodOffsetMultiplier);
+                if (ThoughtUtil.IssueMultiplierDB.TryGetValue(__instance.sourcePrecept.def.issue.defName, out RimpsycheFormula issueFormula))
+                {
+                    if (issueFormula != null)
+                    {
+                        indiv_val += compPsyche.Evaluate(issueFormula);
+                    }
+                }
             }
 
             //Individual thought multiplier
             if (useIndividualThoughtsSetting)
             {
                 //Thought specific multiplier
-                if (ThoughtUtil.MoodMultiplierDB.TryGetValue(__instance.def.defName, out RimpsycheFormula multiplierMethod))
+                if (ThoughtUtil.MoodMultiplierDB.TryGetValue(__instance.def.defName, out RimpsycheFormula indivFormula))
                 {
-                    if (multiplierMethod != null)
+                    if (indivFormula != null)
                     {
-                        __result *= compPsyche.Evaluate(multiplierMethod);
+                        indiv_val += compPsyche.Evaluate(indivFormula);
                     }
                 }
 
@@ -62,11 +71,12 @@ namespace Maux36.RimPsyche.Disposition
                         var formula = stageFormulas[stageIndex];
                         if (formula != null)
                         {
-                            __result *= compPsyche.Evaluate(formula);
+                            indiv_val += compPsyche.Evaluate(formula);
                         }
                     }
                 }
             }
+            __result *= ThoughtUtil.MoodMultCurve(indiv_val);
         }
     }
 }

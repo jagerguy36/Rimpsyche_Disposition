@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Maux36.RimPsyche.Disposition
 {
     [StaticConstructorOnStartup]
-    public class ThoughtUtil
+    public static class ThoughtUtil
     {
         //Base Function
         private static readonly float MoodCurveC = RimpsycheDispositionSettings.individualThoughtC;
@@ -20,7 +20,7 @@ namespace Maux36.RimPsyche.Disposition
             }
         }
 
-
+        public static Dictionary<string, RimpsycheFormula> IssueMultiplierDB = [];
         public static Dictionary<string, RimpsycheFormula> MoodMultiplierDB = [];
 
         static ThoughtUtil()
@@ -80,7 +80,7 @@ namespace Maux36.RimPsyche.Disposition
             foreach (var defName in moodList_Mood_Expect) MoodMultiplierDB[defName] = FormulaDB.Mood_Expect;
             foreach (var defName in moodList_Mood_Expect_Human) MoodMultiplierDB[defName] = FormulaDB.Mood_Expect_Human;
             foreach (var defName in moodList_Mood_Expect_Need) MoodMultiplierDB[defName] = FormulaDB.Mood_Expect_Need;
-            foreach (var defName in moodList_Mood_Drug) MoodMultiplierDB[defName] = FormulaDB.Mood_Drug;
+            foreach (var defName in moodList_Mood_Expect_Drug) MoodMultiplierDB[defName] = FormulaDB.Mood_Expect_Drug;
 
             //Prisoners
             MoodMultiplierDB["KnowPrisonerSold"] = FormulaDB.Mood_Prisoner_Sold;
@@ -195,7 +195,7 @@ namespace Maux36.RimPsyche.Disposition
             "NeedOutdoors",
             "NeedIndoors"]
         );
-        private static readonly List<string> moodList_Mood_Drug = new(
+        private static readonly List<string> moodList_Mood_Expect_Drug = new(
             ["DrugDesireFascination",
             "DrugDesireFascinationSatisfied",
             "DrugDesireInterest",
