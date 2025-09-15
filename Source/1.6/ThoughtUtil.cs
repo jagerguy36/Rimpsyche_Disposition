@@ -55,7 +55,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             //Died
             MoodMultiplierDB["KnowColonistDied"] = FormulaDB.Mood_Died;
-            MoodMultiplierDB["KnowPrisonerDiedInnocent"] = FormulaDB.Mood_Died_Innocent;
+            //MoodMultiplierDB["KnowPrisonerDiedInnocent"] = FormulaDB.Mood_Died_Innocent;
             MoodMultiplierDB["BondedAnimalDied"] = FormulaDB.Mood_Died_Bond;
             MoodMultiplierDB["PawnWithGoodOpinionDied"] = FormulaDB.Mood_Died_Social;
             MoodMultiplierDB["PawnWithBadOpinionDied"] = FormulaDB.Mood_Died_Glad_Social;

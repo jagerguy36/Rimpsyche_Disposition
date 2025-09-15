@@ -4,9 +4,9 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class RimpsycheDispositionSettings : ModSettings
     {
-        public const float default_moodOptimismC = 0.2;
-        public const float default_moodEmotionalityC = 0.2;
-        public const float default_moodPreceptC = 0.2;
+        public const float default_moodOptimismC = 0.2f;
+        public const float default_moodEmotionalityC = 0.2f;
+        public const float default_moodPreceptC = 0.2f;
 
         public static bool useIndividualThoughts = true;
         public static bool useExperimentation = true;
