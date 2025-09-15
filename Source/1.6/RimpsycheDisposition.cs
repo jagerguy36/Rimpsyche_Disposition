@@ -41,15 +41,13 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.Gap(12f);
             listing_Standard.Label("RimpsycheMoodSettings".Translate());
             listing_Standard.Gap(6f);
-            RimpsycheDispositionSettings.moodEmotionalityC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodEmotionalityC".Translate() + " (" + "Default".Translate() + " 0.3): " + RimpsycheDispositionSettings.moodEmotionalityC, RimpsycheDispositionSettings.moodEmotionalityC, 0.05f, 0.95f, tooltip: "RimpsycheMoodEmotionalityCTooltip".Translate()), 2);
+            RimpsycheDispositionSettings.moodEmotionalityC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodEmotionalityC".Translate() + " (" + "Default".Translate() + " 0.2): " + RimpsycheDispositionSettings.moodEmotionalityC, RimpsycheDispositionSettings.moodEmotionalityC, 0.05f, 0.95f, tooltip: "RimpsycheMoodEmotionalityCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
-            RimpsycheDispositionSettings.moodOptimismC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodOptimismC".Translate() + " (" + "Default".Translate() + " 0.3): " + RimpsycheDispositionSettings.moodOptimismC, RimpsycheDispositionSettings.moodOptimismC, 0.05f, 0.95f, tooltip: "RimpsycheMoodOptimismCTooltip".Translate()), 2);
+            RimpsycheDispositionSettings.moodOptimismC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodOptimismC".Translate() + " (" + "Default".Translate() + " 0.2): " + RimpsycheDispositionSettings.moodOptimismC, RimpsycheDispositionSettings.moodOptimismC, 0.05f, 0.95f, tooltip: "RimpsycheMoodOptimismCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
-            RimpsycheDispositionSettings.moodPreceptC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodPreceptC".Translate() + " (" + "Default".Translate() + " 0.3): " + RimpsycheDispositionSettings.moodPreceptC, RimpsycheDispositionSettings.moodPreceptC, 0.05f, 0.95f, tooltip: "RimpsycheMoodPreceptCTooltip".Translate()), 2);
+            RimpsycheDispositionSettings.moodPreceptC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodPreceptC".Translate() + " (" + "Default".Translate() + " 0.2): " + RimpsycheDispositionSettings.moodPreceptC, RimpsycheDispositionSettings.moodPreceptC, 0.05f, 0.95f, tooltip: "RimpsycheMoodPreceptCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseIndividualThoughts".Translate(), ref RimpsycheDispositionSettings.useIndividualThoughts, "RimpsycheUseIndividualThoughtsTooltip".Translate());
-            listing_Standard.Gap(6f);
-            RimpsycheDispositionSettings.individualThoughtC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheIndividualThoughtC".Translate() + " (" + "Default".Translate() + " 0.45): " + RimpsycheDispositionSettings.individualThoughtC, RimpsycheDispositionSettings.individualThoughtC, 0.05f, 0.95f, tooltip: "RimpsycheIndividualThoughtCTooltip".Translate()), 2);
             listing_Standard.Gap(12f);
             listing_Standard.Label("RimpsycheGameplaySettings".Translate());
             listing_Standard.Gap(6f);
@@ -85,10 +83,9 @@ namespace Maux36.RimPsyche.Disposition
             if (listing_Standard.ButtonText("RimpsycheDispositionDefaultSetting".Translate(), "RimpsycheDispositionDefaultSettingTooltip".Translate()))
             {
                 //General Moods
-                RimpsycheDispositionSettings.moodEmotionalityC = 0.3f;
-                RimpsycheDispositionSettings.moodOptimismC = 0.3f;
-                RimpsycheDispositionSettings.moodPreceptC = 0.3f;
-                RimpsycheDispositionSettings.individualThoughtC = 0.45f;
+                RimpsycheDispositionSettings.moodEmotionalityC = RimpsycheDispositionSettings.default_moodOptimismC;
+                RimpsycheDispositionSettings.moodOptimismC = RimpsycheDispositionSettings.default_moodEmotionalityC;
+                RimpsycheDispositionSettings.moodPreceptC = RimpsycheDispositionSettings.default_moodPreceptC;
 
                 RimpsycheDispositionSettings.useExperimentation = true;
                 RimpsycheDispositionSettings.useSenseOfProgress = true;

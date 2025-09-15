@@ -7,7 +7,7 @@ namespace Maux36.RimPsyche.Disposition
     public static class ThoughtUtil
     {
         //Base Function
-        private static readonly float MoodCurveC = RimpsycheDispositionSettings.individualThoughtC;
+        private static readonly float MoodCurveC = RimpsycheDispositionSettings.moodPreceptC;
         public static float MoodMultCurve(float mood)
         {
             if (mood >= 0)
@@ -35,12 +35,20 @@ namespace Maux36.RimPsyche.Disposition
         public static void Initialize()
         {
             Log.Message("[Rimpsyche - Disposition] ThoughtUtil initialized.");
+            AddBaseIssues();
             AddBaseThoughts();
         }
 
         public static void ModCompat()
         {
             Log.Message("[Rimpsyche - Disposition] Compatibility Thoughts added.");
+        }
+
+        private static void AddBaseIssues()
+        {
+            //IssueMultiplierDB["defname"] = FormulaDB.Issue_Morality;
+            //IssueMultiplierDB["defname"] = FormulaDB.Issue_Preference;
+            //IssueMultiplierDB["defname"] = FormulaDB.Issue_Propriety;
         }
 
         private static void AddBaseThoughts()

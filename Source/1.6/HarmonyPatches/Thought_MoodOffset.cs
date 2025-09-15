@@ -49,7 +49,6 @@ namespace Maux36.RimPsyche.Disposition
                     }
                 }
             }
-
             //Individual thought multiplier
             if (useIndividualThoughtsSetting)
             {
