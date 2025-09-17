@@ -11,7 +11,6 @@ namespace Maux36.RimPsyche.Disposition
     {
         static void Postfix(Pawn billDoer)
         {
-            Log.Message($"{billDoer.Name} started bill");
             Job curJob = billDoer.jobs.curJob;
             var billGiver = curJob.targetA.Thing;
             if (billGiver == null)
@@ -28,7 +27,6 @@ namespace Maux36.RimPsyche.Disposition
                     var organization = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Organization);
                     if (room.Role != billGiver.def.building.workTableRoomRole) //Wrong room
                     {
-                        Log.Message($"{billDoer.Name} wrong room modifier applied: {billGiver.def.building.workTableNotInRoomRoleFactor}");
                         compPsyche.roomRoleFactor = 1f / (1f + organization*(1f- billGiver.def.building.workTableNotInRoomRoleFactor)); //organization -1:nullify | 0:1 | 1:make worse
                         if (organization > 0.6f)
                         {
@@ -41,7 +39,6 @@ namespace Maux36.RimPsyche.Disposition
                     }
                     else //Correct room
                     {
-                        Log.Message($"{billDoer.Name} correct room.");
                         var correctFactor = compPsyche.Evaluate(OrganizationRightRoomWorkspeedMultiplier);
                         if (correctFactor > 1f)
                         {
@@ -86,7 +83,6 @@ namespace Maux36.RimPsyche.Disposition
 
         public static void NotifyToilFinished(Pawn pawn)
         {
-            Log.Message($"{pawn.Name} finished toil");
             var compPsyche = pawn.compPsyche();
             if (compPsyche != null)
             {

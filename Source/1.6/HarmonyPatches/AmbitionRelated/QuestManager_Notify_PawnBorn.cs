@@ -15,7 +15,6 @@ namespace Maux36.RimPsyche.Disposition
             {
                 if(pawn.Faction.IsPlayer)
                 {
-                    Log.Message("Player baby born.");
                     foreach (Pawn colonist in pawn.MapHeld.mapPawns.FreeColonistsSpawned)
                     {
                         var compPsyche = colonist.compPsyche();

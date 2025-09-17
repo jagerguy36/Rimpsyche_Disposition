@@ -12,13 +12,11 @@ namespace Maux36.RimPsyche.Disposition
         {
             if (researcher != null)
             {
-                Log.Message($"project {proj.defName} w/ cost: {proj.Cost} finished. Pawn: {researcher?.Name}");
                 foreach (Pawn p in researcher.MapHeld.mapPawns.FreeColonistsSpawned)
                 {
                     var compPsyche = p.compPsyche();
                     if (compPsyche?.Enabled == true)
                     {
-                        Log.Message($"{p.Name} prospect: {proj.Cost / compPsyche.Evaluate(AmbitionResearchBaseTick)}");
                         //base tick: 400(-1)~[500]~600(1). Progress 1 per base tick
                         compPsyche.ProgressMade(proj.Cost / compPsyche.Evaluate(AmbitionResearchBaseTick), 3, "RP_Researched".Translate(proj.LabelCap));
                     }

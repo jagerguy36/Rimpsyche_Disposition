@@ -8,7 +8,6 @@ namespace Maux36.RimPsyche.Disposition
     {
         public static bool TestResilientSpirit(MentalBreakDef mentalbreak, Pawn pawn)
         {
-            Log.Message($"Test util called with {mentalbreak.defName}, {pawn.Name}");
             var compPsyche = pawn.compPsyche();
             if (compPsyche?.Enabled != true)
             {
@@ -16,17 +15,14 @@ namespace Maux36.RimPsyche.Disposition
             }
             if (compPsyche.lastResilientSpiritTick > Find.TickManager.TicksGame)
             {
-                Log.Message($"Already resilient");
                 return true;
             }
             if (compPsyche.lastResilientSpiritTick + 3600000 > Find.TickManager.TicksGame)
             {
-                Log.Message($"Too recent");
                 return false;
             }
             if (Rand.Chance(compPsyche.Evaluate(ResilientSpiritChance)))
             {
-                Log.Message($"Chance Success");
                 compPsyche.lastResilientSpiritTick = Find.TickManager.TicksGame + 180000; //3days
                 //Add thought
                 pawn.needs.mood.thoughts.memories.TryGainMemory(DefOfDisposition.Rimpsyche_ResilientSpirit);
@@ -48,7 +44,6 @@ namespace Maux36.RimPsyche.Disposition
                 Find.LetterStack.ReceiveLetter(label, taggedString, LetterDefOf.PositiveEvent, pawn);
                 return true;
             }
-            Log.Message($"Chance fail");
             return false;
 
         }

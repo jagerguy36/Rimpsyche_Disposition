@@ -88,12 +88,7 @@ namespace Maux36.RimPsyche.Disposition
             base.Notify_DamageTaken(dinfo);
             if (pawn.Position == TargetLocA)
             {
-                Log.Message("Interrupt job because damage taken");
                 EndJobWith(JobCondition.InterruptForced);
-            }
-            else
-            {
-                Log.Message("damage taken but still moving.");
             }
         }
 

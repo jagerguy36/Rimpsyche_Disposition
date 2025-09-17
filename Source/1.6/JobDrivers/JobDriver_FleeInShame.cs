@@ -31,7 +31,6 @@ namespace Maux36.RimPsyche.Disposition
             this.AddFailCondition(() => (pawn.Downed));
             this.AddFinishAction((condition) =>
             {
-                Log.Message($"FleeInShame job ended for {pawn} with condition: {condition}");
                 compPsyche.isOverwhelmed = false;
             });
             Toil gotoToil = Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
@@ -60,14 +59,12 @@ namespace Maux36.RimPsyche.Disposition
         {
             if (ticksLeft <= 0)
             {
-                Log.Message($"{pawn} could not recover from shame, forcing mental break.");
                 if (ShameUtil.TryDoRandomShameCausedMentalBreak(pawn))
                 {
                     EndJobWith(JobCondition.InterruptForced);
                 }
                 else
                 {
-                    Log.Message($"{pawn} couldn't go into mental break.");
                     EndJobWith(JobCondition.InterruptForced);
                 }
                 

@@ -140,7 +140,6 @@ namespace Maux36.RimPsyche.Disposition
             {
                 if (!experimented && value < 5 && Rand.Value < experimentChance)
                 {
-                    Log.Message("decided to experiment");
                     if (Rand.Value < successChance)
                     {
                         //Successful Experimentation

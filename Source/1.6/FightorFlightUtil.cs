@@ -94,9 +94,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             else
             {
-                Log.Message("no threat found. random dest");
                 position = RCellFinder.RandomWanderDestFor(pawn, pawn.Position, 7f, (pawn, loc, root) => WanderRoomUtility.IsValidWanderDest(pawn, loc, root), Danger.Deadly);
-                Log.Message($"random dest: {position}");
             }
             return position;
         }

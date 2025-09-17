@@ -14,7 +14,6 @@ namespace Maux36.RimPsyche.Disposition
             {
                 if (pawn.RaceProps.Humanlike)
                 {
-                    Log.Message("New colonist recruited");
                     foreach (Pawn colonist in pawn.MapHeld.mapPawns.FreeColonistsSpawned)
                     {
                         var compPsyche = colonist.compPsyche();
@@ -27,7 +26,6 @@ namespace Maux36.RimPsyche.Disposition
                 }
                 else
                 {
-                    Log.Message($"New animal tamed (market value: {pawn.def.BaseMarketValue}");
                     if (pawn.def.BaseMarketValue >= 300)
                     {
                         float marketvalueMult = 2f + (200f / (200f - pawn.def.BaseMarketValue));

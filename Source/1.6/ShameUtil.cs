@@ -221,7 +221,6 @@ namespace Maux36.RimPsyche.Disposition
                 }
             }
             var fleeDest = FindHideInShameLocation(pawn);
-            Log.Message($"Start running! Location at: {fleeDest}");
             var runawayjob = new Job(DefOfDisposition.RimPsyche_FleeInShame, fleeDest);
             runawayjob.mote = MoteMaker.MakeThoughtBubble(pawn, "Things/Mote/Flecks/Embarrassed", maintain: true);
             pawn.jobs.StartJob(runawayjob, JobCondition.InterruptForced, null, false, true, null);

@@ -23,11 +23,9 @@ namespace Maux36.RimPsyche.Disposition
                         {
                             float threshold = compPsyche.Evaluate(FormulaDB.FlightThreshold);
                             float hpp = ___pawn.health.summaryHealth.SummaryHealthPercent;
-                            Log.Message($"{___pawn.Name} took damage {dinfo.Amount}| threshold: {threshold} | hpp: {hpp}");
                             if (hpp <= threshold)
                             {
                                 float chance = compPsyche.Evaluate(FormulaDB.FlightChance);
-                                Log.Message($"chance : {chance}");
                                 if (Rand.Chance(chance))
                                 {
                                     if (___pawn.Faction == Faction.OfPlayer)
@@ -48,7 +46,6 @@ namespace Maux36.RimPsyche.Disposition
                         float gain = adrenalineMult * dmgPercent;
                         if (gain > 0f)
                         {
-                            Log.Message($"dmgPercent: {dmgPercent}, mult: {adrenalineMult} | gained: {gain}");
                             HealthUtility.AdjustSeverity(___pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
                         }
                         return false;

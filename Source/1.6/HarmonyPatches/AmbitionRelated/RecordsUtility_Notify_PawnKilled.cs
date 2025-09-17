@@ -13,7 +13,6 @@ namespace Maux36.RimPsyche.Disposition
         {
             if (killer?.Faction?.IsPlayer == true && killed.HostileTo(killer))
             {
-                Log.Message("Colonist Killed enemy");
                 var compPsyche = killer.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
