@@ -22,10 +22,51 @@ namespace Maux36.RimPsyche.Disposition
                 return;
             if (compPsyche.Enabled != true)
                 return;
-            //General Mood multiplier
+            //Mood multiplier
+            float indiv_val = 0f;
             if (__result < 0f)
             {
+                //General Modifier
                 __result *= compPsyche.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
+
+                //Individual Thoughts
+                if (useIndividualThoughtsSetting)
+                {
+                    //Thoughts
+                    if (StageThoughtUtil.StageMoodMultiplierDB.TryGetValue(__instance.def.defName, out var stageFormulas))
+                    {
+                        int stageIndex = __instance.CurStageIndex;
+                        if ((uint)stageIndex < (uint)stageFormulas.Length)
+                        {
+                            var formula = stageFormulas[stageIndex];
+                            if (formula != null)
+                            {
+                                indiv_val += compPsyche.Evaluate(formula);
+                            }
+                        }
+                    }
+                    else if (ThoughtUtil.NegThoughtTagDB.TryGetValue(__instance.def.defName, out RimpsycheFormula indivFormula))
+                    {
+                        if (indivFormula != null)
+                        {
+                            indiv_val += compPsyche.Evaluate(indivFormula);
+                        }
+                    }
+                    //Precept
+                    if (__instance.sourcePrecept?.def.issue != null)
+                    {
+                        if (ThoughtUtil.NegPreceptTagDB.TryGetValue(__instance.sourcePrecept.def.issue.defName, out RimpsycheFormula issueFormula))
+                        {
+                            if (issueFormula != null)
+                            {
+                                indiv_val += compPsyche.Evaluate(issueFormula);
+                            }
+                        }
+                    }
+                    __result *= ThoughtUtil.MoodMultCurve(indiv_val);
+                }
+
+
                 if (Find.TickManager.TicksGame < compPsyche.lastResilientSpiritTick)
                 {
                     __result *= 0.5f;
@@ -34,48 +75,44 @@ namespace Maux36.RimPsyche.Disposition
             else
             {
                 __result *= compPsyche.Evaluate(FormulaDB.PositiveMoodOffsetMultiplier);
-            }
 
-            //Individual Thoughts
-            float indiv_val = 0f;
-            //Ideo thought multiplier
-            if (__instance.sourcePrecept?.def.issue != null)
-            {
-                if (ThoughtUtil.IssueMultiplierDB.TryGetValue(__instance.sourcePrecept.def.issue.defName, out RimpsycheFormula issueFormula))
+                //Individual Thoughts
+                if (useIndividualThoughtsSetting)
                 {
-                    if (issueFormula != null)
+                    //Thoughts
+                    if (StageThoughtUtil.StageMoodMultiplierDB.TryGetValue(__instance.def.defName, out var stageFormulas))
                     {
-                        indiv_val += compPsyche.Evaluate(issueFormula);
-                    }
-                }
-            }
-            //Individual thought multiplier
-            if (useIndividualThoughtsSetting)
-            {
-                //Thought specific multiplier
-                if (ThoughtUtil.MoodMultiplierDB.TryGetValue(__instance.def.defName, out RimpsycheFormula indivFormula))
-                {
-                    if (indivFormula != null)
-                    {
-                        indiv_val += compPsyche.Evaluate(indivFormula);
-                    }
-                }
-
-                //Thought-stage-specific multiplier
-                else if (StageThoughtUtil.StageMoodMultiplierDB.TryGetValue(__instance.def.defName, out var stageFormulas))
-                {
-                    int stageIndex = __instance.CurStageIndex;
-                    if ((uint)stageIndex < (uint)stageFormulas.Length)
-                    {
-                        var formula = stageFormulas[stageIndex];
-                        if (formula != null)
+                        int stageIndex = __instance.CurStageIndex;
+                        if ((uint)stageIndex < (uint)stageFormulas.Length)
                         {
-                            indiv_val += compPsyche.Evaluate(formula);
+                            var formula = stageFormulas[stageIndex];
+                            if (formula != null)
+                            {
+                                indiv_val += compPsyche.Evaluate(formula);
+                            }
                         }
                     }
+                    else if (ThoughtUtil.PosThoughtTagDB.TryGetValue(__instance.def.defName, out RimpsycheFormula indivFormula))
+                    {
+                        if (indivFormula != null)
+                        {
+                            indiv_val += compPsyche.Evaluate(indivFormula);
+                        }
+                    }
+                    //Precept
+                    if (__instance.sourcePrecept?.def.issue != null)
+                    {
+                        if (ThoughtUtil.PosPreceptTagDB.TryGetValue(__instance.sourcePrecept.def.issue.defName, out RimpsycheFormula issueFormula))
+                        {
+                            if (issueFormula != null)
+                            {
+                                indiv_val += compPsyche.Evaluate(issueFormula);
+                            }
+                        }
+                    }
+                    __result *= ThoughtUtil.MoodMultCurve(indiv_val);
                 }
             }
-            __result *= ThoughtUtil.MoodMultCurve(indiv_val);
         }
     }
 }
