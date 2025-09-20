@@ -7,7 +7,7 @@ namespace Maux36.RimPsyche.Disposition
     public static class ThoughtUtil
     {
         //Base Function
-        private static readonly float MoodCurveC = RimpsycheDispositionSettings.moodPreceptC;
+        private static readonly float MoodCurveC = RimpsycheDispositionSettings.moodIndividualC;
         public static float MoodMultCurve(float mood)
         {
             if (mood >= 0)

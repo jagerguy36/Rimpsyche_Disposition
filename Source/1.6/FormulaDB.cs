@@ -85,7 +85,7 @@ namespace Maux36.RimPsyche.Disposition
         //General mood
         private static readonly float optimismC = RimpsycheDispositionSettings.moodOptimismC;
         public static readonly float emotionalityC = RimpsycheDispositionSettings.moodEmotionalityC;
-        private static readonly float preceptC = RimpsycheDispositionSettings.moodPreceptC;
+        private static readonly float individualC = RimpsycheDispositionSettings.moodIndividualC;
         public static RimpsycheFormula PositiveMoodOffsetMultiplier = new(
             "PositiveMoodOffsetMultiplier",
             (tracker) =>
@@ -109,35 +109,6 @@ namespace Maux36.RimPsyche.Disposition
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-
-        //Precept mood
-        public static RimpsycheFormula PreceptMoodOffsetMultiplier = new(
-            "PreceptMoodOffsetMultiplier",
-            (tracker) =>
-            {
-                float mult = 1f;
-                float moralityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality) * preceptC;
-                return mult * moralityMult;
-            },
-            RimpsycheFormulaManager.FormulaIdDict
-        );
-
-        public static RimpsycheFormula PreceptOpinionOffsetMultiplier = new(
-            "PreceptOpinionOffsetMultiplier",
-            (tracker) =>
-            {
-                float mult = 1f;
-                //Openness concerns what could be right/wrong. Morality adhering to the right/wrong.
-                //High open + High moral pawns will be open to question their right and wrong, but will still feel strongly about adhering to what is considered right.
-                //So openness's effect here is very little, just enough to reflect their 'doubt' about the moral standard.
-                float moralityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality) * preceptC;
-                float opennessMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness) * 0.1f;
-                return mult * moralityMult * opennessMult;
-            },
-            RimpsycheFormulaManager.FormulaIdDict
-        );
-
-
 
         //=================
 

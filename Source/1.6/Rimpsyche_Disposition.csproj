@@ -78,7 +78,7 @@
     <Compile Include="FormulaDB.cs" />
     <Compile Include="HarmonyPatches\OrganizationRoomRoleNotification.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\ResearchManager_FinishProject.cs" />
-    <Compile Include="HarmonyPatches\ResilienceRelated\MentalBreaker_TryDoMentalBreak.cs" />
+    <Compile Include="HarmonyPatches\MentalBreakRelated\MentalBreaker_TryDoMentalBreak.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\Thought_SituationalSocial_OpinionOffset.cs" />
     <Compile Include="Hediff\Hediff_AdrenalineRush.cs" />
     <Compile Include="InteractionWorkers\InteractionWorker_ShameOverwhelmed.cs" />
@@ -92,8 +92,8 @@
     <Compile Include="HarmonyPatches\ResilienceRelated\CompDrug_PrePostIngested.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="HarmonyPatches\JoyGiver_Skygaze_Patch.cs" />
-    <Compile Include="HarmonyPatches\MoodRelated\MentalBreaker_TestMoodMentalBreak_Patch.cs" />
-    <Compile Include="HarmonyPatches\ResilienceRelated\MentalBreakWorker_BingingDrug_Patch.cs" />
+    <Compile Include="HarmonyPatches\MentalBreakRelated\MentalBreaker_TestMoodMentalBreak_Patch.cs" />
+    <Compile Include="HarmonyPatches\MentalBreakRelated\MentalBreakWorker_BingingDrug_Patch.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\NeedSeeker_NeedInterval.cs" />
     <Compile Include="HarmonyPatches\QualityUtility_GenerateQualityCreatedByPawn.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\SkillRecord_Learn.cs" />

@@ -45,7 +45,7 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.Gap(6f);
             RimpsycheDispositionSettings.moodOptimismC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodOptimismC".Translate() + " (" + "Default".Translate() + " 0.2): " + RimpsycheDispositionSettings.moodOptimismC, RimpsycheDispositionSettings.moodOptimismC, 0.05f, 0.95f, tooltip: "RimpsycheMoodOptimismCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
-            RimpsycheDispositionSettings.moodPreceptC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodPreceptC".Translate() + " (" + "Default".Translate() + " 0.2): " + RimpsycheDispositionSettings.moodPreceptC, RimpsycheDispositionSettings.moodPreceptC, 0.05f, 0.95f, tooltip: "RimpsycheMoodPreceptCTooltip".Translate()), 2);
+            RimpsycheDispositionSettings.moodIndividualC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodIndividualC".Translate() + " (" + "Default".Translate() + " 0.4): " + RimpsycheDispositionSettings.moodIndividualC, RimpsycheDispositionSettings.moodIndividualC, 0.05f, 0.95f, tooltip: "RimpsycheMoodIndividualCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseIndividualThoughts".Translate(), ref RimpsycheDispositionSettings.useIndividualThoughts, "RimpsycheUseIndividualThoughtsTooltip".Translate());
             listing_Standard.Gap(12f);
@@ -85,7 +85,7 @@ namespace Maux36.RimPsyche.Disposition
                 //General Moods
                 RimpsycheDispositionSettings.moodEmotionalityC = RimpsycheDispositionSettings.default_moodOptimismC;
                 RimpsycheDispositionSettings.moodOptimismC = RimpsycheDispositionSettings.default_moodEmotionalityC;
-                RimpsycheDispositionSettings.moodPreceptC = RimpsycheDispositionSettings.default_moodPreceptC;
+                RimpsycheDispositionSettings.moodIndividualC = RimpsycheDispositionSettings.default_moodIndividualC;
 
                 RimpsycheDispositionSettings.useExperimentation = true;
                 RimpsycheDispositionSettings.useSenseOfProgress = true;
