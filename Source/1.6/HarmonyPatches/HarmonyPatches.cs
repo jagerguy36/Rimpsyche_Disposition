@@ -13,7 +13,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             var harmony = new Harmony("rimworld.mod.Maux.RimPsyche.Disposition");
 
-
+            //Mod compatibility
             if (ModsConfig.IsActive("VanillaExpanded.VanillaTraitsExpanded") && RimpsycheDispositionSettings.useExperimentation)
             {
                 MethodInfo VTE_GenerateQualityCreatedByPawn_Patch_fixes = typeof(QualityUtility).GetMethod("GenerateQualityCreatedByPawn", new Type[] { typeof(Pawn), typeof(SkillDef), typeof(bool) });
@@ -26,7 +26,7 @@ namespace Maux36.RimPsyche.Disposition
                 harmony.PatchCategory("VTE");
             }
 
-
+            //RPD harmony patches
             harmony.PatchAllUncategorized(Assembly.GetExecutingAssembly());
             if (RimpsycheDispositionSettings.useExperimentation)
             {
