@@ -12,7 +12,6 @@ namespace Maux36.RimPsyche.Disposition
             foreach (var defName in moodList_Biotech_Tag_Worry_Kin) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Kin;
             foreach (var defName in moodList_Biotech_Tag_Affluence) MoodThoughtTagDB[defName] = FormulaDB.Tag_Affluence;
             foreach (var defName in moodList_Biotech_Tag_Harmed) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed;
-            foreach (var defName in moodList_Biotech_Tag_Gathering) MoodThoughtTagDB[defName] = FormulaDB.Tag_Gathering;
             foreach (var defName in moodList_Biotech_Tag_Sympathy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy;
             foreach (var defName in moodList_Biotech_Tag_Empathy_Loved) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_Loved;
             foreach (var defName in moodList_Biotech_Tag_Needy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Needy;
@@ -74,12 +73,6 @@ namespace Maux36.RimPsyche.Disposition
             ["FedOn_Social",
             "FedOn",
             "XenogermHarvested_Prisoner"]
-        );
-
-        private static readonly List<string> moodList_Biotech_Tag_Gathering = new(
-            ["WasTaught",
-            "GaveLesson",
-            "PlayedWithMe"]
         );
 
         private static readonly List<string> moodList_Biotech_Tag_Sympathy = new(

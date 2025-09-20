@@ -9,7 +9,6 @@ namespace Maux36.RimPsyche.Disposition
             foreach (var defName in moodList_Odyssey_Tag_Empathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
             foreach (var defName in moodList_Odyssey_Tag_Empathy_J) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_J;
             foreach (var defName in moodList_Odyssey_Tag_Judgemental) MoodThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in moodList_Odyssey_Tag_Affluence) MoodThoughtTagDB[defName] = FormulaDB.Tag_Affluence;
             foreach (var defName in opinionList_Odyssey_Tag_Empathy_M) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
             foreach (var defName in opinionList_Odyssey_Tag_Empathy_J) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_J;
             foreach (var defName in opinionList_Odyssey_Tag_Affluence) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Affluence;
@@ -31,10 +30,6 @@ namespace Maux36.RimPsyche.Disposition
             "SlaughteredFish_Sacred_NoFish",
             "ResettledRecently",
             "SpaceHabitat_Mood"]
-        );
-
-        private static readonly List<string> moodList_Odyssey_Tag_Affluence = new(
-            ["MadeStatueOfMe"]
         );
 
         private static readonly List<string> opinionList_Odyssey_Tag_Empathy_M = new(

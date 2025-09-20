@@ -65,13 +65,10 @@ namespace Maux36.RimPsyche.Disposition
             foreach (var defName in moodList_Vanilla_Tag_Worry_Outsider) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Outsider;
             foreach (var defName in moodList_Vanilla_Tag_Harmed_Loved) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Loved;
             foreach (var defName in moodList_Vanilla_Tag_Harmed_Bond) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Bond;
-            foreach (var defName in moodList_Vanilla_Tag_Harmed_Kin) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Kin;
             foreach (var defName in moodList_Vanilla_Tag_Decency) MoodThoughtTagDB[defName] = FormulaDB.Tag_Decency;
             foreach (var defName in moodList_Vanilla_Tag_Sympathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_M;
             foreach (var defName in moodList_Vanilla_Tag_Sympathy_P) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_P;
             foreach (var defName in moodList_Vanilla_Tag_Needy_Art) MoodThoughtTagDB[defName] = FormulaDB.Tag_Needy_Art;
-            foreach (var defName in moodList_Vanilla_Tag_Judgemental) MoodThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in moodList_Vanilla_Tag_Morality) MoodThoughtTagDB[defName] = FormulaDB.Tag_Morality;
             foreach (var defName in moodList_Vanilla_Tag_Bond) MoodThoughtTagDB[defName] = FormulaDB.Tag_Bond;
             foreach (var defName in moodList_Vanilla_Tag_Art) MoodThoughtTagDB[defName] = FormulaDB.Tag_Art;
             foreach (var defName in opinionList_Vanilla_Tag_Empathy_M) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
@@ -80,10 +77,10 @@ namespace Maux36.RimPsyche.Disposition
             foreach (var defName in opinionList_Vanilla_Tag_Harmed_Loved) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Loved;
             foreach (var defName in opinionList_Vanilla_Tag_Harmed_Bond) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Bond;
             foreach (var defName in opinionList_Vanilla_Tag_Harmed_Kin) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Kin;
+            foreach (var defName in opinionList_Vanilla_Tag_Decency) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Decency;
             foreach (var defName in opinionList_Vanilla_Tag_Judgemental) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
             foreach (var defName in opinionList_Vanilla_Tag_Morality) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Morality;
         }
-
 
         private static readonly List<string> moodList_Vanilla_Tag_Preference = new(
             ["AteNutrientPasteMeal",
@@ -314,16 +311,6 @@ namespace Maux36.RimPsyche.Disposition
             "KilledMyBondedAnimal"]
         );
 
-        private static readonly List<string> moodList_Vanilla_Tag_Harmed_Kin = new(
-            ["KilledMyFather",
-            "KilledMyMother",
-            "KilledMySon",
-            "KilledMyDaughter",
-            "KilledMyBrother",
-            "KilledMySister",
-            "KilledMyKin"]
-        );
-
         private static readonly List<string> moodList_Vanilla_Tag_Decency = new(
             ["WrongApparelGender",
             "DeadMansApparel",
@@ -341,20 +328,6 @@ namespace Maux36.RimPsyche.Disposition
 
         private static readonly List<string> moodList_Vanilla_Tag_Needy_Art = new(
             ["NeedBeauty"]
-        );
-
-        private static readonly List<string> moodList_Vanilla_Tag_Judgemental = new(
-            ["Incestuous",
-            "Man",
-            "Woman",
-            "TranshumanistAppreciation",
-            "BodyPuristDisgust"]
-        );
-
-        private static readonly List<string> moodList_Vanilla_Tag_Morality = new(
-            ["AteRawHumanlikeMeat",
-            "SoldPrisoner",
-            "ExecutedPrisoner"]
         );
 
         private static readonly List<string> moodList_Vanilla_Tag_Bond = new(
@@ -377,7 +350,8 @@ namespace Maux36.RimPsyche.Disposition
             "RejectedMyProposal",
             "HoneymoonPhase",
             "GotSomeLovin",
-            "Affair"]
+            "Affair",
+            "OpinionOfMyLover"]
         );
 
         private static readonly List<string> opinionList_Vanilla_Tag_Harmed = new(
@@ -411,8 +385,16 @@ namespace Maux36.RimPsyche.Disposition
             "KilledMyKin"]
         );
 
+        private static readonly List<string> opinionList_Vanilla_Tag_Decency = new(
+            ["SharedBed"]
+        );
+
         private static readonly List<string> opinionList_Vanilla_Tag_Judgemental = new(
-            ["TeetotalerVsAddict",
+            ["Incestuous",
+            "HardWorkerVsLazy",
+            "TeetotalerVsChemicalInterest",
+            "TeetotalerVsAddict",
+            "ChemicalInterestVsTeetotaler",
             "Man",
             "Woman",
             "TranshumanistAppreciation",

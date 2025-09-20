@@ -559,11 +559,18 @@ namespace Maux36.RimPsyche.Disposition
         private static readonly List<string> opinionList_Ideology_Tag_Decency_J = new(
             ["Lovin_Know_Disapproved",
             "AnyBodyPartCovered_Disapproved_Social_Male",
+            "AnyBodyPartCovered_Disapproved_Social_Female",
+            "AnyBodyPartButGroinCovered_Disapproved_Female",
             "AnyBodyPartButGroinCovered_Disapproved_Social_Male",
+            "AnyBodyPartButGroinCovered_Disapproved_Social_Female",
             "GroinUncovered_Disapproved_Social_Male",
+            "GroinUncovered_Disapproved_Social_Female",
             "GroinOrChestUncovered_Disapproved_Social_Male",
+            "GroinOrChestUncovered_Disapproved_Social_Female",
             "GroinChestOrHairUncovered_Disapproved_Social_Male",
-            "GroinChestHairOrFaceUncovered_Disapproved_Social_Male"]
+            "GroinChestOrHairUncovered_Disapproved_Social_Female",
+            "GroinChestHairOrFaceUncovered_Disapproved_Social_Male",
+            "GroinChestHairOrFaceUncovered_Disapproved_Social_Female"]
         );
     }
 }
