@@ -58,22 +58,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FightorFlightUtil.cs" />
+    <Compile Include="MoodDB\CoreDB.cs" />
+    <Compile Include="Utils\FightorFlightUtil.cs" />
     <Compile Include="DefOfDisposition.cs" />
     <Compile Include="Extensions\PsycheExtension.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\QuestManager_Notify_PawnBorn.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\RecordsUtility_Notify_PawnKilled.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\RecruitUtility_Recruit.cs" />
-    <Compile Include="HarmonyPatches\InteractionWorker_RecruitAttempt_Interacted.cs" />
+    <Compile Include="HarmonyPatches\ResilienceRelated\InteractionWorker_RecruitAttempt_Interacted.cs" />
     <Compile Include="HarmonyPatches\MentalStateHandler_Notify_DamageTaken.cs" />
-    <Compile Include="HarmonyPatches\Need_Mood_NeedInterval.cs" />
+    <Compile Include="HarmonyPatches\ShameRelated\Need_Mood_NeedInterval.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\VTE_Patches.cs" />
     <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable.cs" />
     <Compile Include="FormulaDB.cs" />
     <Compile Include="HarmonyPatches\OrganizationRoomRoleNotification.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\ResearchManager_FinishProject.cs" />
-    <Compile Include="HarmonyPatches\MentalBreaker_TryDoMentalBreak.cs" />
-    <Compile Include="HarmonyPatches\Thought_SituationalSocial_OpinionOffset.cs" />
+    <Compile Include="HarmonyPatches\ResilienceRelated\MentalBreaker_TryDoMentalBreak.cs" />
+    <Compile Include="HarmonyPatches\MoodRelated\Thought_SituationalSocial_OpinionOffset.cs" />
     <Compile Include="Hediff\Hediff_AdrenalineRush.cs" />
     <Compile Include="InteractionWorkers\InteractionWorker_ShameOverwhelmed.cs" />
     <Compile Include="JobDrivers\JobDriver_FleeInShame.cs" />
@@ -81,18 +82,18 @@
     <Compile Include="JobGivers\JobGivers_PanicAttack.cs" />
     <Compile Include="JoyGivers\JoyGiver_Meditate_Reflectiveness.cs" />
     <Compile Include="MentalState\PanicAttack.cs" />
-    <Compile Include="ShameUtil.cs" />
-    <Compile Include="QualityUtil.cs" />
-    <Compile Include="HarmonyPatches\CompDrug_PrePostIngested.cs" />
+    <Compile Include="Utils\ShameUtil.cs" />
+    <Compile Include="Utils\QualityUtil.cs" />
+    <Compile Include="HarmonyPatches\ResilienceRelated\CompDrug_PrePostIngested.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="HarmonyPatches\JoyGiver_Skygaze_Patch.cs" />
-    <Compile Include="HarmonyPatches\MentalBreaker_TestMoodMentalBreak_Patch.cs" />
-    <Compile Include="HarmonyPatches\MentalBreakWorker_BingingDrug_Patch.cs" />
-    <Compile Include="HarmonyPatches\NeedSeeker_NeedInterval.cs" />
+    <Compile Include="HarmonyPatches\MoodRelated\MentalBreaker_TestMoodMentalBreak_Patch.cs" />
+    <Compile Include="HarmonyPatches\ResilienceRelated\MentalBreakWorker_BingingDrug_Patch.cs" />
+    <Compile Include="HarmonyPatches\MoodRelated\NeedSeeker_NeedInterval.cs" />
     <Compile Include="HarmonyPatches\QualityUtility_GenerateQualityCreatedByPawn.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\SkillRecord_Learn.cs" />
-    <Compile Include="HarmonyPatches\Thought_MoodOffset.cs" />
-    <Compile Include="ResilienceUtil.cs" />
+    <Compile Include="HarmonyPatches\MoodRelated\Thought_MoodOffset.cs" />
+    <Compile Include="Utils\ResilienceUtil.cs" />
     <Compile Include="RimpsycheDisposition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RimpsycheDispositionSettings.cs" />
@@ -112,8 +113,8 @@
     <Compile Include="StatParts\PsycheNegotiationAbilityStatPart.cs" />
     <Compile Include="StatParts\PsycheOrganizationRoomWorkspeedStatPart.cs" />
     <Compile Include="StatParts\PsycheReflectivenessMeditationFocusGainStatPart.cs" />
-    <Compile Include="StageThoughtUtil.cs" />
-    <Compile Include="ThoughtUtil.cs" />
+    <Compile Include="Utils\StageThoughtUtil.cs" />
+    <Compile Include="Utils\ThoughtUtil.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_AmbitionMood.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_OrganizedMood.cs" />
   </ItemGroup>

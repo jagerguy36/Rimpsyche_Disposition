@@ -9,6 +9,7 @@ namespace Maux36.RimPsyche.Disposition
     [HarmonyPatch]
     public static class Thought_SituationalSocial_OpinionOffset
     {
+        private static readonly bool useIndividualThoughtsSetting = RimpsycheDispositionSettings.useIndividualThoughts;
         static IEnumerable<MethodBase> TargetMethods()
         {
             yield return AccessTools.Method(typeof(Thought_SituationalSocial), nameof(Thought_SituationalSocial.OpinionOffset));
@@ -26,9 +27,29 @@ namespace Maux36.RimPsyche.Disposition
             if (!compPsyche.Enabled)
                 return;
 
-            if (__instance.sourcePrecept != null)
+            //Individual Thoughts
+            if (useIndividualThoughtsSetting)
             {
-                __result *= compPsyche.Evaluate(FormulaDB.PreceptMoodOffsetMultiplier);
+                //Thoughts
+                if (StageThoughtUtil.StageMoodMultiplierDB.TryGetValue(__instance.def.defName, out var stageFormulas))
+                {
+                    int stageIndex = __instance.CurStageIndex;
+                    if ((uint)stageIndex < (uint)stageFormulas.Length)
+                    {
+                        var formula = stageFormulas[stageIndex];
+                        if (formula != null)
+                        {
+                            __result *= compPsyche.Evaluate(formula);
+                        }
+                    }
+                }
+                else if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(__instance.def.defName, out RimpsycheFormula indivFormula))
+                {
+                    if (indivFormula != null)
+                    {
+                        __result *= compPsyche.Evaluate(indivFormula);
+                    }
+                }
             }
         }
     }

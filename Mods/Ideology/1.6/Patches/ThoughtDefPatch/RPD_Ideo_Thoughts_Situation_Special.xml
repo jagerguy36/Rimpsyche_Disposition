@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="AnyBodyPartCovered_Disapproved_Male"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="AnyBodyPartButGroinCovered_Disapproved_Male"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="GroinUncovered_Disapproved_Male"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="GroinOrChestUncovered_Disapproved_Male"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="GroinChestOrHairUncovered_Disapproved_Male"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="AnyBodyPartCovered_Disapproved_Female"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="AnyBodyPartButGroinCovered_Disapproved_Female"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="GroinUncovered_Disapproved_Female"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="GroinOrChestUncovered_Disapproved_Female"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThoughtDef[defName="GroinChestOrHairUncovered_Disapproved_Female"]</xpath>
+    <value>
+      <thoughtClass>Maux36.RimPsyche.Thought_Situational_Shame</thoughtClass>
+    </value>
+  </Operation>
+
+
+</Patch>
