@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=1]/statFactors/ShootingAccuracyPawn</xpath>
+    <value>
+      <ShootingAccuracyPawn>1.25</ShootingAccuracyPawn>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=1]/statFactors/AimingAccuracy</xpath>
+    <value>
+      <AimingAccuracy>1.2</AimingAccuracy>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=-1]/statFactors/ShootingAccuracyPawn</xpath>
+    <value>
+      <ShootingAccuracyPawn>0.8</ShootingAccuracyPawn>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=-1]/statOffsets/AimingDelayFactor</xpath>
+    <value>
+      <AimingDelayFactor>-0.15</AimingDelayFactor>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Bravery"]/degreeDatas/li[degree=-1]/statOffsets/Suppressability</xpath>
+    <value>
+      <Suppressability>0.15</Suppressability>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Bravery"]/degreeDatas/li[degree=1]/statOffsets/Suppressability</xpath>
+    <value>
+      <Suppressability>-0.4</Suppressability>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Bravery"]/degreeDatas/li[degree=2]/statOffsets/Suppressability</xpath>
+    <value>
+      <Suppressability>-1</Suppressability>
+    </value>
+  </Operation>
+
+
+</Patch>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rimpsyche_Disposition", "Ri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ideology", "Mods\Ideology\Ideology.csproj", "{98A41078-0563-4AC6-A5EC-B760C3189E5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombatExtended", "Mods\CombatExtended\CombatExtended.csproj", "{258721B6-7600-4FCC-A66D-AE91D37656C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{98A41078-0563-4AC6-A5EC-B760C3189E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98A41078-0563-4AC6-A5EC-B760C3189E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98A41078-0563-4AC6-A5EC-B760C3189E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{258721B6-7600-4FCC-A66D-AE91D37656C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{258721B6-7600-4FCC-A66D-AE91D37656C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{258721B6-7600-4FCC-A66D-AE91D37656C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{258721B6-7600-4FCC-A66D-AE91D37656C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
