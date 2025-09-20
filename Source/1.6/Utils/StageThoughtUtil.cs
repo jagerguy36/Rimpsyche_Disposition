@@ -6,41 +6,32 @@ namespace Maux36.RimPsyche.Disposition
     [StaticConstructorOnStartup]
     public class StageThoughtUtil
     {
+        public static Dictionary<string, RimpsycheFormula[]> StageMoodThoughtTagDB = [];
+        public static Dictionary<string, RimpsycheFormula[]> StageOpinionThoughtTagDB = [];
+
         static StageThoughtUtil()
         {
-            Initialize();
-            ModCompat();
+            if (RimpsycheDispositionSettings.useIndividualThoughts)
+            {
+                Initialize();
+                ModCompat();
+            }
         }
 
         public static void Initialize()
         {
             Log.Message("[Rimpsyche - Disposition] StageThoughtUtil initialized.");
+            AddBaseThoughts();
         }
 
         public static void ModCompat()
         {
-            if (ModsConfig.IdeologyActive)
-            {
-            }
+            Log.Message("[Rimpsyche - Disposition] Compatibility Thoughts added.");
         }
-        public static readonly Dictionary<string, RimpsycheFormula[]> StageMoodMultiplierDB = new()
+
+        private static void AddBaseThoughts()
         {
-            { "KnowGuestExecuted", [
-                FormulaDB.Tag_JustifiedGuilt, //justified execution
-                FormulaDB.Tag_Empathy, //someone was euthanized
-                FormulaDB.Tag_Empathy_M, //someone was executed
-                FormulaDB.Tag_Empathy_M, //someone was organ-murdered
-                FormulaDB.Tag_Empathy_M //someone was ripscanned
-                ]
-            },
-            { "KnowGuestExecuted", [
-                FormulaDB.Tag_JustifiedGuilt, //justified execution
-                FormulaDB.Tag_Empathy, //someone was euthanized
-                FormulaDB.Tag_Empathy_M, //someone was executed
-                FormulaDB.Tag_Empathy_M, //someone was organ-murdered
-                FormulaDB.Tag_Empathy_M //someone was ripscanned
-                ]
-            },
-        };
+            CoreDB.AddDefs_Vanilla_Stage(StageMoodThoughtTagDB, StageOpinionThoughtTagDB);
+        }
     }
 }

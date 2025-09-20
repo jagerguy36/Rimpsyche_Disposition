@@ -16,9 +16,9 @@ namespace Maux36.RimPsyche.Disposition
             yield return AccessTools.Method(typeof(Thought_Tale), nameof(Thought_Tale.OpinionOffset));
             yield return AccessTools.Method(typeof(Thought_MemorySocial), nameof(Thought_MemorySocial.OpinionOffset));
             yield return AccessTools.Method(typeof(Thought_MemorySocialCumulative), nameof(Thought_MemorySocialCumulative.OpinionOffset));
-            //Thought_ChemicalInterestVsTeetotaler
-            //Thought_TeetotalerVsChemicalInterest
-            //Thought_HardWorkerVsLazy
+            yield return AccessTools.Method(typeof(Thought_ChemicalInterestVsTeetotaler), nameof(Thought_ChemicalInterestVsTeetotaler.OpinionOffset));
+            yield return AccessTools.Method(typeof(Thought_TeetotalerVsChemicalInterest), nameof(Thought_TeetotalerVsChemicalInterest.OpinionOffset));
+            yield return AccessTools.Method(typeof(Thought_HardWorkerVsLazy), nameof(Thought_HardWorkerVsLazy.OpinionOffset));
         }
         static void Postfix(ref float __result, Pawn ___pawn, Thought __instance)
         {
@@ -31,7 +31,7 @@ namespace Maux36.RimPsyche.Disposition
             if (useIndividualThoughtsSetting)
             {
                 //Thoughts
-                if (StageThoughtUtil.StageMoodMultiplierDB.TryGetValue(__instance.def.defName, out var stageFormulas))
+                if (StageThoughtUtil.StageOpinionThoughtTagDB.TryGetValue(__instance.def.defName, out var stageFormulas))
                 {
                     int stageIndex = __instance.CurStageIndex;
                     if ((uint)stageIndex < (uint)stageFormulas.Length)

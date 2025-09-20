@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Maux36.RimPsyche.Disposition
 {
@@ -435,6 +434,18 @@ namespace Maux36.RimPsyche.Disposition
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
+        public static RimpsycheFormula Tag_Needy_Art = new(
+            "Tag_Needy_Art",
+            (tracker) =>
+            {
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float selfInterest = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest);
+                float demandScore = expectation * (Mathf.Max(0f, selfInterest) + 2f) * 0.5f;
+                float imagination = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination);
+                return ThoughtUtil.MoodMultCurve(demandScore + imagination);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
         public static RimpsycheFormula Tag_Fear = new(
             "Tag_Fear",
             (tracker) =>
@@ -542,6 +553,15 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
                 return ThoughtUtil.MoodMultCurve(sociability);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Tag_Recluse = new(
+            "Tag_Recluse",
+            (tracker) =>
+            {
+                float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                return ThoughtUtil.MoodMultCurve(-sociability);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );

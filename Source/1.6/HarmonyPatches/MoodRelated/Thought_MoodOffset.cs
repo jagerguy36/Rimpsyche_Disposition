@@ -41,7 +41,7 @@ namespace Maux36.RimPsyche.Disposition
             if (useIndividualThoughtsSetting)
             {
                 //Thoughts
-                if (StageThoughtUtil.StageMoodMultiplierDB.TryGetValue(__instance.def.defName, out var stageFormulas))
+                if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(__instance.def.defName, out var stageFormulas))
                 {
                     int stageIndex = __instance.CurStageIndex;
                     if ((uint)stageIndex < (uint)stageFormulas.Length)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Maux36.RimPsyche.Disposition
 {
@@ -39,7 +35,7 @@ namespace Maux36.RimPsyche.Disposition
                 FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Affluence];
         }
-        public static void AddDefs_Vanilla(Dictionary<string, RimpsycheFormula> MoodThoughtTagDB , Dictionary<string, RimpsycheFormula> OpinionThoughtTagDB)
+        public static void AddDefs_Vanilla(Dictionary<string, RimpsycheFormula> MoodThoughtTagDB, Dictionary<string, RimpsycheFormula> OpinionThoughtTagDB)
         {
             foreach (var defName in moodList_Vanilla_Tag_Preference) MoodThoughtTagDB[defName] = FormulaDB.Tag_Preference;
             foreach (var defName in moodList_Vanilla_Tag_Empathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
@@ -54,7 +50,7 @@ namespace Maux36.RimPsyche.Disposition
             foreach (var defName in moodList_Vanilla_Tag_Concert) MoodThoughtTagDB[defName] = FormulaDB.Tag_Concert;
             foreach (var defName in moodList_Vanilla_Tag_Worry) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry;
             foreach (var defName in moodList_Vanilla_Tag_Worry_Bond) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Bond;
-            foreach (var defName in moodList_Vanilla_Tag_Disquiety) MoodThoughtTagDB[defName] = FormulaDB.Tag_Disquiet;
+            foreach (var defName in moodList_Vanilla_Tag_Disquiet) MoodThoughtTagDB[defName] = FormulaDB.Tag_Disquiet;
             foreach (var defName in moodList_Vanilla_Tag_Worry_Kin) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Kin;
             foreach (var defName in moodList_Vanilla_Tag_Worry_Loved) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Loved;
             foreach (var defName in moodList_Vanilla_Tag_Needy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Needy;
@@ -73,6 +69,7 @@ namespace Maux36.RimPsyche.Disposition
             foreach (var defName in moodList_Vanilla_Tag_Decency) MoodThoughtTagDB[defName] = FormulaDB.Tag_Decency;
             foreach (var defName in moodList_Vanilla_Tag_Sympathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_M;
             foreach (var defName in moodList_Vanilla_Tag_Sympathy_P) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_P;
+            foreach (var defName in moodList_Vanilla_Tag_Needy_Art) MoodThoughtTagDB[defName] = FormulaDB.Tag_Needy_Art;
             foreach (var defName in moodList_Vanilla_Tag_Judgemental) MoodThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
             foreach (var defName in moodList_Vanilla_Tag_Morality) MoodThoughtTagDB[defName] = FormulaDB.Tag_Morality;
             foreach (var defName in moodList_Vanilla_Tag_Bond) MoodThoughtTagDB[defName] = FormulaDB.Tag_Bond;
@@ -159,6 +156,9 @@ namespace Maux36.RimPsyche.Disposition
             "SleptInBedroom",
             "SleptInBarracks",
             "ApparelDamaged",
+            "PrisonCell",
+            "PrisonBarracks",
+            "HospitalPatientRoomStats",
             "Greedy",
             "Jealous"]
         );
@@ -203,7 +203,7 @@ namespace Maux36.RimPsyche.Disposition
             "BondedAnimalBanished"]
         );
 
-        private static readonly List<string> moodList_Vanilla_Tag_Disquiety = new(
+        private static readonly List<string> moodList_Vanilla_Tag_Disquiet = new(
             ["PawnWithBadOpinionLost"]
         );
 
@@ -339,12 +339,12 @@ namespace Maux36.RimPsyche.Disposition
             ["HumanLeatherApparelHappy"]
         );
 
+        private static readonly List<string> moodList_Vanilla_Tag_Needy_Art = new(
+            ["NeedBeauty"]
+        );
+
         private static readonly List<string> moodList_Vanilla_Tag_Judgemental = new(
             ["Incestuous",
-            "HardWorkerVsLazy",
-            "TeetotalerVsChemicalInterest",
-            "TeetotalerVsAddict",
-            "ChemicalInterestVsTeetotaler",
             "Man",
             "Woman",
             "TranshumanistAppreciation",

@@ -58,7 +58,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MoodDB\AnomalyDB.cs" />
+    <Compile Include="MoodDB\BiotechDB.cs" />
     <Compile Include="MoodDB\CoreDB.cs" />
+    <Compile Include="MoodDB\IdeologyDB.cs" />
+    <Compile Include="MoodDB\OdysseyDB.cs" />
+    <Compile Include="MoodDB\RoyaltyDB.cs" />
     <Compile Include="Utils\FightorFlightUtil.cs" />
     <Compile Include="DefOfDisposition.cs" />
     <Compile Include="Extensions\PsycheExtension.cs" />
