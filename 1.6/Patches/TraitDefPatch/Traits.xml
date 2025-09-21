@@ -29,18 +29,24 @@
     </value>
   </Operation>
 
-  <Operation Class="PatchOperationReplace">
+  <Operation Class="PatchOperationConditional">
     <xpath>Defs/TraitDef[defName="Neurotic"]/degreeDatas/li[degree=1]/statOffsets/MentalBreakThreshold</xpath>
-    <value>
-      <MentalBreakThreshold>0.03</MentalBreakThreshold>
-    </value>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/TraitDef[defName="Neurotic"]/degreeDatas/li[degree=1]/statOffsets/MentalBreakThreshold</xpath>
+        <value>
+          <MentalBreakThreshold>0.03</MentalBreakThreshold>
+        </value>
+    </match>
   </Operation>
 
-  <Operation Class="PatchOperationReplace">
+  <Operation Class="PatchOperationConditional">
     <xpath>Defs/TraitDef[defName="Neurotic"]/degreeDatas/li[degree=2]/statOffsets/MentalBreakThreshold</xpath>
-    <value>
-      <MentalBreakThreshold>0.08</MentalBreakThreshold>
-    </value>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/TraitDef[defName="Neurotic"]/degreeDatas/li[degree=2]/statOffsets/MentalBreakThreshold</xpath>
+        <value>
+          <MentalBreakThreshold>0.08</MentalBreakThreshold>
+        </value>
+    </match>
   </Operation>
 
   <Operation Class="PatchOperationReplace">
