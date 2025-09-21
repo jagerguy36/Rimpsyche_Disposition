@@ -34,8 +34,8 @@ namespace Maux36.RimPsyche.Disposition
             "TradePriceImprovementOffset",
             (tracker) =>
             {
-                float diligence = 0.25f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tact) * tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_SelfInterest, 2f);
-                return diligence;
+                float tradepriceOffset = 0.07f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tact) * tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_SelfInterest, 2f);
+                return tradepriceOffset;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );

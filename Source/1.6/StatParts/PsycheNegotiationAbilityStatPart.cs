@@ -35,8 +35,8 @@ namespace Maux36.RimPsyche.Disposition
             "NegotiationAbilityOffset",
             (tracker) =>
             {
-                float diligence = 0.2f * (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tact) + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Confidence)) * (1.25f - 0.5f * Mathf.Abs(tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest)));
-                return diligence;
+                float negotiationOffset = 0.1f * (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tact) + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Confidence)) * (1.25f - 0.5f * Mathf.Abs(tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest)));
+                return negotiationOffset;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
