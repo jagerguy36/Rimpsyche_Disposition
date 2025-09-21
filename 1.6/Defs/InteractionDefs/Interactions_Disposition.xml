@@ -8,8 +8,8 @@
     <initiatorThought>Rimpsyche_ShameOverwhelmed</initiatorThought>
     <logRulesInitiator>
       <rulesStrings>
-        <li>r_logentry->[INITIATOR_nameDef] could not bear being seen without proper clothing.</li>
-        <li>r_logentry->[INITIATOR_nameDef] was overwhelmed by shame for being seen without proper clothing.</li>
+        <li>r_logentry->[INITIATOR_nameDef] could not bear being seen without proper attire.</li>
+        <li>r_logentry->[INITIATOR_nameDef] was overwhelmed by shame for being seen without proper attire.</li>
       </rulesStrings>
     </logRulesInitiator>
   </InteractionDef>
