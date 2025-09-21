@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThoughtDef[defName="MoodOffsetVeryHappy"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>6</baseMoodEffect>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThoughtDef[defName="MoodOffsetHappy"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>3</baseMoodEffect>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThoughtDef[defName="MoodOffsetUnhappy"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>-3</baseMoodEffect>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThoughtDef[defName="MoodOffsetVeryUnhappy"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>-6</baseMoodEffect>
+    </value>
+  </Operation>
+
+</Patch>

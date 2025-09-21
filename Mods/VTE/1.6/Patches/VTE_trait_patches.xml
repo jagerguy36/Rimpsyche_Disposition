@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="VTE_Brave"]/degreeDatas/li/statOffsets/PainShockThreshold</xpath>
+    <value>
+      <PainShockThreshold>0.1</PainShockThreshold>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="VTE_Prodigy"]/degreeDatas/li/statFactors/ResearchSpeed</xpath>
+    <value>
+      <ResearchSpeed>1.25</ResearchSpeed>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="VTE_Eccentric"]/degreeDatas/li/statFactors/ResearchSpeed</xpath>
+    <value>
+      <ResearchSpeed>1.1</ResearchSpeed>
+    </value>
+  </Operation>
+
+
+</Patch>

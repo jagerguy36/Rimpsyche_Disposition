@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="RCT_Dunce"]/degreeDatas/li/statOffsets/ResearchSpeed</xpath>
+    <value>
+      <ResearchSpeed>-0.15</ResearchSpeed>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="RCT_Diplomat"]/degreeDatas/li[degree=-1]/statOffsets/NegotiationAbility</xpath>
+    <value>
+      <NegotiationAbility>-0.1</NegotiationAbility>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="RCT_Diplomat"]/degreeDatas/li[degree=1]/statOffsets/NegotiationAbility</xpath>
+    <value>
+      <NegotiationAbility>0.1</NegotiationAbility>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="RCT_Diplomat"]/degreeDatas/li[degree=2]/statOffsets/NegotiationAbility</xpath>
+    <value>
+      <NegotiationAbility>0.25</NegotiationAbility>
+    </value>
+  </Operation>
+
+
+</Patch>
