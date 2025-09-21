@@ -58,6 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HarmonyPatches\MiscModPatches\Individuality_Patches.cs" />
+    <Compile Include="HarmonyPatches\MiscModPatches\Unpatcher.cs" />
     <Compile Include="MoodDB\AnomalyDB.cs" />
     <Compile Include="MoodDB\BiotechDB.cs" />
     <Compile Include="MoodDB\CoreDB.cs" />

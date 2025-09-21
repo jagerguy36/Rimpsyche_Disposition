@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="SYR_Haggler"]/degreeDatas/li/statOffsets/TradePriceImprovement</xpath>
+    <value>
+      <TradePriceImprovement>0.28</TradePriceImprovement>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="SYR_Haggler"]/degreeDatas/li/statOffsets/NegotiationAbility</xpath>
+    <value>
+      <NegotiationAbility>0.15</NegotiationAbility>
+    </value>
+  </Operation>
+
+</Patch>
