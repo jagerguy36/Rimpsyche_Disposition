@@ -30,6 +30,20 @@
   </Operation>
 
   <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Neurotic"]/degreeDatas/li[degree=1]/statOffsets/MentalBreakThreshold</xpath>
+    <value>
+      <MentalBreakThreshold>0.03</MentalBreakThreshold>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="Neurotic"]/degreeDatas/li[degree=2]/statOffsets/MentalBreakThreshold</xpath>
+    <value>
+      <MentalBreakThreshold>0.08</MentalBreakThreshold>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="Industriousness"]/degreeDatas/li[degree=2]/statOffsets/WorkSpeedGlobal</xpath>
     <value>
       <WorkSpeedGlobal>0.20</WorkSpeedGlobal>
@@ -110,5 +124,12 @@
         <ShootingAccuracyPawn>-3</ShootingAccuracyPawn>
       </value>
     </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="TooSmart"]/degreeDatas/li/statOffsets/MentalBreakThreshold</xpath>
+    <value>
+      <MentalBreakThreshold>0.05</MentalBreakThreshold>
+    </value>
   </Operation>
 </Patch>
