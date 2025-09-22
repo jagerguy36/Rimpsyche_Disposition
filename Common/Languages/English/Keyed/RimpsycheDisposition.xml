@@ -21,7 +21,7 @@
   <RP_BrilliantSuccessLabel>Brilliant Success</RP_BrilliantSuccessLabel>
   <RP_BrilliantSuccessMessage>While working, {PAWN_labelShort} recognized a rare opportunity. Guided by {PAWN_possessive} experimental nature, {PAWN_pronoun} took a chance and crafted something truly exceptional.</RP_BrilliantSuccessMessage>
   <RP_ResilientSpiritLabel>Resilient Spirit</RP_ResilientSpiritLabel>
-  <RP_ResilientSpiritMessage>{0} was on the verge of a breakdown. However {0_possessive} resilience allowed him to gain resolve.\n\nPrevented mental break: {2}</RP_ResilientSpiritMessage>
+  <RP_ResilientSpiritMessage>{PAWN_labelShort} was on the verge of a breakdown. However {PAWN_possessive} resilience allowed {PAWN_objective} to gain resolve.</RP_ResilientSpiritMessage>
   <RP_MentalStateReason_PanicAttack>Panic attack</RP_MentalStateReason_PanicAttack>
   <RP_MentalStateReason_Shame>Being ashamed</RP_MentalStateReason_Shame>
 

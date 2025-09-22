@@ -8,6 +8,7 @@ namespace Maux36.RimPsyche.Disposition
     {
         public static bool TestResilientSpirit(MentalBreakDef mentalbreak, Pawn pawn)
         {
+            if (!pawn.IsColonist) return false;
             var compPsyche = pawn.compPsyche();
             if (compPsyche?.Enabled != true)
             {
@@ -39,7 +40,7 @@ namespace Maux36.RimPsyche.Disposition
                     GenSpawn.Spawn(mote, pawn.Position, pawn.Map);
                 }
                 TaggedString label = "RP_ResilientSpiritLabel".Translate() + ": " + pawn.LabelShortCap;
-                TaggedString taggedString = "RP_ResilientSpiritMessage".Translate(pawn.Label, pawn.Named("PAWN"), mentalbreak..GetLabel()).CapitalizeFirst();
+                TaggedString taggedString = "RP_ResilientSpiritMessage".Translate(pawn.Label, pawn.Named("PAWN"));
                 taggedString = taggedString.AdjustedFor(pawn);
                 Find.LetterStack.ReceiveLetter(label, taggedString, LetterDefOf.PositiveEvent, pawn);
                 return true;

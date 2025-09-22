@@ -22,6 +22,26 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "SuppressionPower"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "SuppressionPower"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheAggressivenessSuppressionStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "SuppressionPower"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheAggressivenessSuppressionStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
     <xpath>*/StatDef[defName = "Terror"]/parts</xpath>
     <match Class="PatchOperationAdd">
       <xpath>*/StatDef[defName = "Terror"]/parts</xpath>
@@ -40,22 +60,42 @@
         </value>
     </nomatch>
   </Operation>
-
+  
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "SuppressionPower"]/parts</xpath>
+    <xpath>*/StatDef[defName = "CertaintyLossFactor"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "SuppressionPower"]/parts</xpath>
+      <xpath>*/StatDef[defName = "CertaintyLossFactor"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheAggressivenessSuppressionStatPart"/>
+          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheCertaintyLossStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "SuppressionPower"]</xpath>
+      <xpath>*/StatDef[defName = "CertaintyLossFactor"]</xpath>
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheAggressivenessSuppressionStatPart"/>
+            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheCertaintyLossStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "SocialIdeoSpreadFrequencyFactor"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "SocialIdeoSpreadFrequencyFactor"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheIdeoSpreadStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "SocialIdeoSpreadFrequencyFactor"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheIdeoSpreadStatPart"/>
           </parts>
         </value>
     </nomatch>
