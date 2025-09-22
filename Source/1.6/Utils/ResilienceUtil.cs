@@ -39,7 +39,7 @@ namespace Maux36.RimPsyche.Disposition
                     GenSpawn.Spawn(mote, pawn.Position, pawn.Map);
                 }
                 TaggedString label = "RP_ResilientSpiritLabel".Translate() + ": " + pawn.LabelShortCap;
-                TaggedString taggedString = "RP_ResilientSpiritMessage".Translate(pawn.Label, pawn.Named("PAWN"), mentalbreak.Named("MENTALBREAK")).CapitalizeFirst();
+                TaggedString taggedString = "RP_ResilientSpiritMessage".Translate(pawn.Label, pawn.Named("PAWN"), mentalbreak..GetLabel()).CapitalizeFirst();
                 taggedString = taggedString.AdjustedFor(pawn);
                 Find.LetterStack.ReceiveLetter(label, taggedString, LetterDefOf.PositiveEvent, pawn);
                 return true;

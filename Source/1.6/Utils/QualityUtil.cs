@@ -110,7 +110,7 @@ namespace Maux36.RimPsyche.Disposition
                     {
                         if (!inspired)
                         {
-                            Find.LetterStack.ReceiveLetter("LetterBrilliantSuccessLabel".Translate(), "LetterBrilliantSuccessMessage".Translate(pawn.Named("PAWN")).AdjustedFor(pawn).CapitalizeFirst(), LetterDefOf.PositiveEvent, pawn);
+                            Find.LetterStack.ReceiveLetter("RP_BrilliantSuccessLabel".Translate(), "RP_BrilliantSuccessMessage".Translate(pawn.Named("PAWN")).AdjustedFor(pawn).CapitalizeFirst(), LetterDefOf.PositiveEvent, pawn);
                         }
                         value = 6;
                     }
@@ -151,7 +151,7 @@ namespace Maux36.RimPsyche.Disposition
                         }
                         if (RimpsycheDispositionSettings.sendExperimentMessage)
                         {
-                            Messages.Message("MessageExperimentSuccess".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
+                            Messages.Message("RP_MessageExperimentSuccess".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
                         }
                         value += 1;
                     }
@@ -168,7 +168,7 @@ namespace Maux36.RimPsyche.Disposition
                             }
                             if (RimpsycheDispositionSettings.sendExperimentMessage)
                             {
-                                Messages.Message("MessageExperimentFail".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
+                                Messages.Message("RP_MessageExperimentFail".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
                             }
                             value -= 1;
                         }

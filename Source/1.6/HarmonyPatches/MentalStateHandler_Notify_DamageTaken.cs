@@ -30,7 +30,7 @@ namespace Maux36.RimPsyche.Disposition
                                 {
                                     if (___pawn.Faction == Faction.OfPlayer)
                                     {
-                                        ___pawn.mindState.mentalStateHandler.TryStartMentalState(DefOfDisposition.Rimpsyche_PanicAttack, "Psyche_PanicAttack".Translate(), forced: false, forceWake: false, causedByMood: false, null, transitionSilently: false, causedByDamage: true);
+                                        ___pawn.mindState.mentalStateHandler.TryStartMentalState(DefOfDisposition.Rimpsyche_PanicAttack, "RP_MentalStateReason_PanicAttack".Translate(), forced: false, forceWake: false, causedByMood: false, null, transitionSilently: false, causedByDamage: true);
                                     }
                                     else if (___pawn.Faction != Faction.OfPlayer && ___pawn.HostFaction == null)
                                     {

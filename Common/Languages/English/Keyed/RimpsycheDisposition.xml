@@ -1,7 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <LetterBrilliantSuccessLabel>Brilliant Success</LetterBrilliantSuccessLabel>
-  <LetterBrilliantSuccessMessage>While working, {PAWN_labelShort} recognized a rare opportunity. Guided by {PAWN_possessive} experimental nature, {PAWN_pronoun} took a chance and crafted something truly exceptional.</LetterBrilliantSuccessMessage>
-  <MessageExperimentSuccess>{PAWN_labelShort}'s experimental attempt successfully increased the item's quality.</MessageExperimentSuccess>
-  <MessageExperimentFail>{PAWN_labelShort}'s experimental attempt failed and decreased the item's quality.</MessageExperimentFail>
+  <!-- Ambition fulfilled reasons -->
+  <RP_BabyBorn>Colony baby born</RP_BabyBorn>
+  <RP_EmenySlain>Slain enemy</RP_EmenySlain>
+  <RP_Recruited>New recruit: {0}</RP_Recruited>
+  <RP_Tamed>Wild animal tamed: {0}</RP_Tamed>
+  <RP_Researched>Research finished: {0}</RP_Researched>
+  <RP_Crafted>Crafted item quality: {0}</RP_Crafted>
+
+  <!-- Message -->
+  <RP_MessageShamed>{PAWN_labelShort} could not handle the shame and is trying to hide from prying eyes.</RP_MessageShamed>
+  <RP_MessageExperimentSuccess>{PAWN_labelShort}'s experimental attempt successfully increased the item's quality.</RP_MessageExperimentSuccess>
+  <RP_MessageExperimentFail>{PAWN_labelShort}'s experimental attempt failed and decreased the item's quality.</RP_MessageExperimentFail>
+
+  <!-- Job string -->
+  <ReportHidingInShame>Hiding in shame</ReportHidingInShame>
+  <ReportPanicAttack>Cowering in fear</ReportPanicAttack>
+
+  <!-- Letters -->
+  <RP_BrilliantSuccessLabel>Brilliant Success</RP_BrilliantSuccessLabel>
+  <RP_BrilliantSuccessMessage>While working, {PAWN_labelShort} recognized a rare opportunity. Guided by {PAWN_possessive} experimental nature, {PAWN_pronoun} took a chance and crafted something truly exceptional.</RP_BrilliantSuccessMessage>
+  <RP_ResilientSpiritLabel>Resilient Spirit</RP_ResilientSpiritLabel>
+  <RP_ResilientSpiritMessage>{0} was on the verge of a breakdown. However {0_possessive} resilience allowed him to gain resolve.\n\nPrevented mental break: {2}</RP_ResilientSpiritMessage>
+  <RP_MentalStateReason_PanicAttack>Panic attack</RP_MentalStateReason_PanicAttack>
+  <RP_MentalStateReason_Shame>Being ashamed</RP_MentalStateReason_Shame>
+
+
+  <!-- Stat parts -->
+  <RP_Stat_Psyche>Psyche</RP_Stat_Psyche>
+  <RP_Stat_AimingAccuracyPartCE></RP_Stat_AimingAccuracyPartCE>
+  <RP_Stat_ShootingAccuracyPartCE></RP_Stat_ShootingAccuracyPartCE>
+  <RP_Stat_SuppressabilityPartCE></RP_Stat_SuppressabilityPartCE>
+  <RP_Stat_AggressivenessSuppression></RP_Stat_AggressivenessSuppression>
+  <RP_Stat_BraveryTerrorMultiplier></RP_Stat_BraveryTerrorMultiplier>
+  <RP_Stat_ResilienceSuppressionFall></RP_Stat_ResilienceSuppressionFall>
+  <RP_Stat_DeliberationButcherEfficiency></RP_Stat_DeliberationButcherEfficiency>
+  <RP_Stat_DeliberationFoodpoison></RP_Stat_DeliberationFoodpoison>
+  <RP_Stat_DeliberationOperationChance></RP_Stat_DeliberationOperationChance>
+  <RP_Stat_DeliberationTendQuality></RP_Stat_DeliberationTendQuality>
+  <RP_Stat_DeliberationWorkspeed></RP_Stat_DeliberationWorkspeed>
+  <RP_Stat_DeliberationYield></RP_Stat_DeliberationYield>
+  <RP_Stat_AimingDelayFactorOffset></RP_Stat_AimingDelayFactorOffset>
+  <RP_Stat_DiligenceWorkspeed></RP_Stat_DiligenceWorkspeed>
+  <RP_Stat_MentalBreakThreashold></RP_Stat_MentalBreakThreashold>
+  <RP_Stat_NegotiationAbilityOffset></RP_Stat_NegotiationAbilityOffset>
+  <RP_Stat_OrganizationRoomWorkspeed></RP_Stat_OrganizationRoomWorkspeed>
+  <RP_Stat_PainShockThresholdOffset></RP_Stat_PainShockThresholdOffset>
+  <RP_Stat_ReflectivenessMeditation></RP_Stat_ReflectivenessMeditation>
+  <RP_Stat_ReflectivenessResearchSpeed></RP_Stat_ReflectivenessResearchSpeed>
+  <RP_Stat_ShootingAccuracyPawnOffset></RP_Stat_ShootingAccuracyPawnOffset>
+  <RP_Stat_TradePriceImprovementOffset></RP_Stat_TradePriceImprovementOffset>
+
+  <RimpsycheDispositionSettingCategory>Rimpsyche Disposition</RimpsycheDispositionSettingCategory>
+
+  <RimpsycheDispositionContentSetting>Content Settings</RimpsycheDispositionContentSetting>
+  <RimpsycheDispositionRestartNeeded>You need to restart the game for these settings to be applied</RimpsycheDispositionRestartNeeded>
+  <RimpsycheMoodEmotionalityC>Emotionality mood influence</RimpsycheMoodEmotionalityC>
+  <RimpsycheMoodEmotionalityCTooltip></RimpsycheMoodEmotionalityCTooltip>
+  <RimpsycheMoodOptimismC>Optimism mood influence</RimpsycheMoodOptimismC>
+  <RimpsycheMoodOptimismCTooltip></RimpsycheMoodOptimismCTooltip>
+  <RimpsycheUseIndividualThoughts>Individual thought variance</RimpsycheUseIndividualThoughts>
+  <RimpsycheUseIndividualThoughtsTooltip></RimpsycheUseIndividualThoughtsTooltip>
+  <RimpsycheMoodIndividualC>Individual thought influence</RimpsycheMoodIndividualC>
+  <RimpsycheMoodIndividualCTooltip></RimpsycheMoodIndividualCTooltip>
+  <RimpsycheUseExperimentation>Experimentation</RimpsycheUseExperimentation>
+  <RimpsycheUseExperimentationTooltip></RimpsycheUseExperimentationTooltip>
+  <RimpsycheUseSenseOfProgress>Sense of purpose</RimpsycheUseSenseOfProgress>
+  <RimpsycheUseSenseOfProgressTooltip></RimpsycheUseSenseOfProgressTooltip>
+  <RimpsycheUseResilientSpirit>Resilient spirit</RimpsycheUseResilientSpirit>
+  <RimpsycheUseResilientSpiritTooltip></RimpsycheUseResilientSpiritTooltip>
+  <RimpsycheUseFightorFlight>Fight or flight</RimpsycheUseFightorFlight>
+  <RimpsycheUseFightorFlightTooltip></RimpsycheUseFightorFlightTooltip>
+  <RimpsycheEnemyFightorFlight>Fight or flgiht for non-colonists</RimpsycheEnemyFightorFlight>
+  <RimpsycheEnemyFightorFlightTooltip></RimpsycheEnemyFightorFlightTooltip>
+
+  <RimpsycheDispositionMessageSetting>Message settings</RimpsycheDispositionMessageSetting>
+  <RimpsycheSendExperimentMessage>Send experimentation message</RimpsycheSendExperimentMessage>
+  <RimpsycheUseSendExperimentMessageTooltip></RimpsycheUseSendExperimentMessageTooltip>
+  <RimpsycheSendShameMessage>Send Shame message</RimpsycheSendShameMessage>
+  <RimpsycheUseSendShameMessageTooltip></RimpsycheUseSendShameMessageTooltip>
+
+  <RimpsycheDispositionMoteSetting>Mote settings</RimpsycheDispositionMoteSetting>
+  <RimpsycheShowExperimentMote>Show experimentatino mote</RimpsycheShowExperimentMote>
+  <RimpsycheShowExperimentMoteTooltip></RimpsycheShowExperimentMoteTooltip>
+  <RimpsycheShowResilientSpiritMote>Show resilient spirit mote</RimpsycheShowResilientSpiritMote>
+  <RimpsycheShowResilientSpiritMoteTooltip></RimpsycheShowResilientSpiritMoteTooltip>
+  <RimpsycheShowAdrenalineMote>Show adrenaline rush mote</RimpsycheShowAdrenalineMote>
+  <RimpsycheShowAdrenalineMoteTooltip></RimpsycheShowAdrenalineMoteTooltip>
+  <RimpsycheShowPanicMote>Show Panic attack mote</RimpsycheShowPanicMote>
+  <RimpsycheShowPanicMoteTooltip></RimpsycheShowPanicMoteTooltip>
+
+  <RimpsycheDispositionDefaultSetting>Default</RimpsycheDispositionDefaultSetting>
+  <RimpsycheDispositionDefaultSettingTooltip></RimpsycheDispositionDefaultSettingTooltip>
 </LanguageData>

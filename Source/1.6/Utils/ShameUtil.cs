@@ -217,7 +217,7 @@ namespace Maux36.RimPsyche.Disposition
                 Find.PlayLog.Add(playLogEntry);
                 if (RimpsycheDispositionSettings.sendShameMessage)
                 {
-                    Messages.Message("MessageShamed".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
+                    Messages.Message("RP_MessageShamed".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
                 }
             }
             var fleeDest = FindHideInShameLocation(pawn);
@@ -236,7 +236,7 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return false;
             }
-            TaggedString taggedString = "MentalStateReason_Shame".Translate();
+            TaggedString taggedString = "RP_MentalStateReason_Shame".Translate();
             return breaker.TryDoMentalBreak(taggedString, result);
         }
 
