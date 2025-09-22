@@ -56,13 +56,13 @@
   <RimpsycheDispositionContentSetting>Content Settings</RimpsycheDispositionContentSetting>
   <RimpsycheDispositionRestartNeeded>You need to restart the game for these settings to be applied</RimpsycheDispositionRestartNeeded>
   <RimpsycheMoodEmotionalityC>Emotionality mood influence</RimpsycheMoodEmotionalityC>
-  <RimpsycheMoodEmotionalityCTooltip></RimpsycheMoodEmotionalityCTooltip>
+  <RimpsycheMoodEmotionalityCTooltip>How much "Emotionality" affects pawn mood</RimpsycheMoodEmotionalityCTooltip>
   <RimpsycheMoodOptimismC>Optimism mood influence</RimpsycheMoodOptimismC>
-  <RimpsycheMoodOptimismCTooltip></RimpsycheMoodOptimismCTooltip>
+  <RimpsycheMoodOptimismCTooltip>How much "Optimism" Affects pawn mood</RimpsycheMoodOptimismCTooltip>
   <RimpsycheUseIndividualThoughts>Individual thought variance</RimpsycheUseIndividualThoughts>
-  <RimpsycheUseIndividualThoughtsTooltip></RimpsycheUseIndividualThoughtsTooltip>
+  <RimpsycheUseIndividualThoughtsTooltip>Pawn's personality influences the mood of the individual thoughts</RimpsycheUseIndividualThoughtsTooltip>
   <RimpsycheMoodIndividualC>Individual thought influence</RimpsycheMoodIndividualC>
-  <RimpsycheMoodIndividualCTooltip></RimpsycheMoodIndividualCTooltip>
+  <RimpsycheMoodIndividualCTooltip>How much individual thoughts' moods are influenced by a pawn's personality </RimpsycheMoodIndividualCTooltip>
   <RimpsycheUseExperimentation>Experimentation</RimpsycheUseExperimentation>
   <RimpsycheUseExperimentationTooltip></RimpsycheUseExperimentationTooltip>
   <RimpsycheUseSenseOfProgress>Sense of purpose</RimpsycheUseSenseOfProgress>
