@@ -31,7 +31,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
         }
 
         public static RimpsycheFormula AggressivenessSuppression = new(
-            "ResilienceSuppressionFall",
+            "AggressivenessSuppression",
             (tracker) =>
             {
                 float aggressiveness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Aggressiveness) * 0.3f;
