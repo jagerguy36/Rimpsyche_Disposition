@@ -80,7 +80,7 @@ namespace Maux36.RimPsyche.Disposition
                 List<Thing> list = reg.ListerThings.ThingsInGroup(ThingRequestGroup.AttackTarget);
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (!tmpInvIds.Contains(list[i].thingIDNumber) && ShouldInduceFear(list[i], pawn, threatDistSquared))
+                    if (!tmpInvIds.Contains(list[i].thingIDNumber) && ShouldInduceFear(list[i], pawn, potentialThreatDistSquared))
                     {
                         tmpThreats.Add(list[i]);
                     }

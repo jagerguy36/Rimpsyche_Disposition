@@ -15,7 +15,6 @@ namespace Maux36.RimPsyche.Disposition
                 return null;
             }
             IntVec3 fleeDest = FightorFlightUtil.FindHideInFearLocation(pawn);
-            Log.Message($"New location: {fleeDest}");
             if (fleeDest.IsValid)
             {
                 Job job = JobMaker.MakeJob(DefOfDisposition.RimPsyche_PanicAttackFlee, fleeDest);

@@ -63,7 +63,6 @@ namespace Maux36.RimPsyche.Disposition
                     {
                         FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, DefOfDisposition.RimpsycheMote_PanicAttack);
                     }
-                    //check if the target loc is the current loc first, eh?
                     if (FightorFlightUtil.DangerousToBeAt(pawn, pawn.Position))
                     {
                         LocalTargetInfo newTarget = FightorFlightUtil.FindHideInFearLocation(pawn);
