@@ -28,6 +28,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             var compPsyche = pawn.compPsyche();
             this.AddEndCondition(() => (compPsyche.shame <= 0 ? JobCondition.Succeeded : JobCondition.Ongoing));
+            this.AddEndCondition(() => (ticksLeft < 0 ? JobCondition.Succeeded : JobCondition.Ongoing));
             this.AddFailCondition(() => (pawn.Downed));
             this.AddFinishAction((condition) =>
             {
@@ -59,15 +60,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             if (ticksLeft <= 0)
             {
-                if (ShameUtil.TryDoRandomShameCausedMentalBreak(pawn))
-                {
-                    EndJobWith(JobCondition.InterruptForced);
-                }
-                else
-                {
-                    EndJobWith(JobCondition.InterruptForced);
-                }
-                
+                ShameUtil.TryDoRandomShameCausedMentalBreak(pawn)
             }
         }
 

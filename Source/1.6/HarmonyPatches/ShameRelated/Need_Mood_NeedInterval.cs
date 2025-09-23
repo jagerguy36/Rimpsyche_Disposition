@@ -25,12 +25,13 @@ namespace Maux36.RimPsyche.Disposition
                         {
                             if (!ThoughtUtility.ThoughtNullified(___pawn, def)) //Found at least one active shame thought
                             {
-                                //TODO: consider ___pawn sight. blind pawns should not be aware unless close enough to interact
+                                //Sight capacity consideration requires frequent calls to ___pawn.health.capacities.GetLevel(), and only affect the dist from 13->6 at most.
                                 if (ShameUtil.BeingSeen(___pawn)) //Being watched: gain shame
                                 {
                                     bool overwhelm = compPsyche.GainShame();
                                     if (compPsyche.isOverwhelmed)
                                     {
+                                        //If they are at the hiding destination and is still being seen, give job again
                                         if (___pawn.jobs.curJob.targetA.Cell == ___pawn.Position)
                                         {
                                             ShameUtil.TryGiveFleeInShameJob(___pawn, true);
