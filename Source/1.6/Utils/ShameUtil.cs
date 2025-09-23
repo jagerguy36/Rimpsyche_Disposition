@@ -221,10 +221,10 @@ namespace Maux36.RimPsyche.Disposition
                 }
             }
             var fleeDest = FindHideInShameLocation(pawn);
+            //TODO: if fleeDest == current position: give random wander dest near.
             var runawayjob = new Job(DefOfDisposition.RimPsyche_FleeInShame, fleeDest);
             runawayjob.mote = MoteMaker.MakeThoughtBubble(pawn, "Things/Mote/Flecks/Embarrassed", maintain: true);
             pawn.jobs.StartJob(runawayjob, JobCondition.InterruptForced, null, false, true, null);
-            compPsyche.isOverwhelmed = true;
             return true;
         }
 

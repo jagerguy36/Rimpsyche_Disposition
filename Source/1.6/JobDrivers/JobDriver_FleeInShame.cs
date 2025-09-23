@@ -9,7 +9,7 @@ namespace Maux36.RimPsyche.Disposition
     //Also add produced thought to naked memories, naked multiplier should implement shame too.
     public class JobDriver_FleeInShame: JobDriver
     {
-        private int ticksLeft = 8750; //Three and a half hours
+        private const int breakTick = 8750; //Three and a half hours
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return true;
@@ -28,17 +28,17 @@ namespace Maux36.RimPsyche.Disposition
         {
             var compPsyche = pawn.compPsyche();
             this.AddEndCondition(() => (compPsyche.shame <= 0 ? JobCondition.Succeeded : JobCondition.Ongoing));
-            this.AddEndCondition(() => (ticksLeft < 0 ? JobCondition.Succeeded : JobCondition.Ongoing));
+            this.AddEndCondition(() => (compPsyche.tickOverwhelmed > breakTick ? JobCondition.Succeeded : JobCondition.Ongoing));
             this.AddFailCondition(() => (pawn.Downed));
             this.AddFinishAction((condition) =>
             {
-                compPsyche.isOverwhelmed = false;
+                compPsyche.tickOverwhelmed = 0;
             });
             Toil gotoToil = Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
             gotoToil.AddPreTickAction(delegate
             {
-                ticksLeft--;
-                CheckTick();
+                compPsyche.tickOverwhelmed++;
+                CheckTick(compPsyche.tickOverwhelmed);
             });
             gotoToil.socialMode = RandomSocialMode.Off;
             yield return gotoToil;
@@ -48,26 +48,20 @@ namespace Maux36.RimPsyche.Disposition
             waitToil.defaultDuration = 8750;
             waitToil.AddPreTickAction(delegate
             {
-                ticksLeft--;
-                CheckTick();
+                compPsyche.tickOverwhelmed++;
+                CheckTick(compPsyche.tickOverwhelmed);
             });
             waitToil.socialMode = RandomSocialMode.Off;
 
             yield return waitToil;
         }
 
-        private void CheckTick()
+        private void CheckTick(int tickOverwhelmed)
         {
-            if (ticksLeft <= 0)
+            if (breakTick <= tickOverwhelmed)
             {
-                ShameUtil.TryDoRandomShameCausedMentalBreak(pawn)
+                ShameUtil.TryDoRandomShameCausedMentalBreak(pawn);
             }
-        }
-
-        public override void ExposeData()
-        {
-            base.ExposeData();
-            Scribe_Values.Look(ref ticksLeft, "ticksLeft", 0);
         }
     }
 }

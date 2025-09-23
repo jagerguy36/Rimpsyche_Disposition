@@ -29,7 +29,7 @@ namespace Maux36.RimPsyche.Disposition
                                 if (ShameUtil.BeingSeen(___pawn)) //Being watched: gain shame
                                 {
                                     bool overwhelm = compPsyche.GainShame();
-                                    if (compPsyche.isOverwhelmed)
+                                    if (compPsyche.tickOverwhelmed > 0)
                                     {
                                         //If they are at the hiding destination and is still being seen, give job again
                                         if (___pawn.jobs.curJob.targetA.Cell == ___pawn.Position)
