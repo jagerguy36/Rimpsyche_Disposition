@@ -48,7 +48,6 @@ namespace Maux36.RimPsyche.Disposition
             return false;
 
         }
-        //TODO: determine formula
         public static RimpsycheFormula ResilientSpiritChance = new(
             "ResilientSpiritChance",
             (tracker) =>
