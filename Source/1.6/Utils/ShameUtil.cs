@@ -211,7 +211,15 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return false;
             }
-            if (!continuedJob)
+            var fleeDest = FindHideInShameLocation(pawn);
+            //TODO: if fleeDest == current position: give random wander dest near.
+            var runawayjob = new Job(DefOfDisposition.RimPsyche_FleeInShame, fleeDest);
+            runawayjob.mote = MoteMaker.MakeThoughtBubble(pawn, "Things/Mote/Flecks/Embarrassed", maintain: true);
+            if (continuedJob)
+            {
+                pawn.jobs.StartJob(runawayjob, JobCondition.Ongoing, null, false, true, null);
+            }
+            else
             {
                 PlayLogEntry_Interaction playLogEntry = new PlayLogEntry_Interaction(DefOfDisposition.Rimpsyche_Shamed, pawn, pawn, null);
                 Find.PlayLog.Add(playLogEntry);
@@ -219,12 +227,8 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     Messages.Message("RP_MessageShamed".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
                 }
+                pawn.jobs.StartJob(runawayjob, JobCondition.InterruptForced, null, false, true, null);
             }
-            var fleeDest = FindHideInShameLocation(pawn);
-            //TODO: if fleeDest == current position: give random wander dest near.
-            var runawayjob = new Job(DefOfDisposition.RimPsyche_FleeInShame, fleeDest);
-            runawayjob.mote = MoteMaker.MakeThoughtBubble(pawn, "Things/Mote/Flecks/Embarrassed", maintain: true);
-            pawn.jobs.StartJob(runawayjob, JobCondition.InterruptForced, null, false, true, null);
             return true;
         }
 

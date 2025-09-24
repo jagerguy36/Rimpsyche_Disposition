@@ -32,7 +32,10 @@ namespace Maux36.RimPsyche.Disposition
             this.AddFailCondition(() => (pawn.Downed));
             this.AddFinishAction((condition) =>
             {
-                compPsyche.tickOverwhelmed = 0;
+                if(condition != JobCondition.Ongoing)
+                {
+                    compPsyche.tickOverwhelmed = 0;
+                }
             });
             Toil gotoToil = Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
             gotoToil.AddPreTickAction(delegate
