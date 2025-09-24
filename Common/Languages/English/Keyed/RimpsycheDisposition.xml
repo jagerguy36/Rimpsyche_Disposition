@@ -86,6 +86,8 @@
   <RimpsycheUseSendExperimentMessageTooltip>Send notifications when pawns experiment.</RimpsycheUseSendExperimentMessageTooltip>
   <RimpsycheSendShameMessage>Send Shame Messages</RimpsycheSendShameMessage>
   <RimpsycheUseSendShameMessageTooltip>Send notifications when pawns run away in shame.</RimpsycheUseSendShameMessageTooltip>
+  <RimpsycheAddShameLog>Add Shame Log</RimpsycheAddShameLog>
+  <RimpsycheUseAddShameLogTooltip>Add social logs when pawns run away in shame.</RimpsycheUseAddShameLogTooltip>
 
   <RimpsycheDispositionMoteSetting>Mote Settings</RimpsycheDispositionMoteSetting>
   <RimpsycheShowExperimentMote>Show Experimentation Mote</RimpsycheShowExperimentMote>

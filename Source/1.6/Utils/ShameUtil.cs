@@ -9,6 +9,7 @@ namespace Maux36.RimPsyche.Disposition
 {
     public static class ShameUtil
     {
+        private const bool addShameLog = RimpsycheDispositionSettings.addShameLog;
         private const int sightDistance = 13; //Interaction HorDistance is 6, witnessed distance is 12, flee all pawn flee distance is 23
         private const int runDistanceMax = 50; //How far the pawn will move
         private const int maxDistSquared = (sightDistance + runDistanceMax) * (sightDistance + runDistanceMax);
@@ -211,7 +212,7 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return false;
             }
-            if (!continuedJob)
+            if (addShameLog && !continuedJob)
             {
                 PlayLogEntry_Interaction playLogEntry = new PlayLogEntry_Interaction(DefOfDisposition.Rimpsyche_Shamed, pawn, pawn, null);
                 Find.PlayLog.Add(playLogEntry);

@@ -63,6 +63,8 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.CheckboxLabeled("RimpsycheSendExperimentMessage".Translate(), ref RimpsycheDispositionSettings.sendExperimentMessage, "RimpsycheUseSendExperimentMessageTooltip".Translate());
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheSendShameMessage".Translate(), ref RimpsycheDispositionSettings.sendShameMessage, "RimpsycheUseSendShameMessageTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheAddShameLog".Translate(), ref RimpsycheDispositionSettings.addShameLog, "RimpsycheUseAddShameLogTooltip".Translate());
             listing_Standard.Gap(24f);
 
             listing_Standard.Label("RimpsycheDispositionMoteSetting".Translate());
