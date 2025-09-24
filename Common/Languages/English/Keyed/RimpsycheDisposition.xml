@@ -14,14 +14,14 @@
   <RP_MessageExperimentFail>{PAWN_labelShort}'s experiment failed, lowering the item's quality.</RP_MessageExperimentFail>
 
   <!-- Job string -->
-  <ReportHidingInShame>Hiding in Shame</ReportHidingInShame>
-  <ReportPanicAttack>Cowering in Fear</ReportPanicAttack>
+  <ReportHidingInShame>Hiding in shame</ReportHidingInShame>
+  <ReportPanicAttack>Cowering in fear</ReportPanicAttack>
 
   <!-- Letters -->
   <RP_BrilliantSuccessLabel>Brilliant Success</RP_BrilliantSuccessLabel>
-  <RP_BrilliantSuccessMessage>While working, {PAWN_labelShort} recognized a rare opportunity. Thanks to {PAWN_possessive} experimental streak, {PAWN_pronoun} crafted something exceptional, {PAWN_pronoun} took a chance and created something truly exceptional.</RP_BrilliantSuccessMessage>
+  <RP_BrilliantSuccessMessage>While working, {PAWN_labelShort} recognized a rare opportunity. Thanks to {PAWN_possessive} experimental streak, {PAWN_pronoun} took a chance and created something truly exceptional.</RP_BrilliantSuccessMessage>
   <RP_ResilientSpiritLabel>Resilient Spirit</RP_ResilientSpiritLabel>
-  <RP_ResilientSpiritMessage>{PAWN_labelShort} nearly broke down, but {PAWN_possessive} resilience gave {PAWN_objective} new resolve.</RP_ResilientSpiritMessage>
+  <RP_ResilientSpiritMessage>{PAWN_labelShort} nearly broke down, but {PAWN_possessive} resilience gave {PAWN_objective} new resolve.\n\nFor the next three days, negative moods will affect {PAWN_objective} only half as much.</RP_ResilientSpiritMessage>
   <RP_MentalStateReason_PanicAttack>Panic attack</RP_MentalStateReason_PanicAttack>
   <RP_MentalStateReason_Shame>Being ashamed</RP_MentalStateReason_Shame>
 
@@ -73,9 +73,9 @@
   <RimpsycheUseExperimentation>Experimentation</RimpsycheUseExperimentation>
   <RimpsycheUseExperimentationTooltip>Pawns may experiment while crafting or building, either increasing or decreasing an item's quality.</RimpsycheUseExperimentationTooltip>
   <RimpsycheUseSenseOfProgress>Sense of Purpose</RimpsycheUseSenseOfProgress>
-  <RimpsycheUseSenseOfProgressTooltip>Pawns gain a mood boost from progress like earning skill XP, making quality items, or completing research.</RimpsycheUseSenseOfProgressTooltip>
+  <RimpsycheUseSenseOfProgressTooltip>Pawns gain a mood boost from progress like earning skill XP, making quality items, or completing research. Ambitious pawns may become frustrated if they go too long without making progress.</RimpsycheUseSenseOfProgressTooltip>
   <RimpsycheUseResilientSpirit>Resilient Spirit</RimpsycheUseResilientSpirit>
-  <RimpsycheUseResilientSpiritTooltip>Resilient pawns can resist mentalbreaks and gain renewed resolve instead.</RimpsycheUseResilientSpiritTooltip>
+  <RimpsycheUseResilientSpiritTooltip>Resilient pawns has a chance to resist mentalbreaks and gain renewed resolve buff for three days instead. (Cooldown 60 days)</RimpsycheUseResilientSpiritTooltip>
   <RimpsycheUseFightorFlight>Fight-or-flight</RimpsycheUseFightorFlight>
   <RimpsycheUseFightorFlightTooltip>In combat, fearful pawns may suffer panic attacks, while brave or aggressive pawns may get an adrenaline rush that temporarily boosts stats.</RimpsycheUseFightorFlightTooltip>
   <RimpsycheEnemyFightorFlight>Non-colonists Fight-or-flight</RimpsycheEnemyFightorFlight>
@@ -86,14 +86,12 @@
   <RimpsycheUseSendExperimentMessageTooltip>Send notifications when pawns experiment.</RimpsycheUseSendExperimentMessageTooltip>
   <RimpsycheSendShameMessage>Send Shame Messages</RimpsycheSendShameMessage>
   <RimpsycheUseSendShameMessageTooltip>Send notifications when pawns run away in shame.</RimpsycheUseSendShameMessageTooltip>
-  <RimpsycheAddShameLog>Add Shame Log</RimpsycheAddShameLog>
-  <RimpsycheUseAddShameLogTooltip>Add social logs when pawns run away in shame.</RimpsycheUseAddShameLogTooltip>
 
   <RimpsycheDispositionMoteSetting>Mote Settings</RimpsycheDispositionMoteSetting>
   <RimpsycheShowExperimentMote>Show Experimentation Mote</RimpsycheShowExperimentMote>
   <RimpsycheShowExperimentMoteTooltip>Show a mote when pawns experiment.</RimpsycheShowExperimentMoteTooltip>
   <RimpsycheShowResilientSpiritMote>Show Resilient Spirit mote</RimpsycheShowResilientSpiritMote>
-  <RimpsycheShowResilientSpiritMoteTooltip>Show a mote when a pawn gains the Resilient Spirit buff.</RimpsycheShowResilientSpiritMoteTooltip>
+  <RimpsycheShowResilientSpiritMoteTooltip>Show a mote when a pawn triggers the Resilient Spirit.</RimpsycheShowResilientSpiritMoteTooltip>
   <RimpsycheShowAdrenalineMote>Show Adrenaline Mote</RimpsycheShowAdrenalineMote>
   <RimpsycheShowAdrenalineMoteTooltip>Show a mote when a pawn's adrenaline rush stage progresses.</RimpsycheShowAdrenalineMoteTooltip>
   <RimpsycheShowPanicMote>Show Panic Attack Mote</RimpsycheShowPanicMote>

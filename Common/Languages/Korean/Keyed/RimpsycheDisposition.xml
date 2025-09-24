@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Ambition fulfilled reasons -->
+  <RP_BabyBorn>정착지에 아기가 태어남</RP_BabyBorn>
+  <RP_EnemySlain>적을 물리침</RP_EnemySlain>
+  <RP_Recruited>새로운 정착민: {0}</RP_Recruited>
+  <RP_Tamed>야생 동물을 길들임: {0}</RP_Tamed>
+  <RP_Researched>연구가 완료됨: {0}</RP_Researched>
+  <RP_Crafted>아이템을 제작함 (품질: {0})</RP_Crafted>
+
+  <!-- Message -->
+  <RP_MessageShamed>{PAWN_labelShort}(은)는 수치심을 견디지 못하고 다른 사람들로부터 숨으려 합니다.</RP_MessageShamed>
+  <RP_MessageExperimentSuccess>{PAWN_labelShort}의 실험정신이 품질을 개선시켰습니다.</RP_MessageExperimentSuccess>
+  <RP_MessageExperimentFail>{PAWN_labelShort}의 실험정신이 품질을 악화시켰습니다.</RP_MessageExperimentFail>
+
+  <!-- Job string -->
+  <ReportHidingInShame>수치심에 숨는 중</ReportHidingInShame>
+  <ReportPanicAttack>두려움에 떠는 중</ReportPanicAttack>
+
+  <!-- Letters -->
+  <RP_BrilliantSuccessLabel>눈부신 성공</RP_BrilliantSuccessLabel>
+  <RP_BrilliantSuccessMessage>{PAWN_labelShort}(은)는 작업 중 특별한 가능성을 포착했습니다. {PAWN_pronoun}은(는) 과감히 실험정신을 발휘했고, 그 결과 전설적인 작품을 만들어냈습니다.</RP_BrilliantSuccessMessage>
+  <RP_ResilientSpiritLabel>강인한 정신</RP_ResilientSpiritLabel>
+  <RP_ResilientSpiritMessage>{PAWN_labelShort}은(는) 정신이상의 문턱에 이르렀습니다. 하지만 {PAWN_possessive}의 강인한 정신력이 새로운 의지를 불어넣어 주었습니다.\n\n{PAWN_labelShort}은(는) 다음 3일간 부정적 기분의 효과를 절반만 받습니다.</RP_ResilientSpiritMessage>
+  <RP_MentalStateReason_PanicAttack>공황 상태</RP_MentalStateReason_PanicAttack>
+  <RP_MentalStateReason_Shame>수치심에 휩싸임</RP_MentalStateReason_Shame>
+
+
+  <!-- Stat parts -->
+  <RP_Stat_Psyche>성격</RP_Stat_Psyche>
+  <RP_Stat_ShootingAccuracyPawnOffset>신중함</RP_Stat_ShootingAccuracyPawnOffset>
+  <RP_Stat_AimingDelayFactorOffset>신중함</RP_Stat_AimingDelayFactorOffset>
+  <RP_Stat_DeliberationYield>신중함</RP_Stat_DeliberationYield>
+  <RP_Stat_DeliberationButcherEfficiency>신중함</RP_Stat_DeliberationButcherEfficiency>
+  <RP_Stat_DeliberationTendQuality>신중함</RP_Stat_DeliberationTendQuality>
+  <RP_Stat_DeliberationOperationChance>신중함</RP_Stat_DeliberationOperationChance>
+  <RP_Stat_DeliberationFoodpoison>신중함</RP_Stat_DeliberationFoodpoison>
+  <RP_Stat_DeliberationWorkspeed>신중함</RP_Stat_DeliberationWorkspeed>
+  <RP_Stat_DiligenceWorkspeed>성실성</RP_Stat_DiligenceWorkspeed>
+  <RP_Stat_OrganizationRoomWorkspeed>정리성</RP_Stat_OrganizationRoomWorkspeed>
+  <RP_Stat_TradePriceImprovementOffset>사회성, 이기심</RP_Stat_TradePriceImprovementOffset>
+  <RP_Stat_NegotiationAbilityOffset>사회성, 자신감</RP_Stat_NegotiationAbilityOffset>
+  <RP_Stat_MentalBreakThreashold>강인함</RP_Stat_MentalBreakThreashold>
+  <RP_Stat_PainShockThresholdOffset>강인함, 용기</RP_Stat_PainShockThresholdOffset>
+  <RP_Stat_ReflectivenessResearchSpeed>성찰성</RP_Stat_ReflectivenessResearchSpeed>
+  <RP_Stat_ReflectivenessMeditation>성찰성</RP_Stat_ReflectivenessMeditation>
+
+  <!-- Stat parts: Ideology -->
+  <RP_Stat_BraveryTerrorMultiplier>용기</RP_Stat_BraveryTerrorMultiplier>
+  <RP_Stat_ResilienceSuppressionFall>강인함</RP_Stat_ResilienceSuppressionFall>
+  <RP_Stat_AggressivenessSuppression>공격성</RP_Stat_AggressivenessSuppression>
+  <RP_Stat_CertaintyLossMult>사회성, 확신</RP_Stat_CertaintyLossMult>
+  <RP_Stat_IdeoSpreadMult>수다스러움, 열성</RP_Stat_IdeoSpreadMult>
+
+  <!-- Stat parts: CE -->
+  <RP_Stat_AimingAccuracyPartCE>신중함</RP_Stat_AimingAccuracyPartCE>
+  <RP_Stat_ShootingAccuracyPartCE>신중함</RP_Stat_ShootingAccuracyPartCE>
+  <RP_Stat_SuppressabilityPartCE>용기</RP_Stat_SuppressabilityPartCE>
+
+
+  <RimpsycheDispositionSettingCategory>림사이키 성향 모듈</RimpsycheDispositionSettingCategory>
+
+  <RimpsycheDispositionContentSetting>컨텐츠 설정</RimpsycheDispositionContentSetting>
+  <RimpsycheDispositionRestartNeeded>이 설정을 적용하려면 게임을 다시 시작해야 합니다.</RimpsycheDispositionRestartNeeded>
+  <RimpsycheMoodEmotionalityC>감수성 기분 영향</RimpsycheMoodEmotionalityC>
+  <RimpsycheMoodEmotionalityCTooltip>감수성이 림의 전반적 기분에 영향을 끼치는 정도.</RimpsycheMoodEmotionalityCTooltip>
+  <RimpsycheMoodOptimismC>낙관성 기분 영향</RimpsycheMoodOptimismC>
+  <RimpsycheMoodOptimismCTooltip>낙관성이 림의 전반적 기분에 영향을 끼치는 정도.</RimpsycheMoodOptimismCTooltip>
+  <RimpsycheUseIndividualThoughts>개별 생각 차이</RimpsycheUseIndividualThoughts>
+  <RimpsycheUseIndividualThoughtsTooltip>성격이 개별 생각의 무드 값에 영향을 줍니다.</RimpsycheUseIndividualThoughtsTooltip>
+  <RimpsycheMoodIndividualC>개별 생각 영향</RimpsycheMoodIndividualC>
+  <RimpsycheMoodIndividualCTooltip>성격이 림의 개별 생각이 제공하는 기분에 영향을 끼치는 정도</RimpsycheMoodIndividualCTooltip>
+  <RimpsycheUseExperimentation>실험정신</RimpsycheUseExperimentation>
+  <RimpsycheUseExperimentationTooltip>림들이 제작/건설 중 종종 실험정신을 발휘합니다. 실험의 성공 여부에 따라 품질이 개선되거나 악화될 수 있습니다.</RimpsycheUseExperimentationTooltip>
+  <RimpsycheUseSenseOfProgress>목적의식</RimpsycheUseSenseOfProgress>
+  <RimpsycheUseSenseOfProgressTooltip>림들이 기술 경험치 획득, 좋은 품질 아이템 제작, 정착지에서 연구 완료 등으로부터 성취감을 얻습니다. 야심찬 림들은 지나치게 오랜 시간 아무런 성취가 없을 경우 불만을 가질 수 있습니다.</RimpsycheUseSenseOfProgressTooltip>
+  <RimpsycheUseResilientSpirit>강인한 정신</RimpsycheUseResilientSpirit>
+  <RimpsycheUseResilientSpiritTooltip>강인한 림들이 확률적으로 정신이상을 이겨내고 대신 새로운 의지를 3일동안 얻습니다. (쿨다운 60일) </RimpsycheUseResilientSpiritTooltip>
+  <RimpsycheUseFightorFlight>전투 성향</RimpsycheUseFightorFlight>
+  <RimpsycheUseFightorFlightTooltip>겁이 많은 림들은 전시상황에서 간혹 공항상태에 빠질 수 있습니다. 반면 용감하고 공격적인 림들은 단기간 아드레날린 러시를 얻습니다.</RimpsycheUseFightorFlightTooltip>
+  <RimpsycheEnemyFightorFlight>비정착민 전투 성향</RimpsycheEnemyFightorFlight>
+  <RimpsycheEnemyFightorFlightTooltip>정착민이 아닌 림들에 전투 성향을 적용합니다.</RimpsycheEnemyFightorFlightTooltip>
+
+  <RimpsycheDispositionMessageSetting>알림 세팅</RimpsycheDispositionMessageSetting>
+  <RimpsycheSendExperimentMessage>실험정신 알림</RimpsycheSendExperimentMessage>
+  <RimpsycheUseSendExperimentMessageTooltip>림이 실험정신을 발휘할 때 알림을 받습니다.</RimpsycheUseSendExperimentMessageTooltip>
+  <RimpsycheSendShameMessage>수치심 알림</RimpsycheSendShameMessage>
+  <RimpsycheUseSendShameMessageTooltip>림이 수치심에 도망칠 때 알림을 받습니다.</RimpsycheUseSendShameMessageTooltip>
+
+  <RimpsycheDispositionMoteSetting>아이콘 세팅</RimpsycheDispositionMoteSetting>
+  <RimpsycheShowExperimentMote>실험정신 아이콘 표시</RimpsycheShowExperimentMote>
+  <RimpsycheShowExperimentMoteTooltip>림들이 실험정신을 발휘할 때 아이콘으로 표시합니다.</RimpsycheShowExperimentMoteTooltip>
+  <RimpsycheShowResilientSpiritMote>강인한 정신 아이콘 표시</RimpsycheShowResilientSpiritMote>
+  <RimpsycheShowResilientSpiritMoteTooltip>강인한 정신이 발동될 때 아이콘으로 표시합니다.</RimpsycheShowResilientSpiritMoteTooltip>
+  <RimpsycheShowAdrenalineMote>아드레날린 아이콘 표시</RimpsycheShowAdrenalineMote>
+  <RimpsycheShowAdrenalineMoteTooltip>림들의 아드레날린 러시 수준이 올라갈 때 아이콘으로 표시합니다.</RimpsycheShowAdrenalineMoteTooltip>
+  <RimpsycheShowPanicMote>공황 아이콘 표시</RimpsycheShowPanicMote>
+  <RimpsycheShowPanicMoteTooltip>공황상태에서 도망가는 림들을 아이콘으로 표시합니다.</RimpsycheShowPanicMoteTooltip>
+
+  <RimpsycheDispositionDefaultSetting>기본값</RimpsycheDispositionDefaultSetting>
+  <RimpsycheDispositionDefaultSettingTooltip>기본값으로 복귀합니다.</RimpsycheDispositionDefaultSettingTooltip>
+</LanguageData>

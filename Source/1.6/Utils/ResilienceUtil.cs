@@ -18,7 +18,7 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return true;
             }
-            if (compPsyche.lastResilientSpiritTick + 3600000 > Find.TickManager.TicksGame)
+            if (compPsyche.lastResilientSpiritTick + 3600000 > Find.TickManager.TicksGame) //60days cooldown
             {
                 return false;
             }

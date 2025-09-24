@@ -21,7 +21,6 @@ namespace Maux36.RimPsyche.Disposition
 
         //UI
         public static bool sendExperimentMessage = true;
-        public static bool addShameLog = false;
         public static bool sendShameMessage = true;
 
         //Motes
@@ -47,7 +46,6 @@ namespace Maux36.RimPsyche.Disposition
 
             Scribe_Values.Look(ref sendExperimentMessage, "Rimpsyche_sendExperimentMessage", true, true);
             Scribe_Values.Look(ref sendShameMessage, "Rimpsyche_sendShameMessage", true, true);
-            Scribe_Values.Look(ref addShameLog, "Rimpsyche_addShameLog", false, true);
 
 
             Scribe_Values.Look(ref showExperimentMote, "Rimpsyche_showExperimentMote", true, true);
