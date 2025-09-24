@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HarmonyLib;
+using RimWorld;
+using Verse;
 
 namespace Maux36.RimPsyche.Disposition.Ideology
 {
@@ -11,21 +9,52 @@ namespace Maux36.RimPsyche.Disposition.Ideology
         [HarmonyPatch(typeof(CompAbilityEffect_Counsel), "ChanceForPawn")]
         public static class CompAbilityEffect_Counsel_ChanceForPawn
         {
-            static void Postfix(ref float __result, Pawn pawn, CompAbilityEffect ___parent)
+            static void Postfix(ref float __result, Pawn pawn, Ability ___parent)
             {
-                return ___result;
+                var counselorPsyche = ___parent.pawn.compPsyche();
+                var listenerPsyche = pawn.compPsyche();
+                if (counselorPsyche?.Enabled == true && listenerPsyche?.Enabled == true)
+                {
+                    __result *= counselorPsyche.Evaluate(CounselTactMultiplier) * listenerPsyche.Evaluate(CounselTrustMultiplier);
+                }
             }
         }
-    }
-    public static class CompAbilityEffect_Counsel_Patch
-    {
         [HarmonyPatch(typeof(CompAbilityEffect_Counsel), "ExtraLabelMouseAttachment")]
-        public static class CompAbilityEffect_Counsel_ChanceForPawn
+        public static class CompAbilityEffect_Counsel_ExtraLabelMouseAttachment
         {
-            static void Postfix(ref float __result, Pawn pawn, CompAbilityEffect ___parent)
+            static void Postfix(ref string __result, LocalTargetInfo target, Ability ___parent)
             {
-                return ___result;
+                Pawn targetPawn = target.Pawn;
+                var counselorPsyche = ___parent.pawn.compPsyche();
+                var listenerPsyche = targetPawn.compPsyche();
+
+                if (counselorPsyche?.Enabled == true && listenerPsyche?.Enabled == true)
+                {
+                    string multiplier = (counselorPsyche.Evaluate(CounselTactMultiplier) * listenerPsyche.Evaluate(CounselTrustMultiplier)).ToStringPercent();
+                    string additionalString = "\n" + " -  " + "Psyche_CounselEffect".Translate() + " " + multiplier;
+                    __result += additionalString;
+                }
+
             }
         }
+
+        public static RimpsycheFormula CounselTactMultiplier = new(
+            "CounselTactMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f + 0.15f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tact);
+                return mult;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula CounselTrustMultiplier = new(
+            "CounselTrustMultiplier",
+            (tracker) =>
+            {
+                float mult = 1f + 0.2f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Trust);
+                return mult;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
     }
 }
