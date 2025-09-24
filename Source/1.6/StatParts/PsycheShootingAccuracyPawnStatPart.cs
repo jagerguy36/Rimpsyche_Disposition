@@ -35,8 +35,8 @@ namespace Maux36.RimPsyche.Disposition
             "ShootingAccuracyPawnOffset",
             (tracker) =>
             {
-                float diligence = 4f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
-                return diligence;
+                float deliberation = 4f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
+                return deliberation;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );

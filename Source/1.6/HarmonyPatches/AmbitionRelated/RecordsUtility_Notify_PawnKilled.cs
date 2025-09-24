@@ -17,7 +17,7 @@ namespace Maux36.RimPsyche.Disposition
                 if (compPsyche?.Enabled == true)
                 {
                     float score = compPsyche.Evaluate(AmbitionKilledProgress);
-                    if(score >=0) compPsyche.ProgressMade(score, causeIndex: 3, reason: "RP_EmenySlain".Translate());
+                    if(score >=0) compPsyche.ProgressMade(score, causeIndex: 3, reason: "RP_EnemySlain".Translate());
                 }
             }
         }
