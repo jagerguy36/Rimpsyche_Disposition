@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Ambition fulfilled reasons -->
-  <RP_BabyBorn>A colony baby was born</RP_BabyBorn>
-  <RP_EnemySlain>Enemy slain</RP_EnemySlain>
-  <RP_Recruited>New recruit: {0}</RP_Recruited>
-  <RP_Tamed>Wild animal tamed: {0}</RP_Tamed>
-  <RP_Researched>Research completed: {0}</RP_Researched>
-  <RP_Crafted>Crafted item (quality: {0})</RP_Crafted>
+  <RP_BabyBorn>(A colony baby was born)</RP_BabyBorn>
+  <RP_EnemySlain>(Enemy slain)</RP_EnemySlain>
+  <RP_Recruited>(New recruit: {0})</RP_Recruited>
+  <RP_Tamed>(Wild animal tamed: {0})</RP_Tamed>
+  <RP_Researched>(Research completed: {0})</RP_Researched>
+  <RP_Crafted>(Crafted item of quality: {0})</RP_Crafted>
 
   <!-- Message -->
   <RP_MessageShamed>{PAWN_labelShort} is overwhelmed with shame and trying to hide from others.</RP_MessageShamed>
@@ -37,7 +37,7 @@
   <RP_Stat_DeliberationFoodpoison>Deliberation</RP_Stat_DeliberationFoodpoison>
   <RP_Stat_DeliberationWorkspeed>Deliberation</RP_Stat_DeliberationWorkspeed>
   <RP_Stat_DiligenceWorkspeed>Diligence</RP_Stat_DiligenceWorkspeed>
-  <RP_Stat_OrganizationRoomWorkspeed>Organization</RP_Stat_OrganizationRoomWorkspeed>
+  <RP_Stat_OrganizationRoomWorkspeed>Organization worktable adjustment</RP_Stat_OrganizationRoomWorkspeed>
   <RP_Stat_TradePriceImprovementOffset>Tact, Self-interest</RP_Stat_TradePriceImprovementOffset>
   <RP_Stat_NegotiationAbilityOffset>Tact, Confidence</RP_Stat_NegotiationAbilityOffset>
   <RP_Stat_MentalBreakThreashold>Resilience</RP_Stat_MentalBreakThreashold>
@@ -76,6 +76,10 @@
   <RimpsycheUseSenseOfProgressTooltip>Pawns gain a mood boost from progress like earning skill XP, making quality items, or completing research. Ambitious pawns may become frustrated if they go too long without making progress.</RimpsycheUseSenseOfProgressTooltip>
   <RimpsycheUseResilientSpirit>Resilient Spirit</RimpsycheUseResilientSpirit>
   <RimpsycheUseResilientSpiritTooltip>Resilient pawns has a chance to resist mentalbreaks and gain renewed resolve buff for three days instead. (Cooldown 60 days)</RimpsycheUseResilientSpiritTooltip>
+  <RimpsycheUseHideInShame>Hide in Shame</RimpsycheUseHideInShame>
+  <RimpsycheUseHideInShameTooltip>Pawns not dressed according to their ideology (naked for vanilla) will run away in shame from other pawns' prying eyes.</RimpsycheUseHideInShameTooltip>
+  <RimpsycheCheckMedicalOverShame>Tend over Shame</RimpsycheCheckMedicalOverShame>
+  <RimpsycheCheckMedicalOverShameTooltip>Pawns with health conditions suppress their shame until they are tended.</RimpsycheCheckMedicalOverShameTooltip>
   <RimpsycheUseFightorFlight>Fight-or-flight</RimpsycheUseFightorFlight>
   <RimpsycheUseFightorFlightTooltip>In combat, fearful pawns may suffer panic attacks, while brave or aggressive pawns may get an adrenaline rush that temporarily boosts stats.</RimpsycheUseFightorFlightTooltip>
   <RimpsycheEnemyFightorFlight>Non-colonists Fight-or-flight</RimpsycheEnemyFightorFlight>

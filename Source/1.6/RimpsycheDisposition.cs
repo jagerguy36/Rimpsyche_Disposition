@@ -53,6 +53,10 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseResilientSpirit".Translate(), ref RimpsycheDispositionSettings.useResilientSpirit, "RimpsycheUseResilientSpiritTooltip".Translate());
             listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheUseHideInShame".Translate(), ref RimpsycheDispositionSettings.useHideInShame, "RimpsycheUseHideInShameTooltip".Translate());
+            listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheCheckMedicalOverShame".Translate(), ref RimpsycheDispositionSettings.checkMedicalOverShame, "RimpsycheCheckMedicalOverShameTooltip".Translate());
+            listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseFightorFlight".Translate(), ref RimpsycheDispositionSettings.useFightorFlight, "RimpsycheUseFightorFlightTooltip".Translate());
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheEnemyFightorFlight".Translate(), ref RimpsycheDispositionSettings.enemyFightorFlight, "RimpsycheEnemyFightorFlightTooltip".Translate());
@@ -86,6 +90,8 @@ namespace Maux36.RimPsyche.Disposition
                 RimpsycheDispositionSettings.useExperimentation = true;
                 RimpsycheDispositionSettings.useSenseOfProgress = true;
                 RimpsycheDispositionSettings.useResilientSpirit = true;
+                RimpsycheDispositionSettings.useHideInShame = true;
+                RimpsycheDispositionSettings.checkMedicalOverShame = false;
                 RimpsycheDispositionSettings.useFightorFlight = true;
                 RimpsycheDispositionSettings.enemyFightorFlight = false;
 

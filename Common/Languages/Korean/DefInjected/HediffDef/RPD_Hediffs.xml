@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rimpsyche_AdrenalineRush.label>아드레날린 러시</Rimpsyche_AdrenalineRush.label>
+  <Rimpsyche_AdrenalineRush.description>아드레날린이 분출됩니다. 심박수와 혈압이 상승하고, 감각이 예민해지며 집중력이 극대화됩니다.</Rimpsyche_AdrenalineRush.description>
+  <Rimpsyche_AdrenalineRush.stages.0.label>미미함</Rimpsyche_AdrenalineRush.stages.0.label>
+  <Rimpsyche_AdrenalineRush.stages.1.label>매우 약함</Rimpsyche_AdrenalineRush.stages.1.label>
+  <Rimpsyche_AdrenalineRush.stages.2.label>약함</Rimpsyche_AdrenalineRush.stages.2.label>
+  <Rimpsyche_AdrenalineRush.stages.3.label>보통</Rimpsyche_AdrenalineRush.stages.3.label>
+  <Rimpsyche_AdrenalineRush.stages.4.label>강함</Rimpsyche_AdrenalineRush.stages.4.label>
+  <Rimpsyche_AdrenalineRush.stages.5.label>매우 강함</Rimpsyche_AdrenalineRush.stages.5.label>
+
+</LanguageData>

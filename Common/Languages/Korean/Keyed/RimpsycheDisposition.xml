@@ -37,7 +37,7 @@
   <RP_Stat_DeliberationFoodpoison>신중함</RP_Stat_DeliberationFoodpoison>
   <RP_Stat_DeliberationWorkspeed>신중함</RP_Stat_DeliberationWorkspeed>
   <RP_Stat_DiligenceWorkspeed>성실성</RP_Stat_DiligenceWorkspeed>
-  <RP_Stat_OrganizationRoomWorkspeed>정리성</RP_Stat_OrganizationRoomWorkspeed>
+  <RP_Stat_OrganizationRoomWorkspeed>정리성 작업대 계수</RP_Stat_OrganizationRoomWorkspeed>
   <RP_Stat_TradePriceImprovementOffset>사회성, 이기심</RP_Stat_TradePriceImprovementOffset>
   <RP_Stat_NegotiationAbilityOffset>사회성, 자신감</RP_Stat_NegotiationAbilityOffset>
   <RP_Stat_MentalBreakThreashold>강인함</RP_Stat_MentalBreakThreashold>
@@ -74,8 +74,12 @@
   <RimpsycheUseExperimentationTooltip>림들이 제작/건설 중 종종 실험정신을 발휘합니다. 실험의 성공 여부에 따라 품질이 개선되거나 악화될 수 있습니다.</RimpsycheUseExperimentationTooltip>
   <RimpsycheUseSenseOfProgress>목적의식</RimpsycheUseSenseOfProgress>
   <RimpsycheUseSenseOfProgressTooltip>림들이 기술 경험치 획득, 좋은 품질 아이템 제작, 정착지에서 연구 완료 등으로부터 성취감을 얻습니다. 야심찬 림들은 지나치게 오랜 시간 아무런 성취가 없을 경우 불만을 가질 수 있습니다.</RimpsycheUseSenseOfProgressTooltip>
-  <RimpsycheUseResilientSpirit>강인한 정신</RimpsycheUseResilientSpirit>
-  <RimpsycheUseResilientSpiritTooltip>강인한 림들이 확률적으로 정신이상을 이겨내고 대신 새로운 의지를 3일동안 얻습니다. (쿨다운 60일) </RimpsycheUseResilientSpiritTooltip>
+  <RimpsycheUseResilientSpirit>강인한 정신력</RimpsycheUseResilientSpirit>
+  <RimpsycheUseResilientSpiritTooltip>강인한 림들이 확률적으로 정신이상을 이겨내고 대신 새로운 의지를 3일동안 얻습니다. (쿨다운 60일)</RimpsycheUseResilientSpiritTooltip>
+  <RimpsycheUseHideInShame>수치심</RimpsycheUseHideInShame>
+  <RimpsycheUseHideInShameTooltip>사상에 맞는 복장을 하지 않은 정숙한 림들이 다른 림들의 시선에 견디지 못하고 수치심에 사로잡혀 도망갑니다.</RimpsycheUseHideInShameTooltip>
+  <RimpsycheCheckMedicalOverShame>수치심 보다 치료 우선</RimpsycheCheckMedicalOverShame>
+  <RimpsycheCheckMedicalOverShameTooltip>치료가 필요한 림들은 수치심을 참고 우선 치료를 받습니다.</RimpsycheCheckMedicalOverShameTooltip>
   <RimpsycheUseFightorFlight>전투 성향</RimpsycheUseFightorFlight>
   <RimpsycheUseFightorFlightTooltip>겁이 많은 림들은 전시상황에서 간혹 공항상태에 빠질 수 있습니다. 반면 용감하고 공격적인 림들은 단기간 아드레날린 러시를 얻습니다.</RimpsycheUseFightorFlightTooltip>
   <RimpsycheEnemyFightorFlight>비정착민 전투 성향</RimpsycheEnemyFightorFlight>

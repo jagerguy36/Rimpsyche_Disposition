@@ -8,7 +8,7 @@
     <stages>
       <li>
         <label>resilient spirit</label>
-        <description>I can get through this.</description>
+        <description>I need to get it together. I can get through this.</description>
         <baseMoodEffect>30</baseMoodEffect>
       </li>
     </stages>
@@ -22,7 +22,7 @@
     <stages>
       <li>
         <label>overwhelmed by shame</label>
-        <description>I can't take this anymore.</description>
+        <description>I was seen in a humiliating state. I'm so embarrassed I can't look anyone in the eye.</description>
         <baseMoodEffect>-5</baseMoodEffect>
       </li>
     </stages>

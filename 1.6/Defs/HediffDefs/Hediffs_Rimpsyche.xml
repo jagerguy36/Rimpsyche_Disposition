@@ -3,7 +3,7 @@
   <HediffDef>
     <defName>Rimpsyche_AdrenalineRush</defName>
     <label>adrenaline rush</label>
-    <description>adrenaline rush</description>
+    <description>A rush of adrenaline. It increases heart rate and blood pressure while sharpening the senses and heightening focus.</description>
     <hediffClass>Maux36.RimPsyche.Disposition.Hediff_AdrenalineRush</hediffClass>
     <defaultLabelColor>(1, 0.2, 0.2)</defaultLabelColor>
     <initialSeverity>0</initialSeverity>

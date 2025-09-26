@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rimpsyche_PanicAttack.label>공황 상태</Rimpsyche_PanicAttack.label>
+  <Rimpsyche_PanicAttack.beginLetterLabel>도주</Rimpsyche_PanicAttack.beginLetterLabel>
+  <Rimpsyche_PanicAttack.beginLetter>{0}(이)가 공황 상태에 빠져 달아나고 있습니다.</Rimpsyche_PanicAttack.beginLetter>
+  <Rimpsyche_PanicAttack.recoveryMessage>{0}(이)가 진정했습니다</Rimpsyche_PanicAttack.recoveryMessage>
+  <Rimpsyche_PanicAttack.baseInspectLine>공포에 질려 도망가는 중.</Rimpsyche_PanicAttack.baseInspectLine>
+
+</LanguageData>

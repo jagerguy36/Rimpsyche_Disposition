@@ -6,12 +6,14 @@ namespace Maux36.RimPsyche.Disposition
     {
         public const float default_moodOptimismC = 0.2f;
         public const float default_moodEmotionalityC = 0.2f;
-        public const float default_moodIndividualC = 0.4f;
+        public const float default_moodIndividualC = 0.75f;
 
         public static bool useIndividualThoughts = true;
         public static bool useExperimentation = true;
         public static bool useSenseOfProgress = true;
         public static bool useResilientSpirit = true;
+        public static bool useHideInShame = true;
+        public static bool checkMedicalOverShame = true;
         public static bool useFightorFlight = true;
         public static bool enemyFightorFlight = false;
 
@@ -36,13 +38,15 @@ namespace Maux36.RimPsyche.Disposition
             Scribe_Values.Look(ref useExperimentation, "Rimpsyche_useExperimentation", true, true);
             Scribe_Values.Look(ref useSenseOfProgress, "Rimpsyche_useSenseOfProgress", true, true);
             Scribe_Values.Look(ref useResilientSpirit, "Rimpsyche_useResilientSpirit", true, true);
+            Scribe_Values.Look(ref useHideInShame, "Rimpsyche_useHideInShame", true, true);
+            Scribe_Values.Look(ref checkMedicalOverShame, "Rimpsyche_checkMedicalOverShame", false, true);
             Scribe_Values.Look(ref useFightorFlight, "Rimpsyche_useFightorFlight", true, true);
             Scribe_Values.Look(ref enemyFightorFlight, "Rimpsyche_enemyFightorFlight", false, true);
 
 
             Scribe_Values.Look(ref moodOptimismC, "Rimpsyche_moodOptimismC", 0.2f, true);
             Scribe_Values.Look(ref moodEmotionalityC, "Rimpsyche_moodEmotionalityC", 0.2f, true);
-            Scribe_Values.Look(ref moodIndividualC, "Rimpsyche_moodIndividualC", 0.4f, true);
+            Scribe_Values.Look(ref moodIndividualC, "Rimpsyche_moodIndividualC", 0.75f, true);
 
             Scribe_Values.Look(ref sendExperimentMessage, "Rimpsyche_sendExperimentMessage", true, true);
             Scribe_Values.Look(ref sendShameMessage, "Rimpsyche_sendShameMessage", true, true);

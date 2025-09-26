@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rimpsyche_ResilientSpirit.stages.0.label>강인한 정신력</Rimpsyche_ResilientSpirit.stages.0.label>
+  <Rimpsyche_ResilientSpirit.stages.0.description>정신 바짝 차리자. 난 해낼 수 있어.</Rimpsyche_ResilientSpirit.stages.0.description>
+
+  <Rimpsyche_ShameOverwhelmed.stages.0.label>수치심에 사로잡힘</Rimpsyche_ShameOverwhelmed.stages.0.label>
+  <Rimpsyche_ShameOverwhelmed.stages.0.description>수치스러운 상태를 보여버렸어. 너무 창피해서 누구와도 눈을 못 마주치겠어.</Rimpsyche_ShameOverwhelmed.stages.0.description>
+
+  <PsycheOrganizedWorkspace.stages.0.label>부적합한 공간에서 작업</PsycheOrganizedWorkspace.stages.0.label>
+  <PsycheOrganizedWorkspace.stages.0.description>여기는 이 일을 하기에 적합한 공간이 아니야. 너무 산만하고 불편해. 진짜 신경쓰여.</PsycheOrganizedWorkspace.stages.0.description>
+  <PsycheOrganizedWorkspace.stages.1.label>부적합한 공간에서 작업</PsycheOrganizedWorkspace.stages.1.label>
+  <PsycheOrganizedWorkspace.stages.1.description>여기는 이 일을 하기에 적합한 공간이 아니야.</PsycheOrganizedWorkspace.stages.1.description>
+  <PsycheOrganizedWorkspace.stages.2.label>올바른 공간에서 작업</PsycheOrganizedWorkspace.stages.2.label>
+  <PsycheOrganizedWorkspace.stages.2.description>이 일을 하기에 적합한 곳이야. 작업을 쉽게 할 수 있어.</PsycheOrganizedWorkspace.stages.2.description>
+  <PsycheOrganizedWorkspace.stages.3.label>올바른 공간에서 작업</PsycheOrganizedWorkspace.stages.3.label>
+  <PsycheOrganizedWorkspace.stages.3.description>이 일을 하기에 적합한 곳이야. 모든게 잘 갖추어져 있고, 여기서 작업하는 게 아주 기분이 좋아.</PsycheOrganizedWorkspace.stages.3.description>
+
+
+  <PsycheAmbitionAchievement.stages.0.label>의욕 불만족</PsycheAmbitionAchievement.stages.0.label>
+  <PsycheAmbitionAchievement.stages.0.description>아무것도 진행되는 게 없어. 제자리에서 쳇바퀴를 돌리는 느낌이야.</PsycheAmbitionAchievement.stages.0.description>
+  <PsycheAmbitionAchievement.stages.1.label>성취감</PsycheAmbitionAchievement.stages.1.label>
+  <PsycheAmbitionAchievement.stages.1.description>내 기술이 점점 나아지고 있어. 스스로 발전하는 것을 보는 것은 즐거운 일이야.\n\n(기술 경험치를 얻음)</PsycheAmbitionAchievement.stages.1.description>
+  <PsycheAmbitionAchievement.stages.2.label>달성감</PsycheAmbitionAchievement.stages.2.label>
+  <PsycheAmbitionAchievement.stages.2.description>내 마음에 자랑스러운 것을 만들었어. 생산적이 되는 건 기분이 좋아.</PsycheAmbitionAchievement.stages.2.description>
+  <PsycheAmbitionAchievement.stages.3.label>진보감</PsycheAmbitionAchievement.stages.3.label>
+  <PsycheAmbitionAchievement.stages.3.description>발전하는 것을 지켜보는 것은 좋은 일이야. 점점 발전해 나가는 공동체의 일원이라는 사실이 기분이 좋아.</PsycheAmbitionAchievement.stages.3.description>
+
+</LanguageData>
