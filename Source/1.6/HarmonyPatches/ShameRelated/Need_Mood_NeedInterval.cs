@@ -9,6 +9,7 @@ using Verse.AI;
 
 namespace Maux36.RimPsyche.Disposition
 {
+    [HarmonyPatchCategory("HideInShame")]
     [HarmonyPatch(typeof(Need_Mood), "NeedInterval")]
     public static class Need_Mood_NeedInterval
     {

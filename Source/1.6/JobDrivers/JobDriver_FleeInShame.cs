@@ -27,6 +27,7 @@ namespace Maux36.RimPsyche.Disposition
         protected override IEnumerable<Toil> MakeNewToils()
         {
             var compPsyche = pawn.compPsyche();
+            if (!RimpsycheDispositionSettings.useHideInShame) compPsyche.shame = 0f;
             this.AddEndCondition(() => (compPsyche.shame <= 0 ? JobCondition.Succeeded : JobCondition.Ongoing));
             this.AddEndCondition(() => (compPsyche.tickOverwhelmed > breakTick ? JobCondition.Succeeded : JobCondition.Ongoing));
             this.AddFailCondition(() => (pawn.Downed));

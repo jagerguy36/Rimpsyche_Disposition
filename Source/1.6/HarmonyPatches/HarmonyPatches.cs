@@ -19,13 +19,17 @@ namespace Maux36.RimPsyche.Disposition
             {
                 harmony.PatchCategory("Experimentation");
             }
+            if (RimpsycheDispositionSettings.useSenseOfProgress)
+            {
+                harmony.PatchCategory("SenseOfProgress");
+            }
             if (RimpsycheDispositionSettings.useResilientSpirit)
             {
                 harmony.PatchCategory("ResilientSpirit");
             }
-            if (RimpsycheDispositionSettings.useSenseOfProgress)
+            if (RimpsycheDispositionSettings.useHideInShame)
             {
-                harmony.PatchCategory("SenseOfProgress");
+                harmony.PatchCategory("HideInShame");
             }
             if (RimpsycheDispositionSettings.useFightorFlight)
             {
