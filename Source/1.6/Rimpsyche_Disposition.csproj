@@ -66,13 +66,14 @@
     <Compile Include="MoodDB\IdeologyDB.cs" />
     <Compile Include="MoodDB\OdysseyDB.cs" />
     <Compile Include="MoodDB\RoyaltyDB.cs" />
+    <Compile Include="StatParts\Deliberation\PsycheDeliberationCookingSpeedStatPart.cs" />
     <Compile Include="Utils\FightorFlightUtil.cs" />
     <Compile Include="DefOfDisposition.cs" />
     <Compile Include="Extensions\PsycheExtension.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\QuestManager_Notify_PawnBorn.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\RecordsUtility_Notify_PawnKilled.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\RecruitUtility_Recruit.cs" />
-    <Compile Include="HarmonyPatches\ResilienceRelated\InteractionWorker_RecruitAttempt_Interacted.cs" />
+    <Compile Include="HarmonyPatches\InteractionWorker_RecruitAttempt_Interacted.cs" />
     <Compile Include="HarmonyPatches\MentalStateHandler_Notify_DamageTaken.cs" />
     <Compile Include="HarmonyPatches\ShameRelated\Need_Mood_NeedInterval.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\VTE_Patches.cs" />
@@ -91,7 +92,7 @@
     <Compile Include="MentalState\PanicAttack.cs" />
     <Compile Include="Utils\ShameUtil.cs" />
     <Compile Include="Utils\QualityUtil.cs" />
-    <Compile Include="HarmonyPatches\ResilienceRelated\CompDrug_PrePostIngested.cs" />
+    <Compile Include="HarmonyPatches\CompDrug_PrePostIngested.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="HarmonyPatches\JoyGiver_Skygaze_Patch.cs" />
     <Compile Include="HarmonyPatches\MentalBreakRelated\MentalBreaker_TestMoodMentalBreak_Patch.cs" />

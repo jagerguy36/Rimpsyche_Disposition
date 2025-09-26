@@ -116,6 +116,81 @@ namespace Maux36.RimPsyche.Disposition
 
         //=================
 
+        public static RimpsycheFormula Part_Worry = new(
+            "Part_Worry",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                float worryScore = compassion * (-optimism + 2f) * 0.5f;
+                return worryScore;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Part_Demand = new(
+            "Part_Demand",
+            (tracker) =>
+            {
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float selfInterest = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest);
+                float demandScore = expectation * (Mathf.Max(0f, selfInterest) + 2f) * 0.5f;
+                return demandScore;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Part_SawDeath = new(
+            "Part_SawDeath",
+            (tracker) =>
+            {
+                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
+                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
+                float sawDeathScore = compassion + Mathf.Max(0f, -bravery);
+                return sawDeathScore;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Part_Kin = new(
+            "Part_Kin",
+            (tracker) =>
+            {
+                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
+                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
+                float kinScore = Mathf.Max(0f, loyalty) * (-openness + 2f) * 0.5f;
+                return kinScore;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Part_Lover = new(
+            "Part_Lover",
+            (tracker) =>
+            {
+                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
+                float passion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion);
+                float loverScore = Mathf.Max(0f, loyalty) * (passion + 3f) * 0.5f;
+                return loverScore;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Part_Pref = new(
+            "Part_Pref",
+            (tracker) =>
+            {
+                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
+                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
+                float preferenceScore;
+                if (expectation > 0)
+                {
+                    preferenceScore = expectation * (-openness + 1) * 0.5f;
+                }
+                else
+                {
+                    preferenceScore = expectation * (+openness + 1) * 0.5f;
+                }
+                return preferenceScore;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
         public static RimpsycheFormula Tag_Empathy = new(
             "Tag_Empathy",
             (tracker) =>
@@ -140,9 +215,7 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
-                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
-                float kinScore = Mathf.Max(0f, loyalty) * (-openness + 2f) * 0.5f;
+                float kinScore = tracker.Evaluate(Part_Kin);
                 return ThoughtUtil.MoodMultCurve(compassion + kinScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -152,9 +225,7 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
-                float passion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion);
-                float loverScore = Mathf.Max(0f, loyalty) * (passion + 3f) * 0.5f;
+                float loverScore = tracker.Evaluate(Part_Lover);
                 return ThoughtUtil.MoodMultCurve(compassion + loverScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -213,17 +284,7 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
-                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
-                float preferenceScore;
-                if (expectation > 0)
-                {
-                    preferenceScore = expectation * (-openness + 1) * 0.5f;
-                }
-                else
-                {
-                    preferenceScore = expectation * (+openness + 1) * 0.5f;
-                }
+                float preferenceScore = tracker.Evaluate(Part_Pref);
                 return ThoughtUtil.MoodMultCurve(-compassion + preferenceScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -232,9 +293,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Worry",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
-                float worryScore = compassion * (-optimism + 2f) * 0.5f;
+                float worryScore = tracker.Evaluate(Part_Worry);
                 return ThoughtUtil.MoodMultCurve(worryScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -243,9 +302,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Worry_Bond",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
-                float worryScore = compassion * (-optimism + 2f) * 0.5f;
+                float worryScore = tracker.Evaluate(Part_Worry);
                 float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
                 return ThoughtUtil.MoodMultCurve(worryScore + Mathf.Max(0f, loyalty));
             },
@@ -255,12 +312,8 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Worry_Kin",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
-                float worryScore = compassion * (-optimism + 2f) * 0.5f;
-                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
-                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
-                float kinScore = Mathf.Max(0f, loyalty) * (-openness + 2f) * 0.5f;
+                float worryScore = tracker.Evaluate(Part_Worry);
+                float kinScore = tracker.Evaluate(Part_Kin);
                 return ThoughtUtil.MoodMultCurve(worryScore + kinScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -269,12 +322,8 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Worry_Loved",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
-                float worryScore = compassion * (-optimism + 2f) * 0.5f;
-                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
-                float passion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion);
-                float loverScore = Mathf.Max(0f, loyalty) * (passion + 3f) * 0.5f;
+                float worryScore = tracker.Evaluate(Part_Worry);
+                float loverScore = tracker.Evaluate(Part_Lover);
                 return ThoughtUtil.MoodMultCurve(worryScore + loverScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -283,9 +332,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Worry_Outsider",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
-                float worryScore = compassion * (-optimism + 2f) * 0.5f;
+                float worryScore = tracker.Evaluate(Part_Worry);
                 float trust = tracker.GetPersonality( PersonalityDefOf.Rimpsyche_Trust);
                 return ThoughtUtil.MoodMultCurve(worryScore + Mathf.Min(0f, trust));
             },
@@ -295,9 +342,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Worry_Outsider_M",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
-                float worryScore = compassion * (-optimism + 2f) * 0.5f;
+                float worryScore = tracker.Evaluate(Part_Worry);
                 float trust = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Trust);
                 float morality = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality);
                 return ThoughtUtil.MoodMultCurve(worryScore + Mathf.Min(0f, trust) + morality);
@@ -308,9 +353,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Worry_M",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
-                float worryScore = compassion * (-optimism + 2f) * 0.5f;
+                float worryScore = tracker.Evaluate(Part_Worry);
                 float morality = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality);
                 return ThoughtUtil.MoodMultCurve(worryScore + morality);
             },
@@ -320,9 +363,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Worry_J",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
-                float worryScore = compassion * (-optimism + 2f) * 0.5f;
+                float worryScore = tracker.Evaluate(Part_Worry);
                 float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
                 return ThoughtUtil.MoodMultCurve(worryScore - openness);
             },
@@ -363,9 +404,7 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float selfinterest = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest);
-                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
-                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
-                float kinScore = Mathf.Max(0f, loyalty) * (-openness + 2f) * 0.5f;
+                float kinScore = tracker.Evaluate(Part_Kin);
                 return ThoughtUtil.MoodMultCurve(Mathf.Max(0f, selfinterest) + kinScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -375,9 +414,7 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float selfinterest = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest);
-                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
-                float passion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion);
-                float loverScore = Mathf.Max(0f, loyalty) * (passion + 3f) * 0.5f;
+                float loverScore = tracker.Evaluate(Part_Lover);
                 return ThoughtUtil.MoodMultCurve(Mathf.Max(0f, selfinterest) + loverScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -386,9 +423,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Affluence",
             (tracker) =>
             {
-                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
-                float selfInterest = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest);
-                float demandScore = expectation * (Mathf.Max(0f, selfInterest) + 2f) * 0.5f;
+                float demandScore = tracker.Evaluate(Part_Demand);
                 return ThoughtUtil.MoodMultCurve(demandScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -397,9 +432,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Needy",
             (tracker) =>
             {
-                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
-                float selfInterest = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest);
-                float demandScore = expectation * (Mathf.Max(0f, selfInterest) + 2f) * 0.5f;
+                float demandScore = tracker.Evaluate(Part_Demand);
                 float tension = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tension);
                 return ThoughtUtil.MoodMultCurve(demandScore + tension);
             },
@@ -409,9 +442,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Needy_Art",
             (tracker) =>
             {
-                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
-                float selfInterest = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest);
-                float demandScore = expectation * (Mathf.Max(0f, selfInterest) + 2f) * 0.5f;
+                float demandScore = tracker.Evaluate(Part_Demand);
                 float imagination = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Imagination);
                 return ThoughtUtil.MoodMultCurve(demandScore + imagination);
             },
@@ -430,9 +461,8 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_SawDeath",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
-                return ThoughtUtil.MoodMultCurve(compassion + Mathf.Max(0f, -bravery));
+                float sawDeathScore = tracker.Evaluate(Part_SawDeath);
+                return ThoughtUtil.MoodMultCurve(sawDeathScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
@@ -440,12 +470,9 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_SawDeath_Kin",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
-                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
-                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
-                float kinScore = Mathf.Max(0f, loyalty) * (-openness + 2f) * 0.5f;
-                return ThoughtUtil.MoodMultCurve(compassion + Mathf.Max(0f, -bravery) + kinScore);
+                float sawDeathScore = tracker.Evaluate(Part_SawDeath);
+                float kinScore = tracker.Evaluate(Part_Kin);
+                return ThoughtUtil.MoodMultCurve(sawDeathScore + kinScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
@@ -453,10 +480,9 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_SawDeath_Outsider",
             (tracker) =>
             {
-                float compassion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Compassion);
-                float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
+                float sawDeathScore = tracker.Evaluate(Part_SawDeath);
                 float trust = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Trust);
-                return ThoughtUtil.MoodMultCurve(compassion + Mathf.Max(0f, -bravery) + Mathf.Min(0f, trust));
+                return ThoughtUtil.MoodMultCurve(sawDeathScore + Mathf.Min(0f, trust));
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
@@ -546,8 +572,8 @@ namespace Maux36.RimPsyche.Disposition
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
-        public static RimpsycheFormula Tag_Bloodlost = new(
-            "Tag_Bloodlost",
+        public static RimpsycheFormula Tag_Bloodlust = new(
+            "Tag_Bloodlust",
             (tracker) =>
             {
                 float aggressiveness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Aggressiveness);
@@ -569,9 +595,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Loved",
             (tracker) =>
             {
-                float loyalty = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
-                float passion = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Passion);
-                float loverScore = Mathf.Max(0f, loyalty) * (passion + 3f) * 0.5f;
+                float loverScore = tracker.Evaluate(Part_Lover);
                 return ThoughtUtil.MoodMultCurve(loverScore);
             },
             RimpsycheFormulaManager.FormulaIdDict
@@ -607,17 +631,7 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Preference",
             (tracker) =>
             {
-                float expectation = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Expectation);
-                float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
-                float preferenceScore;
-                if (expectation > 0)
-                {
-                    preferenceScore = expectation * (-openness + 1) * 0.5f;
-                }
-                else
-                {
-                    preferenceScore = expectation * (+openness + 1) * 0.5f;
-                }
+                float preferenceScore = tracker.Evaluate(Part_Pref);
                 return ThoughtUtil.MoodMultCurve(preferenceScore);
             },
             RimpsycheFormulaManager.FormulaIdDict

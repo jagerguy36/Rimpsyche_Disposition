@@ -68,7 +68,7 @@ namespace Maux36.RimPsyche.Disposition
             var compPsyche = p.compPsyche();
             if (compPsyche?.Enabled == true && compPsyche.progressLastCause != null)
             {
-                return description + "\n\n(" + compPsyche.progressLastCause + ")";
+                return description + "\n\n" + compPsyche.progressLastCause;
             }
             return description;
         }

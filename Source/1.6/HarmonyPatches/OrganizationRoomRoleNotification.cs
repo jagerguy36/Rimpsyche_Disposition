@@ -20,11 +20,11 @@ namespace Maux36.RimPsyche.Disposition
             if (billGiver.def?.building?.workTableRoomRole != null && billGiver.def.building.workTableNotInRoomRoleFactor != 0f)
             {
                 Room room = billGiver.GetRoom();
+                var compPsyche = billDoer.compPsyche();
+                if (compPsyche?.Enabled != true) return;
+                var organization = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Organization);
                 if (room != null && !room.PsychologicallyOutdoors)
                 {
-                    var compPsyche = billDoer.compPsyche();
-                    if (compPsyche?.Enabled != true) return;
-                    var organization = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Organization);
                     if (room.Role != billGiver.def.building.workTableRoomRole) //Wrong room
                     {
                         compPsyche.roomRoleFactor = 1f / (1f + organization*(1f- billGiver.def.building.workTableNotInRoomRoleFactor)); //organization -1:nullify | 0:1 | 1:make worse
@@ -52,6 +52,18 @@ namespace Maux36.RimPsyche.Disposition
                                 compPsyche.organizedMood = 2;
                             }
                         }
+                    }
+                }
+                else // Working outside
+                {
+                    compPsyche.roomRoleFactor = 1f / (1f + organization * (1f - billGiver.def.building.workTableNotInRoomRoleFactor)); //organization -1:nullify | 0:1 | 1:make worse
+                    if (organization > 0.6f)
+                    {
+                        compPsyche.organizedMood = 0;
+                    }
+                    else if (organization > 0.1f)
+                    {
+                        compPsyche.organizedMood = 1;
                     }
                 }
             }
