@@ -39,13 +39,13 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.Gap(12f);
             listing_Standard.Label("RimpsycheDispositionRestartNeeded".Translate());
             listing_Standard.Gap(12f);
-            RimpsycheDispositionSettings.moodEmotionalityC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodEmotionalityC".Translate() + " (" + "Default".Translate() + " 0.2): " + RimpsycheDispositionSettings.moodEmotionalityC, RimpsycheDispositionSettings.moodEmotionalityC, 0.05f, 0.95f, tooltip: "RimpsycheMoodEmotionalityCTooltip".Translate()), 2);
+            RimpsycheDispositionSettings.moodEmotionalityC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodEmotionalityC".Translate() + " (" + "Default".Translate() + " " + RimpsycheDispositionSettings.default_moodEmotionalityC + "): " + RimpsycheDispositionSettings.moodEmotionalityC, RimpsycheDispositionSettings.moodEmotionalityC, 0.05f, 0.95f, tooltip: "RimpsycheMoodEmotionalityCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
-            RimpsycheDispositionSettings.moodOptimismC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodOptimismC".Translate() + " (" + "Default".Translate() + " 0.2): " + RimpsycheDispositionSettings.moodOptimismC, RimpsycheDispositionSettings.moodOptimismC, 0.05f, 0.95f, tooltip: "RimpsycheMoodOptimismCTooltip".Translate()), 2);
+            RimpsycheDispositionSettings.moodOptimismC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodOptimismC".Translate() + " (" + "Default".Translate() + " " + RimpsycheDispositionSettings.default_moodOptimismC + "): " + RimpsycheDispositionSettings.moodOptimismC, RimpsycheDispositionSettings.moodOptimismC, 0.05f, 0.95f, tooltip: "RimpsycheMoodOptimismCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseIndividualThoughts".Translate(), ref RimpsycheDispositionSettings.useIndividualThoughts, "RimpsycheUseIndividualThoughtsTooltip".Translate());
             listing_Standard.Gap(6f);
-            RimpsycheDispositionSettings.moodIndividualC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodIndividualC".Translate() + " (" + "Default".Translate() + " 0.4): " + RimpsycheDispositionSettings.moodIndividualC, RimpsycheDispositionSettings.moodIndividualC, 0.05f, 0.95f, tooltip: "RimpsycheMoodIndividualCTooltip".Translate()), 2);
+            RimpsycheDispositionSettings.moodIndividualC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodIndividualC".Translate() + " (" + "Default".Translate() + " " + RimpsycheDispositionSettings.default_moodIndividualC + "): " + RimpsycheDispositionSettings.moodIndividualC, RimpsycheDispositionSettings.moodIndividualC, 0.05f, 0.95f, tooltip: "RimpsycheMoodIndividualCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseExperimentation".Translate(), ref RimpsycheDispositionSettings.useExperimentation, "RimpsycheUseExperimentationTooltip".Translate());
             listing_Standard.Gap(6f);

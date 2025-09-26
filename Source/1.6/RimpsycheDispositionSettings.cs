@@ -4,9 +4,9 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class RimpsycheDispositionSettings : ModSettings
     {
-        public const float default_moodOptimismC = 0.2f;
-        public const float default_moodEmotionalityC = 0.2f;
-        public const float default_moodIndividualC = 0.75f;
+        public const float default_moodOptimismC = 0.3f;
+        public const float default_moodEmotionalityC = 0.3f;
+        public const float default_moodIndividualC = 0.6f;
 
         public static bool useIndividualThoughts = true;
         public static bool useExperimentation = true;
@@ -44,9 +44,9 @@ namespace Maux36.RimPsyche.Disposition
             Scribe_Values.Look(ref enemyFightorFlight, "Rimpsyche_enemyFightorFlight", false, true);
 
 
-            Scribe_Values.Look(ref moodOptimismC, "Rimpsyche_moodOptimismC", 0.2f, true);
-            Scribe_Values.Look(ref moodEmotionalityC, "Rimpsyche_moodEmotionalityC", 0.2f, true);
-            Scribe_Values.Look(ref moodIndividualC, "Rimpsyche_moodIndividualC", 0.75f, true);
+            Scribe_Values.Look(ref moodOptimismC, "Rimpsyche_moodOptimismC", default_moodOptimismC, true);
+            Scribe_Values.Look(ref moodEmotionalityC, "Rimpsyche_moodEmotionalityC", default_moodEmotionalityC, true);
+            Scribe_Values.Look(ref moodIndividualC, "Rimpsyche_moodIndividualC", default_moodIndividualC, true);
 
             Scribe_Values.Look(ref sendExperimentMessage, "Rimpsyche_sendExperimentMessage", true, true);
             Scribe_Values.Look(ref sendShameMessage, "Rimpsyche_sendShameMessage", true, true);
