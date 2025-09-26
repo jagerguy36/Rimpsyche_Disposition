@@ -11,17 +11,17 @@ namespace Maux36.RimPsyche.Disposition
         public static ThingDef RimpsycheMote_ExperimentGood;
         public static ThingDef RimpsycheMote_ExperimentBad;
         public static ThingDef RimpsycheMote_ResilientSpirit;
+        public static ThingDef RimpsycheMote_AdrenalineRush;
 
         public static JobDef RimPsyche_FleeInShame;
         public static JobDef RimPsyche_PanicAttackFlee;
 
         public static HediffDef Rimpsyche_AdrenalineRush;
 
-        public static InteractionDef Rimpsyche_Shamed;
-
         public static MentalStateDef Rimpsyche_PanicAttack;
 
         public static FleckDef RimpsycheMote_PanicAttack;
-        public static ThingDef RimpsycheMote_AdrenalineRush;
+
+        public static ThoughtDef Rimpsyche_ShameOverwhelmed;
     }
 }

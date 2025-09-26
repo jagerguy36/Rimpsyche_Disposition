@@ -56,7 +56,7 @@ namespace Maux36.RimPsyche.Disposition
             foreach (var defName in moodList_Vanilla_Tag_Needy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Needy;
             foreach (var defName in moodList_Vanilla_Tag_Worry_Outsider_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Outsider_M;
             foreach (var defName in moodList_Vanilla_Tag_Outsider) MoodThoughtTagDB[defName] = FormulaDB.Tag_Outsider;
-            foreach (var defName in moodList_Vanilla_Tag_Bloodlost) MoodThoughtTagDB[defName] = FormulaDB.Tag_Bloodlost;
+            foreach (var defName in moodList_Vanilla_Tag_Bloodlust) MoodThoughtTagDB[defName] = FormulaDB.Tag_Bloodlust;
             foreach (var defName in moodList_Vanilla_Tag_Harmed) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed;
             foreach (var defName in moodList_Vanilla_Tag_Fear) MoodThoughtTagDB[defName] = FormulaDB.Tag_Fear;
             foreach (var defName in moodList_Vanilla_Tag_SawDeath) MoodThoughtTagDB[defName] = FormulaDB.Tag_SawDeath;
@@ -256,7 +256,7 @@ namespace Maux36.RimPsyche.Disposition
             ["ReleasedHealthyPrisoner"]
         );
 
-        private static readonly List<string> moodList_Vanilla_Tag_Bloodlost = new(
+        private static readonly List<string> moodList_Vanilla_Tag_Bloodlust = new(
             ["HarvestedOrgan_Bloodlust",
             "WitnessedDeathBloodlust",
             "KilledHumanlikeBloodlust"]

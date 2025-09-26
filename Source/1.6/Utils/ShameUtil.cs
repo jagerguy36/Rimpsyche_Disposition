@@ -207,7 +207,7 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return false;
             }
-            if (HealthAIUtility.ShouldSeekMedicalRest(pawn))
+            if (RimpsycheDispositionSettings.checkMedicalOverShame && HealthAIUtility.ShouldSeekMedicalRest(pawn))
             {
                 return false;
             }
@@ -221,8 +221,11 @@ namespace Maux36.RimPsyche.Disposition
             }
             else
             {
-                PlayLogEntry_Interaction playLogEntry = new PlayLogEntry_Interaction(DefOfDisposition.Rimpsyche_Shamed, pawn, pawn, null);
-                Find.PlayLog.Add(playLogEntry);
+                if (pawn.needs?.mood != null)
+                {
+                    Thought_Memory thought_Memory = (Thought_Memory)ThoughtMaker.MakeThought(DefOfDisposition.Rimpsyche_ShameOverwhelmed);
+                    pawn.needs.mood.thoughts.memories.TryGainMemory(thought_Memory);
+                }
                 if (RimpsycheDispositionSettings.sendShameMessage)
                 {
                     Messages.Message("RP_MessageShamed".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
