@@ -147,7 +147,7 @@
       <xpath>*/StatDef[defName = "CookSpeed"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationWorkspeedStatPart"/>
+          <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationCookingSpeedStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
@@ -155,7 +155,7 @@
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationWorkspeedStatPart"/>
+            <li Class="Maux36.RimPsyche.Disposition.PsycheDeliberationCookingSpeedStatPart"/>
           </parts>
         </value>
     </nomatch>
