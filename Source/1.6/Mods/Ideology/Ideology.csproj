@@ -67,7 +67,6 @@
     <Compile Include="HarmonyPatches\CompAbilityEffect_Counsel_Patch.cs" />
     <Compile Include="HarmonyPatches\ITab_Pawn_Visitor_DoSlaveTab_Patch.cs" />
     <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable.cs" />
-    <Compile Include="HarmonyPatches\Pawn_IdeoTracker_SetIdeo_Patch.cs" />
     <Compile Include="HarmonyPatches\SlaveRebellionUtility_IncrementSuppression.cs" />
     <Compile Include="StatParts\PsycheBraveryTerrorStatPart.cs" />
     <Compile Include="StatParts\PsycheAggressivenessSuppressionStatPart.cs" />

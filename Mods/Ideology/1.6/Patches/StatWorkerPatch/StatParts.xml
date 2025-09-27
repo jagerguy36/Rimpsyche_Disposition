@@ -62,6 +62,26 @@
   </Operation>
   
   <Operation Class="PatchOperationConditional">
+    <xpath>*/StatDef[defName = "ConversionPower"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "ConversionPower"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheConversionPowerStatPart"/>
+        </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>*/StatDef[defName = "ConversionPower"]</xpath>
+        <order>Prepend</order>
+        <value>
+          <parts>
+            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheConversionPowerStatPart"/>
+          </parts>
+        </value>
+    </nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
     <xpath>*/StatDef[defName = "CertaintyLossFactor"]/parts</xpath>
     <match Class="PatchOperationAdd">
       <xpath>*/StatDef[defName = "CertaintyLossFactor"]/parts</xpath>

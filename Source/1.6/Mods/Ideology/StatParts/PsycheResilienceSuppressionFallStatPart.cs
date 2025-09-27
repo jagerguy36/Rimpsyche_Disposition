@@ -34,7 +34,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
             "ResilienceSuppressionFall",
             (tracker) =>
             {
-                float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience) * 0.3f;
+                float resilience = -tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience) * 0.15f;
                 return resilience;
             },
             RimpsycheFormulaManager.FormulaIdDict

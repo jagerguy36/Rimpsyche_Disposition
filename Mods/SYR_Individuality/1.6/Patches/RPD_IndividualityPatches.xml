@@ -5,14 +5,14 @@
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="SYR_Haggler"]/degreeDatas/li/statOffsets/TradePriceImprovement</xpath>
     <value>
-      <TradePriceImprovement>0.28</TradePriceImprovement>
+      <TradePriceImprovement>0.29</TradePriceImprovement>
     </value>
   </Operation>
 
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="SYR_Haggler"]/degreeDatas/li/statOffsets/NegotiationAbility</xpath>
     <value>
-      <NegotiationAbility>0.15</NegotiationAbility>
+      <NegotiationAbility>0.1</NegotiationAbility>
     </value>
   </Operation>
 

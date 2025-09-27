@@ -4,10 +4,11 @@
 	<v1.6>
 		<li>1.6</li>
 		<li>Common</li>
-		<li IfModActive="Ludeon.RimWorld.Ideology">Mods/Ideology/1.6</li>
 		<li IfModActive="Ludeon.RimWorld.Biotech">Mods/Biotech/1.6</li>
 		<li IfModActive="ceteam.combatextended">Mods/CombatExtended/1.6</li>
-		<li IfModActive="vanillaexpanded.vanillatraitsexpanded">Mods/VTE/1.6</li>
 		<li IfModActive="consolidatedtraits.lc.rw">Mods/ConsolidatedTraits/1.6</li>
+		<li IfModActive="Ludeon.RimWorld.Ideology">Mods/Ideology/1.6</li>
+		<li IfModActive="mlie.syrindividuality">Mods/SYR_Individuality/1.6</li>
+		<li IfModActive="vanillaexpanded.vanillatraitsexpanded">Mods/VTE/1.6</li>
 	</v1.6>
 </loadFolders>

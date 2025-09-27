@@ -145,14 +145,14 @@
     <xpath>*/StatDef[defName = "PainShockThreshold"]/parts</xpath>
     <match Class="PatchOperationAdd">
       <xpath>*/StatDef[defName = "PainShockThreshold"]/parts</xpath>
-        <order>Append</order>
+        <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsychePainshockThresholdStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
       <xpath>*/StatDef[defName = "PainShockThreshold"]</xpath>
-        <order>Append</order>
+        <order>Prepend</order>
         <value>
           <parts>
             <li Class="Maux36.RimPsyche.Disposition.PsychePainshockThresholdStatPart"/>
@@ -165,14 +165,14 @@
     <xpath>*/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
     <match Class="PatchOperationAdd">
       <xpath>*/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
-        <order>Append</order>
+        <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsycheAimingDelayFactorPawnStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
       <xpath>*/StatDef[defName = "AimingDelayFactor"]</xpath>
-        <order>Append</order>
+        <order>Prepend</order>
         <value>
           <parts>
             <li Class="Maux36.RimPsyche.Disposition.PsycheAimingDelayFactorPawnStatPart"/>
@@ -189,14 +189,14 @@
       <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
       <match Class="PatchOperationAdd">
         <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
-          <order>Append</order>
+          <order>Prepend</order>
           <value>
             <li Class="Maux36.RimPsyche.Disposition.PsycheShootingAccuracyPawnStatPart"/>
           </value>
       </match>
       <nomatch Class="PatchOperationAdd">
         <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]</xpath>
-          <order>Append</order>
+          <order>Prepend</order>
           <value>
             <parts>
               <li Class="Maux36.RimPsyche.Disposition.PsycheShootingAccuracyPawnStatPart"/>

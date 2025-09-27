@@ -24,7 +24,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_BraveryTerrorMultiplier".Translate() + ": " + compPsyche.Evaluate(BraveryTerrorMultiplier).ToStringPercentSigned() + "\n";
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_BraveryTerrorMultiplier".Translate() + ": x" + compPsyche.Evaluate(BraveryTerrorMultiplier).ToStringPercent() + "\n";
                 }
             }
             return null;

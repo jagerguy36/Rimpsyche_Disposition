@@ -26,7 +26,7 @@
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="RCT_Diplomat"]/degreeDatas/li[degree=2]/statOffsets/NegotiationAbility</xpath>
     <value>
-      <NegotiationAbility>0.25</NegotiationAbility>
+      <NegotiationAbility>0.2</NegotiationAbility>
     </value>
   </Operation>
 
