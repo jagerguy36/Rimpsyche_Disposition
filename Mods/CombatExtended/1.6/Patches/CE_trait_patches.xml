@@ -24,6 +24,13 @@
   </Operation>
 
   <Operation Class="PatchOperationReplace">
+    <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=1]/statOffsets/AimingDelayFactor</xpath>
+    <value>
+      <AimingDelayFactor>0.15</AimingDelayFactor>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="ShootingAccuracy"]/degreeDatas/li[degree=-1]/statOffsets/AimingDelayFactor</xpath>
     <value>
       <AimingDelayFactor>-0.15</AimingDelayFactor>

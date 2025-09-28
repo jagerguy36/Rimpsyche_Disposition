@@ -161,23 +161,28 @@
     </nomatch>
   </Operation>
 
-  <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
-    <match Class="PatchOperationAdd">
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <nomatch Class="PatchOperationConditional">
       <xpath>*/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
-        <order>Prepend</order>
-        <value>
-          <li Class="Maux36.RimPsyche.Disposition.PsycheAimingDelayFactorPawnStatPart"/>
-        </value>
-    </match>
-    <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "AimingDelayFactor"]</xpath>
-        <order>Prepend</order>
-        <value>
-          <parts>
+      <match Class="PatchOperationAdd">
+        <xpath>*/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
+          <order>Prepend</order>
+          <value>
             <li Class="Maux36.RimPsyche.Disposition.PsycheAimingDelayFactorPawnStatPart"/>
-          </parts>
-        </value>
+          </value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>*/StatDef[defName = "AimingDelayFactor"]</xpath>
+          <order>Prepend</order>
+          <value>
+            <parts>
+              <li Class="Maux36.RimPsyche.Disposition.PsycheAimingDelayFactorPawnStatPart"/>
+            </parts>
+          </value>
+      </nomatch>
     </nomatch>
   </Operation>
 
