@@ -18,7 +18,7 @@ namespace Maux36.RimPsyche.Disposition
 
         static void Postfix(ref float __result, Pawn ___pawn, Thought __instance)
         {
-            if (___pawn?.compPsyche() is not { } compPsyche || __result == 0f)
+            if (__result == 0f || ___pawn?.compPsyche() is not { } compPsyche)
                 return;
             if (compPsyche.Enabled != true)
                 return;
@@ -41,23 +41,19 @@ namespace Maux36.RimPsyche.Disposition
             if (useIndividualThoughtsSetting)
             {
                 //Thoughts
-                if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(__instance.def.defName, out var stageFormulas))
+                if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(__instance.def.defName, out RimpsycheFormula indivFormula))
+                {
+                    __result *= compPsyche.Evaluate(indivFormula);
+                }
+                else if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(__instance.def.defName, out var stageFormulas))
                 {
                     int stageIndex = __instance.CurStageIndex;
                     if ((uint)stageIndex < (uint)stageFormulas.Length)
                     {
-                        var formula = stageFormulas[stageIndex];
-                        if (formula != null)
+                        if (stageFormulas[__instance.CurStageIndex] is { } stageFormula)
                         {
-                            __result *= compPsyche.Evaluate(formula);
+                            __result *= compPsyche.Evaluate(stageFormula);
                         }
-                    }
-                }
-                else if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(__instance.def.defName, out RimpsycheFormula indivFormula))
-                {
-                    if (indivFormula != null)
-                    {
-                        __result *= compPsyche.Evaluate(indivFormula);
                     }
                 }
             }
