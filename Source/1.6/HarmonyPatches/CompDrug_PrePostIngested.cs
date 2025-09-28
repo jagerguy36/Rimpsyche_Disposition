@@ -63,9 +63,8 @@ namespace Maux36.RimPsyche.Disposition
                 "AddictionChancedMultiplier",
                 (tracker) =>
                 {
-                    float mult = 1f;
                     float discipline = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Discipline, 0.5f);
-                    return mult * discipline;
+                    return discipline;
                 },
             RimpsycheFormulaManager.FormulaIdDict
             );
