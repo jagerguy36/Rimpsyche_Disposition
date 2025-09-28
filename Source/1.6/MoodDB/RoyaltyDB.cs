@@ -1,16 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
+using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class RoyaltyDB
+    public class RoyaltyDB : BaseThoughtDB
     {
-        public static void AddDefs_Royalty(Dictionary<string, RimpsycheFormula> MoodThoughtTagDB, Dictionary<string, RimpsycheFormula> OpinionThoughtTagDB)
+        public static void AddDefs_Royalty(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-            foreach (var defName in moodList_Royalty_Tag_Affluence) MoodThoughtTagDB[defName] = FormulaDB.Tag_Affluence;
-            foreach (var defName in moodList_Royalty_Tag_Empathy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy;
-            foreach (var defName in moodList_Royalty_Tag_Harmed) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed;
-            foreach (var defName in moodList_Royalty_Tag_Art) MoodThoughtTagDB[defName] = FormulaDB.Tag_Art;
-            foreach (var defName in opinionList_Royalty_Tag_Loved) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Loved;
+            RegisterThoughts(moodList_Royalty_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
+            RegisterThoughts(moodList_Royalty_Tag_Empathy, MoodThoughtTagDB, FormulaDB.Tag_Empathy);
+            RegisterThoughts(moodList_Royalty_Tag_Harmed, MoodThoughtTagDB, FormulaDB.Tag_Harmed);
+            RegisterThoughts(moodList_Royalty_Tag_Art, MoodThoughtTagDB, FormulaDB.Tag_Art);
+            RegisterThoughts(opinionList_Royalty_Tag_Loved, OpinionThoughtTagDB, FormulaDB.Tag_Loved);
         }
 
         private static readonly List<string> moodList_Royalty_Tag_Affluence = new(

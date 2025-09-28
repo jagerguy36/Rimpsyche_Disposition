@@ -1,85 +1,92 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
+using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class CoreDB
+    public class CoreDB: BaseThoughtDB
     {
-        public static void AddDefs_Vanilla_Stage(Dictionary<string, RimpsycheFormula[]> StageThoughtTagDB, Dictionary<string, RimpsycheFormula[]> StageOpinionThoughtTagDB)
+        public static void AddDefs_Vanilla_Stage(Dictionary<int, RimpsycheFormula[]> StageThoughtTagDB, Dictionary<int, RimpsycheFormula[]> StageOpinionThoughtTagDB)
         {
-            StageThoughtTagDB["KnowGuestExecuted"] =
+            RegisterSingleThought("KnowGuestExecuted", StageThoughtTagDB,
                 [FormulaDB.Tag_JustifiedGuilt, //justified execution
                 FormulaDB.Tag_Empathy, //someone was euthanized
                 FormulaDB.Tag_Empathy_M, //someone was executed
                 FormulaDB.Tag_Empathy_M, //someone was organ-murdered
-                FormulaDB.Tag_Empathy_M]; //someone was ripscanned
-            StageThoughtTagDB["KnowColonistExecuted"] =
+                FormulaDB.Tag_Empathy_M] //someone was ripscanned
+            );
+            RegisterSingleThought("KnowColonistExecuted", StageThoughtTagDB,
                 [FormulaDB.Tag_JustifiedGuilt, //justified execution
                 FormulaDB.Tag_Empathy, //someone was euthanized
                 FormulaDB.Tag_Empathy_M, //someone was executed
                 FormulaDB.Tag_Empathy_M, //someone was organ-murdered
-                FormulaDB.Tag_Empathy_M]; //someone was ripscanned
-            StageThoughtTagDB["NeedJoy"] =
+                FormulaDB.Tag_Empathy_M] //someone was ripscanned
+            );
+            RegisterSingleThought("NeedJoy", StageThoughtTagDB,
                 [FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Affluence,
-                FormulaDB.Tag_Affluence];
-            StageThoughtTagDB["NeedComfort"] =
+                FormulaDB.Tag_Affluence]
+            );
+            RegisterSingleThought("NeedComfort", StageThoughtTagDB,
                 [FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Affluence,
                 FormulaDB.Tag_Affluence,
                 FormulaDB.Tag_Affluence,
-                FormulaDB.Tag_Affluence];
-            StageThoughtTagDB["NeedRoomSize"] =
+                FormulaDB.Tag_Affluence]
+            );
+            RegisterSingleThought("NeedRoomSize", StageThoughtTagDB,
                 [FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Needy,
-                FormulaDB.Tag_Affluence];
+                FormulaDB.Tag_Affluence]
+            );
         }
-        public static void AddDefs_Vanilla(Dictionary<string, RimpsycheFormula> MoodThoughtTagDB, Dictionary<string, RimpsycheFormula> OpinionThoughtTagDB)
+        public static void AddDefs_Vanilla(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-            foreach (var defName in moodList_Vanilla_Tag_Preference) MoodThoughtTagDB[defName] = FormulaDB.Tag_Preference;
-            foreach (var defName in moodList_Vanilla_Tag_Empathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
-            foreach (var defName in moodList_Vanilla_Tag_Empathy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy;
-            foreach (var defName in moodList_Vanilla_Tag_Empathy_Bond) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_Bond;
-            foreach (var defName in moodList_Vanilla_Tag_Sympathy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy;
-            foreach (var defName in moodList_Vanilla_Tag_Empathy_Kin) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_Kin;
-            foreach (var defName in moodList_Vanilla_Tag_Empathy_Loved) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_Loved;
-            foreach (var defName in moodList_Vanilla_Tag_Affluence) MoodThoughtTagDB[defName] = FormulaDB.Tag_Affluence;
-            foreach (var defName in moodList_Vanilla_Tag_Loved) MoodThoughtTagDB[defName] = FormulaDB.Tag_Loved;
-            foreach (var defName in moodList_Vanilla_Tag_Gathering) MoodThoughtTagDB[defName] = FormulaDB.Tag_Gathering;
-            foreach (var defName in moodList_Vanilla_Tag_Concert) MoodThoughtTagDB[defName] = FormulaDB.Tag_Concert;
-            foreach (var defName in moodList_Vanilla_Tag_Worry) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry;
-            foreach (var defName in moodList_Vanilla_Tag_Worry_Bond) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Bond;
-            foreach (var defName in moodList_Vanilla_Tag_Disquiet) MoodThoughtTagDB[defName] = FormulaDB.Tag_Disquiet;
-            foreach (var defName in moodList_Vanilla_Tag_Worry_Kin) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Kin;
-            foreach (var defName in moodList_Vanilla_Tag_Worry_Loved) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Loved;
-            foreach (var defName in moodList_Vanilla_Tag_Needy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Needy;
-            foreach (var defName in moodList_Vanilla_Tag_Worry_Outsider_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Outsider_M;
-            foreach (var defName in moodList_Vanilla_Tag_Outsider) MoodThoughtTagDB[defName] = FormulaDB.Tag_Outsider;
-            foreach (var defName in moodList_Vanilla_Tag_Bloodlust) MoodThoughtTagDB[defName] = FormulaDB.Tag_Bloodlust;
-            foreach (var defName in moodList_Vanilla_Tag_Harmed) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed;
-            foreach (var defName in moodList_Vanilla_Tag_Fear) MoodThoughtTagDB[defName] = FormulaDB.Tag_Fear;
-            foreach (var defName in moodList_Vanilla_Tag_SawDeath) MoodThoughtTagDB[defName] = FormulaDB.Tag_SawDeath;
-            foreach (var defName in moodList_Vanilla_Tag_SawDeath_Outsider) MoodThoughtTagDB[defName] = FormulaDB.Tag_SawDeath_Outsider;
-            foreach (var defName in moodList_Vanilla_Tag_SawDeath_Kin) MoodThoughtTagDB[defName] = FormulaDB.Tag_SawDeath_Kin;
-            foreach (var defName in moodList_Vanilla_Tag_Worry_Outsider) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Outsider;
-            foreach (var defName in moodList_Vanilla_Tag_Harmed_Loved) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Loved;
-            foreach (var defName in moodList_Vanilla_Tag_Harmed_Bond) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Bond;
-            foreach (var defName in moodList_Vanilla_Tag_Decency) MoodThoughtTagDB[defName] = FormulaDB.Tag_Decency;
-            foreach (var defName in moodList_Vanilla_Tag_Sympathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_M;
-            foreach (var defName in moodList_Vanilla_Tag_Sympathy_P) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_P;
-            foreach (var defName in moodList_Vanilla_Tag_Needy_Art) MoodThoughtTagDB[defName] = FormulaDB.Tag_Needy_Art;
-            foreach (var defName in moodList_Vanilla_Tag_Bond) MoodThoughtTagDB[defName] = FormulaDB.Tag_Bond;
-            foreach (var defName in moodList_Vanilla_Tag_Art) MoodThoughtTagDB[defName] = FormulaDB.Tag_Art;
-            foreach (var defName in opinionList_Vanilla_Tag_Empathy_M) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
-            foreach (var defName in opinionList_Vanilla_Tag_Loved) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Loved;
-            foreach (var defName in opinionList_Vanilla_Tag_Harmed) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Harmed;
-            foreach (var defName in opinionList_Vanilla_Tag_Harmed_Loved) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Loved;
-            foreach (var defName in opinionList_Vanilla_Tag_Harmed_Bond) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Bond;
-            foreach (var defName in opinionList_Vanilla_Tag_Harmed_Kin) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Harmed_Kin;
-            foreach (var defName in opinionList_Vanilla_Tag_Decency) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Decency;
-            foreach (var defName in opinionList_Vanilla_Tag_Judgemental) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in opinionList_Vanilla_Tag_Morality) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Morality;
+            RegisterThoughts(moodList_Vanilla_Tag_Preference, MoodThoughtTagDB, FormulaDB.Tag_Preference);
+            RegisterThoughts(moodList_Vanilla_Tag_Empathy_M, MoodThoughtTagDB, FormulaDB.Tag_Empathy_M);
+            RegisterThoughts(moodList_Vanilla_Tag_Empathy, MoodThoughtTagDB, FormulaDB.Tag_Empathy);
+            RegisterThoughts(moodList_Vanilla_Tag_Empathy_Bond, MoodThoughtTagDB, FormulaDB.Tag_Empathy_Bond);
+            RegisterThoughts(moodList_Vanilla_Tag_Sympathy, MoodThoughtTagDB, FormulaDB.Tag_Sympathy);
+            RegisterThoughts(moodList_Vanilla_Tag_Empathy_Kin, MoodThoughtTagDB, FormulaDB.Tag_Empathy_Kin);
+            RegisterThoughts(moodList_Vanilla_Tag_Empathy_Loved, MoodThoughtTagDB, FormulaDB.Tag_Empathy_Loved);
+            RegisterThoughts(moodList_Vanilla_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
+            RegisterThoughts(moodList_Vanilla_Tag_Loved, MoodThoughtTagDB, FormulaDB.Tag_Loved);
+            RegisterThoughts(moodList_Vanilla_Tag_Gathering, MoodThoughtTagDB, FormulaDB.Tag_Gathering);
+            RegisterThoughts(moodList_Vanilla_Tag_Concert, MoodThoughtTagDB, FormulaDB.Tag_Concert);
+            RegisterThoughts(moodList_Vanilla_Tag_Worry, MoodThoughtTagDB, FormulaDB.Tag_Worry);
+            RegisterThoughts(moodList_Vanilla_Tag_Worry_Bond, MoodThoughtTagDB, FormulaDB.Tag_Worry_Bond);
+            RegisterThoughts(moodList_Vanilla_Tag_Disquiet, MoodThoughtTagDB, FormulaDB.Tag_Disquiet);
+            RegisterThoughts(moodList_Vanilla_Tag_Worry_Kin, MoodThoughtTagDB, FormulaDB.Tag_Worry_Kin);
+            RegisterThoughts(moodList_Vanilla_Tag_Worry_Loved, MoodThoughtTagDB, FormulaDB.Tag_Worry_Loved);
+            RegisterThoughts(moodList_Vanilla_Tag_Needy, MoodThoughtTagDB, FormulaDB.Tag_Needy);
+            RegisterThoughts(moodList_Vanilla_Tag_Worry_Outsider_M, MoodThoughtTagDB, FormulaDB.Tag_Worry_Outsider_M);
+            RegisterThoughts(moodList_Vanilla_Tag_Outsider, MoodThoughtTagDB, FormulaDB.Tag_Outsider);
+            RegisterThoughts(moodList_Vanilla_Tag_Bloodlust, MoodThoughtTagDB, FormulaDB.Tag_Bloodlust);
+            RegisterThoughts(moodList_Vanilla_Tag_Harmed, MoodThoughtTagDB, FormulaDB.Tag_Harmed);
+            RegisterThoughts(moodList_Vanilla_Tag_Fear, MoodThoughtTagDB, FormulaDB.Tag_Fear);
+            RegisterThoughts(moodList_Vanilla_Tag_SawDeath, MoodThoughtTagDB, FormulaDB.Tag_SawDeath);
+            RegisterThoughts(moodList_Vanilla_Tag_SawDeath_Outsider, MoodThoughtTagDB, FormulaDB.Tag_SawDeath_Outsider);
+            RegisterThoughts(moodList_Vanilla_Tag_SawDeath_Kin, MoodThoughtTagDB, FormulaDB.Tag_SawDeath_Kin);
+            RegisterThoughts(moodList_Vanilla_Tag_Worry_Outsider, MoodThoughtTagDB, FormulaDB.Tag_Worry_Outsider);
+            RegisterThoughts(moodList_Vanilla_Tag_Harmed_Loved, MoodThoughtTagDB, FormulaDB.Tag_Harmed_Loved);
+            RegisterThoughts(moodList_Vanilla_Tag_Harmed_Bond, MoodThoughtTagDB, FormulaDB.Tag_Harmed_Bond);
+            RegisterThoughts(moodList_Vanilla_Tag_Decency, MoodThoughtTagDB, FormulaDB.Tag_Decency);
+            RegisterThoughts(moodList_Vanilla_Tag_Sympathy_M, MoodThoughtTagDB, FormulaDB.Tag_Sympathy_M);
+            RegisterThoughts(moodList_Vanilla_Tag_Sympathy_P, MoodThoughtTagDB, FormulaDB.Tag_Sympathy_P);
+            RegisterThoughts(moodList_Vanilla_Tag_Needy_Art, MoodThoughtTagDB, FormulaDB.Tag_Needy_Art);
+            RegisterThoughts(moodList_Vanilla_Tag_Bond, MoodThoughtTagDB, FormulaDB.Tag_Bond);
+            RegisterThoughts(moodList_Vanilla_Tag_Art, MoodThoughtTagDB, FormulaDB.Tag_Art);
+            RegisterThoughts(opinionList_Vanilla_Tag_Empathy_M, OpinionThoughtTagDB, FormulaDB.Tag_Empathy_M);
+            RegisterThoughts(opinionList_Vanilla_Tag_Loved, OpinionThoughtTagDB, FormulaDB.Tag_Loved);
+            RegisterThoughts(opinionList_Vanilla_Tag_Harmed, OpinionThoughtTagDB, FormulaDB.Tag_Harmed);
+            RegisterThoughts(opinionList_Vanilla_Tag_Harmed_Loved, OpinionThoughtTagDB, FormulaDB.Tag_Harmed_Loved);
+            RegisterThoughts(opinionList_Vanilla_Tag_Harmed_Bond, OpinionThoughtTagDB, FormulaDB.Tag_Harmed_Bond);
+            RegisterThoughts(opinionList_Vanilla_Tag_Harmed_Kin, OpinionThoughtTagDB, FormulaDB.Tag_Harmed_Kin);
+            RegisterThoughts(opinionList_Vanilla_Tag_Decency, OpinionThoughtTagDB, FormulaDB.Tag_Decency);
+            RegisterThoughts(opinionList_Vanilla_Tag_Judgemental, OpinionThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(opinionList_Vanilla_Tag_Morality, OpinionThoughtTagDB, FormulaDB.Tag_Morality);
         }
 
         private static readonly List<string> moodList_Vanilla_Tag_Preference = new(

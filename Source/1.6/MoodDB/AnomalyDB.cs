@@ -1,19 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
+using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class AnomalyDB
+    public class AnomalyDB : BaseThoughtDB
     {
-        public static void AddDefs_Anomaly(Dictionary<string, RimpsycheFormula> MoodThoughtTagDB, Dictionary<string, RimpsycheFormula> OpinionThoughtTagDB)
+        public static void AddDefs_Anomaly_Stage(Dictionary<int, RimpsycheFormula[]> StageThoughtTagDB, Dictionary<int, RimpsycheFormula[]> StageOpinionThoughtTagDB)
         {
-            foreach (var defName in moodList_Anomaly_Tag_Judgemental) MoodThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in moodList_Anomaly_Tag_Morality) MoodThoughtTagDB[defName] = FormulaDB.Tag_Morality;
-            foreach (var defName in moodList_Anomaly_Tag_Affluence) MoodThoughtTagDB[defName] = FormulaDB.Tag_Affluence;
-            foreach (var defName in moodList_Anomaly_Tag_Harmed) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed;
-            foreach (var defName in moodList_Anomaly_Tag_Fear) MoodThoughtTagDB[defName] = FormulaDB.Tag_Fear;
-            foreach (var defName in opinionList_Anomaly_Tag_Judgemental) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in opinionList_Anomaly_Tag_Morality) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Morality;
-            foreach (var defName in opinionList_Anomaly_Tag_Harmed) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Harmed;
+            RegisterSingleThought("UnnaturalDarkness", StageThoughtTagDB,
+                [FormulaDB.Tag_Fear,
+                null]
+            );
+        }
+        public static void AddDefs_Anomaly(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
+        {
+            RegisterThoughts(moodList_Anomaly_Tag_Judgemental, MoodThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(moodList_Anomaly_Tag_Morality, MoodThoughtTagDB, FormulaDB.Tag_Morality);
+            RegisterThoughts(moodList_Anomaly_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
+            RegisterThoughts(moodList_Anomaly_Tag_Harmed, MoodThoughtTagDB, FormulaDB.Tag_Harmed);
+            RegisterThoughts(moodList_Anomaly_Tag_Fear, MoodThoughtTagDB, FormulaDB.Tag_Fear);
+            RegisterThoughts(opinionList_Anomaly_Tag_Judgemental, OpinionThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(opinionList_Anomaly_Tag_Morality, OpinionThoughtTagDB, FormulaDB.Tag_Morality);
+            RegisterThoughts(opinionList_Anomaly_Tag_Harmed, OpinionThoughtTagDB, FormulaDB.Tag_Harmed);
         }
 
         private static readonly List<string> moodList_Anomaly_Tag_Judgemental = new(

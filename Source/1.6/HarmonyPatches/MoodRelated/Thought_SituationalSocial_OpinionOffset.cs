@@ -30,24 +30,34 @@ namespace Maux36.RimPsyche.Disposition
             //Individual Thoughts
             if (useIndividualThoughtsSetting)
             {
+                var hashval = __instance.def.shortHash;
                 //Thoughts
-                if (StageThoughtUtil.StageOpinionThoughtTagDB.TryGetValue(__instance.def.defName, out var stageFormulas))
+                if (compPsyche.OpinionEvaluationCache.TryGetValue(hashval, out float value))
                 {
-                    int stageIndex = __instance.CurStageIndex;
-                    if ((uint)stageIndex < (uint)stageFormulas.Length)
+                    if (value >= 0f) __result *= value;
+                }
+                else
+                {
+                    if (StageThoughtUtil.StageOpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out var stageFormulas))
                     {
-                        var formula = stageFormulas[stageIndex];
-                        if (formula != null)
+                        int stageIndex = __instance.CurStageIndex;
+                        if ((uint)stageIndex < (uint)stageFormulas.Length)
                         {
-                            __result *= compPsyche.Evaluate(formula);
+                            if (stageFormulas[__instance.CurStageIndex] is { } stageFormula)
+                            {
+                                __result *= compPsyche.Evaluate(stageFormula);
+                            }
                         }
                     }
-                }
-                else if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(__instance.def.defName, out RimpsycheFormula indivFormula))
-                {
-                    if (indivFormula != null)
+                    else if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out RimpsycheFormula indivFormula))
                     {
-                        __result *= compPsyche.Evaluate(indivFormula);
+                        value = compPsyche.Evaluate(indivFormula);
+                        compPsyche.OpinionEvaluationCache[hashval] = value;
+                        __result *= value;
+                    }
+                    else
+                    {
+                        compPsyche.OpinionEvaluationCache[hashval] = -1f;
                     }
                 }
             }

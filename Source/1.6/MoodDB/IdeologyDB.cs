@@ -1,36 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
+using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class IdeologyDB
+    public class IdeologyDB : BaseThoughtDB
     {
-        public static void AddDefs_Ideology(Dictionary<string, RimpsycheFormula> MoodThoughtTagDB, Dictionary<string, RimpsycheFormula> OpinionThoughtTagDB)
+        public static void AddDefs_Ideology(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-            foreach (var defName in moodList_Ideology_Tag_Empathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
-            foreach (var defName in moodList_Ideology_Tag_Empathy_J) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_J;
-            foreach (var defName in moodList_Ideology_Tag_Judgemental) MoodThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in moodList_Ideology_Tag_Morality) MoodThoughtTagDB[defName] = FormulaDB.Tag_Morality;
-            foreach (var defName in moodList_Ideology_Tag_Preference) MoodThoughtTagDB[defName] = FormulaDB.Tag_Preference;
-            foreach (var defName in moodList_Ideology_Tag_Sympathy_J) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_J;
-            foreach (var defName in moodList_Ideology_Tag_Sympathy_P) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_P;
-            foreach (var defName in moodList_Ideology_Tag_Sympathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_M;
-            foreach (var defName in moodList_Ideology_Tag_Charity_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Charity_M;
-            foreach (var defName in moodList_Ideology_Tag_Charity_J) MoodThoughtTagDB[defName] = FormulaDB.Tag_Charity_J;
-            foreach (var defName in moodList_Ideology_Tag_Worry_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_M;
-            foreach (var defName in moodList_Ideology_Tag_Worry_J) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_J;
-            foreach (var defName in moodList_Ideology_Tag_Openmindedness) MoodThoughtTagDB[defName] = FormulaDB.Tag_Openmindedness;
-            foreach (var defName in moodList_Ideology_Tag_Decency_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Decency_M;
-            foreach (var defName in moodList_Ideology_Tag_Decency_J) MoodThoughtTagDB[defName] = FormulaDB.Tag_Decency_J;
-            foreach (var defName in moodList_Ideology_Tag_Affluence) MoodThoughtTagDB[defName] = FormulaDB.Tag_Affluence;
-            foreach (var defName in moodList_Ideology_Tag_Decency) MoodThoughtTagDB[defName] = FormulaDB.Tag_Decency;
-            foreach (var defName in moodList_Ideology_Tag_Gathering) MoodThoughtTagDB[defName] = FormulaDB.Tag_Gathering;
-            foreach (var defName in opinionList_Ideology_Tag_Empathy_M) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
-            foreach (var defName in opinionList_Ideology_Tag_Empathy_J) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_J;
-            foreach (var defName in opinionList_Ideology_Tag_Judgemental) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in opinionList_Ideology_Tag_Morality) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Morality;
-            foreach (var defName in opinionList_Ideology_Tag_Sympathy_J) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Sympathy_J;
-            foreach (var defName in opinionList_Ideology_Tag_Decency_M) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Decency_M;
-            foreach (var defName in opinionList_Ideology_Tag_Decency_J) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Decency_J;
+            RegisterThoughts(moodList_Ideology_Tag_Empathy_M, MoodThoughtTagDB, FormulaDB.Tag_Empathy_M);
+            RegisterThoughts(moodList_Ideology_Tag_Empathy_J, MoodThoughtTagDB, FormulaDB.Tag_Empathy_J);
+            RegisterThoughts(moodList_Ideology_Tag_Judgemental, MoodThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(moodList_Ideology_Tag_Morality, MoodThoughtTagDB, FormulaDB.Tag_Morality);
+            RegisterThoughts(moodList_Ideology_Tag_Preference, MoodThoughtTagDB, FormulaDB.Tag_Preference);
+            RegisterThoughts(moodList_Ideology_Tag_Sympathy_J, MoodThoughtTagDB, FormulaDB.Tag_Sympathy_J);
+            RegisterThoughts(moodList_Ideology_Tag_Sympathy_P, MoodThoughtTagDB, FormulaDB.Tag_Sympathy_P);
+            RegisterThoughts(moodList_Ideology_Tag_Sympathy_M, MoodThoughtTagDB, FormulaDB.Tag_Sympathy_M);
+            RegisterThoughts(moodList_Ideology_Tag_Charity_M, MoodThoughtTagDB, FormulaDB.Tag_Charity_M);
+            RegisterThoughts(moodList_Ideology_Tag_Charity_J, MoodThoughtTagDB, FormulaDB.Tag_Charity_J);
+            RegisterThoughts(moodList_Ideology_Tag_Worry_M, MoodThoughtTagDB, FormulaDB.Tag_Worry_M);
+            RegisterThoughts(moodList_Ideology_Tag_Worry_J, MoodThoughtTagDB, FormulaDB.Tag_Worry_J);
+            RegisterThoughts(moodList_Ideology_Tag_Openmindedness, MoodThoughtTagDB, FormulaDB.Tag_Openmindedness);
+            RegisterThoughts(moodList_Ideology_Tag_Decency_M, MoodThoughtTagDB, FormulaDB.Tag_Decency_M);
+            RegisterThoughts(moodList_Ideology_Tag_Decency_J, MoodThoughtTagDB, FormulaDB.Tag_Decency_J);
+            RegisterThoughts(moodList_Ideology_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
+            RegisterThoughts(moodList_Ideology_Tag_Decency, MoodThoughtTagDB, FormulaDB.Tag_Decency);
+            RegisterThoughts(moodList_Ideology_Tag_Gathering, MoodThoughtTagDB, FormulaDB.Tag_Gathering);
+            RegisterThoughts(opinionList_Ideology_Tag_Empathy_M, OpinionThoughtTagDB, FormulaDB.Tag_Empathy_M);
+            RegisterThoughts(opinionList_Ideology_Tag_Empathy_J, OpinionThoughtTagDB, FormulaDB.Tag_Empathy_J);
+            RegisterThoughts(opinionList_Ideology_Tag_Judgemental, OpinionThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(opinionList_Ideology_Tag_Morality, OpinionThoughtTagDB, FormulaDB.Tag_Morality);
+            RegisterThoughts(opinionList_Ideology_Tag_Sympathy_J, OpinionThoughtTagDB, FormulaDB.Tag_Sympathy_J);
+            RegisterThoughts(opinionList_Ideology_Tag_Decency_M, OpinionThoughtTagDB, FormulaDB.Tag_Decency_M);
+            RegisterThoughts(opinionList_Ideology_Tag_Decency_J, OpinionThoughtTagDB, FormulaDB.Tag_Decency_J);
         }
 
         private static readonly List<string> moodList_Ideology_Tag_Empathy_M = new(

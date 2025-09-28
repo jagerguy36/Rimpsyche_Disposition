@@ -1,5 +1,6 @@
 using Verse;
 using System.Collections.Generic;
+using RimWorld;
 
 namespace Maux36.RimPsyche.Disposition
 {
@@ -20,8 +21,8 @@ namespace Maux36.RimPsyche.Disposition
             }
         }
 
-        public static Dictionary<string, RimpsycheFormula> MoodThoughtTagDB = [];
-        public static Dictionary<string, RimpsycheFormula> OpinionThoughtTagDB = [];
+        public static Dictionary<int, RimpsycheFormula> MoodThoughtTagDB = [];
+        public static Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB = [];
 
         static ThoughtUtil()
         {
@@ -34,13 +35,13 @@ namespace Maux36.RimPsyche.Disposition
 
         public static void Initialize()
         {
-            Log.Message("[Rimpsyche - Disposition] ThoughtUtil initialized.");
+            Log.Message("[Rimpsyche - Disposition] Using individual thoughts. ThoughtUtil initialized.");
             AddBaseThoughts();
         }
 
         public static void ModCompat()
         {
-            Log.Message("[Rimpsyche - Disposition] Compatibility Thoughts added.");
+            Log.Message("[Rimpsyche - Disposition] Using individual thoughts. Compatibility Thoughts added.");
         }
 
         private static void AddBaseThoughts()

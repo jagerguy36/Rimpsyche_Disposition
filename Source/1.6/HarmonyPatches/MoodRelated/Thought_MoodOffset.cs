@@ -40,20 +40,34 @@ namespace Maux36.RimPsyche.Disposition
             //Individual Thoughts
             if (useIndividualThoughtsSetting)
             {
+                var hashval = __instance.def.shortHash;
                 //Thoughts
-                if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(__instance.def.defName, out RimpsycheFormula indivFormula))
+                if (compPsyche.ThoughtEvaluationCache.TryGetValue(hashval, out float value))
                 {
-                    __result *= compPsyche.Evaluate(indivFormula);
+                    if (value >= 0f) __result *= value;
                 }
-                else if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(__instance.def.defName, out var stageFormulas))
+                else
                 {
-                    int stageIndex = __instance.CurStageIndex;
-                    if ((uint)stageIndex < (uint)stageFormulas.Length)
+                    if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(__instance.def.shortHash, out var stageFormulas))
                     {
-                        if (stageFormulas[__instance.CurStageIndex] is { } stageFormula)
+                        int stageIndex = __instance.CurStageIndex;
+                        if ((uint)stageIndex < (uint)stageFormulas.Length)
                         {
-                            __result *= compPsyche.Evaluate(stageFormula);
+                            if (stageFormulas[__instance.CurStageIndex] is { } stageFormula)
+                            {
+                                __result *= compPsyche.Evaluate(stageFormula);
+                            }
                         }
+                    }
+                    else if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(__instance.def.shortHash, out RimpsycheFormula indivFormula))
+                    {
+                        value = compPsyche.Evaluate(indivFormula);
+                        compPsyche.ThoughtEvaluationCache[hashval] = value;
+                        __result *= value;
+                    }
+                    else
+                    {
+                        compPsyche.ThoughtEvaluationCache[hashval] = -1f;
                     }
                 }
             }

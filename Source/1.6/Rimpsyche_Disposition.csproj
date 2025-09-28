@@ -66,6 +66,7 @@
     <Compile Include="MoodDB\IdeologyDB.cs" />
     <Compile Include="MoodDB\OdysseyDB.cs" />
     <Compile Include="MoodDB\RoyaltyDB.cs" />
+    <Compile Include="MoodDB\BaseThoughtDB.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationCookingSpeedStatPart.cs" />
     <Compile Include="Utils\FightorFlightUtil.cs" />
     <Compile Include="DefOfDisposition.cs" />

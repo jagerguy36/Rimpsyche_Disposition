@@ -1,26 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
+using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class BiotechDB
+    public class BiotechDB : BaseThoughtDB
     {
-        public static void AddDefs_Biotech(Dictionary<string, RimpsycheFormula> MoodThoughtTagDB, Dictionary<string, RimpsycheFormula> OpinionThoughtTagDB)
+        public static void AddDefs_Biotech(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-            foreach (var defName in moodList_Biotech_Tag_Judgemental) MoodThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in moodList_Biotech_Tag_Empathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
-            foreach (var defName in moodList_Biotech_Tag_Empathy_Kin) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_Kin;
-            foreach (var defName in moodList_Biotech_Tag_Worry_Kin) MoodThoughtTagDB[defName] = FormulaDB.Tag_Worry_Kin;
-            foreach (var defName in moodList_Biotech_Tag_Affluence) MoodThoughtTagDB[defName] = FormulaDB.Tag_Affluence;
-            foreach (var defName in moodList_Biotech_Tag_Harmed) MoodThoughtTagDB[defName] = FormulaDB.Tag_Harmed;
-            foreach (var defName in moodList_Biotech_Tag_Sympathy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Sympathy;
-            foreach (var defName in moodList_Biotech_Tag_Empathy_Loved) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_Loved;
-            foreach (var defName in moodList_Biotech_Tag_Needy) MoodThoughtTagDB[defName] = FormulaDB.Tag_Needy;
-            foreach (var defName in moodList_Biotech_Tag_Recluse) MoodThoughtTagDB[defName] = FormulaDB.Tag_Recluse;
-            foreach (var defName in opinionList_Biotech_Tag_Judgemental) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in opinionList_Biotech_Tag_Empathy_M) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
-            foreach (var defName in opinionList_Biotech_Tag_Empathy_Kin) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_Kin;
-            foreach (var defName in opinionList_Biotech_Tag_Harmed) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Harmed;
-            foreach (var defName in opinionList_Biotech_Tag_Gathering) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Gathering;
+            RegisterThoughts(moodList_Biotech_Tag_Judgemental, MoodThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(moodList_Biotech_Tag_Empathy_M, MoodThoughtTagDB, FormulaDB.Tag_Empathy_M);
+            RegisterThoughts(moodList_Biotech_Tag_Empathy_Kin, MoodThoughtTagDB, FormulaDB.Tag_Empathy_Kin);
+            RegisterThoughts(moodList_Biotech_Tag_Worry_Kin, MoodThoughtTagDB, FormulaDB.Tag_Worry_Kin);
+            RegisterThoughts(moodList_Biotech_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
+            RegisterThoughts(moodList_Biotech_Tag_Harmed, MoodThoughtTagDB, FormulaDB.Tag_Harmed);
+            RegisterThoughts(moodList_Biotech_Tag_Sympathy, MoodThoughtTagDB, FormulaDB.Tag_Sympathy);
+            RegisterThoughts(moodList_Biotech_Tag_Empathy_Loved, MoodThoughtTagDB, FormulaDB.Tag_Empathy_Loved);
+            RegisterThoughts(moodList_Biotech_Tag_Needy, MoodThoughtTagDB, FormulaDB.Tag_Needy);
+            RegisterThoughts(moodList_Biotech_Tag_Recluse, MoodThoughtTagDB, FormulaDB.Tag_Recluse);
+            RegisterThoughts(opinionList_Biotech_Tag_Judgemental, OpinionThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(opinionList_Biotech_Tag_Empathy_M, OpinionThoughtTagDB, FormulaDB.Tag_Empathy_M);
+            RegisterThoughts(opinionList_Biotech_Tag_Empathy_Kin, OpinionThoughtTagDB, FormulaDB.Tag_Empathy_Kin);
+            RegisterThoughts(opinionList_Biotech_Tag_Harmed, OpinionThoughtTagDB, FormulaDB.Tag_Harmed);
+            RegisterThoughts(opinionList_Biotech_Tag_Gathering, OpinionThoughtTagDB, FormulaDB.Tag_Gathering);
         }
 
         private static readonly List<string> moodList_Biotech_Tag_Judgemental = new(

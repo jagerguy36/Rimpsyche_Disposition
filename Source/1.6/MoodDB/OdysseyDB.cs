@@ -1,17 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
+using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class OdysseyDB
+    public class OdysseyDB : BaseThoughtDB
     {
-        public static void AddDefs_Odyssey(Dictionary<string, RimpsycheFormula> MoodThoughtTagDB, Dictionary<string, RimpsycheFormula> OpinionThoughtTagDB)
+        public static void AddDefs_Odyssey(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-            foreach (var defName in moodList_Odyssey_Tag_Empathy_M) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
-            foreach (var defName in moodList_Odyssey_Tag_Empathy_J) MoodThoughtTagDB[defName] = FormulaDB.Tag_Empathy_J;
-            foreach (var defName in moodList_Odyssey_Tag_Judgemental) MoodThoughtTagDB[defName] = FormulaDB.Tag_Judgemental;
-            foreach (var defName in opinionList_Odyssey_Tag_Empathy_M) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_M;
-            foreach (var defName in opinionList_Odyssey_Tag_Empathy_J) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Empathy_J;
-            foreach (var defName in opinionList_Odyssey_Tag_Affluence) OpinionThoughtTagDB[defName] = FormulaDB.Tag_Affluence;
+            RegisterThoughts(moodList_Odyssey_Tag_Empathy_M, MoodThoughtTagDB, FormulaDB.Tag_Empathy_M);
+            RegisterThoughts(moodList_Odyssey_Tag_Empathy_J, MoodThoughtTagDB, FormulaDB.Tag_Empathy_J);
+            RegisterThoughts(moodList_Odyssey_Tag_Judgemental, MoodThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(opinionList_Odyssey_Tag_Empathy_M, OpinionThoughtTagDB, FormulaDB.Tag_Empathy_M);
+            RegisterThoughts(opinionList_Odyssey_Tag_Empathy_J, OpinionThoughtTagDB, FormulaDB.Tag_Empathy_J);
+            RegisterThoughts(opinionList_Odyssey_Tag_Affluence, OpinionThoughtTagDB, FormulaDB.Tag_Affluence);
         }
 
         private static readonly List<string> moodList_Odyssey_Tag_Empathy_M = new(
