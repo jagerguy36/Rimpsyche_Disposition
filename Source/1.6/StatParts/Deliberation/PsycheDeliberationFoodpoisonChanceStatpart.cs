@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (pawn.skills != null && compPsyche?.Enabled == true)
                 {
-                    int level = pawn.skills.GetSkill(SkillDefOf.Cooking).Level;
+                    int level = Mathf.Clamp(pawn.skills.GetSkill(SkillDefOf.Cooking).Level, 0, 20);
                     float deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
                     val *= FoodPoisonMultiplier(level, deliberation);
                 }
@@ -26,7 +26,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    int level = pawn.skills.GetSkill(SkillDefOf.Cooking).Level;
+                    int level = Mathf.Clamp(pawn.skills.GetSkill(SkillDefOf.Cooking).Level, 0, 20);
                     float deliberation = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
                     return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationFoodpoison".Translate() + ": x" + FoodPoisonMultiplier(level, deliberation).ToStringPercent()+"\n";
                 }
