@@ -10,17 +10,27 @@ namespace Maux36.RimPsyche.Disposition
         const int maxDayTicks = 600000;
         public static void ProgressMade(this CompPsyche compPsyche, float days, int causeIndex = 1, string reason = null)
         {
-            if (days >= 0f)
+            int prospect;
+            if (days == 0f)
             {
-                int prospect = Mathf.Min(maxDayTicks, (int)(days * dayTick)) + Find.TickManager.TicksGame;
-                if (compPsyche.progressTick <= prospect)
-                {
-                    compPsyche.progressTick = prospect;
-                    compPsyche.progressLastCauseIndex = causeIndex;
-                    compPsyche.progressLastCause = reason;
-                }
-                
+                prospect = Find.TickManager.TicksGame;
             }
+            else if (days > 0f)
+            {
+                int cappedTicks = days >= maxDay ? maxDayTicks : (int)(days * dayTick);
+                prospect = cappedTicks + Find.TickManager.TicksGame;
+            }
+            else
+            {
+                return;
+            }
+            if (compPsyche.progressTick <= prospect)
+            {
+                compPsyche.progressTick = prospect;
+                compPsyche.progressLastCauseIndex = causeIndex;
+                compPsyche.progressLastCause = reason;
+            }
+
         }
 
         public static bool GainShame(this CompPsyche compPsyche)
