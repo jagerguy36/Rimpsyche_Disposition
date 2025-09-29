@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Reflection.Emit;
 using Verse;
 
@@ -18,46 +19,59 @@ namespace Maux36.RimPsyche.Disposition
             var moodOffsetMethod = AccessTools.Method(typeof(Thought), nameof(Thought.MoodOffset));
             var moodMultiplierMethod = AccessTools.Method(typeof(ThoughtHandler_MoodOffsetOfGroup_Patch), nameof(MoodMultiplier));
             var pawnField = AccessTools.Field(typeof(ThoughtHandler), nameof(ThoughtHandler.pawn));
-            var defField = AccessTools.Field(typeof(Thought), nameof(Thought.def));
-            var shortHashField = AccessTools.Field(typeof(ThoughtDef), nameof(ThoughtDef.shortHash));
-
-            for (int i = 0; i < codes.Count; i++)
+            int thoughtLocalIndex = -1;
+            int insertionPoint = -1;
+            for (int t = 0; t < codes.Count; t++)
             {
-                yield return codes[i];
-
-                if (codes[i].opcode == OpCodes.Stloc_0 && i > 0 && codes[i - 1].opcode == OpCodes.Add)
+                var ci = codes[t];
+                if (ci.opcode == OpCodes.Callvirt && ci.operand is MethodInfo mi && mi == moodOffsetMethod)
                 {
-                    yield return new CodeInstruction(OpCodes.Ldloc_0); // load num
-                    yield return new CodeInstruction(OpCodes.Ldloc_0); // load num (for first arg)
-                    yield return new CodeInstruction(OpCodes.Ldarg_0); // load this
-                    yield return new CodeInstruction(OpCodes.Ldfld, pawnField); // load pawn
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, 4); // load thought
-                    yield return new CodeInstruction(OpCodes.Call, moodMultiplierMethod); // call MoodMultiplier
-                    yield return new CodeInstruction(OpCodes.Mul); // num * MoodMultiplier(...)
-                    yield return new CodeInstruction(OpCodes.Stloc_0); // store back to num
+                    thoughtLocalIndex = codes[t-1].LocalIndex();
+                    
+                    insertionPoint = t;
+                    break;
+                }
+            }
+            if (thoughtLocalIndex == -1 || insertionPoint == -1)
+            {
+                Log.Error("[Rimpsyche] Mood thought transpiler failed to patch");
+            }
+            else
+            {
+                for (int i = 0; i < codes.Count; i++)
+                {
+                    yield return codes[i];
+
+                    if (i == insertionPoint)
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldarg_0); // load this
+                        yield return new CodeInstruction(OpCodes.Ldfld, pawnField); // load pawn
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, thoughtLocalIndex); // load thought
+                        yield return new CodeInstruction(OpCodes.Call, moodMultiplierMethod); // call MoodMultiplier
+                    }
                 }
             }
         }
 
         public static float MoodMultiplier(float num, Pawn pawn, Thought thought)
         {
-            float mult = 1f;
+            float result = num;
             if (num == 0f || pawn?.compPsyche() is not { } compPsyche)
-                return mult;
+                return result;
             if (compPsyche.Enabled != true)
-                return mult;
+                return result;
             if (num < 0f)
             {
                 //General Modifier
-                mult = compPsyche.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
+                result *= compPsyche.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
                 if (Find.TickManager.TicksGame < compPsyche.lastResilientSpiritTick)
                 {
-                    mult *= 0.5f;
+                    result *= 0.5f;
                 }
             }
             else
             {
-                mult = compPsyche.Evaluate(FormulaDB.PositiveMoodOffsetMultiplier);
+                result *= compPsyche.Evaluate(FormulaDB.PositiveMoodOffsetMultiplier);
             }
             //Individual Thoughts
             if (useIndividualThoughtsSetting)
@@ -66,7 +80,7 @@ namespace Maux36.RimPsyche.Disposition
                 //Thoughts
                 if (compPsyche.ThoughtEvaluationCache.TryGetValue(hashval, out float value))
                 {
-                    if (value >= 0f) mult *= value;
+                    if (value >= 0f) result *= value;
                 }
                 else
                 {
@@ -77,7 +91,7 @@ namespace Maux36.RimPsyche.Disposition
                         {
                             if (stageFormulas[thought.CurStageIndex] is { } stageFormula)
                             {
-                                mult *= compPsyche.Evaluate(stageFormula);
+                                result *= compPsyche.Evaluate(stageFormula);
                             }
                         }
                     }
@@ -85,7 +99,7 @@ namespace Maux36.RimPsyche.Disposition
                     {
                         value = compPsyche.Evaluate(indivFormula);
                         compPsyche.ThoughtEvaluationCache[hashval] = value;
-                        mult *= value;
+                        result *= value;
                     }
                     else
                     {
@@ -93,8 +107,8 @@ namespace Maux36.RimPsyche.Disposition
                     }
                 }
             }
-            //Log.Message($"{pawn.Name} caled thought with defname {thought.def.defName} and num {num} got mult {mult}");
-            return mult;
+            //Log.Message($"{pawn.Name} thought with defname {thought.def.defName} and num {num} became {result}");
+            return result;
         }
     }
 }
