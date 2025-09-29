@@ -16,7 +16,8 @@ namespace Maux36.RimPsyche.Disposition
                 var codes = new List<CodeInstruction>(instructions);
 
                 var pawnField = AccessTools.Field(typeof(Need), "pawn");
-                var getMultiplierMethod = AccessTools.Method(typeof(Patch_NeedSeeker_NeedInterval), nameof(GetMultiplier));
+                var getRisingMultiplierMethod = AccessTools.Method(typeof(Patch_NeedSeeker_NeedInterval), nameof(GetRisingMultiplier));
+                var getFallingMultiplierMethod = AccessTools.Method(typeof(Patch_NeedSeeker_NeedInterval), nameof(GetFallingMultiplier));
 
                 for (int i = 0; i < codes.Count - 2; i++)
                 {
@@ -26,10 +27,9 @@ namespace Maux36.RimPsyche.Disposition
                     {
                         codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_0));               // this
                         codes.Insert(i + 3, new CodeInstruction(OpCodes.Ldfld, pawnField));      // this.pawn
-                        codes.Insert(i + 4, new CodeInstruction(OpCodes.Ldc_I4_1));              // true = rising
-                        codes.Insert(i + 5, new CodeInstruction(OpCodes.Call, getMultiplierMethod)); // call method
-                        codes.Insert(i + 6, new CodeInstruction(OpCodes.Mul));
-                        i += 6;
+                        codes.Insert(i + 4, new CodeInstruction(OpCodes.Call, getRisingMultiplierMethod)); // call method
+                        codes.Insert(i + 5, new CodeInstruction(OpCodes.Mul));
+                        i += 5;
                     }
 
                     // seekerFallPerHour * 0.06
@@ -38,17 +38,16 @@ namespace Maux36.RimPsyche.Disposition
                     {
                         codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_0));
                         codes.Insert(i + 3, new CodeInstruction(OpCodes.Ldfld, pawnField));
-                        codes.Insert(i + 4, new CodeInstruction(OpCodes.Ldc_I4_0)); // false = falling
-                        codes.Insert(i + 5, new CodeInstruction(OpCodes.Call, getMultiplierMethod));
-                        codes.Insert(i + 6, new CodeInstruction(OpCodes.Mul));
-                        i += 6;
+                        codes.Insert(i + 4, new CodeInstruction(OpCodes.Call, getFallingMultiplierMethod));
+                        codes.Insert(i + 5, new CodeInstruction(OpCodes.Mul));
+                        i += 5;
                     }
                 }
 
                 return codes;
             }
 
-            public static float GetMultiplier(Pawn pawn, bool isRising)
+            public static float GetRisingMultiplier(Pawn pawn)
             {
                 if (pawn == null)
                     return 1f;
@@ -57,7 +56,19 @@ namespace Maux36.RimPsyche.Disposition
                 if (psyche?.Enabled != true)
                     return 1f;
 
-                return isRising ? psyche.Evaluate(MoodRisingSpeedMultiplier) : psyche.Evaluate(MoodFallingSpeedMultiplier);
+                return psyche.Evaluate(MoodRisingSpeedMultiplier);
+            }
+
+            public static float GetFallingMultiplier(Pawn pawn)
+            {
+                if (pawn == null)
+                    return 1f;
+
+                var psyche = pawn.compPsyche();
+                if (psyche?.Enabled != true)
+                    return 1f;
+
+                return psyche.Evaluate(MoodFallingSpeedMultiplier);
             }
 
 
