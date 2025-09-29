@@ -100,6 +100,7 @@ namespace Maux36.RimPsyche.Disposition
                     break;
             }
             int value = (int)Rand.GaussianAsymmetric(num, 0.6f * lowVarianceMultiplier, 0.8f * highVarianceMultiplier);
+            //Log.Message($"cahce: {compPsyche.Evaluate(ExperimentChanceMultiplier)} | experimental chance: {experimentChance} | successChance: {successChance} | relevantSkillLevel: {relevantSkillLevel} | lowVarianceMultiplier: {lowVarianceMultiplier} | highVarianceMultiplier: {highVarianceMultiplier} | value: {value}");
             if (value >= 6)
             {
                 if (Rand.Value < experimentChance * 2f)
@@ -226,7 +227,7 @@ namespace Maux36.RimPsyche.Disposition
                 18 => 3.48f,
                 19 => 3.58f,
                 20 => 3.67f,
-                _ => 0f,
+                _ => 4f,
             };
         }
 
