@@ -53,14 +53,15 @@ namespace Maux36.RimPsyche.Disposition
             }
         }
 
-        public static float MoodMultiplier(float num, Pawn pawn, Thought thought)
+        public static float MoodMultiplier(float originalOffset, Pawn pawn, Thought thought)
         {
-            float result = num;
-            if (num == 0f || pawn?.compPsyche() is not { } compPsyche)
-                return result;
+            if (originalOffset == 0f || pawn?.compPsyche() is not { } compPsyche)
+                return originalOffset;
             if (compPsyche.Enabled != true)
-                return result;
-            if (num < 0f)
+                return originalOffset;
+
+            float result = originalOffset;
+            if (originalOffset < 0f)
             {
                 //General Modifier
                 result *= compPsyche.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
@@ -107,7 +108,7 @@ namespace Maux36.RimPsyche.Disposition
                     }
                 }
             }
-            //Log.Message($"{pawn.Name} thought with defname {thought.def.defName} and num {num} became {result}");
+            //Log.Message($"{pawn.Name} thought with defname {thought.def.defName} | original {num} became {result}");
             return result;
         }
     }
