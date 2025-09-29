@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HarmonyPatches\Patch_CompAbilityEffect_Counsel_Apply.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\Individuality_Patches.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\Unpatcher.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\ThoughtHandler_MoodOffsetOfGroup_Patch.cs" />
