@@ -89,7 +89,7 @@ namespace Maux36.RimPsyche.Disposition
                     }
                 }
             }
-            //Log.Message($"{pawn.Name} thought with defname {thought.def.defName} | original {num} became {result}");
+            //Log.Message($"{pawn.Name} thought with defname {thought.def.defName} | originalOffset {originalOffset} became {result}");
             return result;
         }
     }
