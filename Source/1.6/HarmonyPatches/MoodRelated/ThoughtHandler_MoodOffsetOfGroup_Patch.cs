@@ -7,6 +7,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
+    [HarmonyPatchCategory("PerformanceModeThought")]
     [HarmonyPatch(typeof(ThoughtHandler), nameof(ThoughtHandler.MoodOffsetOfGroup))]
     public static class ThoughtHandler_MoodOffsetOfGroup_Patch
     {

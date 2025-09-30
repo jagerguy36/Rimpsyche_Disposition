@@ -39,6 +39,8 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.Gap(12f);
             listing_Standard.Label("RimpsycheDispositionRestartNeeded".Translate());
             listing_Standard.Gap(12f);
+            listing_Standard.CheckboxLabeled("RimpsycheUsePerformanceModeThought".Translate(), ref RimpsycheDispositionSettings.usePerformanceModeThought, "RimpsycheUsePerformanceModeThoughtTooltip".Translate());
+            listing_Standard.Gap(6f);
             RimpsycheDispositionSettings.moodEmotionalityC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodEmotionalityC".Translate() + " (" + "Default".Translate() + " " + RimpsycheDispositionSettings.default_moodEmotionalityC + "): " + RimpsycheDispositionSettings.moodEmotionalityC, RimpsycheDispositionSettings.moodEmotionalityC, 0.05f, 0.95f, tooltip: "RimpsycheMoodEmotionalityCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
             RimpsycheDispositionSettings.moodOptimismC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodOptimismC".Translate() + " (" + "Default".Translate() + " " + RimpsycheDispositionSettings.default_moodOptimismC + "): " + RimpsycheDispositionSettings.moodOptimismC, RimpsycheDispositionSettings.moodOptimismC, 0.05f, 0.95f, tooltip: "RimpsycheMoodOptimismCTooltip".Translate()), 2);

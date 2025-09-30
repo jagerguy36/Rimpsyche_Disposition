@@ -15,6 +15,14 @@ namespace Maux36.RimPsyche.Disposition
 
             //RPD harmony patches
             harmony.PatchAllUncategorized(Assembly.GetExecutingAssembly());
+            if (RimpsycheDispositionSettings.usePerformanceModeThought)
+            {
+                harmony.PatchCategory("PerformanceModeThought");
+            }
+            else
+            {
+                harmony.PatchCategory("PrecisionModeThought");
+            }
             if (RimpsycheDispositionSettings.useExperimentation)
             {
                 harmony.PatchCategory("Experimentation");

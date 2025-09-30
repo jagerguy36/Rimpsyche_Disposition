@@ -8,6 +8,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
+    [HarmonyPatchCategory("PerformanceModeThought")]
     [HarmonyPatch(typeof(CompAbilityEffect_Counsel), "Apply")]
     public static class Patch_CompAbilityEffect_Counsel_Apply
     {

@@ -9,6 +9,7 @@ namespace Maux36.RimPsyche.Disposition
         public const float default_moodIndividualC = 0.6f;
 
         public static bool useIndividualThoughts = true;
+        public static bool usePerformanceModeThought = false;
         public static bool useExperimentation = true;
         public static bool useSenseOfProgress = true;
         public static bool useResilientSpirit = true;
@@ -35,6 +36,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             base.ExposeData();
             Scribe_Values.Look(ref useIndividualThoughts, "Rimpsyche_useIndividualThoughts", true, true);
+            Scribe_Values.Look(ref usePerformanceModeThought, "Rimpsyche_usePerformanceModeThought", false, true);
             Scribe_Values.Look(ref useExperimentation, "Rimpsyche_useExperimentation", true, true);
             Scribe_Values.Look(ref useSenseOfProgress, "Rimpsyche_useSenseOfProgress", true, true);
             Scribe_Values.Look(ref useResilientSpirit, "Rimpsyche_useResilientSpirit", true, true);
