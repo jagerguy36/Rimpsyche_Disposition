@@ -22,7 +22,7 @@ namespace Maux36.RimPsyche.Disposition
         }
 
         private static Vector2 scrollPosition = new Vector2(0f, 0f);
-        private static float totalContentHeight = ModsConfig.BiotechActive ? 770f : 720f;
+        private static float totalContentHeight = 800f;
         private const float ScrollBarWidthMargin = 18f;
         public override void DoSettingsWindowContents(Rect inRect)
         {

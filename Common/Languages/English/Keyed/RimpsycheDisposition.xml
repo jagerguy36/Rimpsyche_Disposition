@@ -62,6 +62,8 @@
 
   <RimpsycheDispositionContentSetting>Content Settings</RimpsycheDispositionContentSetting>
   <RimpsycheDispositionRestartNeeded>You need to restart the game for these settings to take effect.</RimpsycheDispositionRestartNeeded>
+  <RimpsycheUsePerformanceModeThought>Performance Mode</RimpsycheUsePerformanceModeThought>
+  <RimpsycheUsePerformanceModeThoughtTooltip>Use performance mod. Mods directly referencing mood thought offset might ignore personality adjustment</RimpsycheUsePerformanceModeThoughtTooltip>
   <RimpsycheMoodEmotionalityC>Emotionality Mood Influence</RimpsycheMoodEmotionalityC>
   <RimpsycheMoodEmotionalityCTooltip>How much Emotionality affects a pawn's overall mood.</RimpsycheMoodEmotionalityCTooltip>
   <RimpsycheMoodOptimismC>Optimism Mood Influence</RimpsycheMoodOptimismC>

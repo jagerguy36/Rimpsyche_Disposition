@@ -62,6 +62,8 @@
 
   <RimpsycheDispositionContentSetting>컨텐츠 설정</RimpsycheDispositionContentSetting>
   <RimpsycheDispositionRestartNeeded>이 설정을 적용하려면 게임을 다시 시작해야 합니다.</RimpsycheDispositionRestartNeeded>
+  <RimpsycheUsePerformanceModeThought>퍼포먼스 모드</RimpsycheUsePerformanceModeThought>
+  <RimpsycheUsePerformanceModeThoughtTooltip>퍼포먼스 모드를 사용합니다. 무드 값을 직접 참조하는 다른 모드들이 성격 조정값을 무시할 수 있습니다.</RimpsycheUsePerformanceModeThoughtTooltip>
   <RimpsycheMoodEmotionalityC>감수성 기분 영향</RimpsycheMoodEmotionalityC>
   <RimpsycheMoodEmotionalityCTooltip>감수성이 림의 전반적 기분에 영향을 끼치는 정도.</RimpsycheMoodEmotionalityCTooltip>
   <RimpsycheMoodOptimismC>낙관성 기분 영향</RimpsycheMoodOptimismC>
