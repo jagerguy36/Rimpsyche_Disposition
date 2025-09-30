@@ -8,8 +8,8 @@ using Verse;
 namespace Maux36.RimPsyche.Disposition
 {
     [HarmonyPatchCategory("PerformanceModeThought")]
-    [HarmonyPatch(typeof(ThoughtHandler), nameof(ThoughtHandler.MoodOffsetOfGroup))]
-    public static class ThoughtHandler_MoodOffsetOfGroup_Patch
+    [HarmonyPatch(typeof(IndividualThoughtToAdd), "LabelCap", MethodType.Getter)]
+    public static class IndividualThoughtToAdd_LabelCap_Transpiler
     {
         private static readonly bool useIndividualThoughtsSetting = RimpsycheDispositionSettings.useIndividualThoughts;
 
@@ -19,7 +19,8 @@ namespace Maux36.RimPsyche.Disposition
 
             var moodOffsetMethod = AccessTools.Method(typeof(Thought), nameof(Thought.MoodOffset));
             var moodMultiplierMethod = AccessTools.Method(typeof(ThoughtUtil), nameof(ThoughtUtil.MoodMultiplier));
-            var pawnField = AccessTools.Field(typeof(ThoughtHandler), nameof(ThoughtHandler.pawn));
+            var thoughtField = AccessTools.Field(typeof(IndividualThoughtToAdd), nameof(IndividualThoughtToAdd.thought));
+            var pawnField = AccessTools.Field(typeof(IndividualThoughtToAdd), nameof(IndividualThoughtToAdd.addTo));
             bool patched = false;
             for (int t = 0; t < codes.Count; t++)
             {
@@ -30,7 +31,8 @@ namespace Maux36.RimPsyche.Disposition
                     patched = true;
                     yield return new CodeInstruction(OpCodes.Ldarg_0); // load this
                     yield return new CodeInstruction(OpCodes.Ldfld, pawnField); // load pawn
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, codes[t - 1].LocalIndex()); // load thought
+                    yield return new CodeInstruction(OpCodes.Ldarg_0); // load this
+                    yield return new CodeInstruction(OpCodes.Ldfld, thoughtField); // load thought
                     yield return new CodeInstruction(OpCodes.Call, moodMultiplierMethod); // call MoodMultiplier
                 }
             }

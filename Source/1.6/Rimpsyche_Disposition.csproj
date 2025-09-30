@@ -58,9 +58,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HarmonyPatches\Patch_CompAbilityEffect_Counsel_Apply.cs" />
+    <Compile Include="HarmonyPatches\MoodRelated\Patch_CompAbilityEffect_Counsel_Apply.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\Individuality_Patches.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\Unpatcher.cs" />
+    <Compile Include="HarmonyPatches\MoodRelated\IndividualThoughtToAdd_LabelCap_Transpiler.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\ThoughtHandler_MoodOffsetOfGroup_Patch.cs" />
     <Compile Include="MoodDB\AnomalyDB.cs" />
     <Compile Include="MoodDB\BiotechDB.cs" />
@@ -100,7 +101,7 @@
     <Compile Include="HarmonyPatches\JoyGiver_Skygaze_Patch.cs" />
     <Compile Include="HarmonyPatches\MentalBreakRelated\MentalBreaker_TestMoodMentalBreak_Patch.cs" />
     <Compile Include="HarmonyPatches\MentalBreakRelated\MentalBreakWorker_BingingDrug_Patch.cs" />
-    <Compile Include="HarmonyPatches\MoodRelated\NeedSeeker_NeedInterval.cs" />
+    <Compile Include="HarmonyPatches\NeedSeeker_NeedInterval.cs" />
     <Compile Include="HarmonyPatches\QualityUtility_GenerateQualityCreatedByPawn.cs" />
     <Compile Include="HarmonyPatches\AmbitionRelated\SkillRecord_Learn.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\Thought_MoodOffset.cs" />

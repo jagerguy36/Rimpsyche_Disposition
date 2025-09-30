@@ -27,5 +27,8 @@
         <Types>
             <li>Maux36.RimPsyche.Disposition.JobDriver_FleeInShame</li>
         </Types>
+        <Types>
+            <li>Maux36.RimPsyche.Disposition.FightorFlightUtil</li>
+        </Types>
     </RimPsycheDisposition>
 </Analyzer>

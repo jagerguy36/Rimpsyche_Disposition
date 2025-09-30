@@ -7,8 +7,68 @@ namespace Maux36.RimPsyche.Disposition
     [StaticConstructorOnStartup]
     public static class ThoughtUtil
     {
-        //Base Function
+        private static readonly bool useIndividualThoughtsSetting = RimpsycheDispositionSettings.useIndividualThoughts;
         private static readonly float MoodCurveC = RimpsycheDispositionSettings.moodIndividualC;
+        public static float MoodMultiplier(float originalOffset, Pawn pawn, Thought thought)
+        {
+            if (originalOffset == 0f || pawn?.compPsyche() is not { } compPsyche)
+                return originalOffset;
+            if (compPsyche.Enabled != true)
+                return originalOffset;
+
+            float result = originalOffset;
+            if (originalOffset < 0f)
+            {
+                //General Modifier
+                result *= compPsyche.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
+                if (Find.TickManager.TicksGame < compPsyche.lastResilientSpiritTick)
+                {
+                    result *= 0.5f;
+                }
+            }
+            else
+            {
+                result *= compPsyche.Evaluate(FormulaDB.PositiveMoodOffsetMultiplier);
+            }
+            //Individual Thoughts
+            if (useIndividualThoughtsSetting)
+            {
+                var hashval = thought.def.shortHash;
+                //Thoughts
+                if (compPsyche.ThoughtEvaluationCache.TryGetValue(hashval, out float value))
+                {
+                    if (value >= 0f) result *= value;
+                }
+                else
+                {
+                    if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(thought.def.shortHash, out var stageFormulas))
+                    {
+                        int stageIndex = thought.CurStageIndex;
+                        if ((uint)stageIndex < (uint)stageFormulas.Length)
+                        {
+                            if (stageFormulas[thought.CurStageIndex] is { } stageFormula)
+                            {
+                                result *= compPsyche.Evaluate(stageFormula);
+                            }
+                        }
+                    }
+                    else if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(thought.def.shortHash, out RimpsycheFormula indivFormula))
+                    {
+                        value = compPsyche.Evaluate(indivFormula);
+                        compPsyche.ThoughtEvaluationCache[hashval] = value;
+                        result *= value;
+                    }
+                    else
+                    {
+                        compPsyche.ThoughtEvaluationCache[hashval] = -1f;
+                    }
+                }
+            }
+            //Log.Message($"{pawn.Name} thought with defname {thought.def.defName} | originalOffset {originalOffset} became {result}");
+            return result;
+        }
+
+        //Base Function
         public static float MoodMultCurve(float mood)
         {
             if (mood >= 0)
