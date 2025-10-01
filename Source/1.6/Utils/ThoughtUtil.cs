@@ -88,31 +88,29 @@ namespace Maux36.RimPsyche.Disposition
         {
             if (RimpsycheDispositionSettings.useIndividualThoughts)
             {
+                Log.Message("[Rimpsyche - Disposition] Using individual thoughts. ThoughtUtil initialized.");
                 Initialize();
-                ModCompat();
             }
         }
 
         public static void Initialize()
         {
-            Log.Message("[Rimpsyche - Disposition] Using individual thoughts. ThoughtUtil initialized.");
             AddBaseThoughts();
+            ModCompat();
         }
-
-        public static void ModCompat()
-        {
-            Log.Message("[Rimpsyche - Disposition] Using individual thoughts. Compatibility Thoughts added.");
-        }
-
         private static void AddBaseThoughts()
         {
             CoreDB.AddDefs_Vanilla(MoodThoughtTagDB, OpinionThoughtTagDB);
+        }
+        public static void ModCompat()
+        {
             if (ModsConfig.RoyaltyActive) RoyaltyDB.AddDefs_Royalty(MoodThoughtTagDB, OpinionThoughtTagDB);
             if (ModsConfig.IdeologyActive) IdeologyDB.AddDefs_Ideology(MoodThoughtTagDB, OpinionThoughtTagDB);
             if (ModsConfig.BiotechActive) BiotechDB.AddDefs_Biotech(MoodThoughtTagDB, OpinionThoughtTagDB);
             if (ModsConfig.AnomalyActive) AnomalyDB.AddDefs_Anomaly(MoodThoughtTagDB, OpinionThoughtTagDB);
             if (ModsConfig.OdysseyActive) OdysseyDB.AddDefs_Odyssey(MoodThoughtTagDB, OpinionThoughtTagDB);
         }
+
         
     }
 }

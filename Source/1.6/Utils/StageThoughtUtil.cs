@@ -14,7 +14,6 @@ namespace Maux36.RimPsyche.Disposition
             if (RimpsycheDispositionSettings.useIndividualThoughts)
             {
                 Initialize();
-                ModCompat();
             }
         }
 
@@ -22,17 +21,16 @@ namespace Maux36.RimPsyche.Disposition
         {
             Log.Message("[Rimpsyche - Disposition] Using individual thoughts. StageThoughtUtil initialized.");
             AddBaseThoughts();
+            ModCompat();
         }
-
-        public static void ModCompat()
-        {
-            Log.Message("[Rimpsyche - Disposition] Using individual thoughts. Compatibility Thoughts added.");
-        }
-
         private static void AddBaseThoughts()
         {
             CoreDB.AddDefs_Vanilla_Stage(StageMoodThoughtTagDB, StageOpinionThoughtTagDB);
+        }
+        public static void ModCompat()
+        {
             if (ModsConfig.AnomalyActive) AnomalyDB.AddDefs_Anomaly_Stage(StageMoodThoughtTagDB, StageOpinionThoughtTagDB);
         }
+
     }
 }
