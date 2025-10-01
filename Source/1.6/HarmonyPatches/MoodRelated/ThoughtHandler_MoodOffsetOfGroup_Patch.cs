@@ -30,7 +30,7 @@ namespace Maux36.RimPsyche.Disposition
                     patched = true;
                     yield return new CodeInstruction(OpCodes.Ldarg_0); // load this
                     yield return new CodeInstruction(OpCodes.Ldfld, pawnField); // load pawn
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, codes[t - 1].LocalIndex()); // load thought
+                    yield return new CodeInstruction(codes[t - 1]); // load thought
                     yield return new CodeInstruction(OpCodes.Call, moodMultiplierMethod); // call MoodMultiplier
                 }
             }

@@ -20,28 +20,13 @@ namespace Maux36.RimPsyche.Disposition
 
                 for (int i = 0; i < codes.Count; i++)
                 {
+                    yield return codes[i];
                     if (codes[i].opcode == OpCodes.Call && codes[i].operand is MethodInfo method && method == getAddictivenessMethod)
                     {
-                        if (i + 1 < codes.Count && codes[i + 1].IsStloc())
-                        {
-                            var localBuilder = codes[i + 1].operand;
-                            int insertionIndex = i + 2;
-
-                            var newInstructions = new List<CodeInstruction>
-                    {
-                        new CodeInstruction(OpCodes.Ldloc_S, localBuilder),
-                        new CodeInstruction(OpCodes.Ldarg_1),
-                        new CodeInstruction(OpCodes.Call, getAdjustedAddictionChanceMethod),
-                        new CodeInstruction(OpCodes.Stloc_S, localBuilder)
-                    };
-
-                            codes.InsertRange(insertionIndex, newInstructions);
-                            break;
-                        }
+                        yield return new CodeInstruction(OpCodes.Ldarg_1);
+                        yield return new CodeInstruction(OpCodes.Call, getAdjustedAddictionChanceMethod);
                     }
                 }
-
-                return codes;
             }
 
             public static float GetAdjustedAddictionChance(float originalChance, Pawn pawn)

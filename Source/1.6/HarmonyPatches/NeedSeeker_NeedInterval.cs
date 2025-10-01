@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Reflection.Emit;
 using Verse;
 
@@ -16,15 +17,15 @@ namespace Maux36.RimPsyche.Disposition
                 var codes = new List<CodeInstruction>(instructions);
 
                 var pawnField = AccessTools.Field(typeof(Need), "pawn");
-                var fldSeekerRise = AccessTools.Field(typeof(Need_Seeker), nameof(Need_Seeker.seekerRisePerHour)); 
-                var fldSeekerFall = AccessTools.Field(typeof(Need_Seeker), nameof(Need_Seeker.seekerFallPerHour)); 
+                var fldSeekerRise = AccessTools.Field(typeof(NeedDef), nameof(NeedDef.seekerRisePerHour)); 
+                var fldSeekerFall = AccessTools.Field(typeof(NeedDef), nameof(NeedDef.seekerFallPerHour)); 
                 var getRisingMultiplierMethod = AccessTools.Method(typeof(Patch_NeedSeeker_NeedInterval), nameof(GetRisingMultiplier));
                 var getFallingMultiplierMethod = AccessTools.Method(typeof(Patch_NeedSeeker_NeedInterval), nameof(GetFallingMultiplier));
 
                 for (int i = 0; i < codes.Count - 2; i++)
                 {
                     // seekerRisePerHour * 0.06
-                    if (codes[i].opcode == OpCodes.Ldfld && codes[i].operand == fldSeekerRise &&
+                    if (codes[i].opcode == OpCodes.Ldfld && codes[i].operand is FieldInfo fi1 && fi1 == fldSeekerRise &&
                         codes[i + 1].opcode == OpCodes.Ldc_R4)
                     {
                         codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_0));               // this
@@ -35,7 +36,7 @@ namespace Maux36.RimPsyche.Disposition
                     }
 
                     // seekerFallPerHour * 0.06
-                    if (codes[i].opcode == OpCodes.Ldfld && codes[i].operand == fldSeekerFall &&
+                    if (codes[i].opcode == OpCodes.Ldfld && codes[i].operand is FieldInfo fi2 && fi2 == fldSeekerFall &&
                         codes[i + 1].opcode == OpCodes.Ldc_R4)
                     {
                         codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_0));
