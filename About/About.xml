@@ -27,5 +27,10 @@
         </li>
     </modDependencies>
     <packageId>Maux36.Rimpsyche.Disposition</packageId>
-    <description># Rimpsyche Disposition</description>
+    <description># Rimpsyche Disposition
+
+* Personality influences pawn stats, behaviors, and reactions
+* Adds new gameplay mechanics
+* Performance-friendly implementation
+* Settings to cherry pick contents</description>
 </ModMetaData>
