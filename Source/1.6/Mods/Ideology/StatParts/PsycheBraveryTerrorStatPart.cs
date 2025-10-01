@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    val *= compPsyche.Evaluate(BraveryTerrorMultiplier);
+                    val *= compPsyche.Evaluate(FormulaDB.BraveryTerrorMultiplier);
                 }
             }
         }
@@ -24,20 +24,11 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_BraveryTerrorMultiplier".Translate() + ": x" + compPsyche.Evaluate(BraveryTerrorMultiplier).ToStringPercent() + "\n";
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_BraveryTerrorMultiplier".Translate() + ": x" + compPsyche.Evaluate(FormulaDB.BraveryTerrorMultiplier).ToStringPercent() + "\n";
                 }
             }
             return null;
         }
 
-        public static RimpsycheFormula BraveryTerrorMultiplier = new(
-            "BraveryTerrorMultiplier",
-            (tracker) =>
-            {
-                float bravery = 1f - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery) * 0.5f;
-                return bravery;
-            },
-            RimpsycheFormulaManager.FormulaIdDict
-        );
     }
 }

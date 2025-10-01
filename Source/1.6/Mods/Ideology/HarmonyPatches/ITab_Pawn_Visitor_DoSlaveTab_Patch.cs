@@ -16,15 +16,12 @@ namespace Maux36.RimPsyche.Disposition.Ideology
 
             // Define the methods to patch
             var add_TaggedString_string = AccessTools.Method(typeof(TaggedString), "op_Addition", new[] { typeof(TaggedString), typeof(string) });
-            var myDescGiverMethod = AccessTools.Method(typeof(TerrorDescGiverClass), "TerrorDescGiver", new[] { typeof(Pawn) });
+            var terrorDescGiverMethod = AccessTools.Method(typeof(TerrorDescGiverClass), "TerrorDescGiver", new[] { typeof(Pawn) });
             var selPawnGetter = AccessTools.PropertyGetter(typeof(ITab), "SelPawn");
 
             int targetLdLocS = -1;
-
-            // Search for the unique instruction pattern
             for (int i = 0; i < codes.Count; i++)
             {
-                // We're looking for the `ldstr` instruction that loads "TerrorCurrentThoughts"
                 if (codes[i].opcode == OpCodes.Ldstr && codes[i].operand is string s && s == "TerrorCurrentThoughts")
                 {
                     for (int j = i+1; j < i + 10; j++)
@@ -44,7 +41,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 {
                     new CodeInstruction(OpCodes.Ldarg_0),
                     new CodeInstruction(OpCodes.Callvirt, selPawnGetter),
-                    new CodeInstruction(OpCodes.Call, myDescGiverMethod),
+                    new CodeInstruction(OpCodes.Call, terrorDescGiverMethod),
                     new CodeInstruction(OpCodes.Call, add_TaggedString_string)
                 };
                 codes.InsertRange(insertAt, injected);
@@ -61,8 +58,15 @@ namespace Maux36.RimPsyche.Disposition.Ideology
     {
         public static string TerrorDescGiver(Pawn pawn)
         {
-            // Your custom logic here
-            return $"\n\nMy custom addition to the tooltip description about {pawn.Name}.";
+            var compPsyche = pawn.compPsyche();
+            if (compPsyche?.Enabled == true)
+            {
+                return $"\n\n" + "RP_Stat_BraveryTerrorMultiplier".Translate() + ": x" + compPsyche.Evaluate(FormulaDB.BraveryTerrorMultiplier).ToStringPercent();
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }

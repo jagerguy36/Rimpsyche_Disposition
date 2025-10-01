@@ -110,6 +110,20 @@ namespace Maux36.RimPsyche.Disposition
             RimpsycheFormulaManager.FormulaIdDict
         );
 
+
+        //=================
+        //Mod support
+
+        public static RimpsycheFormula BraveryTerrorMultiplier = new(
+            "BraveryTerrorMultiplier",
+            (tracker) =>
+            {
+                float bravery = 1f - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery) * 0.5f;
+                return bravery;
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+
         //=================
 
         //Tags
