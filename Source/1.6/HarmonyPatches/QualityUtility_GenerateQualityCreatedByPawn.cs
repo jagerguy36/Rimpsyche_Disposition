@@ -23,9 +23,10 @@ namespace Maux36.RimPsyche.Disposition
             {
                 if (codes[i].Calls(originalMethod))
                 {
-                    codes.Insert(i, new CodeInstruction(OpCodes.Ldarg_0));
-                    codes.Insert(i + 1, new CodeInstruction(OpCodes.Ldarg_1));
-                    codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldc_R4, 0f));
+                    //int skillLevel, bool inspired : already loaded onto stack
+                    codes.Insert(i, new CodeInstruction(OpCodes.Ldarg_0)); //Pawn
+                    codes.Insert(i + 1, new CodeInstruction(OpCodes.Ldarg_1)); //SkillDef
+                    codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldc_R4, 0f)); //0f
                     codes[i + 3] = new CodeInstruction(OpCodes.Call, replacementMethod);
                     break;
                 }

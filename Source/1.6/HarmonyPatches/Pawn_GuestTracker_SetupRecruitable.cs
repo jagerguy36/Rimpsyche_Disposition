@@ -78,5 +78,19 @@ namespace Maux36.RimPsyche.Disposition
             //Log.Message($"custom range called on pawn {pawn.Name}. loyalty: {loayalty}. original range: {range.min} | {range.max}. resistance: {resistance}");
             return resistance;
         }
+
+        public static float PsycheWillRange(Pawn pawn)
+        {
+            var compPsyche = pawn.compPsyche();
+            if (compPsyche?.Enabled != true)
+            {
+                return pawn.kindDef.initialResistanceRange.Value.RandomInRange;
+            }
+            var resilience = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
+            var range = pawn.kindDef.initialWillRange.Value;
+            var will = Mathf.Lerp(range.min, range.max, (resilience + 1) * 0.5f);
+            //Log.Message($"custom range called on pawn {pawn.Name}. resilience: {resilience}. original range: {range.min} | {range.max}. will: {will}");
+            return will;
+        }
     }
 }

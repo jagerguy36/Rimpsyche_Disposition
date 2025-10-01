@@ -21,7 +21,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
             var codes = new List<CodeInstruction>(instructions);
             FieldInfo targetField = AccessTools.Field(typeof(PawnKindDef), "initialWillRange");
             MethodInfo originalMethod = AccessTools.Method(typeof(FloatRange), "get_RandomInRange");
-            MethodInfo customMethod = AccessTools.Method(typeof(Maux36.RimPsyche.Disposition.Ideology.Pawn_GuestTracker_SetGuestStatus), "PsycheWillRange");
+            MethodInfo customMethod = AccessTools.Method(typeof(RimPsycheGuestTracker), "PsycheWillRange");
             bool found = false;
             for (int i = 0; i < codes.Count; i++)
             {
@@ -49,19 +49,6 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 Log.Warning("[Rimpsyche] Could not find the target instruction for Pawn_GuestTracker.SetGuestStatus transpiler patch. (Ideology)");
             }
             return codes;
-        }
-        public static float PsycheWillRange(Pawn pawn)
-        {
-            var compPsyche = pawn.compPsyche();
-            if (compPsyche?.Enabled != true)
-            {
-                return pawn.kindDef.initialResistanceRange.Value.RandomInRange;
-            }
-            var resilience = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
-            var range = pawn.kindDef.initialWillRange.Value;
-            var will = Mathf.Lerp(range.min, range.max, (resilience + 1) * 0.5f);
-            //Log.Message($"custom range called on pawn {pawn.Name}. resilience: {resilience}. original range: {range.min} | {range.max}. will: {will}");
-            return will;
         }
     }
 }
