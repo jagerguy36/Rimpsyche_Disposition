@@ -25,7 +25,7 @@ namespace Maux36.RimPsyche.Disposition
                 {
                     // seekerRisePerHour * 0.06
                     if (codes[i].opcode == OpCodes.Ldfld && codes[i].operand == fldSeekerRise &&
-                        codes[i + 1].opcode == OpCodes.Ldc_R4 && (float)codes[i + 1].operand == 0.06f)
+                        codes[i + 1].opcode == OpCodes.Ldc_R4)
                     {
                         codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_0));               // this
                         codes.Insert(i + 3, new CodeInstruction(OpCodes.Ldfld, pawnField));      // this.pawn
@@ -36,7 +36,7 @@ namespace Maux36.RimPsyche.Disposition
 
                     // seekerFallPerHour * 0.06
                     if (codes[i].opcode == OpCodes.Ldfld && codes[i].operand == fldSeekerFall &&
-                        codes[i + 1].opcode == OpCodes.Ldc_R4 && (float)codes[i + 1].operand == 0.06f)
+                        codes[i + 1].opcode == OpCodes.Ldc_R4)
                     {
                         codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_0));
                         codes.Insert(i + 3, new CodeInstruction(OpCodes.Ldfld, pawnField));
