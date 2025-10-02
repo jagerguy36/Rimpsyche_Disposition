@@ -67,6 +67,7 @@
     <Compile Include="MoodDB\BiotechDB.cs" />
     <Compile Include="MoodDB\CoreDB.cs" />
     <Compile Include="MoodDB\IdeologyDB.cs" />
+    <Compile Include="MoodDB\MiscModDB.cs" />
     <Compile Include="MoodDB\OdysseyDB.cs" />
     <Compile Include="MoodDB\RoyaltyDB.cs" />
     <Compile Include="MoodDB\BaseThoughtDB.cs" />
