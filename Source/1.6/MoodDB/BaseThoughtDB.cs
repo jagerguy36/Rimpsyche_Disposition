@@ -17,7 +17,7 @@ namespace Maux36.RimPsyche.Disposition
                 }
                 else
                 {
-                    Log.Error($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
+                    Log.Warning($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
                 }
             }
         }
@@ -30,7 +30,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             else
             {
-                Log.Error($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
+                Log.Warning($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
             }
         }
     }
