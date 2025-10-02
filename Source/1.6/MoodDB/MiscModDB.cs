@@ -9,7 +9,7 @@ namespace Maux36.RimPsyche.Disposition
         public static void AddDefs_MiscMods(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
             activeModIds.Clear();
-            if (ModsConfig.IsActive("dubwise.dubsbadhygiene")) { AddDefs_Bad_Hygiene(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("dubwise.dubsbadhygiene"); }
+            if (ModsConfig.IsActive("dubwise.dubsbadhygiene")) { AddDefs_DBH(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("dubwise.dubsbadhygiene"); }
             if (ModsConfig.IsActive("ceteam.combatextended")) { AddDefs_CE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("ceteam.combatextended"); }
             if (ModsConfig.IsActive("VanillaExpanded.VanillaSocialInteractionsExpanded")) { AddDefs_VSIE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("VanillaExpanded.VanillaSocialInteractionsExpanded"); }
             if (ModsConfig.IsActive("vanillaexpanded.vcooke")) { AddDefs_VCE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vcooke"); }
@@ -21,10 +21,9 @@ namespace Maux36.RimPsyche.Disposition
                 Log.Message("[Rimpsyche - Disposition] tagged thoughts from: " + integratedMods);
             }
         }
-        private static void AddDefs_Bad_Hygiene(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
+        private static void AddDefs_DBH(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-
-            List<string> moodList_Bad_Hygiene_Tag_Affluence = new(
+            List<string> moodList_DBH_Tag_Affluence = new(
                 ["DrankDirtyWater",
                 "DrankUrine",
                 "HotShower",
@@ -36,25 +35,22 @@ namespace Maux36.RimPsyche.Disposition
                 "UsedPrivateBathroom",
                 "HygieneLevel"]
                 );
-
-            List<string> moodList_Bad_Hygiene_Tag_Decency = new(
+            List<string> moodList_DBH_Tag_Decency = new(
                 ["WashPrivacy",
                 "ToiletPrivacy",
                 "SoiledSelf",
                 "openDefecation"]
                 );
-
-            List<string> moodList_Bad_Hygiene_Tag_Needy = new(
+            List<string> moodList_DBH_Tag_Needy = new(
                 ["BowelLevel"]
                 );
 
-            RegisterThoughts(moodList_Bad_Hygiene_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
-            RegisterThoughts(moodList_Bad_Hygiene_Tag_Decency, MoodThoughtTagDB, FormulaDB.Tag_Decency);
-            RegisterThoughts(moodList_Bad_Hygiene_Tag_Needy, MoodThoughtTagDB, FormulaDB.Tag_Needy);
+            RegisterThoughts(moodList_DBH_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
+            RegisterThoughts(moodList_DBH_Tag_Decency, MoodThoughtTagDB, FormulaDB.Tag_Decency);
+            RegisterThoughts(moodList_DBH_Tag_Needy, MoodThoughtTagDB, FormulaDB.Tag_Needy);
         }
         private static void AddDefs_CE(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-
             List<string> moodList_CE_Tag_Fear = new(
                 ["Suppressed"]
                 );
@@ -63,7 +59,6 @@ namespace Maux36.RimPsyche.Disposition
         }
         private static void AddDefs_VSIE(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-
             List<string> moodList_VSIE_Tag_Gathering = new(
                 ["VSIE_HadNiceChatWithBeer",
                 "VSIE_AttendedBingeParty",
@@ -75,42 +70,35 @@ namespace Maux36.RimPsyche.Disposition
                 "VSIE_DidNotAttendWedding",
                 "VSIE_AttendedMyWedding"]
                 );
-
             List<string> moodList_VSIE_Tag_Sympathy = new(
                 ["VSIE_VentedOnMe"]
                 );
-
             List<string> moodList_VSIE_Tag_Loved = new(
                 ["VSIE_JealouslyMyPartnerDatedSomeoneElse",
                 "VSIE_BrokeUpWithMe",
                 "VSIE_StoleMyLover",
                 "VSIE_GotSomeLovin"]
                 );
-
             List<string> opinionList_VSIE_Tag_Gathering = new(
                 ["VSIE_SharingBurden",
                 "VSIE_DidNotAttendWedding",
                 "VSIE_AttendedMyWedding"]
                 );
-
             List<string> opinionList_VSIE_Tag_Sympathy = new(
                 ["VSIE_VentedOnMe"]
                 );
-
             List<string> opinionList_VSIE_Tag_Loved = new(
                 ["VSIE_JealouslyMyPartnerDatedSomeoneElse",
                 "VSIE_BrokeUpWithMe",
                 "VSIE_StoleMyLover",
                 "VSIE_GotSomeLovin"]
                 );
-
             List<string> opinionList_VSIE_Tag_Bond = new(
                 ["VSIE_BondedPetButcheredOpinion",
                 "VSIE_ExposedCorpseOfMyFriendOpinion",
                 "VSIE_HasBeenMyFriendSinceChildhood",
                 "VSIE_CuredMyFriend"]
                 );
-
             List<string> opinionList_VSIE_Tag_Fear = new(
                 ["VSIE_IngestedHumanFlesh"]
                 );
@@ -126,7 +114,6 @@ namespace Maux36.RimPsyche.Disposition
         }
         private static void AddDefs_VCE(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-
             List<string> moodList_VCE_Tag_Affluence = new(
                 ["VCE_ConsumedSugar",
                 "VCE_ConsumedChocolateSyrup",
@@ -155,7 +142,6 @@ namespace Maux36.RimPsyche.Disposition
         }
         private static void AddDefs_VBE(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-
             List<string> moodList_VBE_Tag_Affluence = new(
                 ["VBE_DrankSoda",
                 "VBE_DrankTea"]
