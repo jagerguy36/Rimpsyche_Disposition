@@ -24,11 +24,11 @@ namespace Maux36.RimPsyche.Disposition
 
         public static void UnpatchVTE(Harmony harmony)
         {
-            Log.Message("[Rimpsyche Disposition] Patching VTE");
+            Log.Message("[Rimpsyche - Disposition] Patching VTE");
             MethodInfo VTE_GenerateQualityCreatedByPawn_Patch_fixes = typeof(QualityUtility).GetMethod("GenerateQualityCreatedByPawn", new Type[] { typeof(Pawn), typeof(SkillDef), typeof(bool) });
             if (VTE_GenerateQualityCreatedByPawn_Patch_fixes == null)
             {
-                Log.Error("[Rimpsyche Disposition] Failed to unpatch GenerateQualityCreatedByPawn of VanillaTraitsExpanded");
+                Log.Error("[Rimpsyche - Disposition] Failed to unpatch GenerateQualityCreatedByPawn of VanillaTraitsExpanded");
                 return;
             }
             harmony.Unpatch(VTE_GenerateQualityCreatedByPawn_Patch_fixes, HarmonyPatchType.All, "OskarPotocki.VanillaTraitsExpanded");
@@ -37,11 +37,11 @@ namespace Maux36.RimPsyche.Disposition
 
         public static void UnpatchIndividuality(Harmony harmony)
         {
-            Log.Message("[Rimpsyche Disposition] Patching idividuality");
+            Log.Message("[Rimpsyche - Disposition] Patching idividuality");
             MethodInfo Individuality_GenerateQualityCreatedByPawn_Patch_fixes = typeof(QualityUtility).GetMethod("GenerateQualityCreatedByPawn", new Type[] { typeof(Pawn), typeof(SkillDef), typeof(bool) });
             if (Individuality_GenerateQualityCreatedByPawn_Patch_fixes == null)
             {
-                Log.Error("[Rimpsyche Disposition] Failed to unpatch GenerateQualityCreatedByPawn of SYR Individuality");
+                Log.Error("[Rimpsyche - Disposition] Failed to unpatch GenerateQualityCreatedByPawn of SYR Individuality");
                 return;
             }
             harmony.Unpatch(Individuality_GenerateQualityCreatedByPawn_Patch_fixes, HarmonyPatchType.All, "Syrchalis.Rimworld.Traits");
