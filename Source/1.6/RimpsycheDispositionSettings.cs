@@ -14,7 +14,7 @@ namespace Maux36.RimPsyche.Disposition
         public static bool useSenseOfProgress = true;
         public static bool useResilientSpirit = true;
         public static bool useHideInShame = true;
-        public static bool checkMedicalOverShame = true;
+        public static bool checkMedicalOverShame = false;
         public static bool useFightorFlight = true;
         public static bool enemyFightorFlight = false;
 
