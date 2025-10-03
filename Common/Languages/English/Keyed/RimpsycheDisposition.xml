@@ -51,6 +51,7 @@
   <RP_Stat_AggressivenessSuppression>Aggressiveness</RP_Stat_AggressivenessSuppression>
   <RP_Stat_CertaintyLossMult>Trust, Conviction</RP_Stat_CertaintyLossMult>
   <RP_Stat_IdeoSpreadMult>Talkativeness, Zealousy</RP_Stat_IdeoSpreadMult>
+  <RP_Stat_ConversionPowerMult>Tact, Sincerity</RP_Stat_ConversionPowerMult>
 
   <!-- Stat parts: CE -->
   <RP_Stat_AimingAccuracyPartCE>Deliberation</RP_Stat_AimingAccuracyPartCE>
