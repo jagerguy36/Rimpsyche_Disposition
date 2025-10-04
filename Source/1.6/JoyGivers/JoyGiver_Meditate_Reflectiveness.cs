@@ -8,7 +8,7 @@ namespace Maux36.RimPsyche.Disposition
         public override float GetChance(Pawn pawn)
         {
             var compPsyche = pawn.compPsyche();
-            if (compPsyche.Enabled != true)
+            if (compPsyche?.Enabled != true)
             {
                 return def.baseChance;
             }
