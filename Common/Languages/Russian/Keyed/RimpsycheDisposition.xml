@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Причины выполнения амбиций -->
+  <RP_BabyBorn>В поселении родился ребёнок</RP_BabyBorn>
+  <RP_EnemySlain>Враг побеждён</RP_EnemySlain>
+  <RP_Recruited>Новый поселенец: {0}</RP_Recruited>
+  <RP_Tamed>Приручено дикое животное: {0}</RP_Tamed>
+  <RP_Researched>Исследование завершено: {0}</RP_Researched>
+  <RP_Crafted>Предмет создан (качество: {0})</RP_Crafted>
+
+  <!-- Сообщения -->
+  <RP_MessageShamed>{PAWN_labelShort} не может вынести стыда и пытается спрятаться от других.</RP_MessageShamed>
+  <RP_MessageExperimentSuccess>Дух экспериментирования {PAWN_labelShort} улучшил качество.</RP_MessageExperimentSuccess>
+  <RP_MessageExperimentFail>Дух экспериментирования {PAWN_labelShort} ухудшил качество.</RP_MessageExperimentFail>
+
+  <!-- Строки заданий -->
+  <ReportHidingInShame>прячется от стыда</ReportHidingInShame>
+  <ReportPanicAttack>дрожит от страха</ReportPanicAttack>
+
+  <!-- Письма -->
+  <RP_BrilliantSuccessLabel>Блестящий успех</RP_BrilliantSuccessLabel>
+  <RP_BrilliantSuccessMessage>{PAWN_labelShort} {PAWN_gender ? заметил : заметила} особые возможности во время работы. {PAWN_pronoun} смело {PAWN_gender ? проявил : проявила} дух экспериментирования и в результате {PAWN_gender ? создал : создала} легендарное произведение.</RP_BrilliantSuccessMessage>
+
+  <RP_ResilientSpiritLabel>Стойкость духа</RP_ResilientSpiritLabel>
+  <RP_ResilientSpiritMessage>{PAWN_labelShort} {PAWN_gender ? достиг : достигла} порога психического срыва. Но {PAWN_possessive} стойкость духа вселила новую волю.\n\n{PAWN_labelShort} будет получать только половину эффекта от негативного настроения в течение следующих 3 дней.</RP_ResilientSpiritMessage>
+
+  <RP_MentalStateReason_PanicAttack>Паническая атака</RP_MentalStateReason_PanicAttack>
+  <RP_MentalStateReason_Shame>{PAWN_gender ? Подавлен : Подавлена} стыдом</RP_MentalStateReason_Shame>
+
+  <!-- Части характеристик -->
+  <RP_Stat_Psyche>Личность</RP_Stat_Psyche>
+  <RP_Stat_ShootingAccuracyPawnOffset>Осмотрительность</RP_Stat_ShootingAccuracyPawnOffset>
+  <RP_Stat_AimingDelayFactorOffset>Осмотрительность</RP_Stat_AimingDelayFactorOffset>
+  <RP_Stat_DeliberationYield>Осмотрительность</RP_Stat_DeliberationYield>
+  <RP_Stat_DeliberationButcherEfficiency>Осмотрительность</RP_Stat_DeliberationButcherEfficiency>
+  <RP_Stat_DeliberationTendQuality>Осмотрительность</RP_Stat_DeliberationTendQuality>
+  <RP_Stat_DeliberationOperationChance>Осмотрительность</RP_Stat_DeliberationOperationChance>
+  <RP_Stat_DeliberationFoodpoison>Осмотрительность</RP_Stat_DeliberationFoodpoison>
+  <RP_Stat_DeliberationWorkspeed>Осмотрительность</RP_Stat_DeliberationWorkspeed>
+  <RP_Stat_DiligenceWorkspeed>Добросовестность</RP_Stat_DiligenceWorkspeed>
+  <RP_Stat_OrganizationRoomWorkspeed>Коэффициент организованности рабочего места</RP_Stat_OrganizationRoomWorkspeed>
+  <RP_Stat_TradePriceImprovementOffset>Общительность, эгоизм</RP_Stat_TradePriceImprovementOffset>
+  <RP_Stat_NegotiationAbilityOffset>Общительность, уверенность</RP_Stat_NegotiationAbilityOffset>
+  <RP_Stat_MentalBreakThreashold>Стойкость</RP_Stat_MentalBreakThreashold>
+  <RP_Stat_PainShockThresholdOffset>Стойкость, храбрость</RP_Stat_PainShockThresholdOffset>
+  <RP_Stat_ReflectivenessResearchSpeed>Рефлексивность</RP_Stat_ReflectivenessResearchSpeed>
+  <RP_Stat_ReflectivenessMeditation>Рефлексивность</RP_Stat_ReflectivenessMeditation>
+
+  <!-- Royalty -->
+  <Psyche_CounselEffect>Общительность → доверие</Psyche_CounselEffect>
+
+  <!-- Ideology -->
+  <RP_Stat_BraveryTerrorMultiplier>Храбрость</RP_Stat_BraveryTerrorMultiplier>
+  <RP_Stat_ResilienceSuppressionFall>Стойкость</RP_Stat_ResilienceSuppressionFall>
+  <RP_Stat_AggressivenessSuppression>Агрессивность</RP_Stat_AggressivenessSuppression>
+  <RP_Stat_CertaintyLossMult>Общительность, уверенность</RP_Stat_CertaintyLossMult>
+  <RP_Stat_IdeoSpreadMult>Разговорчивость, рвение</RP_Stat_IdeoSpreadMult>
+  <RP_Stat_ConversionPowerMult>Общительность, набожность</RP_Stat_ConversionPowerMult>
+
+  <!-- CE -->
+  <RP_Stat_AimingAccuracyPartCE>Осмотрительность</RP_Stat_AimingAccuracyPartCE>
+  <RP_Stat_ShootingAccuracyPartCE>Осмотрительность</RP_Stat_ShootingAccuracyPartCE>
+  <RP_Stat_SuppressabilityPartCE>Храбрость</RP_Stat_SuppressabilityPartCE>
+
+  <RimpsycheDispositionSettingCategory>Модуль диспозиций Rimpsyche</RimpsycheDispositionSettingCategory>
+
+  <RimpsycheDispositionContentSetting>Настройки контента</RimpsycheDispositionContentSetting>
+  <RimpsycheDispositionRestartNeeded>Для применения этих настроек требуется перезапуск игры.</RimpsycheDispositionRestartNeeded>
+  <RimpsycheUsePerformanceModeThought>Режим производительности</RimpsycheUsePerformanceModeThought>
+  <RimpsycheUsePerformanceModeThoughtTooltip>Использует режим производительности. Другие моды, напрямую ссылающиеся на значения настроения, могут игнорировать корректировки личности.</RimpsycheUsePerformanceModeThoughtTooltip>
+  <RimpsycheMoodEmotionalityC>Влияние эмоциональности на настроение</RimpsycheMoodEmotionalityC>
+  <RimpsycheMoodEmotionalityCTooltip>Степень влияния эмоциональности на общее настроение поселенца.</RimpsycheMoodEmotionalityCTooltip>
+  <RimpsycheMoodOptimismC>Влияние оптимизма на настроение</RimpsycheMoodOptimismC>
+  <RimpsycheMoodOptimismCTooltip>Степень влияния оптимизма на общее настроение поселенца.</RimpsycheMoodOptimismCTooltip>
+  <RimpsycheUseIndividualThoughts>Индивидуальные различия мыслей</RimpsycheUseIndividualThoughts>
+  <RimpsycheUseIndividualThoughtsTooltip>Личность влияет на значения настроения отдельных мыслей.</RimpsycheUseIndividualThoughtsTooltip>
+  <RimpsycheMoodIndividualC>Влияние на отдельные мысли</RimpsycheMoodIndividualC>
+  <RimpsycheMoodIndividualCTooltip>Степень влияния личности на настроение, предоставляемое отдельными мыслями поселенца.</RimpsycheMoodIndividualCTooltip>
+  <RimpsycheUseExperimentation>Дух экспериментирования</RimpsycheUseExperimentation>
+  <RimpsycheUseExperimentationTooltip>Поселенцы часто проявляют дух экспериментирования во время создания/строительства. Успех эксперимента может улучшить или ухудшить качество.</RimpsycheUseExperimentationTooltip>
+  <RimpsycheUseSenseOfProgress>Чувство цели</RimpsycheUseSenseOfProgress>
+  <RimpsycheUseSenseOfProgressTooltip>Поселенцы получают чувство достижения от получения опыта навыков, создания качественных предметов, завершения исследований в поселении и т.д. Амбициозные поселенцы могут испытывать недовольство, если слишком долго не достигают успехов.</RimpsycheUseSenseOfProgressTooltip>
+  <RimpsycheUseResilientSpirit>Стойкость духа</RimpsycheUseResilientSpirit>
+  <RimpsycheUseResilientSpiritTooltip>Стойкие поселенцы с определённой вероятностью преодолевают психический срыв и вместо этого получают новую волю на 3 дня. (Откат 60 дней)</RimpsycheUseResilientSpiritTooltip>
+  <RimpsycheUseHideInShame>Стыд</RimpsycheUseHideInShame>
+  <RimpsycheUseHideInShameTooltip>Скромные поселенцы, не носящие соответствующую их идеологии одежду, не выдерживают взглядов других колонистов, подавляются стыдом и убегают.</RimpsycheUseHideInShameTooltip>
+  <RimpsycheCheckMedicalOverShame>Лечение важнее стыда</RimpsycheCheckMedicalOverShame>
+  <RimpsycheCheckMedicalOverShameTooltip>Поселенцы, нуждающиеся в лечении, терпят стыд и получают лечение.</RimpsycheCheckMedicalOverShameTooltip>
+  <RimpsycheUseFightorFlight>Боевая склонность</RimpsycheUseFightorFlight>
+  <RimpsycheUseFightorFlightTooltip>Боязливые поселенцы во время войны могут впадать в панику. В то же время храбрые и агрессивные поселенцы получают кратковременный выброс адреналина.</RimpsycheUseFightorFlightTooltip>
+  <RimpsycheEnemyFightorFlight>Боевая склонность не-поселенцев</RimpsycheEnemyFightorFlight>
+  <RimpsycheEnemyFightorFlightTooltip>Применяет боевую склонность к поселенцам, не являющимся колонистами.</RimpsycheEnemyFightorFlightTooltip>
+
+  <RimpsycheDispositionMessageSetting>Настройки уведомлений</RimpsycheDispositionMessageSetting>
+  <RimpsycheSendExperimentMessage>Уведомления о духе экспериментирования</RimpsycheSendExperimentMessage>
+  <RimpsycheUseSendExperimentMessageTooltip>Получать уведомления, когда поселенец проявляет дух экспериментирования.</RimpsycheUseSendExperimentMessageTooltip>
+  <RimpsycheSendShameMessage>Уведомления о стыде</RimpsycheSendShameMessage>
+  <RimpsycheUseSendShameMessageTooltip>Получать уведомления, когда поселенец убегает от стыда.</RimpsycheUseSendShameMessageTooltip>
+
+  <RimpsycheDispositionMoteSetting>Настройки значков</RimpsycheDispositionMoteSetting>
+  <RimpsycheShowExperimentMote>Показывать значок духа экспериментирования</RimpsycheShowExperimentMote>
+  <RimpsycheShowExperimentMoteTooltip>Отображает значок, когда поселенцы проявляют дух экспериментирования.</RimpsycheShowExperimentMoteTooltip>
+  <RimpsycheShowResilientSpiritMote>Показывать значок стойкости духа</RimpsycheShowResilientSpiritMote>
+  <RimpsycheShowResilientSpiritMoteTooltip>Отображает значок при активации стойкости духа.</RimpsycheShowResilientSpiritMoteTooltip>
+  <RimpsycheShowAdrenalineMote>Показывать значок адреналина</RimpsycheShowAdrenalineMote>
+  <RimpsycheShowAdrenalineMoteTooltip>Отображает значок при повышении уровня выброса адреналина у поселенцев.</RimpsycheShowAdrenalineMoteTooltip>
+  <RimpsycheShowPanicMote>Показывать значок паники</RimpsycheShowPanicMote>
+  <RimpsycheShowPanicMoteTooltip>Отображает значок для поселенцев, убегающих в паническом состоянии.</RimpsycheShowPanicMoteTooltip>
+
+  <RimpsycheDispositionDefaultSetting>По умолчанию</RimpsycheDispositionDefaultSetting>
+  <RimpsycheDispositionDefaultSettingTooltip>Вернуть значения по умолчанию.</RimpsycheDispositionDefaultSettingTooltip>
+</LanguageData>
