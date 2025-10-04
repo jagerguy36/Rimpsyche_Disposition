@@ -45,7 +45,10 @@
   <RP_Stat_ReflectivenessResearchSpeed>Reflectiveness</RP_Stat_ReflectivenessResearchSpeed>
   <RP_Stat_ReflectivenessMeditation>Reflectiveness</RP_Stat_ReflectivenessMeditation>
 
-  <!-- Stat parts: Ideology -->
+  <!-- Royalty -->
+  <Psyche_CounselEffect>Tact → Trust</Psyche_CounselEffect>
+
+  <!-- Ideology -->
   <RP_Stat_BraveryTerrorMultiplier>Bravery</RP_Stat_BraveryTerrorMultiplier>
   <RP_Stat_ResilienceSuppressionFall>Resilience</RP_Stat_ResilienceSuppressionFall>
   <RP_Stat_AggressivenessSuppression>Aggressiveness</RP_Stat_AggressivenessSuppression>
@@ -53,7 +56,7 @@
   <RP_Stat_IdeoSpreadMult>Talkativeness, Zealousy</RP_Stat_IdeoSpreadMult>
   <RP_Stat_ConversionPowerMult>Tact, Sincerity</RP_Stat_ConversionPowerMult>
 
-  <!-- Stat parts: CE -->
+  <!-- CE -->
   <RP_Stat_AimingAccuracyPartCE>Deliberation</RP_Stat_AimingAccuracyPartCE>
   <RP_Stat_ShootingAccuracyPartCE>Deliberation</RP_Stat_ShootingAccuracyPartCE>
   <RP_Stat_SuppressabilityPartCE>Bravery</RP_Stat_SuppressabilityPartCE>
