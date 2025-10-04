@@ -18,8 +18,7 @@ namespace Maux36.RimPsyche.Disposition
             var codes = new List<CodeInstruction>(instructions);
             var moodOffsetMethod = AccessTools.Method(typeof(Thought), nameof(Thought.MoodOffset));
             var moodMultiplierMethod = AccessTools.Method(typeof(ThoughtUtil), nameof(ThoughtUtil.MoodMultiplier));
-            var parentField = AccessTools.Field(typeof(AbilityComp), nameof(AbilityComp.parent));
-            var pawnField = AccessTools.Field(typeof(Ability), nameof(Ability.pawn));
+            var pawnField = AccessTools.PropertyGetter(typeof(LocalTargetInfo), nameof(LocalTargetInfo.Pawn));
 
             for (int i = 0; i < codes.Count; i++)
             {
@@ -27,9 +26,8 @@ namespace Maux36.RimPsyche.Disposition
                 yield return ci;
                 if (ci.opcode == OpCodes.Callvirt && ci.operand is MethodInfo mi && mi == moodOffsetMethod)
                 {
-                    yield return new CodeInstruction(OpCodes.Ldarg_0); // load this
-                    yield return new CodeInstruction(OpCodes.Ldfld, parentField); // load pawn
-                    yield return new CodeInstruction(OpCodes.Ldfld, pawnField); // load pawn
+                    yield return new CodeInstruction(OpCodes.Ldarga_S, (byte)1); // target index is 1
+                    yield return new CodeInstruction(OpCodes.Callvirt, pawnField); // load pawn
                     yield return new CodeInstruction(codes[i - 1]); // load thought
                     yield return new CodeInstruction(OpCodes.Call, moodMultiplierMethod); // call MoodMultiplier
                 }
