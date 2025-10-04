@@ -11,6 +11,7 @@ namespace Maux36.RimPsyche.Disposition
         private static readonly float MoodCurveC = RimpsycheDispositionSettings.moodIndividualC;
         public static float MoodMultiplier(float originalOffset, Pawn pawn, Thought thought)
         {
+            //Log.Message($"Mood multiplier called for {pawn.Name} on thought {thought.def.defName} with value {originalOffset}");
             if (originalOffset == 0f || pawn?.compPsyche() is not { } compPsyche)
                 return originalOffset;
             if (compPsyche.Enabled != true)
