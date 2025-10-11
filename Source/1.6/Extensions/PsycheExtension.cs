@@ -5,8 +5,8 @@ namespace Maux36.RimPsyche.Disposition
 {
     public static class PsycheExtension
     {
-        const int dayTick = 60000;
-        const int maxDay = 10;
+        const float dayTick = 60000f;
+        const float maxDay = 10f;
         const int maxDayTicks = 600000;
         public static void ProgressMade(this CompPsyche compPsyche, float days, int causeIndex = 1, string reason = null)
         {
