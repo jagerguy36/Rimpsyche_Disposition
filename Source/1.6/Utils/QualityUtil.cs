@@ -33,72 +33,7 @@ namespace Maux36.RimPsyche.Disposition
                 successChance = 0.1f + relevantSkillLevel * compPsyche.Evaluate(CraftExperimentSuccessChanceMultiplier);
             }
             experimentChance = compPsyche.Evaluate(ExperimentChanceMultiplier) * (successChance) + Rand.Range(-pSpontaneityF, pSpontaneityF);
-            switch (relevantSkillLevel)
-            {
-                case 0:
-                    num += 0.7f;
-                    break;
-                case 1:
-                    num += 1.1f;
-                    break;
-                case 2:
-                    num += 1.5f;
-                    break;
-                case 3:
-                    num += 1.8f;
-                    break;
-                case 4:
-                    num += 2f;
-                    break;
-                case 5:
-                    num += 2.2f;
-                    break;
-                case 6:
-                    num += 2.4f;
-                    break;
-                case 7:
-                    num += 2.6f;
-                    break;
-                case 8:
-                    num += 2.8f;
-                    break;
-                case 9:
-                    num += 2.95f;
-                    break;
-                case 10:
-                    num += 3.1f;
-                    break;
-                case 11:
-                    num += 3.25f;
-                    break;
-                case 12:
-                    num += 3.4f;
-                    break;
-                case 13:
-                    num += 3.5f;
-                    break;
-                case 14:
-                    num += 3.6f;
-                    break;
-                case 15:
-                    num += 3.7f;
-                    break;
-                case 16:
-                    num += 3.8f;
-                    break;
-                case 17:
-                    num += 3.9f;
-                    break;
-                case 18:
-                    num += 4f;
-                    break;
-                case 19:
-                    num += 4.1f;
-                    break;
-                case 20:
-                    num += 4.2f;
-                    break;
-            }
+            num += Qvalue(relevantSkillLevel);
             int value = (int)Rand.GaussianAsymmetric(num, 0.6f * lowVarianceMultiplier, 0.8f * highVarianceMultiplier);
             //Log.Message($"cahce: {compPsyche.Evaluate(ExperimentChanceMultiplier)} | experimental chance: {experimentChance} | successChance: {successChance} | relevantSkillLevel: {relevantSkillLevel} | lowVarianceMultiplier: {lowVarianceMultiplier} | highVarianceMultiplier: {highVarianceMultiplier} | value: {value}");
             if (value >= 6)
@@ -201,6 +136,34 @@ namespace Maux36.RimPsyche.Disposition
             }
 
             return qualityCategory;
+        }
+        public static float Qvalue(int relevantSkillLevel)
+        {
+            return relevantSkillLevel switch
+            {
+                0 => 0.7f,
+                1 => 1.1f,
+                2 => 1.5f,
+                3 => 1.8f,
+                4 => 2f,
+                5 => 2.2f,
+                6 => 2.4f,
+                7 => 2.6f,
+                8 => 2.8f,
+                9 => 2.95f,
+                10 => 3.1f,
+                11 => 3.25f,
+                12 => 3.4f,
+                13 => 3.5f,
+                14 => 3.6f,
+                15 => 3.7f,
+                16 => 3.8f,
+                17 => 3.9f,
+                18 => 4f,
+                19 => 4.1f,
+                20 => 4.2f,
+                _ => 4.2f,
+            };
         }
         public static float ExpectedQMean(int relevantSkillLevel)
         {
