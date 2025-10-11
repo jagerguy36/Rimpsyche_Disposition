@@ -25,6 +25,8 @@ namespace Maux36.RimPsyche.Disposition.Ideology
             static void Postfix(ref string __result, LocalTargetInfo target, Ability ___parent)
             {
                 Pawn targetPawn = target.Pawn;
+                if (targetPawn == null)
+                    return;
                 var counselorPsyche = ___parent.pawn.compPsyche();
                 var listenerPsyche = targetPawn.compPsyche();
 
