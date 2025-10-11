@@ -43,6 +43,12 @@ namespace Maux36.RimPsyche.Disposition
             {
                 harmony.PatchCategory("FightorFlight");
             }
+
+            //Mod Supports
+            if (ModsConfig.IsActive("slimesenpai.endlessgrowth"))
+            {
+                harmony.PatchCategory("EndlessGrowth");
+            }
         }
     }
 }
