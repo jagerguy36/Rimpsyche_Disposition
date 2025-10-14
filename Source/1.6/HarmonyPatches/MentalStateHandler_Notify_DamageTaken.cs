@@ -28,16 +28,11 @@ namespace Maux36.RimPsyche.Disposition
                                 float chance = compPsyche.Evaluate(FormulaDB.FlightChance);
                                 if (Rand.Chance(chance))
                                 {
-                                    //Non colonists who are hostile to player or Wild will flee the map
-                                    //if (___pawn.Faction != Faction.OfPlayer && ((___pawn.Faction.HostileTo(Faction.OfPlayer) && ___pawn.HostFaction == null) ||  ___pawn.kindDef == PawnKindDefOf.WildMan)) //Or use ___pawn.lord.LordJob.AddFleeToil ??
-                                    //{
-                                    //    ___pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee, null, forced: false, forceWake: false, causedByMood: false, null, transitionSilently: false, causedByDamage: true);
-                                    //}
-                                    ////Otherwise, just try to flee from their enemies
-                                    //else
-                                    //{
-                                    //    ___pawn.mindState.mentalStateHandler.TryStartMentalState(DefOfDisposition.Rimpsyche_PanicAttack, "RP_MentalStateReason_PanicAttack".Translate(), forced: false, forceWake: false, causedByMood: false, null, transitionSilently: false, causedByDamage: true);
-                                    //}
+                                    //Vanilla logic applies to enemies
+                                    if (___pawn.Faction != Faction.OfPlayer && ___pawn.HostFaction == null && pawn.kindDef.fleeHealthThresholdRange.max > 0f)
+                                    {
+                                        ___pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee, null, forced: false, forceWake: false, causedByMood: false, null, transitionSilently: false, causedByDamage: true);
+                                    }
 
                                     //Unify into Rimpsyche Flee. ... At least for now.
                                     ___pawn.mindState.mentalStateHandler.TryStartMentalState(DefOfDisposition.Rimpsyche_PanicAttack, "RP_MentalStateReason_PanicAttack".Translate(), forced: false, forceWake: false, causedByMood: false, null, transitionSilently: false, causedByDamage: true);
