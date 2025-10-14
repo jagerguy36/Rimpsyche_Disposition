@@ -4,7 +4,6 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    [HarmonyPatchCategory("SenseOfProgress")]
     [HarmonyPatch(typeof(SkillRecord), "Learn")]
     public static class SkillRecord_Learn
     {
@@ -15,8 +14,9 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = ___pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    float multiplier = compPsyche.Evaluate(SkillLearningMultiplier) * (float)(___levelInt - 10) + 1f;
+                    float multiplier = compPsyche.Evaluate(SkillLearningMultiplier) * (float)(Mathf.Clamp(___levelInt,0,20) - 10) + 1f;
                     xp = multiplier * xp;
+                    if (!RimpsycheDispositionSettings.useSenseOfProgress) return;
                     if (___xpSinceMidnight > compPsyche.Evaluate(SkillMoodBuffxp))
                     {
                         compPsyche.ProgressMade(1f);
