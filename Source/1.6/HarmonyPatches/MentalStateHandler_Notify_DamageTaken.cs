@@ -29,7 +29,7 @@ namespace Maux36.RimPsyche.Disposition
                                 if (Rand.Chance(chance))
                                 {
                                     //Vanilla logic applies to enemies
-                                    if (___pawn.Faction != Faction.OfPlayer && ___pawn.HostFaction == null && pawn.kindDef.fleeHealthThresholdRange.max > 0f)
+                                    if (___pawn.Faction != Faction.OfPlayer && ___pawn.HostFaction == null && ___pawn.kindDef.fleeHealthThresholdRange.max > 0f)
                                     {
                                         ___pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee, null, forced: false, forceWake: false, causedByMood: false, null, transitionSilently: false, causedByDamage: true);
                                     }

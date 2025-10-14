@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace Maux36.RimPsyche.Disposition
