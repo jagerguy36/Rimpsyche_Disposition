@@ -14,6 +14,7 @@ namespace Maux36.RimPsyche.Disposition
             if (ModsConfig.IsActive("VanillaExpanded.VanillaSocialInteractionsExpanded")) { AddDefs_VSIE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("VanillaExpanded.VanillaSocialInteractionsExpanded"); }
             if (ModsConfig.IsActive("vanillaexpanded.vcooke")) { AddDefs_VCE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vcooke"); }
             if (ModsConfig.IsActive("vanillaexpanded.vbrewe")) { AddDefs_VBE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vbrewe"); }
+            if (ModsConfig.IsActive("hautarche.hautstraits")) { AddDefs_Haut(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("hautarche.hautstraits"); }
 
             if (activeModIds.Count > 0)
             {
@@ -148,6 +149,60 @@ namespace Maux36.RimPsyche.Disposition
                 );
 
             RegisterThoughts(moodList_VBE_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
+        }
+        private static void AddDefs_Haut(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
+        {
+            List<string> moodList_Haut_Tag_Art = new(
+                ["HVT_NeedBeautyAestheticist",
+                "HVT_WAUW"]
+            );
+            List<string> moodList_Haut_Tag_Fear = new(
+                ["HVT_Agrizoophobia",
+            "HVT_HauntingPresence"]
+            );
+            List<string> moodList_Haut_Tag_Loved = new(
+                ["HVT_SickForLove"]
+            );
+            List<string> moodList_Haut_Tag_Empathy = new(
+                ["HVT_LovesickLetdown"]
+            );
+            List<string> moodList_Haut_Tag_Needy = new(
+                ["HVT_EnvironmentColdOutdoorsy",
+                "HVT_EnvironmentHotOutdoorsy"]
+            );
+            List<string> moodList_Haut_Tag_Sympathy = new(
+                ["HVT_SadistSawMentalBreak",
+                "HVT_SadistSawHysteric"]
+            );
+            List<string> moodList_Haut_Tag_Decency = new(
+                ["HVT_TextileIsNaked"]
+            );
+            List<string> moodList_Haut_Tag_Judgemental = new(
+                ["HVT_TextileVsNaked",
+                "HVT_VsDoubtful",
+                "HVT_Intolerance",
+                "HVT_GenePurism",
+                "HVT_XenogenePurism"]
+            );
+            List<string> opinionList_Haut_Tag_Bond = new(
+                ["HVT_BondsOfLoyalty"]
+            );
+            List<string> opinionList_Haut_Tag_Judgemental = new(
+                ["HVT_TextileVsNaked",
+                "HVT_VsDoubtful",
+                "HVT_Intolerance",
+                "HVT_GenePurism"]
+            );
+            RegisterThoughts(moodList_Haut_Tag_Art, MoodThoughtTagDB, FormulaDB.Tag_Art);
+            RegisterThoughts(moodList_Haut_Tag_Fear, MoodThoughtTagDB, FormulaDB.Tag_Fear);
+            RegisterThoughts(moodList_Haut_Tag_Loved, MoodThoughtTagDB, FormulaDB.Tag_Loved);
+            RegisterThoughts(moodList_Haut_Tag_Empathy, MoodThoughtTagDB, FormulaDB.Tag_Empathy);
+            RegisterThoughts(moodList_Haut_Tag_Needy, MoodThoughtTagDB, FormulaDB.Tag_Needy);
+            RegisterThoughts(moodList_Haut_Tag_Sympathy, MoodThoughtTagDB, FormulaDB.Tag_Sympathy);
+            RegisterThoughts(moodList_Haut_Tag_Decency, MoodThoughtTagDB, FormulaDB.Tag_Decency);
+            RegisterThoughts(moodList_Haut_Tag_Judgemental, MoodThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(opinionList_Haut_Tag_Bond, OpinionThoughtTagDB, FormulaDB.Tag_Bond);
+            RegisterThoughts(opinionList_Haut_Tag_Judgemental, OpinionThoughtTagDB, FormulaDB.Tag_Judgemental);
         }
     }
 }
