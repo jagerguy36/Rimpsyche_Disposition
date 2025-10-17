@@ -30,6 +30,7 @@ namespace Maux36.RimPsyche.Disposition
         public static void ModCompat()
         {
             if (ModsConfig.AnomalyActive) AnomalyDB.AddDefs_Anomaly_Stage(StageMoodThoughtTagDB, StageOpinionThoughtTagDB);
+            MiscModDB.AddStageDefs_MiscMods(StageMoodThoughtTagDB, StageOpinionThoughtTagDB);
         }
 
     }

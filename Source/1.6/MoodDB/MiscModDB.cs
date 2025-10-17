@@ -15,11 +15,23 @@ namespace Maux36.RimPsyche.Disposition
             if (ModsConfig.IsActive("vanillaexpanded.vcooke")) { AddDefs_VCE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vcooke"); }
             if (ModsConfig.IsActive("vanillaexpanded.vbrewe")) { AddDefs_VBE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vbrewe"); }
             if (ModsConfig.IsActive("hautarche.hautstraits")) { AddDefs_Haut(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("hautarche.hautstraits"); }
+            if (ModsConfig.IsActive("sumghai.mousekinrace")) { AddDefs_MouseKin(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("sumghai.mousekinrace"); }
 
             if (activeModIds.Count > 0)
             {
                 string integratedMods = string.Join(", ", activeModIds);
                 Log.Message("[Rimpsyche - Disposition] tagged thoughts from: " + integratedMods);
+            }
+        }
+        public static void AddStageDefs_MiscMods(Dictionary<int, RimpsycheFormula[]> StageMoodThoughtTagDB, Dictionary<int, RimpsycheFormula[]> StageOpinionThoughtTagDB)
+        {
+            activeModIds.Clear();
+            if (ModsConfig.IsActive("sumghai.mousekinrace")) { AddStageDefs_MouseKin(StageMoodThoughtTagDB, StageOpinionThoughtTagDB); activeModIds.Add("sumghai.mousekinrace"); }
+
+            if (activeModIds.Count > 0)
+            {
+                string integratedMods = string.Join(", ", activeModIds);
+                Log.Message("[Rimpsyche - Disposition] tagged stage thoughts from: " + integratedMods);
             }
         }
         private static void AddDefs_DBH(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
@@ -158,7 +170,7 @@ namespace Maux36.RimPsyche.Disposition
             );
             List<string> moodList_Haut_Tag_Fear = new(
                 ["HVT_Agrizoophobia",
-            "HVT_HauntingPresence"]
+                "HVT_HauntingPresence"]
             );
             List<string> moodList_Haut_Tag_Loved = new(
                 ["HVT_SickForLove"]
@@ -203,6 +215,162 @@ namespace Maux36.RimPsyche.Disposition
             RegisterThoughts(moodList_Haut_Tag_Judgemental, MoodThoughtTagDB, FormulaDB.Tag_Judgemental);
             RegisterThoughts(opinionList_Haut_Tag_Bond, OpinionThoughtTagDB, FormulaDB.Tag_Bond);
             RegisterThoughts(opinionList_Haut_Tag_Judgemental, OpinionThoughtTagDB, FormulaDB.Tag_Judgemental);
+        }
+        private static void AddDefs_MouseKin(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
+        {
+            List<string> moodList_MouseKin_Tag_Affluence = new(
+                ["Humanlike_Thought_AtePoopGiantCavy",
+                "Mousekin_Thought_AteCheese",
+                "Mousekin_Thought_AteCorpse",
+                "Mousekin_Thought_AteHumanlikeMeatAsIngredient",
+                "Mousekin_Thought_AteHumanlikeMeatDirect",
+                "Mousekin_Thought_AteKibble",
+                "Mousekin_Thought_AteRawFood",
+                "Mousekin_Thought_AteTrailMix",
+                "Mousekin_Thought_AteWithoutTable",
+                "Mousekin_Thought_DrankChonkoNutBrew"]
+            );
+            List<string> moodList_MouseKin_Tag_Morality = new(
+                ["Humanlike_Thought_HereticExecutionTerrible",
+                "Humanlike_Thought_HereticExecutionSatisfying",
+                "Humanlike_Thought_HereticExecutionSpectacular",
+                "Mousekin_Thought_OtherMousekinHasProstheticOpinions",
+                "Mousekin_Thought_ReligiousDisgustAtOwnArtificalBodyParts"]
+            );
+            List<string> moodList_MouseKin_Tag_Empathy_M = new(
+                ["Mousekin_Thought_AteMousekinMeatAsIngredient",
+                "Mousekin_Thought_AteMousekinMeatDirect",
+                "Mousekin_Thought_ButcheredMousekinCorpse",
+                "Mousekin_Thought_KnowButcheredMousekinCorpse",
+                "Mousekin_Thought_KnowColonistOrganHarvested",
+                "Mousekin_Thought_KnowGuestOrganHarvested"]
+            );
+            List<string> moodList_MouseKin_Tag_Gathering = new(
+                ["Mousekin_Thought_AttendedWedding"]
+            );
+            List<string> moodList_MouseKin_Tag_Judgemental = new(
+                ["Mousekin_Thought_ChurchAttendedService",
+                "Mousekin_Thought_ChurchHeldService",
+                "Mousekin_Thought_ChurchMissedService",
+                "Mousekin_Thought_ColonistLeftUnburied"]
+            );
+            List<string> moodList_MouseKin_Tag_Loved = new(
+                ["Mousekin_Thought_GotMarried"]
+            );
+            List<string> moodList_MouseKin_Tag_Empathy = new(
+                ["Mousekin_Thought_KnowColonistDied",
+                "Mousekin_Thought_PawnWithGoodOpinionDied"]
+            );
+            List<string> moodList_MouseKin_Tag_Decency = new(
+                ["Mousekin_Thought_MissingEars"]
+            );
+            List<string> moodList_MouseKin_Tag_Empathy_Kin = new(
+                ["Mousekin_Thought_MyAuntDied",
+                "Mousekin_Thought_MyBrotherDied",
+                "Mousekin_Thought_MyCousinDied",
+                "Mousekin_Thought_MyDaughterDied",
+                "Mousekin_Thought_MyFatherDied",
+                "Mousekin_Thought_MyGrandchildDied",
+                "Mousekin_Thought_MyGrandparentDied",
+                "Mousekin_Thought_MyHalfSiblingDied",
+                "Mousekin_Thought_MyKinDied",
+                "Mousekin_Thought_MyMotherDied",
+                "Mousekin_Thought_MyNieceDied",
+                "Mousekin_Thought_MyNephewDied",
+                "Mousekin_Thought_MySisterDied",
+                "Mousekin_Thought_MySonDied",
+                "Mousekin_Thought_MyUncleDied"]
+            );
+            List<string> moodList_MouseKin_Tag_Empathy_Loved = new(
+                ["Mousekin_Thought_MyFianceDied",
+                "Mousekin_Thought_MyFianceeDied",
+                "Mousekin_Thought_MyHusbandDied",
+                "Mousekin_Thought_MyWifeDied"]
+            );
+            List<string> moodList_MouseKin_Tag_Harmed = new(
+                ["Mousekin_Thought_MyOrganHarvested"]
+            );
+            List<string> moodList_MouseKin_Tag_Sympathy = new(
+                ["Mousekin_Thought_PawnWithBadOpinionDied",
+                "Mousekin_Thought_WearingPudgemouseFurApparel"]
+            );
+            List<string> moodList_MouseKin_Tag_Disquiet = new(
+                ["Mousekin_Thought_PawnWithBadOpinionLost"]
+            );
+            List<string> moodList_MouseKin_Tag_Worry = new(
+                ["Mousekin_Thought_PawnWithGoodOpinionLost"]
+            );
+            List<string> moodList_MouseKin_Tag_Outsider = new(
+                ["Mousekin_Thought_ReleasedHealthyPrisoner"]
+            );
+            List<string> moodList_MouseKin_Tag_Needy = new(
+                ["Mousekin_Thought_SleptInCold",
+                "Mousekin_Thought_SleptInHeat",
+                "Mousekin_Thought_SleptOnGround",
+                "Mousekin_Thought_SleptOutside"]
+            );
+            List<string> moodList_MouseKin_Tag_Sympathy_M = new(
+                ["Mousekin_Thought_WearingMousekinFurApparel"]
+            );
+            List<string> opinionList_MouseKin_Tag_Morality = new(
+                ["Mousekin_Thought_OtherMousekinHasProstheticOpinions"]
+            );
+            RegisterThoughts(moodList_MouseKin_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
+            RegisterThoughts(moodList_MouseKin_Tag_Morality, MoodThoughtTagDB, FormulaDB.Tag_Morality);
+            RegisterThoughts(moodList_MouseKin_Tag_Empathy_M, MoodThoughtTagDB, FormulaDB.Tag_Empathy_M);
+            RegisterThoughts(moodList_MouseKin_Tag_Gathering, MoodThoughtTagDB, FormulaDB.Tag_Gathering);
+            RegisterThoughts(moodList_MouseKin_Tag_Judgemental, MoodThoughtTagDB, FormulaDB.Tag_Judgemental);
+            RegisterThoughts(moodList_MouseKin_Tag_Loved, MoodThoughtTagDB, FormulaDB.Tag_Loved);
+            RegisterThoughts(moodList_MouseKin_Tag_Empathy, MoodThoughtTagDB, FormulaDB.Tag_Empathy);
+            RegisterThoughts(moodList_MouseKin_Tag_Decency, MoodThoughtTagDB, FormulaDB.Tag_Decency);
+            RegisterThoughts(moodList_MouseKin_Tag_Empathy_Kin, MoodThoughtTagDB, FormulaDB.Tag_Empathy_Kin);
+            RegisterThoughts(moodList_MouseKin_Tag_Empathy_Loved, MoodThoughtTagDB, FormulaDB.Tag_Empathy_Loved);
+            RegisterThoughts(moodList_MouseKin_Tag_Harmed, MoodThoughtTagDB, FormulaDB.Tag_Harmed);
+            RegisterThoughts(moodList_MouseKin_Tag_Sympathy, MoodThoughtTagDB, FormulaDB.Tag_Sympathy);
+            RegisterThoughts(moodList_MouseKin_Tag_Disquiet, MoodThoughtTagDB, FormulaDB.Tag_Disquiet);
+            RegisterThoughts(moodList_MouseKin_Tag_Worry, MoodThoughtTagDB, FormulaDB.Tag_Worry);
+            RegisterThoughts(moodList_MouseKin_Tag_Outsider, MoodThoughtTagDB, FormulaDB.Tag_Outsider);
+            RegisterThoughts(moodList_MouseKin_Tag_Needy, MoodThoughtTagDB, FormulaDB.Tag_Needy);
+            RegisterThoughts(moodList_MouseKin_Tag_Sympathy_M, MoodThoughtTagDB, FormulaDB.Tag_Sympathy_M);
+            RegisterThoughts(opinionList_MouseKin_Tag_Morality, OpinionThoughtTagDB, FormulaDB.Tag_Morality);
+        }
+
+        private static void AddStageDefs_MouseKin(Dictionary<int, RimpsycheFormula[]> StageMoodThoughtTagDB, Dictionary<int, RimpsycheFormula[]> StageOpinionThoughtTagDB)
+        {
+            RegisterSingleThought("Mousekin_Thought_FaithAffinityOpinions", StageOpinionThoughtTagDB,
+                [null, //Apostates vs Nones
+                null, //Apostates vs Apostate
+                null, //Apostates vs Devotionist 
+                null, //Apostates vs Pious 
+                FormulaDB.Tag_Judgemental, //Apostates vs Inquisitionist
+                null, //Devotionist vs Nones
+                FormulaDB.Tag_Judgemental, //Devotionist vs Apostate
+                FormulaDB.Tag_Judgemental, //Devotionist vs Devotionist 
+                null, //Devotionist vs Pious 
+                FormulaDB.Tag_Judgemental, //Devotionist vs Inquisitionist 
+                null, //Pious vs Nones
+                FormulaDB.Tag_Judgemental, //Pious vs Apostate
+                FormulaDB.Tag_Judgemental, //Pious vs Devotionist 
+                FormulaDB.Tag_Judgemental, //Pious vs Pious 
+                FormulaDB.Tag_Judgemental, //Pious vs Inquisitionist 
+                FormulaDB.Tag_Morality, //Inquisitionist vs Nones
+                FormulaDB.Tag_Morality, //Inquisitionist vs Apostate
+                FormulaDB.Tag_Morality, //Inquisitionist vs Devotionist 
+                FormulaDB.Tag_Morality, //Inquisitionist vs Pious 
+                FormulaDB.Tag_Morality] //Inquisitionist vs Inquisitionist
+            );
+            RegisterSingleThought("Mousekin_Thought_KnowColonistExecuted", StageMoodThoughtTagDB,
+                [FormulaDB.Tag_JustifiedGuilt, //justified execution
+                FormulaDB.Tag_Empathy, //someone was euthanized
+                FormulaDB.Tag_Empathy_M, //someone was executed
+                FormulaDB.Tag_Empathy_M] //someone was organ-murdered
+            );
+            RegisterSingleThought("Mousekin_Thought_KnowGuestExecuted", StageMoodThoughtTagDB,
+                [FormulaDB.Tag_JustifiedGuilt, //justified execution
+                FormulaDB.Tag_Empathy, //someone was euthanized
+                FormulaDB.Tag_Empathy_M, //someone was executed
+                FormulaDB.Tag_Empathy_M] //someone was organ-murdered
+            );
         }
     }
 }
