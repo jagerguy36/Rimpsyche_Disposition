@@ -32,6 +32,7 @@ namespace Maux36.RimPsyche.Disposition
                                     if (___pawn.Faction != Faction.OfPlayer && ___pawn.HostFaction == null && ___pawn.kindDef.fleeHealthThresholdRange.max > 0f)
                                     {
                                         ___pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee, null, forced: false, forceWake: false, causedByMood: false, null, transitionSilently: false, causedByDamage: true);
+                                        return false;
                                     }
 
                                     //Unify into Rimpsyche Flee. ... At least for now.
