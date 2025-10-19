@@ -14,6 +14,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             yield return AccessTools.Method(typeof(Thought), nameof(Thought.MoodOffset));
             yield return AccessTools.Method(typeof(Thought_Situational_Precept_SlavesInColony), nameof(Thought_Situational_Precept_SlavesInColony.MoodOffset));
+            yield return AccessTools.Method(typeof(Thought_Situational_Recluse), nameof(Thought_Situational_Recluse.MoodOffset));
         }
 
         static void Postfix(ref float __result, Pawn ___pawn, Thought __instance)
