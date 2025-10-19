@@ -31,7 +31,8 @@ namespace Maux36.RimPsyche.Disposition
             //Individual Thoughts
             if (!useIndividualThoughtsSetting) return result;
 
-            int hashKey = (thought.CurStageIndex << 16) | thought.def.shortHash;
+            int stageIndex = thought.CurStageIndex;
+            int hashKey = (stageIndex << 16) | thought.def.shortHash;
             var cache = compPsyche.ThoughtEvaluationCache;
             //cache hit
             if (cache.TryGetValue(hashKey, out float value))
@@ -51,9 +52,9 @@ namespace Maux36.RimPsyche.Disposition
             //Second try StageMoodThoughtDB
             else if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(thought.def.shortHash, out var stageFormulas))
             {
-                if ((uint)thought.CurStageIndex < (uint)stageFormulas.Length)
+                if ((uint)stageIndex < (uint)stageFormulas.Length)
                 {
-                    var stageFormula = stageFormulas[thought.CurStageIndex];
+                    var stageFormula = stageFormulas[stageIndex];
                     if (stageFormula != null)
                     {
                         //Log.Message($"{pawn.Name} registered {thought.def.defName} with stage: {thought.CurStageIndex}");
