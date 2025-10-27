@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rimpsyche_PanicAttack.label>паническая атака</Rimpsyche_PanicAttack.label>
+  <Rimpsyche_PanicAttack.beginLetterLabel>побег</Rimpsyche_PanicAttack.beginLetterLabel>
+  <Rimpsyche_PanicAttack.beginLetter>{0} {PAWN_gender ? впал в панику и бежит : впала в панику и бежит}.</Rimpsyche_PanicAttack.beginLetter>
+  <Rimpsyche_PanicAttack.recoveryMessage>{0} {PAWN_gender ? успокоился : успокоилась}.</Rimpsyche_PanicAttack.recoveryMessage>
+  <Rimpsyche_PanicAttack.baseInspectLine>бежит в панике.</Rimpsyche_PanicAttack.baseInspectLine>
+
+</LanguageData>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rimpsyche_AdrenalineRush.label>выброс адреналина</Rimpsyche_AdrenalineRush.label>
+  <Rimpsyche_AdrenalineRush.description>Происходит выброс адреналина. Увеличивается частота сердечных сокращений и кровяное давление, обостряются чувства и достигается пик концентрации.</Rimpsyche_AdrenalineRush.description>
+  <Rimpsyche_AdrenalineRush.stages.0.label>незначительный</Rimpsyche_AdrenalineRush.stages.0.label>
+  <Rimpsyche_AdrenalineRush.stages.1.label>очень слабый</Rimpsyche_AdrenalineRush.stages.1.label>
+  <Rimpsyche_AdrenalineRush.stages.2.label>слабый</Rimpsyche_AdrenalineRush.stages.2.label>
+  <Rimpsyche_AdrenalineRush.stages.3.label>умеренный</Rimpsyche_AdrenalineRush.stages.3.label>
+  <Rimpsyche_AdrenalineRush.stages.4.label>сильный</Rimpsyche_AdrenalineRush.stages.4.label>
+  <Rimpsyche_AdrenalineRush.stages.5.label>очень сильный</Rimpsyche_AdrenalineRush.stages.5.label>
+
+</LanguageData>
