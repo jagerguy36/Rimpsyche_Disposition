@@ -3,7 +3,7 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition.Ideology
 {
-    public class PsycheResilienceSuppressionFallStatPart : StatPart
+    public class PsycheTenacitySuppressionFallStatPart : StatPart
     {
         public override void TransformValue(StatRequest req, ref float val)
         {
@@ -12,7 +12,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    val += compPsyche.Evaluate(ResilienceSuppressionFall);
+                    val += compPsyche.Evaluate(TenacitySuppressionFall);
                 }
             }
         }
@@ -24,18 +24,18 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_ResilienceSuppressionFall".Translate() + ": " + compPsyche.Evaluate(ResilienceSuppressionFall).ToStringPercentSigned() + "\n";
+                    return "RP_Stat_TenacitySuppressionFall".Translate() + ": " + compPsyche.Evaluate(TenacitySuppressionFall).ToStringPercentSigned() + "\n";
                 }
             }
             return null;
         }
 
-        public static RimpsycheFormula ResilienceSuppressionFall = new(
-            "ResilienceSuppressionFall",
+        public static RimpsycheFormula TenacitySuppressionFall = new(
+            "TenacitySuppressionFall",
             (tracker) =>
             {
-                float resilience = -tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience) * 0.15f;
-                return resilience;
+                float tenacity = -tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity) * 0.15f;
+                return tenacity;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );

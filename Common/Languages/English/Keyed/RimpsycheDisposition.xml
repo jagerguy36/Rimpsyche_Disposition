@@ -21,7 +21,7 @@
   <RP_BrilliantSuccessLabel>Brilliant Success</RP_BrilliantSuccessLabel>
   <RP_BrilliantSuccessMessage>While working, {PAWN_labelShort} recognized a rare opportunity. Thanks to {PAWN_possessive} experimental streak, {PAWN_pronoun} took a chance and created something truly exceptional.</RP_BrilliantSuccessMessage>
   <RP_ResilientSpiritLabel>Resilient Spirit</RP_ResilientSpiritLabel>
-  <RP_ResilientSpiritMessage>{PAWN_labelShort} nearly broke down, but {PAWN_possessive} resilience gave {PAWN_objective} new resolve.\n\nFor the next three days, negative moods will affect {PAWN_objective} only half as much.</RP_ResilientSpiritMessage>
+  <RP_ResilientSpiritMessage>{PAWN_labelShort} nearly broke down, but {PAWN_possessive} tenacity gave {PAWN_objective} new resolve.\n\nFor the next three days, negative moods will affect {PAWN_objective} only half as much.</RP_ResilientSpiritMessage>
   <RP_MentalStateReason_PanicAttack>Panic attack</RP_MentalStateReason_PanicAttack>
   <RP_MentalStateReason_Shame>Being ashamed</RP_MentalStateReason_Shame>
 
@@ -40,8 +40,8 @@
   <RP_Stat_OrganizationRoomWorkspeed>Organization worktable adjustment</RP_Stat_OrganizationRoomWorkspeed>
   <RP_Stat_TradePriceImprovementOffset>Tact, Self-interest</RP_Stat_TradePriceImprovementOffset>
   <RP_Stat_NegotiationAbilityOffset>Tact, Confidence</RP_Stat_NegotiationAbilityOffset>
-  <RP_Stat_MentalBreakThreashold>Resilience</RP_Stat_MentalBreakThreashold>
-  <RP_Stat_PainShockThresholdOffset>Resilience, Bravery</RP_Stat_PainShockThresholdOffset>
+  <RP_Stat_MentalBreakThreashold>Tenacity</RP_Stat_MentalBreakThreashold>
+  <RP_Stat_PainShockThresholdOffset>Tenacity, Bravery</RP_Stat_PainShockThresholdOffset>
   <RP_Stat_ReflectivenessResearchSpeed>Reflectiveness</RP_Stat_ReflectivenessResearchSpeed>
   <RP_Stat_ReflectivenessMeditation>Reflectiveness</RP_Stat_ReflectivenessMeditation>
 
@@ -50,7 +50,7 @@
 
   <!-- Ideology -->
   <RP_Stat_BraveryTerrorMultiplier>Bravery</RP_Stat_BraveryTerrorMultiplier>
-  <RP_Stat_ResilienceSuppressionFall>Resilience</RP_Stat_ResilienceSuppressionFall>
+  <RP_Stat_TenacitySuppressionFall>Tenacity</RP_Stat_TenacitySuppressionFall>
   <RP_Stat_AggressivenessSuppression>Aggressiveness</RP_Stat_AggressivenessSuppression>
   <RP_Stat_CertaintyLossMult>Trust, Conviction</RP_Stat_CertaintyLossMult>
   <RP_Stat_IdeoSpreadMult>Talkativeness, Zealousy</RP_Stat_IdeoSpreadMult>
@@ -81,7 +81,7 @@
   <RimpsycheUseSenseOfProgress>Sense of Progress</RimpsycheUseSenseOfProgress>
   <RimpsycheUseSenseOfProgressTooltip>Pawns gain a mood boost from progress like earning skill XP, making quality items, or completing research. Ambitious pawns may become frustrated if they go too long without making progress.</RimpsycheUseSenseOfProgressTooltip>
   <RimpsycheUseResilientSpirit>Resilient Spirit</RimpsycheUseResilientSpirit>
-  <RimpsycheUseResilientSpiritTooltip>Resilient pawns has a chance to resist mentalbreaks and gain renewed resolve buff for three days instead. (Cooldown 60 days)</RimpsycheUseResilientSpiritTooltip>
+  <RimpsycheUseResilientSpiritTooltip>Tenacious pawns has a chance to resist mentalbreaks and gain renewed resolve buff for three days instead. (Cooldown 60 days)</RimpsycheUseResilientSpiritTooltip>
   <RimpsycheUseHideInShame>Hide in Shame</RimpsycheUseHideInShame>
   <RimpsycheUseHideInShameTooltip>Modest pawns not dressed according to their ideology (naked for vanilla) will feel ashamed, and can eventually run away in shame from other pawns' prying eyes.</RimpsycheUseHideInShameTooltip>
   <RimpsycheCheckMedicalOverShame>Tend over Shame</RimpsycheCheckMedicalOverShame>

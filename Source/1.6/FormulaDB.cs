@@ -34,11 +34,11 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
-                float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
-                resilience = (1f - 0.2f * resilience);
+                float tenacity = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity);
+                tenacity = (1f - 0.2f * tenacity);
                 if (bravery <= -0.4f)
                 {
-                    return 0.6f - 0.4f * (bravery * resilience + 0.4f);
+                    return 0.6f - 0.4f * (bravery * tenacity + 0.4f);
                 }
                 return -1f;
             },
@@ -56,9 +56,9 @@ namespace Maux36.RimPsyche.Disposition
                 }
                 float aggresiveness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Aggressiveness);
                 aggresiveness = (1f - 0.5f * aggresiveness);
-                float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
-                resilience = (1f - 0.2f * resilience);
-                float mult = (-0.5f * bravery * resilience) + 0.1f; //0.26~0.7
+                float tenacity = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity);
+                tenacity = (1f - 0.2f * tenacity);
+                float mult = (-0.5f * bravery * tenacity) + 0.1f; //0.26~0.7
                 return mult * aggresiveness;
             },
             RimpsycheFormulaManager.FormulaIdDict

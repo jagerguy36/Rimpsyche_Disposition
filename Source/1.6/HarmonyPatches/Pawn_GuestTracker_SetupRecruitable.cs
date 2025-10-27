@@ -86,10 +86,10 @@ namespace Maux36.RimPsyche.Disposition
             {
                 return pawn.kindDef.initialResistanceRange.Value.RandomInRange;
             }
-            var resilience = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
+            var tenacity = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity);
             var range = pawn.kindDef.initialWillRange.Value;
-            var will = Mathf.Lerp(range.min, range.max, (resilience + 1) * 0.5f);
-            //Log.Message($"custom range called on pawn {pawn.Name}. resilience: {resilience}. original range: {range.min} | {range.max}. will: {will}");
+            var will = Mathf.Lerp(range.min, range.max, (tenacity + 1) * 0.5f);
+            //Log.Message($"custom range called on pawn {pawn.Name}. tenacity: {tenacity}. original range: {range.min} | {range.max}. will: {will}");
             return will;
         }
     }

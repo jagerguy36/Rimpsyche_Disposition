@@ -34,8 +34,8 @@ namespace Maux36.RimPsyche.Disposition
             "TensionMentalBreakThresholdOffset",
             (tracker) =>
             {
-                float resilience = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tension) * 0.1f;
-                return resilience;
+                float Tension = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tension) * 0.1f;
+                return Tension;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );

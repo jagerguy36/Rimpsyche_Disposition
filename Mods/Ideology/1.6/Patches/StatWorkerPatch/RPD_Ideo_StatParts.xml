@@ -7,7 +7,7 @@
       <xpath>*/StatDef[defName = "SlaveSuppressionFallRate"]/parts</xpath>
         <order>Prepend</order>
         <value>
-          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheResilienceSuppressionFallStatPart"/>
+          <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheTenacitySuppressionFallStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
@@ -15,7 +15,7 @@
         <order>Prepend</order>
         <value>
           <parts>
-            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheResilienceSuppressionFallStatPart"/>
+            <li Class="Maux36.RimPsyche.Disposition.Ideology.PsycheTenacitySuppressionFallStatPart"/>
           </parts>
         </value>
     </nomatch>

@@ -34,7 +34,7 @@ namespace Maux36.RimPsyche.Disposition
             "PainShockThresholdOffset",
             (tracker) =>
             {
-                float offset = 0.2f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery) + 0.15f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
+                float offset = 0.2f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery) + 0.15f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity);
                 return offset;
             },
             RimpsycheFormulaManager.FormulaIdDict

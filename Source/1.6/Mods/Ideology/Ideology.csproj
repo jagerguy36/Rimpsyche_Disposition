@@ -74,7 +74,7 @@
     <Compile Include="StatParts\PsycheCertaintyLossStatPart.cs" />
     <Compile Include="StatParts\PsycheConversionPowerStatPart.cs" />
     <Compile Include="StatParts\PsycheIdeoSpreadStatPart.cs" />
-    <Compile Include="StatParts\PsycheResilienceSuppressionFallStatPart.cs" />
+    <Compile Include="StatParts\PsycheTenacitySuppressionFallStatPart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
