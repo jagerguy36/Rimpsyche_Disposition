@@ -22,46 +22,45 @@ namespace Maux36.RimPsyche.Disposition
         }
         static void Postfix(ref float __result, Pawn ___pawn, Thought __instance)
         {
-            if (___pawn?.compPsyche() is not { } compPsyche || __result == 0f)
+            if (__result == 0f || ___pawn == null)
                 return;
-            if (!compPsyche.Enabled)
+            var compPsyche = ___pawn.compPsyche();
+            if (compPsyche == null || !compPsyche.Enabled)
                 return;
 
             //Individual Thoughts
-            if (useIndividualThoughtsSetting)
+            if (!useIndividualThoughtsSetting) return;
+
+            int stageIndex = __instance.CurStageIndex;
+            int hashKey = (stageIndex << 16) | __instance.def.shortHash;
+            var cache = compPsyche.OpinionEvaluationCache;
+            //cache hit
+            if (cache.TryGetValue(hashKey, out float value))
             {
-                var hashval = __instance.def.shortHash;
-                //Thoughts
-                if (compPsyche.OpinionEvaluationCache.TryGetValue(hashval, out float value))
+                if (value >= 0f) __result *= value;
+                return;
+            }
+            //cache miss
+            //First try OpinionThoughtTagDB
+            float eval = -1f;
+            if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out RimpsycheFormula indivFormula))
+            {
+                eval = compPsyche.Evaluate(indivFormula);
+                __result *= value;
+            }
+            else if (StageThoughtUtil.StageOpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out var stageFormulas))
+            {
+                if ((uint)stageIndex < (uint)stageFormulas.Length)
                 {
-                    if (value >= 0f) __result *= value;
-                }
-                else
-                {
-                    if (StageThoughtUtil.StageOpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out var stageFormulas))
+                    var stageFormula = stageFormulas[stageIndex];
+                    if (stageFormula != null)
                     {
-                        int stageIndex = __instance.CurStageIndex;
-                        if ((uint)stageIndex < (uint)stageFormulas.Length)
-                        {
-                            if (stageFormulas[__instance.CurStageIndex] is { } stageFormula)
-                            {
-                                __result *= compPsyche.Evaluate(stageFormula);
-                            }
-                        }
-                    }
-                    else if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out RimpsycheFormula indivFormula))
-                    {
-                        value = compPsyche.Evaluate(indivFormula);
-                        compPsyche.OpinionEvaluationCache[hashval] = value;
-                        __result *= value;
-                    }
-                    else
-                    {
-                        compPsyche.OpinionEvaluationCache[hashval] = -1f;
+                        eval = compPsyche.Evaluate(stageFormula);
+                        __result *= eval;
                     }
                 }
             }
+            cache[hashKey] = eval;
         }
     }
-
 }

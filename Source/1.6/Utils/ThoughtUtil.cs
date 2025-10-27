@@ -11,60 +11,60 @@ namespace Maux36.RimPsyche.Disposition
         private static readonly float MoodCurveC = RimpsycheDispositionSettings.moodIndividualC;
         public static float MoodMultiplier(float originalOffset, Pawn pawn, Thought thought)
         {
-            //Log.Message($"Mood multiplier called for {pawn.Name} on thought {thought.def.defName} with value {originalOffset}");
-            if (originalOffset == 0f || pawn?.compPsyche() is not { } compPsyche)
+            if (originalOffset == 0f || pawn == null)
                 return originalOffset;
-            if (compPsyche.Enabled != true)
+            var compPsyche = pawn.compPsyche();
+            if (compPsyche == null || !compPsyche.Enabled)
                 return originalOffset;
 
             float result = originalOffset;
+            //General Modifier
             if (originalOffset < 0f)
             {
-                //General Modifier
                 result *= compPsyche.Evaluate(FormulaDB.NegativeMoodOffsetMultiplier);
-                if (Find.TickManager.TicksGame < compPsyche.lastResilientSpiritTick)
-                {
-                    result *= 0.5f;
-                }
+                if (Find.TickManager.TicksGame < compPsyche.lastResilientSpiritTick) result *= 0.5f;
             }
             else
             {
                 result *= compPsyche.Evaluate(FormulaDB.PositiveMoodOffsetMultiplier);
             }
             //Individual Thoughts
-            if (useIndividualThoughtsSetting)
+            if (!useIndividualThoughtsSetting) return result;
+
+            int stageIndex = thought.CurStageIndex;
+            int hashKey = (stageIndex << 16) | thought.def.shortHash;
+            var cache = compPsyche.ThoughtEvaluationCache;
+            //cache hit
+            if (cache.TryGetValue(hashKey, out float value))
             {
-                var hashval = thought.def.shortHash;
-                //Thoughts
-                if (compPsyche.ThoughtEvaluationCache.TryGetValue(hashval, out float value))
+                if (value >= 0f) result *= value;
+                return result;
+            }
+            //cache miss
+            //First try MoodThoughtDB
+            float eval = -1f;
+            if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(thought.def.shortHash, out RimpsycheFormula indivFormula))
+            {
+                //Log.Message($"{pawn.Name} registered {thought.def.defName} with stage: {thought.CurStageIndex}");
+                eval = compPsyche.Evaluate(indivFormula);
+                result *= eval;
+            }
+            //Second try StageMoodThoughtDB
+            else if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(thought.def.shortHash, out var stageFormulas))
+            {
+                if ((uint)stageIndex < (uint)stageFormulas.Length)
                 {
-                    if (value >= 0f) result *= value;
-                }
-                else
-                {
-                    if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(thought.def.shortHash, out var stageFormulas))
+                    var stageFormula = stageFormulas[stageIndex];
+                    if (stageFormula != null)
                     {
-                        int stageIndex = thought.CurStageIndex;
-                        if ((uint)stageIndex < (uint)stageFormulas.Length)
-                        {
-                            if (stageFormulas[thought.CurStageIndex] is { } stageFormula)
-                            {
-                                result *= compPsyche.Evaluate(stageFormula);
-                            }
-                        }
-                    }
-                    else if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(thought.def.shortHash, out RimpsycheFormula indivFormula))
-                    {
-                        value = compPsyche.Evaluate(indivFormula);
-                        compPsyche.ThoughtEvaluationCache[hashval] = value;
-                        result *= value;
-                    }
-                    else
-                    {
-                        compPsyche.ThoughtEvaluationCache[hashval] = -1f;
+                        //Log.Message($"{pawn.Name} registered {thought.def.defName} with stage: {thought.CurStageIndex}");
+                        eval = compPsyche.Evaluate(stageFormula);
+                        result *= eval;
                     }
                 }
             }
+            //if (eval <0) Log.Message($"{pawn.Name} blacklisted {thought.def.defName} with stage: {thought.CurStageIndex}");
+            cache[hashKey] = eval;
             //Log.Message($"{pawn.Name} thought with defname {thought.def.defName} | originalOffset {originalOffset} became {result}");
             return result;
         }
