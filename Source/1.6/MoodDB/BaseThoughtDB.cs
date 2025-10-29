@@ -13,7 +13,7 @@ namespace Maux36.RimPsyche.Disposition
                 var thoughtDef = DefDatabase<ThoughtDef>.GetNamed(defName, false);
                 if (thoughtDef != null)
                 {
-                    targetDb[[(0 << 16) | thoughtDef.shortHash]] = value;
+                    targetDb[(0 << 16) | thoughtDef.shortHash] = value;
                 }
                 else
                 {
