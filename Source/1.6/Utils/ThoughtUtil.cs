@@ -41,26 +41,14 @@ namespace Maux36.RimPsyche.Disposition
                 return result;
             }
             //cache miss
-            //First try MoodThoughtDB
             float eval = -1f;
-            if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(thought.def.shortHash, out RimpsycheFormula indivFormula))
+            if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(thought.def.shortHash, out RimpsycheFormula thoughtFormula))
             {
                 //Log.Message($"{pawn.Name} registered {thought.def.defName} with stage: {thought.CurStageIndex}");
-                eval = compPsyche.Evaluate(indivFormula);
-                result *= eval;
-            }
-            //Second try StageMoodThoughtDB
-            else if (StageThoughtUtil.StageMoodThoughtTagDB.TryGetValue(thought.def.shortHash, out var stageFormulas))
-            {
-                if ((uint)stageIndex < (uint)stageFormulas.Length)
+                if (thoughtFormula != null)
                 {
-                    var stageFormula = stageFormulas[stageIndex];
-                    if (stageFormula != null)
-                    {
-                        //Log.Message($"{pawn.Name} registered {thought.def.defName} with stage: {thought.CurStageIndex}");
-                        eval = compPsyche.Evaluate(stageFormula);
-                        result *= eval;
-                    }
+                    eval = compPsyche.Evaluate(thoughtFormula);
+                    result *= eval;
                 }
             }
             //if (eval <0) Log.Message($"{pawn.Name} blacklisted {thought.def.defName} with stage: {thought.CurStageIndex}");

@@ -6,37 +6,37 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class CoreDB: BaseThoughtDB
     {
-        public static void AddDefs_Vanilla_Stage(Dictionary<int, RimpsycheFormula[]> StageMoodThoughtTagDB, Dictionary<int, RimpsycheFormula[]> StageOpinionThoughtTagDB)
+        public static void AddDefs_Vanilla_Stage(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-            RegisterSingleThought("KnowGuestExecuted", StageMoodThoughtTagDB,
+            RegisterStageThought("KnowGuestExecuted", MoodThoughtTagDB,
                 [FormulaDB.Tag_JustifiedGuilt, //justified execution
                 FormulaDB.Tag_Empathy, //someone was euthanized
                 FormulaDB.Tag_Empathy_M, //someone was executed
                 FormulaDB.Tag_Empathy_M, //someone was organ-murdered
                 FormulaDB.Tag_Empathy_M] //someone was ripscanned
             );
-            RegisterSingleThought("KnowColonistExecuted", StageMoodThoughtTagDB,
+            RegisterStageThought("KnowColonistExecuted", MoodThoughtTagDB,
                 [FormulaDB.Tag_JustifiedGuilt, //justified execution
                 FormulaDB.Tag_Empathy, //someone was euthanized
                 FormulaDB.Tag_Empathy_M, //someone was executed
                 FormulaDB.Tag_Empathy_M, //someone was organ-murdered
                 FormulaDB.Tag_Empathy_M] //someone was ripscanned
             );
-            RegisterSingleThought("NeedJoy", StageMoodThoughtTagDB,
+            RegisterStageThought("NeedJoy", MoodThoughtTagDB,
                 [FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Affluence,
                 FormulaDB.Tag_Affluence]
             );
-            RegisterSingleThought("NeedComfort", StageMoodThoughtTagDB,
+            RegisterStageThought("NeedComfort", MoodThoughtTagDB,
                 [FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Affluence,
                 FormulaDB.Tag_Affluence,
                 FormulaDB.Tag_Affluence,
                 FormulaDB.Tag_Affluence]
             );
-            RegisterSingleThought("NeedRoomSize", StageMoodThoughtTagDB,
+            RegisterStageThought("NeedRoomSize", MoodThoughtTagDB,
                 [FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Needy,
                 FormulaDB.Tag_Affluence]

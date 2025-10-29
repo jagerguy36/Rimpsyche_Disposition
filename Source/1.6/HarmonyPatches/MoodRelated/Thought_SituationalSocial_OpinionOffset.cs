@@ -43,21 +43,12 @@ namespace Maux36.RimPsyche.Disposition
             //cache miss
             //First try OpinionThoughtTagDB
             float eval = -1f;
-            if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out RimpsycheFormula indivFormula))
+            if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out RimpsycheFormula opinionFormula))
             {
-                eval = compPsyche.Evaluate(indivFormula);
-                __result *= value;
-            }
-            else if (StageThoughtUtil.StageOpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out var stageFormulas))
-            {
-                if ((uint)stageIndex < (uint)stageFormulas.Length)
+                if (opinionFormula != null)
                 {
-                    var stageFormula = stageFormulas[stageIndex];
-                    if (stageFormula != null)
-                    {
-                        eval = compPsyche.Evaluate(stageFormula);
-                        __result *= eval;
-                    }
+                    eval = compPsyche.Evaluate(opinionFormula);
+                    __result *= value;
                 }
             }
             cache[hashKey] = eval;

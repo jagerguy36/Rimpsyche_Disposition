@@ -6,9 +6,9 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class AnomalyDB : BaseThoughtDB
     {
-        public static void AddDefs_Anomaly_Stage(Dictionary<int, RimpsycheFormula[]> StageThoughtTagDB, Dictionary<int, RimpsycheFormula[]> StageOpinionThoughtTagDB)
+        public static void AddDefs_Anomaly_Stage(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-            RegisterSingleThought("UnnaturalDarkness", StageThoughtTagDB,
+            RegisterStageThought("UnnaturalDarkness", MoodThoughtTagDB,
                 [FormulaDB.Tag_Fear,
                 null]
             );

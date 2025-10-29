@@ -23,10 +23,10 @@ namespace Maux36.RimPsyche.Disposition
                 Log.Message("[Rimpsyche - Disposition] tagged thoughts from: " + integratedMods);
             }
         }
-        public static void AddStageDefs_MiscMods(Dictionary<int, RimpsycheFormula[]> StageMoodThoughtTagDB, Dictionary<int, RimpsycheFormula[]> StageOpinionThoughtTagDB)
+        public static void AddStageDefs_MiscMods(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
             activeModIds.Clear();
-            if (ModsConfig.IsActive("sumghai.mousekinrace")) { AddStageDefs_MouseKin(StageMoodThoughtTagDB, StageOpinionThoughtTagDB); activeModIds.Add("sumghai.mousekinrace"); }
+            if (ModsConfig.IsActive("sumghai.mousekinrace")) { AddStageDefs_MouseKin(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("sumghai.mousekinrace"); }
 
             if (activeModIds.Count > 0)
             {
@@ -335,9 +335,9 @@ namespace Maux36.RimPsyche.Disposition
             RegisterThoughts(opinionList_MouseKin_Tag_Morality, OpinionThoughtTagDB, FormulaDB.Tag_Morality);
         }
 
-        private static void AddStageDefs_MouseKin(Dictionary<int, RimpsycheFormula[]> StageMoodThoughtTagDB, Dictionary<int, RimpsycheFormula[]> StageOpinionThoughtTagDB)
+        private static void AddStageDefs_MouseKin(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
-            RegisterSingleThought("Mousekin_Thought_FaithAffinityOpinions", StageOpinionThoughtTagDB,
+            RegisterStageThought("Mousekin_Thought_FaithAffinityOpinions", OpinionThoughtTagDB,
                 [null, //Apostates vs Nones
                 null, //Apostates vs Apostate
                 null, //Apostates vs Devotionist 
@@ -359,13 +359,13 @@ namespace Maux36.RimPsyche.Disposition
                 FormulaDB.Tag_Morality, //Inquisitionist vs Pious 
                 FormulaDB.Tag_Morality] //Inquisitionist vs Inquisitionist
             );
-            RegisterSingleThought("Mousekin_Thought_KnowColonistExecuted", StageMoodThoughtTagDB,
+            RegisterStageThought("Mousekin_Thought_KnowColonistExecuted", MoodThoughtTagDB,
                 [FormulaDB.Tag_JustifiedGuilt, //justified execution
                 FormulaDB.Tag_Empathy, //someone was euthanized
                 FormulaDB.Tag_Empathy_M, //someone was executed
                 FormulaDB.Tag_Empathy_M] //someone was organ-murdered
             );
-            RegisterSingleThought("Mousekin_Thought_KnowGuestExecuted", StageMoodThoughtTagDB,
+            RegisterStageThought("Mousekin_Thought_KnowGuestExecuted", MoodThoughtTagDB,
                 [FormulaDB.Tag_JustifiedGuilt, //justified execution
                 FormulaDB.Tag_Empathy, //someone was euthanized
                 FormulaDB.Tag_Empathy_M, //someone was executed

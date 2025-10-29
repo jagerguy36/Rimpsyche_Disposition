@@ -6,9 +6,6 @@ namespace Maux36.RimPsyche.Disposition
     [StaticConstructorOnStartup]
     public class StageThoughtUtil
     {
-        public static Dictionary<int, RimpsycheFormula[]> StageMoodThoughtTagDB = [];
-        public static Dictionary<int, RimpsycheFormula[]> StageOpinionThoughtTagDB = [];
-
         static StageThoughtUtil()
         {
             if (RimpsycheDispositionSettings.useIndividualThoughts)
@@ -25,12 +22,12 @@ namespace Maux36.RimPsyche.Disposition
         }
         private static void AddBaseThoughts()
         {
-            CoreDB.AddDefs_Vanilla_Stage(StageMoodThoughtTagDB, StageOpinionThoughtTagDB);
+            CoreDB.AddDefs_Vanilla_Stage(MoodThoughtTagDB, OpinionThoughtTagDB);
         }
         public static void ModCompat()
         {
-            if (ModsConfig.AnomalyActive) AnomalyDB.AddDefs_Anomaly_Stage(StageMoodThoughtTagDB, StageOpinionThoughtTagDB);
-            MiscModDB.AddStageDefs_MiscMods(StageMoodThoughtTagDB, StageOpinionThoughtTagDB);
+            if (ModsConfig.AnomalyActive) AnomalyDB.AddDefs_Anomaly_Stage(MoodThoughtTagDB, OpinionThoughtTagDB);
+            MiscModDB.AddStageDefs_MiscMods(MoodThoughtTagDB, OpinionThoughtTagDB);
         }
 
     }
