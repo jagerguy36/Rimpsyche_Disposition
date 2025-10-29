@@ -127,7 +127,6 @@
     <Compile Include="StatParts\PsycheNegotiationAbilityStatPart.cs" />
     <Compile Include="StatParts\PsycheOrganizationRoomWorkspeedStatPart.cs" />
     <Compile Include="StatParts\PsycheReflectivenessMeditationFocusGainStatPart.cs" />
-    <Compile Include="Utils\StageThoughtUtil.cs" />
     <Compile Include="Utils\ThoughtUtil.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_AmbitionMood.cs" />
     <Compile Include="ThoughtWorkers\ThoughtWorker_OrganizedMood.cs" />
