@@ -23,17 +23,6 @@ namespace Maux36.RimPsyche.Disposition
                 Log.Message("[Rimpsyche - Disposition] tagged thoughts from: " + integratedMods);
             }
         }
-        public static void AddStageDefs_MiscMods(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
-        {
-            activeModIds.Clear();
-            if (ModsConfig.IsActive("sumghai.mousekinrace")) { AddStageDefs_MouseKin(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("sumghai.mousekinrace"); }
-
-            if (activeModIds.Count > 0)
-            {
-                string integratedMods = string.Join(", ", activeModIds);
-                Log.Message("[Rimpsyche - Disposition] tagged stage thoughts from: " + integratedMods);
-            }
-        }
         private static void AddDefs_DBH(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
             List<string> moodList_DBH_Tag_Affluence = new(
@@ -333,10 +322,7 @@ namespace Maux36.RimPsyche.Disposition
             RegisterThoughts(moodList_MouseKin_Tag_Needy, MoodThoughtTagDB, FormulaDB.Tag_Needy);
             RegisterThoughts(moodList_MouseKin_Tag_Sympathy_M, MoodThoughtTagDB, FormulaDB.Tag_Sympathy_M);
             RegisterThoughts(opinionList_MouseKin_Tag_Morality, OpinionThoughtTagDB, FormulaDB.Tag_Morality);
-        }
 
-        private static void AddStageDefs_MouseKin(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
-        {
             RegisterStageThought("Mousekin_Thought_FaithAffinityOpinions", OpinionThoughtTagDB,
                 [null, //Apostates vs Nones
                 null, //Apostates vs Apostate

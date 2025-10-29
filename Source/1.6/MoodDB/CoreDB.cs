@@ -6,42 +6,6 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class CoreDB: BaseThoughtDB
     {
-        public static void AddDefs_Vanilla_Stage(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
-        {
-            RegisterStageThought("KnowGuestExecuted", MoodThoughtTagDB,
-                [FormulaDB.Tag_JustifiedGuilt, //justified execution
-                FormulaDB.Tag_Empathy, //someone was euthanized
-                FormulaDB.Tag_Empathy_M, //someone was executed
-                FormulaDB.Tag_Empathy_M, //someone was organ-murdered
-                FormulaDB.Tag_Empathy_M] //someone was ripscanned
-            );
-            RegisterStageThought("KnowColonistExecuted", MoodThoughtTagDB,
-                [FormulaDB.Tag_JustifiedGuilt, //justified execution
-                FormulaDB.Tag_Empathy, //someone was euthanized
-                FormulaDB.Tag_Empathy_M, //someone was executed
-                FormulaDB.Tag_Empathy_M, //someone was organ-murdered
-                FormulaDB.Tag_Empathy_M] //someone was ripscanned
-            );
-            RegisterStageThought("NeedJoy", MoodThoughtTagDB,
-                [FormulaDB.Tag_Needy,
-                FormulaDB.Tag_Needy,
-                FormulaDB.Tag_Needy,
-                FormulaDB.Tag_Affluence,
-                FormulaDB.Tag_Affluence]
-            );
-            RegisterStageThought("NeedComfort", MoodThoughtTagDB,
-                [FormulaDB.Tag_Needy,
-                FormulaDB.Tag_Affluence,
-                FormulaDB.Tag_Affluence,
-                FormulaDB.Tag_Affluence,
-                FormulaDB.Tag_Affluence]
-            );
-            RegisterStageThought("NeedRoomSize", MoodThoughtTagDB,
-                [FormulaDB.Tag_Needy,
-                FormulaDB.Tag_Needy,
-                FormulaDB.Tag_Affluence]
-            );
-        }
         public static void AddDefs_Vanilla(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
             RegisterThoughts(moodList_Vanilla_Tag_Preference, MoodThoughtTagDB, FormulaDB.Tag_Preference);
@@ -87,6 +51,40 @@ namespace Maux36.RimPsyche.Disposition
             RegisterThoughts(opinionList_Vanilla_Tag_Decency, OpinionThoughtTagDB, FormulaDB.Tag_Decency);
             RegisterThoughts(opinionList_Vanilla_Tag_Judgemental, OpinionThoughtTagDB, FormulaDB.Tag_Judgemental);
             RegisterThoughts(opinionList_Vanilla_Tag_Morality, OpinionThoughtTagDB, FormulaDB.Tag_Morality);
+
+            RegisterStageThought("KnowGuestExecuted", MoodThoughtTagDB,
+                [FormulaDB.Tag_JustifiedGuilt, //justified execution
+                FormulaDB.Tag_Empathy, //someone was euthanized
+                FormulaDB.Tag_Empathy_M, //someone was executed
+                FormulaDB.Tag_Empathy_M, //someone was organ-murdered
+                FormulaDB.Tag_Empathy_M] //someone was ripscanned
+            );
+            RegisterStageThought("KnowColonistExecuted", MoodThoughtTagDB,
+                [FormulaDB.Tag_JustifiedGuilt, //justified execution
+                FormulaDB.Tag_Empathy, //someone was euthanized
+                FormulaDB.Tag_Empathy_M, //someone was executed
+                FormulaDB.Tag_Empathy_M, //someone was organ-murdered
+                FormulaDB.Tag_Empathy_M] //someone was ripscanned
+            );
+            RegisterStageThought("NeedJoy", MoodThoughtTagDB,
+                [FormulaDB.Tag_Needy,
+                FormulaDB.Tag_Needy,
+                FormulaDB.Tag_Needy,
+                FormulaDB.Tag_Affluence,
+                FormulaDB.Tag_Affluence]
+            );
+            RegisterStageThought("NeedComfort", MoodThoughtTagDB,
+                [FormulaDB.Tag_Needy,
+                FormulaDB.Tag_Affluence,
+                FormulaDB.Tag_Affluence,
+                FormulaDB.Tag_Affluence,
+                FormulaDB.Tag_Affluence]
+            );
+            RegisterStageThought("NeedRoomSize", MoodThoughtTagDB,
+                [FormulaDB.Tag_Needy,
+                FormulaDB.Tag_Needy,
+                FormulaDB.Tag_Affluence]
+            );
         }
 
         private static readonly List<string> moodList_Vanilla_Tag_Preference = new(

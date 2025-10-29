@@ -6,13 +6,6 @@ namespace Maux36.RimPsyche.Disposition
 {
     public class AnomalyDB : BaseThoughtDB
     {
-        public static void AddDefs_Anomaly_Stage(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
-        {
-            RegisterStageThought("UnnaturalDarkness", MoodThoughtTagDB,
-                [FormulaDB.Tag_Fear,
-                null]
-            );
-        }
         public static void AddDefs_Anomaly(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
             RegisterThoughts(moodList_Anomaly_Tag_Judgemental, MoodThoughtTagDB, FormulaDB.Tag_Judgemental);
@@ -23,6 +16,10 @@ namespace Maux36.RimPsyche.Disposition
             RegisterThoughts(opinionList_Anomaly_Tag_Judgemental, OpinionThoughtTagDB, FormulaDB.Tag_Judgemental);
             RegisterThoughts(opinionList_Anomaly_Tag_Morality, OpinionThoughtTagDB, FormulaDB.Tag_Morality);
             RegisterThoughts(opinionList_Anomaly_Tag_Harmed, OpinionThoughtTagDB, FormulaDB.Tag_Harmed);
+            RegisterStageThought("UnnaturalDarkness", MoodThoughtTagDB,
+                [FormulaDB.Tag_Fear,
+                null]
+            );
         }
 
         private static readonly List<string> moodList_Anomaly_Tag_Judgemental = new(
