@@ -34,7 +34,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
             "TenacitySuppressionFall",
             (tracker) =>
             {
-                float tenacity = -tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity) * 0.15f;
+                float tenacity = -tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience) * 0.15f;
                 return tenacity;
             },
             RimpsycheFormulaManager.FormulaIdDict
