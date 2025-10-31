@@ -20,7 +20,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
             (tracker) =>
             {
                 float mult = 1f;
-                float tenacity = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Resilience, 10f / 12f);
+                float tenacity = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Tenacity, 10f / 12f);
                 float bravery = tracker.GetPersonalityAsMult(PersonalityDefOf.Rimpsyche_Bravery, 10f / 12f);
                 return mult * tenacity * bravery;
             },

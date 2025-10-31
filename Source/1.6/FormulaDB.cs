@@ -9,7 +9,7 @@ namespace Maux36.RimPsyche.Disposition
             "ModestShameGain",
             (tracker) =>
             {
-                float p = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness);
+                float p = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Propriety);
                 if (p <= 0.35f) return 0f; //Pretty meaningless to calculate under 0.35f 
                 return p*p*p*(p-0.25f)*0.4f;
             },
@@ -20,7 +20,7 @@ namespace Maux36.RimPsyche.Disposition
             "ModestShameLose",
             (tracker) =>
             {
-                float p = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness);
+                float p = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Propriety);
                 if (p <= 0) return 2;
                 var p1 = 1 / (4f * p + 1f);
                 return p1 * p1;
@@ -34,7 +34,7 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
-                float tenacity = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
+                float tenacity = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity);
                 tenacity = (1f - 0.2f * tenacity);
                 if (bravery <= -0.4f)
                 {
@@ -56,7 +56,7 @@ namespace Maux36.RimPsyche.Disposition
                 }
                 float aggresiveness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Aggressiveness);
                 aggresiveness = (1f - 0.5f * aggresiveness);
-                float tenacity = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Resilience);
+                float tenacity = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity);
                 tenacity = (1f - 0.2f * tenacity);
                 float mult = (-0.5f * bravery * tenacity) + 0.1f; //0.26~0.7
                 return mult * aggresiveness;
@@ -524,8 +524,8 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Decency",
             (tracker) =>
             {
-                float appropriateness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness);
-                return ThoughtUtil.MoodMultCurve(appropriateness);
+                float propriety = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Propriety);
+                return ThoughtUtil.MoodMultCurve(propriety);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
@@ -533,9 +533,9 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Decency_J",
             (tracker) =>
             {
-                float appropriateness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness);
+                float propriety = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Propriety);
                 float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
-                return ThoughtUtil.MoodMultCurve(appropriateness - openness);
+                return ThoughtUtil.MoodMultCurve(propriety - openness);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
@@ -543,9 +543,9 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Decency_M",
             (tracker) =>
             {
-                float appropriateness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Appropriateness);
+                float propriety = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Propriety);
                 float morality = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Morality);
-                return ThoughtUtil.MoodMultCurve(appropriateness + morality);
+                return ThoughtUtil.MoodMultCurve(propriety + morality);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
