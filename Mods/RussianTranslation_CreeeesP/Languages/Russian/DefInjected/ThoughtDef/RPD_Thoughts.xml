@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
   <Rimpsyche_ResilientSpirit.stages.0.label>стойкость духа</Rimpsyche_ResilientSpirit.stages.0.label>
   <Rimpsyche_ResilientSpirit.stages.0.description>Соберись. Я справлюсь.</Rimpsyche_ResilientSpirit.stages.0.description>
 
   <Rimpsyche_ShameOverwhelmed.stages.0.label>подавленность стыдом</Rimpsyche_ShameOverwhelmed.stages.0.label>
-  <Rimpsyche_ShameOverwhelmed.stages.0.description>Я {PAWN_gender ? показал : показала} себя в постыдном состоянии. Мне так стыдно, что я не могу смотреть людям в глаза.</Rimpsyche_ShameOverwhelmed.stages.0.description>
+  <Rimpsyche_ShameOverwhelmed.stages.0.description>Я показываю себя в постыдном состоянии. Мне так стыдно, что я не могу смотреть людям в глаза.</Rimpsyche_ShameOverwhelmed.stages.0.description>
 
   <PsycheOrganizedWorkspace.stages.0.label>работа в неподходящем месте</PsycheOrganizedWorkspace.stages.0.label>
   <PsycheOrganizedWorkspace.stages.0.description>Это не подходящее место для такой работы. Слишком отвлекающе и неудобно. Это действительно беспокоит.</PsycheOrganizedWorkspace.stages.0.description>
@@ -19,9 +19,9 @@
   <PsycheAmbitionAchievement.stages.0.label>неудовлетворённость амбиций</PsycheAmbitionAchievement.stages.0.label>
   <PsycheAmbitionAchievement.stages.0.description>Ничего не движется вперёд. Чувствую, что бегу на месте.</PsycheAmbitionAchievement.stages.0.description>
   <PsycheAmbitionAchievement.stages.1.label>чувство достижения</PsycheAmbitionAchievement.stages.1.label>
-  <PsycheAmbitionAchievement.stages.1.description>Мои навыки постепенно улучшаются. Приятно видеть, как я {PAWN_gender ? сам развиваюсь : сама развиваюсь}.\n\n(получает опыт навыка)</PsycheAmbitionAchievement.stages.1.description>
+  <PsycheAmbitionAchievement.stages.1.description>Мои навыки постепенно улучшаются. Приятно видеть, как я развиваюсь.\n\n(получает опыт навыка)</PsycheAmbitionAchievement.stages.1.description>
   <PsycheAmbitionAchievement.stages.2.label>ощущение выполненного долга</PsycheAmbitionAchievement.stages.2.label>
-  <PsycheAmbitionAchievement.stages.2.description>Я {PAWN_gender ? создал : создала} нечто, чем могу гордиться. Быть продуктивным — приятное чувство.</PsycheAmbitionAchievement.stages.2.description>
+  <PsycheAmbitionAchievement.stages.2.description>Я создаю нечто, чем могу гордиться. Быть продуктивным — приятное чувство.</PsycheAmbitionAchievement.stages.2.description>
   <PsycheAmbitionAchievement.stages.3.label>ощущение прогресса</PsycheAmbitionAchievement.stages.3.label>
   <PsycheAmbitionAchievement.stages.3.description>Приятно наблюдать за развитием. Приятно осознавать, что я часть сообщества, которое постепенно развивается.</PsycheAmbitionAchievement.stages.3.description>
 
