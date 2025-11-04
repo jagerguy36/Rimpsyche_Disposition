@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Причины выполнения амбиций -->
   <RP_BabyBorn>В поселении родился ребёнок</RP_BabyBorn>
@@ -19,13 +19,13 @@
 
   <!-- Письма -->
   <RP_BrilliantSuccessLabel>Блестящий успех</RP_BrilliantSuccessLabel>
-  <RP_BrilliantSuccessMessage>{PAWN_labelShort} {PAWN_gender ? заметил : заметила} особые возможности во время работы. {PAWN_pronoun} смело {PAWN_gender ? проявил : проявила} дух экспериментирования и в результате {PAWN_gender ? создал : создала} легендарное произведение.</RP_BrilliantSuccessMessage>
+  <RP_BrilliantSuccessMessage>{PAWN_labelShort} замечает особые возможности во время работы. {PAWN_pronoun} смело проявляет дух экспериментирования и в результате создает легендарное произведение.</RP_BrilliantSuccessMessage>
 
   <RP_ResilientSpiritLabel>Стойкость духа</RP_ResilientSpiritLabel>
-  <RP_ResilientSpiritMessage>{PAWN_labelShort} {PAWN_gender ? достиг : достигла} порога психического срыва. Но {PAWN_possessive} стойкость духа вселила новую волю.\n\n{PAWN_labelShort} будет получать только половину эффекта от негативного настроения в течение следующих 3 дней.</RP_ResilientSpiritMessage>
+  <RP_ResilientSpiritMessage>{PAWN_labelShort} достигает порога психического срыва. Но воля {PAWN_possessive} не ломается, благодаря стойкости духа.\n\n{PAWN_labelShort} будет получать только половину эффекта от негативного настроения в течение следующих 3 дней.</RP_ResilientSpiritMessage>
 
   <RP_MentalStateReason_PanicAttack>Паническая атака</RP_MentalStateReason_PanicAttack>
-  <RP_MentalStateReason_Shame>{PAWN_gender ? Подавлен : Подавлена} стыдом</RP_MentalStateReason_Shame>
+  <RP_MentalStateReason_Shame>Сгорает от сыда</RP_MentalStateReason_Shame>
 
   <!-- Части характеристик -->
   <RP_Stat_Psyche>Личность</RP_Stat_Psyche>
