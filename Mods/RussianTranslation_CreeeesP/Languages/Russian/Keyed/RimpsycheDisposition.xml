@@ -62,7 +62,7 @@
   <RP_Stat_ShootingAccuracyPartCE>Осмотрительность</RP_Stat_ShootingAccuracyPartCE>
   <RP_Stat_SuppressabilityPartCE>Храбрость</RP_Stat_SuppressabilityPartCE>
 
-  <RimpsycheDispositionSettingCategory>Модуль диспозиций Rimpsyche</RimpsycheDispositionSettingCategory>
+  <RimpsycheDispositionSettingCategory>Rimpsyche: Disposition</RimpsycheDispositionSettingCategory>
 
   <RimpsycheDispositionContentSetting>Настройки контента</RimpsycheDispositionContentSetting>
   <RimpsycheDispositionRestartNeeded>Для применения этих настроек требуется перезапуск игры.</RimpsycheDispositionRestartNeeded>
