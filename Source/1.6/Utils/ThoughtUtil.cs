@@ -42,9 +42,9 @@ namespace Maux36.RimPsyche.Disposition
             }
             //cache miss
             float eval = -1f;
-            if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(thought.def.shortHash, out RimpsycheFormula thoughtFormula))
+            if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(hashKey, out RimpsycheFormula thoughtFormula))
             {
-                //Log.Message($"{pawn.Name} registered {thought.def.defName} with stage: {thought.CurStageIndex}");
+                //Log.Message($"{pawn.Name} registered {thought.def.defName} with stage: {thought.CurStageIndex}. Key: {hashKey}");
                 if (thoughtFormula != null)
                 {
                     eval = compPsyche.Evaluate(thoughtFormula);
