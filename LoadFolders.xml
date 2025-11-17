@@ -9,8 +9,9 @@
 		<li IfModActive="consolidatedtraits.lc.rw">Mods/ConsolidatedTraits/1.6</li>
 		<li IfModActive="hautarche.hautstraits">Mods/Haut_Added_Trait/1.6</li>
 		<li IfModActive="Ludeon.RimWorld.Ideology">Mods/Ideology/1.6</li>
-		<li IfModActive="mlie.syrindividuality">Mods/SYR_Individuality/1.6</li>
-		<li IfModActive="vanillaexpanded.vanillatraitsexpanded">Mods/VTE/1.6</li>
 		<li IfModNotActive="haskilaik.rimpsychedisposition.russian">Mods/RussianTranslation_CreeeesP</li>
+		<li IfModActive="mlie.syrindividuality">Mods/SYR_Individuality/1.6</li>
+		<li IfModActive="goji.thesimstraits">Mods/TheSimsTraits/1.6</li>
+		<li IfModActive="vanillaexpanded.vanillatraitsexpanded">Mods/VTE/1.6</li>
 	</v1.6>
 </loadFolders>

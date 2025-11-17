@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarmonyPatches\MiscModPatches\EndlessGrowth_Patches.cs" />
+    <Compile Include="HarmonyPatches\MiscModPatches\TheSimsTraits.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\Patch_CompAbilityEffect_Counsel_Apply.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\Individuality_Patches.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\Unpatcher.cs" />

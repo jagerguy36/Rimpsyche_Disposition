@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Ideology</li>
+    </mods>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/TraitDef[defName="ST_Naive"]/degreeDatas/li[1]/statFactors/CertaintyLossFactor</xpath>
+      <value>
+        <CertaintyLossFactor>1.75</CertaintyLossFactor>
+      </value>
+    </match>
+  </Operation>
+
+
+</Patch>

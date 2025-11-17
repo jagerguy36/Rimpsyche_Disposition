@@ -20,6 +20,11 @@ namespace Maux36.RimPsyche.Disposition
             {
                 UnpatchIndividuality(harmony);
             }
+            if (ModsConfig.IsActive("goji.thesimstraits"))
+            {
+                UnpatchSims(harmony);
+            }
+            
         }
 
         public static void UnpatchVTE(Harmony harmony)
@@ -47,6 +52,40 @@ namespace Maux36.RimPsyche.Disposition
             harmony.Unpatch(Individuality_GenerateQualityCreatedByPawn_Patch_fixes, HarmonyPatchType.All, "Syrchalis.Rimworld.Traits");
             harmony.PatchCategory("Individuality");
         }
+        public static void UnpatchSims(Harmony harmony)
+        {
+            Log.Message("[Rimpsyche - Disposition] Patching The Sims Traits");
+            MethodInfo Pawn_InteractionsTracker_InteractionsTrackerTick = typeof(Pawn_InteractionsTracker).GetMethod("InteractionsTrackerTickInterval");
+            if (Pawn_InteractionsTracker_InteractionsTrackerTick == null)
+            {
+                Log.Error("[Rimpsyche - Disposition] Failed to unpatch InteractionsTrackerTickInterval of The Sims Traits");
+                return;
+            }
+            harmony.Unpatch(Pawn_InteractionsTracker_InteractionsTrackerTick, HarmonyPatchType.Prefix, "SimsTraitsMod");
+
+            if (RimpsycheDispositionSettings.useFightorFlight)
+            {
+                MethodInfo TheSimsTraits_Thing_TakeDamage_Patch = typeof(Thing).GetMethod("TakeDamage");
+                if (TheSimsTraits_Thing_TakeDamage_Patch == null)
+                {
+                    Log.Error("[Rimpsyche - Disposition] Failed to unpatch TakeDamage of The Sims Traits");
+                    return;
+                }
+                harmony.Unpatch(TheSimsTraits_Thing_TakeDamage_Patch, HarmonyPatchType.Postfix, "SimsTraitsMod");
+            }
+
+            if (RimpsycheDispositionSettings.useExperimentation)
+            {
+                MethodInfo GenerateQualityCreatedByPawn_Patch_fixes = typeof(QualityUtility).GetMethod("GenerateQualityCreatedByPawn", new Type[] { typeof(Pawn), typeof(SkillDef), typeof(bool) });
+                if (GenerateQualityCreatedByPawn_Patch_fixes == null)
+                {
+                    Log.Error("[Rimpsyche - Disposition] Failed to unpatch GenerateQualityCreatedByPawn of The Sims Traits");
+                    return;
+                }
+                harmony.Unpatch(GenerateQualityCreatedByPawn_Patch_fixes, HarmonyPatchType.All, "SimsTraitsMod");
+                harmony.PatchCategory("TheSimsTraits");
+            }
+        }
     }
 
 
@@ -55,6 +94,7 @@ namespace Maux36.RimPsyche.Disposition
     {
         public static TraitDef VTE_Perfectionist = DefDatabase<TraitDef>.GetNamedSilentFail("VTE_Perfectionist");
         public static TraitDef SYR_Perfectionist = DefDatabase<TraitDef>.GetNamedSilentFail("SYR_Perfectionist");
+        public static TraitDef ST_Procrastinator = DefDatabase<TraitDef>.GetNamedSilentFail("ST_Procrastinator");
 
         static IntegrationDatabase()
         {
