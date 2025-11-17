@@ -16,6 +16,7 @@ namespace Maux36.RimPsyche.Disposition
             if (ModsConfig.IsActive("vanillaexpanded.vbrewe")) { AddDefs_VBE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vbrewe"); }
             if (ModsConfig.IsActive("hautarche.hautstraits")) { AddDefs_Haut(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("hautarche.hautstraits"); }
             if (ModsConfig.IsActive("sumghai.mousekinrace")) { AddDefs_MouseKin(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("sumghai.mousekinrace"); }
+            if (ModsConfig.IsActive("goji.thesimstraits")) { AddDefs_TheSimsTraits(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("goji.thesimstraits"); }
 
             if (activeModIds.Count > 0)
             {
@@ -357,6 +358,34 @@ namespace Maux36.RimPsyche.Disposition
                 FormulaDB.Tag_Empathy_M, //someone was executed
                 FormulaDB.Tag_Empathy_M] //someone was organ-murdered
             );
+        }
+        private static void AddDefs_TheSimsTraits(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
+        {
+            List<string> moodList_TheSimsTraits_Tag_Art = new(
+                ["ST_ListenedToVirtuoso"]
+            );
+
+            List<string> moodList_TheSimsTraits_Tag_Sympathy_M = new(
+                ["WearingLeatheryApparel"]
+            );
+
+            List<string> moodList_TheSimsTraits_Tag_Affluence = new(
+                ["ST_NoPokerTable"]
+            );
+
+            List<string> opinionList_TheSimsTraits_Tag_Loved = new(
+                ["ST_LoyalThought"]
+            );
+
+            List<string> opinionList_TheSimsTraits_Tag_Morality = new(
+                ["ST_VeganVsCarnist"]
+            );
+
+            RegisterThoughts(moodList_TheSimsTraits_Tag_Art, MoodThoughtTagDB, FormulaDB.Tag_Art);
+            RegisterThoughts(moodList_TheSimsTraits_Tag_Sympathy_M, MoodThoughtTagDB, FormulaDB.Tag_Sympathy_M);
+            RegisterThoughts(moodList_TheSimsTraits_Tag_Affluence, MoodThoughtTagDB, FormulaDB.Tag_Affluence);
+            RegisterThoughts(opinionList_TheSimsTraits_Tag_Loved, OpinionThoughtTagDB, FormulaDB.Tag_Loved);
+            RegisterThoughts(opinionList_TheSimsTraits_Tag_Morality, OpinionThoughtTagDB, FormulaDB.Tag_Morality);
         }
     }
 }
