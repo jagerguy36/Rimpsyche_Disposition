@@ -46,12 +46,13 @@ namespace Maux36.RimPsyche.Disposition
 
             // Find best candidate
             int bestScore = -100;
-            if (pawn.ownership.OwnedBed != null)
+            var pawnBed = pawn.ownership.OwnedBed;
+            if (pawnBed != null)
             {
-                IntVec3 bedPosition = pawn.ownership.OwnedBed.Position;
+                IntVec3 bedPosition = pawnBed.Position;
                 float distToBed = (pawn.Position - bedPosition).LengthHorizontalSquared;
                 if (distToBed <= runDistanceMax * runDistanceMax
-                    && bedPosition.InAllowedArea(pawn)
+                    && pawn.CanReach(bedPosition, PathEndMode.OnCell, Danger.Some)
                     && !MightBeSeen(all_pawns, bedPosition, pawn, sightDistSquared))
                     {
                         return bedPosition;
