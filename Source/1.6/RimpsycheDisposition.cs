@@ -5,10 +5,10 @@ using Verse;
 
 namespace Maux36.RimPsyche.Disposition
 {
-    public class Rimpsyche : Mod
+    public class RimpsycheDisposition : Mod
     {
         public static RimpsycheDispositionSettings settings;
-        public Rimpsyche(ModContentPack content) : base(content)
+        public RimpsycheDisposition(ModContentPack content) : base(content)
         {
             settings = GetSettings<RimpsycheDispositionSettings>();
             if (!ModsConfig.IsActive("maux36.rimpsyche"))
