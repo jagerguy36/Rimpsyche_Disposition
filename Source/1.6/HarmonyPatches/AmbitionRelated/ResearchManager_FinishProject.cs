@@ -10,7 +10,7 @@ namespace Maux36.RimPsyche.Disposition
     {
         private static void Postfix(ResearchProjectDef proj, Pawn researcher)
         {
-            if (researcher != null)
+            if (researcher?.MapHeld?.mapPawns?.FreeColonistsSpawned != null)
             {
                 foreach (Pawn p in researcher.MapHeld.mapPawns.FreeColonistsSpawned)
                 {
