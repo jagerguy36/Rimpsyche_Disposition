@@ -49,6 +49,10 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.Gap(6f);
             RimpsycheDispositionSettings.moodIndividualC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodIndividualC".Translate() + " (" + "Default".Translate() + " " + RimpsycheDispositionSettings.default_moodIndividualC + "): " + RimpsycheDispositionSettings.moodIndividualC, RimpsycheDispositionSettings.moodIndividualC, 0.05f, 0.95f, tooltip: "RimpsycheMoodIndividualCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheUseIndividualJoychance".Translate(), ref RimpsycheDispositionSettings.useIndividualJoychance, "RimpsycheUseIndividualJoychanceTooltip".Translate());
+            listing_Standard.Gap(6f);
+            RimpsycheDispositionSettings.joychanceIndividualC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheJoychanceIndividualC".Translate() + " (" + "Default".Translate() + " " + RimpsycheDispositionSettings.default_joychanceIndividualC + "): " + RimpsycheDispositionSettings.joychanceIndividualC, RimpsycheDispositionSettings.joychanceIndividualC, 1f, 5f, tooltip: "RimpsycheJoychanceIndividualCTooltip".Translate()), 1);
+            listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseExperimentation".Translate(), ref RimpsycheDispositionSettings.useExperimentation, "RimpsycheUseExperimentationTooltip".Translate());
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseSenseOfProgress".Translate(), ref RimpsycheDispositionSettings.useSenseOfProgress, "RimpsycheUseSenseOfProgressTooltip".Translate());
@@ -88,6 +92,7 @@ namespace Maux36.RimPsyche.Disposition
                 RimpsycheDispositionSettings.moodEmotionalityC = RimpsycheDispositionSettings.default_moodOptimismC;
                 RimpsycheDispositionSettings.moodOptimismC = RimpsycheDispositionSettings.default_moodEmotionalityC;
                 RimpsycheDispositionSettings.moodIndividualC = RimpsycheDispositionSettings.default_moodIndividualC;
+                RimpsycheDispositionSettings.joychanceIndividualC = RimpsycheDispositionSettings.default_joychanceIndividualC;
 
                 RimpsycheDispositionSettings.useExperimentation = true;
                 RimpsycheDispositionSettings.useSenseOfProgress = true;
