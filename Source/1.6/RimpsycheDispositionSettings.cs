@@ -7,7 +7,6 @@ namespace Maux36.RimPsyche.Disposition
         public const float default_moodOptimismC = 0.3f;
         public const float default_moodEmotionalityC = 0.3f;
         public const float default_moodIndividualC = 0.6f;
-        public const float default_joychanceIndividualC = 2;
 
         public static bool useIndividualThoughts = true;
         public static bool useIndividualJoychance = true;
@@ -24,8 +23,6 @@ namespace Maux36.RimPsyche.Disposition
         public static float moodEmotionalityC = default_moodEmotionalityC;
         public static float moodIndividualC = default_moodIndividualC;
 
-        public static float joychanceIndividualC = default_joychanceIndividualC;
-
         //UI
         public static bool sendExperimentMessage = true;
         public static bool sendShameMessage = true;
@@ -40,7 +37,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             base.ExposeData();
             Scribe_Values.Look(ref useIndividualThoughts, "Rimpsyche_useIndividualThoughts", true, true);
-            Scribe_Values.Look(ref useIndividualJoychance, "Rimpsyche_useIndividualJoychance", true, true);
+            //Scribe_Values.Look(ref useIndividualJoychance, "Rimpsyche_useIndividualJoychance", true, true);
             Scribe_Values.Look(ref usePerformanceModeThought, "Rimpsyche_usePerformanceModeThought", false, true);
             Scribe_Values.Look(ref useExperimentation, "Rimpsyche_useExperimentation", true, true);
             Scribe_Values.Look(ref useSenseOfProgress, "Rimpsyche_useSenseOfProgress", true, true);
@@ -54,7 +51,6 @@ namespace Maux36.RimPsyche.Disposition
             Scribe_Values.Look(ref moodOptimismC, "Rimpsyche_moodOptimismC", default_moodOptimismC, true);
             Scribe_Values.Look(ref moodEmotionalityC, "Rimpsyche_moodEmotionalityC", default_moodEmotionalityC, true);
             Scribe_Values.Look(ref moodIndividualC, "Rimpsyche_moodIndividualC", default_moodIndividualC, true);
-            Scribe_Values.Look(ref joychanceIndividualC, "Rimpsyche_joychanceIndividualC", default_joychanceIndividualC, true);
 
             Scribe_Values.Look(ref sendExperimentMessage, "Rimpsyche_sendExperimentMessage", true, true);
             Scribe_Values.Look(ref sendShameMessage, "Rimpsyche_sendShameMessage", true, true);

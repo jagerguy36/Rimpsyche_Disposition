@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using RimWorld;
 using System.Reflection;
 using Verse;
 
@@ -42,6 +43,15 @@ namespace Maux36.RimPsyche.Disposition
             if (RimpsycheDispositionSettings.useFightorFlight)
             {
                 harmony.PatchCategory("FightorFlight");
+            }
+            if (RimpsycheDispositionSettings.useIndividualJoychance)
+            {
+                harmony.PatchCategory("IndividualJoyChance");
+                var MeditateDef = DefDatabase<JoyGiverDef>.GetNamed("Meditate", false);
+                if (MeditateDef != null)
+                    MeditateDef.pctPawnsEverDo = 1f;
+                else
+                    Log.Error("[Rimpsyche - Disposition] Failed to patch Meditate JoyGiver.");
             }
 
             //Mod Supports

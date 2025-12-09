@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HarmonyPatches\JoyGiver_GetChance_Patch.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\EndlessGrowth_Patches.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\TheSimsTraits.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\Patch_CompAbilityEffect_Counsel_Apply.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="HarmonyPatches\MiscModPatches\Unpatcher.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\IndividualThoughtToAdd_LabelCap_Transpiler.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\ThoughtHandler_MoodOffsetOfGroup_Patch.cs" />
+    <Compile Include="JoyGiverDB\JoyGiverDB.cs" />
     <Compile Include="MoodDB\AnomalyDB.cs" />
     <Compile Include="MoodDB\BiotechDB.cs" />
     <Compile Include="MoodDB\CoreDB.cs" />
@@ -95,13 +97,12 @@
     <Compile Include="JobDrivers\JobDriver_FleeInShame.cs" />
     <Compile Include="JobDrivers\JobDriver_PanicAttackFlee.cs" />
     <Compile Include="JobGivers\JobGivers_PanicAttack.cs" />
-    <Compile Include="JoyGivers\JoyGiver_Meditate_Reflectiveness.cs" />
     <Compile Include="MentalState\PanicAttack.cs" />
+    <Compile Include="Utils\JoyGiverUtil.cs" />
     <Compile Include="Utils\ShameUtil.cs" />
     <Compile Include="Utils\QualityUtil.cs" />
     <Compile Include="HarmonyPatches\CompDrug_PrePostIngested.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
-    <Compile Include="HarmonyPatches\JoyGiver_Skygaze_Patch.cs" />
     <Compile Include="HarmonyPatches\MentalBreakRelated\MentalBreaker_TestMoodMentalBreak_Patch.cs" />
     <Compile Include="HarmonyPatches\MentalBreakRelated\MentalBreakWorker_BingingDrug_Patch.cs" />
     <Compile Include="HarmonyPatches\NeedSeeker_NeedInterval.cs" />
