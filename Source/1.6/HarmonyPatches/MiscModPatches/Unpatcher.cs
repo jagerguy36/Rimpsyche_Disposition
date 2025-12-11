@@ -12,19 +12,12 @@ namespace Maux36.RimPsyche.Disposition
         public static void UnpatchModContents(Harmony harmony)
         {
             if (ModsConfig.IsActive("VanillaExpanded.VanillaTraitsExpanded") && RimpsycheDispositionSettings.useExperimentation)
-            {
                 UnpatchVTE(harmony);
-            }
-
             if (ModsConfig.IsActive("mlie.syrindividuality") && RimpsycheDispositionSettings.useExperimentation)
-            {
                 UnpatchIndividuality(harmony);
-            }
             if (ModsConfig.IsActive("goji.thesimstraits"))
-            {
                 UnpatchSims(harmony);
-            }
-            
+
         }
 
         public static void UnpatchVTE(Harmony harmony)
