@@ -8,13 +8,20 @@ namespace Maux36.RimPsyche.Disposition
     public class RimpsycheDisposition : Mod
     {
         public static RimpsycheDispositionSettings settings;
+        public const string CoreRequirement = "1.0.24";
+        public static string currentVersion;
         public RimpsycheDisposition(ModContentPack content) : base(content)
         {
+            currentVersion = content.ModMetaData.ModVersion;
             settings = GetSettings<RimpsycheDispositionSettings>();
+
             if (!ModsConfig.IsActive("maux36.rimpsyche"))
             {
-                Log.Error("[Rimpsyche Disposition] Rimpsyche not loaded. The dependency was not met and the game will not run correctly");
+                Log.Error("[Rimpsyche - Disposition] Rimpsyche not loaded. The dependency was not met and the game will not run correctly");
             }
+            var RimpsycheVersion = new Version(Rimpsyche.currentVersion);
+            if (RimpsycheVersion < new Version(CoreRequirement))
+                Log.Error($"[Rimpsyche - Disposition] Disposition version {currentVersion} requires Rimpsyche Version {CoreRequirement} or above. Your Rimpsyche ({RimpsycheVersion}) needs to be updated or you will experience errors");
         }
         public override string SettingsCategory()
         {
