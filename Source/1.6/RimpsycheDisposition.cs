@@ -21,7 +21,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             var RimpsycheVersion = new Version(Rimpsyche.currentVersion);
             if (RimpsycheVersion < new Version(CoreRequirement))
-                Log.Error($"[Rimpsyche - Disposition] Disposition version {currentVersion} requires Rimpsyche Version {CoreRequirement} or above. Your Rimpsyche ({RimpsycheVersion}) needs to be updated or you will experience errors");
+                Log.Error($"[Rimpsyche - Disposition] Disposition version {currentVersion} requires Rimpsyche Core version {CoreRequirement} or above. Your Core ({RimpsycheVersion}) needs to be updated or you will experience errors. If Steam does not automatically updates your mod, you can try un-subbing and re-subbing to force the update.");
         }
         public override string SettingsCategory()
         {
