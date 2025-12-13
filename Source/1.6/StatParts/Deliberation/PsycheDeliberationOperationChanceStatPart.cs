@@ -28,7 +28,7 @@ namespace Maux36.RimPsyche.Disposition
                 if (compPsyche?.Enabled == true)
                 {
                     int level = Mathf.Clamp(pawn.skills.GetSkill(SkillDefOf.Medicine).Level, 0, 20);
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationOperationChance".Translate() + ": x" + (1 + compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition) / (levelC + level)).ToStringPercent() + "\n";
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_DeliberationOperationChance".Translate() + ": x" + (1 + compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation) / (levelC + level)).ToStringPercent() + "\n";
                 }
             }
             return null;
