@@ -2,16 +2,16 @@
 
 <Patch>
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
         <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.CombatExtended.PsycheShootingAccuracyPawnStatPartCE"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "AimingDelayFactor"]</xpath>
+      <xpath>Defs/StatDef[defName = "AimingDelayFactor"]</xpath>
         <order>Prepend</order>
         <value>
           <parts>
@@ -22,16 +22,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
         <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.CombatExtended.PsycheShootingAccuracyPawnStatPartCE"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]</xpath>
+      <xpath>Defs/StatDef[defName = "ShootingAccuracyPawn"]</xpath>
         <order>Prepend</order>
         <value>
           <parts>
@@ -42,16 +42,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "AimingAccuracy"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "AimingAccuracy"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "AimingAccuracy"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "AimingAccuracy"]/parts</xpath>
         <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.CombatExtended.PsycheAimingAccuracyStatPartCE"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "AimingAccuracy"]</xpath>
+      <xpath>Defs/StatDef[defName = "AimingAccuracy"]</xpath>
         <order>Prepend</order>
         <value>
           <parts>
@@ -62,16 +62,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "Suppressability"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "Suppressability"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "Suppressability"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "Suppressability"]/parts</xpath>
         <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.CombatExtended.PsycheSuppressabilityStatPartCE"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "Suppressability"]</xpath>
+      <xpath>Defs/StatDef[defName = "Suppressability"]</xpath>
         <order>Prepend</order>
         <value>
           <parts>

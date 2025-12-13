@@ -2,16 +2,16 @@
 <Patch>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "MentalBreakThreshold"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "MentalBreakThreshold"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "MentalBreakThreshold"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "MentalBreakThreshold"]/parts</xpath>
         <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsycheMentalBreakThresholdStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "MentalBreakThreshold"]</xpath>
+      <xpath>Defs/StatDef[defName = "MentalBreakThreshold"]</xpath>
         <order>Prepend</order>
         <value>
           <parts>
@@ -22,16 +22,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
         <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsycheDiligenceWorkspeedStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "WorkSpeedGlobal"]</xpath>
+      <xpath>Defs/StatDef[defName = "WorkSpeedGlobal"]</xpath>
         <order>Prepend</order>
         <value>
           <parts>
@@ -42,16 +42,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "WorkSpeedGlobal"]/parts</xpath>
         <order>Append</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsycheOrganizationRoomWorkspeedStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "WorkSpeedGlobal"]</xpath>
+      <xpath>Defs/StatDef[defName = "WorkSpeedGlobal"]</xpath>
         <order>Append</order>
         <value>
           <parts>
@@ -62,16 +62,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "ResearchSpeed"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "ResearchSpeed"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "ResearchSpeed"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "ResearchSpeed"]/parts</xpath>
         <order>Append</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsycheResearchSpeedStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "ResearchSpeed"]</xpath>
+      <xpath>Defs/StatDef[defName = "ResearchSpeed"]</xpath>
         <order>Append</order>
         <value>
           <parts>
@@ -82,16 +82,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional" MayRequireAnyOf="Ludeon.RimWorld.Royalty,Ludeon.RimWorld.Biotech">
-    <xpath>*/StatDef[defName = "MeditationFocusGain"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "MeditationFocusGain"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "MeditationFocusGain"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "MeditationFocusGain"]/parts</xpath>
         <order>Append</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsycheReflectivenessMeditationFocusGainStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "MeditationFocusGain"]</xpath>
+      <xpath>Defs/StatDef[defName = "MeditationFocusGain"]</xpath>
         <order>Append</order>
         <value>
           <parts>
@@ -102,16 +102,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "NegotiationAbility"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "NegotiationAbility"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "NegotiationAbility"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "NegotiationAbility"]/parts</xpath>
         <order>Append</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsycheNegotiationAbilityStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "NegotiationAbility"]</xpath>
+      <xpath>Defs/StatDef[defName = "NegotiationAbility"]</xpath>
         <order>Append</order>
         <value>
           <parts>
@@ -122,16 +122,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "TradePriceImprovement"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "TradePriceImprovement"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "TradePriceImprovement"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "TradePriceImprovement"]/parts</xpath>
         <order>Append</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsycheTradePriceImprovementStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "TradePriceImprovement"]</xpath>
+      <xpath>Defs/StatDef[defName = "TradePriceImprovement"]</xpath>
         <order>Append</order>
         <value>
           <parts>
@@ -142,16 +142,16 @@
   </Operation>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>*/StatDef[defName = "PainShockThreshold"]/parts</xpath>
+    <xpath>Defs/StatDef[defName = "PainShockThreshold"]/parts</xpath>
     <match Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "PainShockThreshold"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "PainShockThreshold"]/parts</xpath>
         <order>Prepend</order>
         <value>
           <li Class="Maux36.RimPsyche.Disposition.PsychePainshockThresholdStatPart"/>
         </value>
     </match>
     <nomatch Class="PatchOperationAdd">
-      <xpath>*/StatDef[defName = "PainShockThreshold"]</xpath>
+      <xpath>Defs/StatDef[defName = "PainShockThreshold"]</xpath>
         <order>Prepend</order>
         <value>
           <parts>
@@ -166,16 +166,16 @@
       <li>Combat Extended</li>
     </mods>
     <nomatch Class="PatchOperationConditional">
-      <xpath>*/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
       <match Class="PatchOperationAdd">
-        <xpath>*/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
+        <xpath>Defs/StatDef[defName = "AimingDelayFactor"]/parts</xpath>
           <order>Prepend</order>
           <value>
             <li Class="Maux36.RimPsyche.Disposition.PsycheAimingDelayFactorPawnStatPart"/>
           </value>
       </match>
       <nomatch Class="PatchOperationAdd">
-        <xpath>*/StatDef[defName = "AimingDelayFactor"]</xpath>
+        <xpath>Defs/StatDef[defName = "AimingDelayFactor"]</xpath>
           <order>Prepend</order>
           <value>
             <parts>
@@ -191,16 +191,16 @@
       <li>Combat Extended</li>
     </mods>
     <nomatch Class="PatchOperationConditional">
-      <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
+      <xpath>Defs/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
       <match Class="PatchOperationAdd">
-        <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
+        <xpath>Defs/StatDef[defName = "ShootingAccuracyPawn"]/parts</xpath>
           <order>Prepend</order>
           <value>
             <li Class="Maux36.RimPsyche.Disposition.PsycheShootingAccuracyPawnStatPart"/>
           </value>
       </match>
       <nomatch Class="PatchOperationAdd">
-        <xpath>*/StatDef[defName = "ShootingAccuracyPawn"]</xpath>
+        <xpath>Defs/StatDef[defName = "ShootingAccuracyPawn"]</xpath>
           <order>Prepend</order>
           <value>
             <parts>

@@ -2,24 +2,24 @@
 
 <Patch>
 
-  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Ideology">
+  <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="HVT_Judgemental"]/degreeDatas/li/statFactors/CertaintyLossFactor</xpath>
     <value>
-      <CertaintyLossFactor>0.6</CertaintyLossFactor>
+      <CertaintyLossFactor MayRequire="Ludeon.RimWorld.Ideology">0.6</CertaintyLossFactor>
     </value>
   </Operation>
 
-  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Ideology">
+  <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="HVT_Faithful"]/degreeDatas/li[degree=-2]/statFactors/CertaintyLossFactor</xpath>
     <value>
-      <CertaintyLossFactor>4</CertaintyLossFactor>
+      <CertaintyLossFactor MayRequire="Ludeon.RimWorld.Ideology">4</CertaintyLossFactor>
     </value>
   </Operation>
 
-  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Ideology">
+  <Operation Class="PatchOperationReplace">
     <xpath>Defs/TraitDef[defName="HVT_Faithful"]/degreeDatas/li[degree=-1]/statFactors/CertaintyLossFactor</xpath>
     <value>
-      <CertaintyLossFactor>2.5</CertaintyLossFactor>
+      <CertaintyLossFactor MayRequire="Ludeon.RimWorld.Ideology">2.5</CertaintyLossFactor>
     </value>
   </Operation>
 
