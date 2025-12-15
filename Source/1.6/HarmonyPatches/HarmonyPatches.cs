@@ -8,11 +8,9 @@ namespace Maux36.RimPsyche.Disposition
     [StaticConstructorOnStartup]
     public static class HarmonyPatches
     {
-        private static Harmony harmony;
         static HarmonyPatches()
         {
-            harmony = new Harmony("rimworld.mod.Maux.RimPsyche.Disposition");
-
+            Harmony harmony = new Harmony("rimworld.mod.Maux.RimPsyche.Disposition");
 
             //RPD harmony patches
             harmony.PatchAllUncategorized(Assembly.GetExecutingAssembly());
@@ -46,9 +44,9 @@ namespace Maux36.RimPsyche.Disposition
             {
                 harmony.PatchCategory("EndlessGrowth");
             }
-            LongEventHandler.QueueLongEvent(DelayedUnpatch, "RPD_Unpatching", false, null);
+            LongEventHandler.QueueLongEvent(()=>DelayedUnpatch(harmony), "RPD_Unpatching", false, null);
         }
-        static void DelayedUnpatch()
+        static void DelayedUnpatch(Harmony harmony)
         {
             Unpatcher.UnpatchModContents(harmony);
         }
