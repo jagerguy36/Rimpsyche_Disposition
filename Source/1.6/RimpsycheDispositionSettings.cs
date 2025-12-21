@@ -7,7 +7,7 @@ namespace Maux36.RimPsyche.Disposition
         public const float default_moodOptimismC = 0.3f;
         public const float default_moodEmotionalityC = 0.3f;
         public const float default_moodIndividualC = 0.6f;
-        public const float default_joyIndividualC = 6f;
+        public const float default_joyIndividualC = 7.5f;
 
         public static bool useIndividualThoughts = true;
         public static bool useIndividualJoychance = true;
