@@ -28,14 +28,15 @@ namespace Maux36.RimPsyche.Disposition
             float eval = -1f;
             if (JoyGiverUtil.JoyChanceDB.TryGetValue(hashKey, out RimpsycheFormula joychanceFormula))
             {
-                //Log.Message($"{pawn.Name} registered {__instance.def.defName} chance. Key: {hashKey}");
                 if (joychanceFormula != null)
                 {
+                    float originalWeight = __result;
                     eval = compPsyche.Evaluate(joychanceFormula);
                     __result *= eval;
+                    Log.Message($"{pawn.Name} registered {__instance.def.defName}  base: {__instance.def.baseChance} | originalChance: {originalWeight} | eval: {eval} | result: {__result} | Key: {hashKey}");
                 }
             }
-            //if (eval <0) Log.Message($"{pawn.Name} blacklisted {__instance.def.defName}.");
+            if (eval <0) Log.Message($"{pawn.Name} blacklisted {__instance.def.defName}.");
             cache[hashKey] = eval;
             return;
         }

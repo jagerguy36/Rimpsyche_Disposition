@@ -7,6 +7,7 @@ namespace Maux36.RimPsyche.Disposition
         public const float default_moodOptimismC = 0.3f;
         public const float default_moodEmotionalityC = 0.3f;
         public const float default_moodIndividualC = 0.6f;
+        public const float default_joyIndividualC = 6f;
 
         public static bool useIndividualThoughts = true;
         public static bool useIndividualJoychance = true;
@@ -22,6 +23,7 @@ namespace Maux36.RimPsyche.Disposition
         public static float moodOptimismC = default_moodOptimismC;
         public static float moodEmotionalityC = default_moodEmotionalityC;
         public static float moodIndividualC = default_moodIndividualC;
+        public static float joyIndividualC = default_joyIndividualC;
 
         //UI
         public static bool sendExperimentMessage = true;
@@ -51,6 +53,7 @@ namespace Maux36.RimPsyche.Disposition
             Scribe_Values.Look(ref moodOptimismC, "Rimpsyche_moodOptimismC", default_moodOptimismC, true);
             Scribe_Values.Look(ref moodEmotionalityC, "Rimpsyche_moodEmotionalityC", default_moodEmotionalityC, true);
             Scribe_Values.Look(ref moodIndividualC, "Rimpsyche_moodIndividualC", default_moodIndividualC, true);
+            //Scribe_Values.Look(ref joyIndividualC, "Rimpsyche_joyIndividualC", default_joyIndividualC, true);
 
             Scribe_Values.Look(ref sendExperimentMessage, "Rimpsyche_sendExperimentMessage", true, true);
             Scribe_Values.Look(ref sendShameMessage, "Rimpsyche_sendShameMessage", true, true);

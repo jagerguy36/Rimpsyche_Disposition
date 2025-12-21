@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace Maux36.RimPsyche.Disposition
@@ -30,6 +31,13 @@ namespace Maux36.RimPsyche.Disposition
         public static void ModCompat()
         {
             JoyGiverDB.AddDefs_Mods(JoyChanceDB);
+        }
+        public static float Mult(float x, float mult)
+        {
+            x = Mathf.Clamp(x, -1f, 1f);
+            x = Rimpsyche_Utility.Boost(x);
+            if (x >= 0f) return (mult - 1f) * x + 1f;
+            else return (1f - (1f / mult)) * x + 1f;
         }
     }
 }
