@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using System.Reflection;
-using UnityEngine;
 using Verse;
 
 namespace Maux36.RimPsyche.Disposition
@@ -26,8 +25,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled != true)
                     return;
-                Log.Message($"Social Butterfly chance mult for {pawn.LabelShort}: {compPsyche.Evaluate(ButterflyJoinMult)}");
-                __result *= compPsyche.Evaluate(ButterflyJoinMult);
+                __result *= compPsyche.Evaluate(ButterflyJoinMult); //0~[0.7]~1.4
             }
         }
 
@@ -35,8 +33,8 @@ namespace Maux36.RimPsyche.Disposition
             "ButterflyJoinMult",
             (tracker) =>
             {
-                float reserved = 1 + Mathf.Min(0f, tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability));
-                return reserved;
+                float reserved = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                return 0.7f * reserved;
             },
         RimpsycheFormulaManager.FormulaIdDict
         );
