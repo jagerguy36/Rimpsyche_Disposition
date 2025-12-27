@@ -76,6 +76,10 @@
   <RimpsycheUseIndividualThoughtsTooltip>A pawn's personality influences the mood value of individual thoughts.</RimpsycheUseIndividualThoughtsTooltip>
   <RimpsycheMoodIndividualC>Individual Mood Influence</RimpsycheMoodIndividualC>
   <RimpsycheMoodIndividualCTooltip>How strongly a pawn's personality affects the mood impact of individual thoughts.</RimpsycheMoodIndividualCTooltip>
+  <RimpsycheUseIndividualJoychance>Individual Joy Chance Variance</RimpsycheUseIndividualJoychance>
+  <RimpsycheUseIndividualJoychanceTooltip>A pawn's personality influences which recreational activities they prefer.</RimpsycheUseIndividualJoychanceTooltip>
+  <RimpsycheJoyIndividualC>Individual Joy Chance Influence</RimpsycheJoyIndividualC>
+  <RimpsycheJoyIndividualCTooltip>How strongly a pawn's personality affects which recreational activities they prefer.</RimpsycheJoyIndividualCTooltip>
   <RimpsycheUseExperimentation>Experimentation</RimpsycheUseExperimentation>
   <RimpsycheUseExperimentationTooltip>Pawns may experiment while crafting or building, either increasing or decreasing an item's quality.</RimpsycheUseExperimentationTooltip>
   <RimpsycheUseSenseOfProgress>Sense of Progress</RimpsycheUseSenseOfProgress>

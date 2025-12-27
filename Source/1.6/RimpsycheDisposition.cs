@@ -56,8 +56,10 @@ namespace Maux36.RimPsyche.Disposition
             listing_Standard.Gap(6f);
             RimpsycheDispositionSettings.moodIndividualC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheMoodIndividualC".Translate() + " (" + "Default".Translate() + " " + RimpsycheDispositionSettings.default_moodIndividualC + "): " + RimpsycheDispositionSettings.moodIndividualC, RimpsycheDispositionSettings.moodIndividualC, 0.05f, 0.95f, tooltip: "RimpsycheMoodIndividualCTooltip".Translate()), 2);
             listing_Standard.Gap(6f);
-            //listing_Standard.CheckboxLabeled("RimpsycheUseIndividualJoychance".Translate(), ref RimpsycheDispositionSettings.useIndividualJoychance, "RimpsycheUseIndividualJoychanceTooltip".Translate());
-            //listing_Standard.Gap(6f);
+            listing_Standard.CheckboxLabeled("RimpsycheUseIndividualJoychance".Translate(), ref RimpsycheDispositionSettings.useIndividualJoychance, "RimpsycheUseIndividualJoychanceTooltip".Translate());
+            listing_Standard.Gap(6f);
+            RimpsycheDispositionSettings.joyIndividualC = (float)Math.Round(listing_Standard.SliderLabeled("RimpsycheJoyIndividualC".Translate() + " (" + "Default".Translate() + " " + RimpsycheDispositionSettings.default_joyIndividualC + "): " + RimpsycheDispositionSettings.joyIndividualC, RimpsycheDispositionSettings.joyIndividualC, 1f, 9f, tooltip: "RimpsycheJoyIndividualCTooltip".Translate()), 2);
+            listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseExperimentation".Translate(), ref RimpsycheDispositionSettings.useExperimentation, "RimpsycheUseExperimentationTooltip".Translate());
             listing_Standard.Gap(6f);
             listing_Standard.CheckboxLabeled("RimpsycheUseSenseOfProgress".Translate(), ref RimpsycheDispositionSettings.useSenseOfProgress, "RimpsycheUseSenseOfProgressTooltip".Translate());

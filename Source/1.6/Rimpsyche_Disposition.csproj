@@ -66,6 +66,7 @@
     <Compile Include="HarmonyPatches\MiscModPatches\Unpatcher.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\IndividualThoughtToAdd_LabelCap_Transpiler.cs" />
     <Compile Include="HarmonyPatches\MoodRelated\ThoughtHandler_MoodOffsetOfGroup_Patch.cs" />
+    <Compile Include="JoyGiverDB\MiscModJoyGiverDB.cs" />
     <Compile Include="JoyGiverDB\JoyGiverDB.cs" />
     <Compile Include="MoodDB\AnomalyDB.cs" />
     <Compile Include="MoodDB\BiotechDB.cs" />

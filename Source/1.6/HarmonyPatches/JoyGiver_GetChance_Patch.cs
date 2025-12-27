@@ -17,7 +17,8 @@ namespace Maux36.RimPsyche.Disposition
                 return;
             int hashKey = __instance.def.shortHash;
             var cache = compPsyche.JoyChanceEvaluationCache;
-            __result = TranslateBase(__result);
+            __result = JoyGiverUtil.JoyBaseTranslator(__result);
+            //float originalWeight = __result;
             //cache hit
             if (cache.TryGetValue(hashKey, out float value))
             {
@@ -31,20 +32,14 @@ namespace Maux36.RimPsyche.Disposition
             {
                 if (joychanceFormula != null)
                 {
-                    float originalWeight = __result;
                     eval = compPsyche.Evaluate(joychanceFormula);
                     __result *= eval;
-                    Log.Message($"{pawn.Name} registered {__instance.def.defName}  base: {__instance.def.baseChance} | originalChance: {originalWeight} | eval: {eval} | result: {__result} | Key: {hashKey}");
                 }
             }
+            //Log.Message($"{pawn.Name} registered {__instance.def.defName} | Key: {hashKey} |  base: {__instance.def.baseChance} | translatedBase: {originalWeight} | eval: {eval} | result: {__result}");
             //register cache or black list it with -1
             cache[hashKey] = eval;
             return;
-        }
-        private const float translateC = 10f; //translateC/2f is the middle value
-        private static float TranslateBase(float original)
-        {
-            return translateC * (original / (original + 2f)); // 2 as base.
         }
     }
 }
