@@ -25,7 +25,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled != true)
                     return;
-                __result *= compPsyche.Evaluate(ButterflyJoinMult); //0~[0.7]~1.4
+                __result *= compPsyche.Evaluate(ButterflyJoinMult); //0~[0.5]~1
             }
         }
 
@@ -33,8 +33,17 @@ namespace Maux36.RimPsyche.Disposition
             "ButterflyJoinMult",
             (tracker) =>
             {
-                float reserved = 1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
-                return 0.7f * reserved;
+                float sociability = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Sociability);
+                if (sociability < 0f)
+                {
+                    var x = sociability + 1f;
+                    return 0.5f * x * x * x;
+                }
+                else
+                {
+                    var y = sociability - 1f;
+                    return -0.5f * y * y + 1f;
+                }
             },
         RimpsycheFormulaManager.FormulaIdDict
         );
