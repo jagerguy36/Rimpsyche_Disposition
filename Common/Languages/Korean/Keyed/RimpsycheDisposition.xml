@@ -75,7 +75,11 @@
   <RimpsycheUseIndividualThoughts>개별 생각 차이</RimpsycheUseIndividualThoughts>
   <RimpsycheUseIndividualThoughtsTooltip>성격이 개별 생각의 무드 값에 영향을 줍니다.</RimpsycheUseIndividualThoughtsTooltip>
   <RimpsycheMoodIndividualC>개별 생각 영향</RimpsycheMoodIndividualC>
-  <RimpsycheMoodIndividualCTooltip>성격이 림의 개별 생각이 제공하는 기분에 영향을 끼치는 정도</RimpsycheMoodIndividualCTooltip>
+  <RimpsycheMoodIndividualCTooltip>성격이 림의 개별 생각이 제공하는 기분에 영향을 끼치는 정도.</RimpsycheMoodIndividualCTooltip>
+  <RimpsycheUseIndividualJoychance>개별 오락 취향</RimpsycheUseIndividualJoychance>
+  <RimpsycheUseIndividualJoychanceTooltip>성격이 개별 오락 활동 선호도에 영향을 줍니다.</RimpsycheUseIndividualJoychanceTooltip>
+  <RimpsycheJoyIndividualC>개별 오락 영향</RimpsycheJoyIndividualC>
+  <RimpsycheJoyIndividualCTooltip>성격이 림의 개별 오락 활동 선호도에 영향을 끼치는 정도.</RimpsycheJoyIndividualCTooltip>
   <RimpsycheUseExperimentation>실험정신</RimpsycheUseExperimentation>
   <RimpsycheUseExperimentationTooltip>림들이 제작/건설 중 종종 실험정신을 발휘합니다. 실험의 성공 여부에 따라 품질이 개선되거나 악화될 수 있습니다.</RimpsycheUseExperimentationTooltip>
   <RimpsycheUseSenseOfProgress>목적의식</RimpsycheUseSenseOfProgress>
