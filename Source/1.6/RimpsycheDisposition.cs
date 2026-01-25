@@ -29,7 +29,7 @@ namespace Maux36.RimPsyche.Disposition
         }
 
         private static Vector2 scrollPosition = new Vector2(0f, 0f);
-        private static float totalContentHeight = 800f;
+        private static float totalContentHeight = 820f;
         private const float ScrollBarWidthMargin = 18f;
         public override void DoSettingsWindowContents(Rect inRect)
         {
