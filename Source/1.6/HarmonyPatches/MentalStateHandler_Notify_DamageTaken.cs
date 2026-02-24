@@ -9,14 +9,14 @@ namespace Maux36.RimPsyche.Disposition
     [HarmonyPatch(typeof(MentalStateHandler), "Notify_DamageTaken")]
     public static class MentalStateHandler_Notify_DamageTaken
     {
-        static bool Prefix(Pawn ___pawn, bool ___neverFleeIndividual, DamageInfo dinfo)
+        public static bool Prefix(Pawn ___pawn, bool ___neverFleeIndividual, DamageInfo dinfo)
         {
             if (___pawn.Faction == Faction.OfPlayer || RimpsycheDispositionSettings.enemyFightorFlight)
             {
                 if (___pawn.Spawned && ___pawn.MentalStateDef == null && !___pawn.Downed && dinfo.Def.ExternalViolenceFor(___pawn) && ___pawn.RaceProps.Humanlike)
                 {
                     var compPsyche = ___pawn.compPsyche();
-                    if (compPsyche != null)
+                    if (compPsyche?.Enabled == true)
                     {
                         //Flight
                         if (___pawn.mindState.canFleeIndividual && !___neverFleeIndividual)
