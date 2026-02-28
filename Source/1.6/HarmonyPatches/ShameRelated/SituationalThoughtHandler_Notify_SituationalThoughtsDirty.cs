@@ -10,7 +10,6 @@ namespace Maux36.RimPsyche.Disposition
     {
         public static void Postfix(Pawn ___pawn)
         {
-            Log.Message("Cleaned");
             var compPsyche = ___pawn.compPsyche();
             compPsyche?.CleanShame();
         }
