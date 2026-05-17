@@ -33,9 +33,10 @@ namespace Maux36.RimPsyche.Disposition
                 successChance = 0.1f + relevantSkillLevel * compPsyche.Evaluate(CraftExperimentSuccessChanceMultiplier);
             }
             experimentChance = compPsyche.Evaluate(ExperimentChanceMultiplier) * (successChance) + Rand.Range(-pSpontaneityF, pSpontaneityF);
+            successChance += compPsyche.insight;
             num += Qvalue(relevantSkillLevel);
             int value = (int)Rand.GaussianAsymmetric(num, 0.6f * lowVarianceMultiplier, 0.8f * highVarianceMultiplier);
-            //Log.Message($"cahce: {compPsyche.Evaluate(ExperimentChanceMultiplier)} | experimental chance: {experimentChance} | successChance: {successChance} | relevantSkillLevel: {relevantSkillLevel} | lowVarianceMultiplier: {lowVarianceMultiplier} | highVarianceMultiplier: {highVarianceMultiplier} | value: {value}");
+            //Log.Message($"cahce: {compPsyche.Evaluate(ExperimentChanceMultiplier)} | experimental chance: {experimentChance} | successChance: {successChance} (insight: {compPsyche.insight}) | relevantSkillLevel: {relevantSkillLevel} | lowVarianceMultiplier: {lowVarianceMultiplier} | highVarianceMultiplier: {highVarianceMultiplier} | value: {value}");
             if (value >= 6)
             {
                 if (Rand.Value < experimentChance * 2f)
@@ -47,6 +48,7 @@ namespace Maux36.RimPsyche.Disposition
                         if (!inspired)
                         {
                             Find.LetterStack.ReceiveLetter("RP_BrilliantSuccessLabel".Translate(), "RP_BrilliantSuccessMessage".Translate(pawn.Named("PAWN")).AdjustedFor(pawn).CapitalizeFirst(), LetterDefOf.PositiveEvent, pawn);
+                            compPsyche.NotifyExperimentSuccessAtQuality(5);
                         }
                         value = 6;
                     }
@@ -89,6 +91,7 @@ namespace Maux36.RimPsyche.Disposition
                         {
                             Messages.Message("RP_MessageExperimentSuccess".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
                         }
+                        compPsyche.NotifyExperimentSuccessAtQuality(value);
                         value += 1;
                     }
                     else
@@ -106,6 +109,7 @@ namespace Maux36.RimPsyche.Disposition
                             {
                                 Messages.Message("RP_MessageExperimentFail".Translate(pawn.Named("PAWN")).AdjustedFor(pawn), pawn, MessageTypeDefOf.NeutralEvent);
                             }
+                            compPsyche.NotifyExperimentFailedAtQuality(value, relevantSkill);
                             value -= 1;
                         }
                     }
