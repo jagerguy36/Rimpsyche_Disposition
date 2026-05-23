@@ -8,7 +8,7 @@ namespace Maux36.RimPsyche.Disposition
     public class RimpsycheDisposition : Mod
     {
         public static RimpsycheDispositionSettings settings;
-        public const string CoreRequirement = "1.0.24";
+        public const string CoreRequirement = "1.0.39";
         public static string currentVersion;
         public RimpsycheDisposition(ModContentPack content) : base(content)
         {
@@ -21,7 +21,10 @@ namespace Maux36.RimPsyche.Disposition
             }
             var RimpsycheVersion = new Version(Rimpsyche.currentVersion);
             if (RimpsycheVersion < new Version(CoreRequirement))
+            {
                 Log.Error($"[Rimpsyche - Disposition] Disposition version {currentVersion} requires Rimpsyche Core version {CoreRequirement} or above. Your Core ({RimpsycheVersion}) needs to be updated or you will experience errors. If Steam does not automatically updates your mod, you can try un-subbing and re-subbing to force the update.");
+                DelayedErrorWindowRequest.Add($"Rimpsyche - Disposition version {currentVersion} requires Rimpsyche Personality Core version {CoreRequirement} or above.\n\nYour Personality Core ({RimpsycheVersion}) needs to be updated or you will experience errors.\n\nIf Steam does not automatically update your mod, you can try un-subbing and re-subbing to force the update.", "[Rimpsyche - Disposition] Core Version Mismatch");
+            }   
         }
         public override string SettingsCategory()
         {
