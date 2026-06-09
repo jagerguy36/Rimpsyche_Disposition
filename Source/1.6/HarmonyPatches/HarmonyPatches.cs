@@ -40,7 +40,7 @@ namespace Maux36.RimPsyche.Disposition
             }
 
             //Mod Supports
-            if (ModsConfig.IsActive("slimesenpai.endlessgrowth"))
+            if (Rimpsyche_Utility.IsModActive("slimesenpai.endlessgrowth"))
             {
                 harmony.PatchCategory("EndlessGrowth");
             }

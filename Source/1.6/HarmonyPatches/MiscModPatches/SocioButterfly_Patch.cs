@@ -11,7 +11,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             public static bool Prepare()
             {
-                if (ModsConfig.IsActive("lovelydovey.recreation.witheuterpe"))
+                if (Rimpsyche_Utility.IsModActive("lovelydovey.recreation.witheuterpe"))
                     return true;
                 return false;
             }

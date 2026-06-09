@@ -9,14 +9,14 @@ namespace Maux36.RimPsyche.Disposition
         public static void AddDefs_MiscMods(Dictionary<int, RimpsycheFormula> MoodThoughtTagDB, Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB)
         {
             activeModIds.Clear();
-            if (ModsConfig.IsActive("dubwise.dubsbadhygiene")) { AddDefs_DBH(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("dubwise.dubsbadhygiene"); }
-            if (ModsConfig.IsActive("ceteam.combatextended")) { AddDefs_CE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("ceteam.combatextended"); }
-            if (ModsConfig.IsActive("VanillaExpanded.VanillaSocialInteractionsExpanded")) { AddDefs_VSIE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("VanillaExpanded.VanillaSocialInteractionsExpanded"); }
-            if (ModsConfig.IsActive("vanillaexpanded.vcooke")) { AddDefs_VCE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vcooke"); }
-            if (ModsConfig.IsActive("vanillaexpanded.vbrewe")) { AddDefs_VBE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vbrewe"); }
-            if (ModsConfig.IsActive("hautarche.hautstraits")) { AddDefs_Haut(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("hautarche.hautstraits"); }
-            if (ModsConfig.IsActive("sumghai.mousekinrace")) { AddDefs_MouseKin(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("sumghai.mousekinrace"); }
-            if (ModsConfig.IsActive("goji.thesimstraits")) { AddDefs_TheSimsTraits(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("goji.thesimstraits"); }
+            if (Rimpsyche_Utility.IsModActive("dubwise.dubsbadhygiene")) { AddDefs_DBH(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("dubwise.dubsbadhygiene"); }
+            if (Rimpsyche_Utility.IsModActive("ceteam.combatextended")) { AddDefs_CE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("ceteam.combatextended"); }
+            if (Rimpsyche_Utility.IsModActive("VanillaExpanded.VanillaSocialInteractionsExpanded")) { AddDefs_VSIE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("VanillaExpanded.VanillaSocialInteractionsExpanded"); }
+            if (Rimpsyche_Utility.IsModActive("vanillaexpanded.vcooke")) { AddDefs_VCE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vcooke"); }
+            if (Rimpsyche_Utility.IsModActive("vanillaexpanded.vbrewe")) { AddDefs_VBE(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("vanillaexpanded.vbrewe"); }
+            if (Rimpsyche_Utility.IsModActive("hautarche.hautstraits")) { AddDefs_Haut(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("hautarche.hautstraits"); }
+            if (Rimpsyche_Utility.IsModActive("sumghai.mousekinrace")) { AddDefs_MouseKin(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("sumghai.mousekinrace"); }
+            if (Rimpsyche_Utility.IsModActive("goji.thesimstraits")) { AddDefs_TheSimsTraits(MoodThoughtTagDB, OpinionThoughtTagDB); activeModIds.Add("goji.thesimstraits"); }
 
             if (activeModIds.Count > 0)
             {

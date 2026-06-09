@@ -28,7 +28,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             public static bool Prepare()
             {
-                if (ModsConfig.IsActive("goji.thesimstraits") && RimpsycheDispositionSettings.useFightorFlight)
+                if (Rimpsyche_Utility.IsModActive("goji.thesimstraits") && RimpsycheDispositionSettings.useFightorFlight)
                     return true;
                 return false;
             }
@@ -74,7 +74,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             public static bool Prepare()
             {
-                if (ModsConfig.IsActive("goji.thesimstraits") && RimpsycheDispositionSettings.useFightorFlight)
+                if (Rimpsyche_Utility.IsModActive("goji.thesimstraits") && RimpsycheDispositionSettings.useFightorFlight)
                     return true;
                 return false;
             }
