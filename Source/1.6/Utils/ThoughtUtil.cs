@@ -86,8 +86,9 @@ namespace Maux36.RimPsyche.Disposition
 
         public static void Initialize()
         {
-            AddBaseThoughts();
-            ModCompat();
+            LoadModCompatibility();
+            // AddBaseThoughts();
+            // ModCompat();
         }
         private static void AddBaseThoughts()
         {
@@ -101,6 +102,76 @@ namespace Maux36.RimPsyche.Disposition
             if (ModsConfig.AnomalyActive) AnomalyDB.AddDefs_Anomaly(MoodThoughtTagDB, OpinionThoughtTagDB);
             if (ModsConfig.OdysseyActive) OdysseyDB.AddDefs_Odyssey(MoodThoughtTagDB, OpinionThoughtTagDB);
             MiscModDB.AddDefs_MiscMods(MoodThoughtTagDB, OpinionThoughtTagDB);
+        }
+        public static void LoadModCompatibility()
+        {
+            List<string> integratedMods = new List<string>();
+            foreach (var compDef in DefDatabase<RimpsycheCompatibilityDef>.AllDefs)
+            {
+                var modId = compDef.modContentPack.packageIdInt;
+                foreach (var mapping in compDef.moodThoughtMaps)
+                {
+                    RimpsycheFormula formula = GetFormulaFromTag(mapping.tag);
+                    if (formula != null)
+                    {
+                        RegisterThoughts(mapping.defNames, MoodThoughtTagDB, formula);
+                    }
+                }
+                foreach (var mapping in compDef.opinionThoughtMaps)
+                {
+                    RimpsycheFormula formula = GetFormulaFromTag(mapping.tag);
+                    if (formula != null)
+                    {
+                        RegisterThoughts(mapping.defNames, OpinionThoughtTagDB, formula);
+                    }
+                }
+
+                foreach (var mapping in compDef.stageMoodThoughtMaps)
+                {
+                    if (thought != null)
+                    {
+                        RimpsycheFormula[] formulaStages = new RimpsycheFormula[mapping.stages.Count];
+                        for (int i = 0; i < mapping.stageTags.Count; i++)
+                        {
+                            formulaStages[i] = GetFormulaFromTag(mapping.stages[i]);
+                        }
+                        RegisterStageThought(mapping.defName, MoodThoughtTagDB, formulaStages);
+                    }
+                }
+
+                foreach (var mapping in compDef.stageOpinionThoughtMaps)
+                {
+                    if (thought != null)
+                    {
+                        RimpsycheFormula[] formulaStages = new RimpsycheFormula[mapping.stages.Count];
+                        for (int i = 0; i < mapping.stageTags.Count; i++)
+                        {
+                            formulaStages[i] = GetFormulaFromTag(mapping.stages[i]);
+                        }
+                        RegisterStageThought(mapping.defName, OpinionThoughtTagDB, formulaStages);
+                    }
+                }
+
+                integratedMods.Add(modId);
+            }
+
+            if (integratedMods.Count > 0)
+            {
+                Log.Message("[Rimpsyche - Disposition] tagged thoughts from: " + string.Join(", ", integratedMods));
+            }
+        }
+        private static RimpsycheFormula GetFormulaFromTag(ThoughtTag tag)
+        {
+            switch (tag)
+            {
+                case ThoughtTag.None: return null;
+                case ThoughtTag.Tag_Affluence: return FormulaDB.Tag_Affluence;
+                case ThoughtTag.Tag_Morality: return FormulaDB.Tag_Morality;
+                case ThoughtTag.Tag_Judgemental: return FormulaDB.Tag_Judgemental;
+                default:
+                    Log.Warning($"[Rimpsyche - Disposition] Unhandled or invalid ThoughtTag discovered: {tag}");
+                    return null;
+            }
         }
     }
 
