@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<Defs>
+  <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
+    <defName>RP_MAP_DBH</defName>
+    <moodThoughtMaps>
+      <li>
+        <tag>Tag_Affluence</tag>
+        <defNames>
+          <li>ColdBath</li>
+          <li>ColdShower</li>
+          <li>ColdWater</li>
+          <li>DrankDirtyWater</li>
+          <li>DrankUrine</li>
+          <li>HeatedPool</li>
+          <li>HotBath</li>
+          <li>HotShower</li>
+          <li>HygieneLevel</li>
+          <li>UsedPrivateBathroom</li>
+        </defNames>
+      </li>
+      <li>
+        <tag>Tag_Decency</tag>
+        <defNames>
+          <li>SoiledSelf</li>
+          <li>ToiletPrivacy</li>
+          <li>WashPrivacy</li>
+          <li>openDefecation</li>
+        </defNames>
+      </li>
+      <li>
+        <tag>Tag_Needy</tag>
+        <defNames>
+          <li>BowelLevel</li>
+        </defNames>
+      </li>
+    </moodThoughtMaps>
+  </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
+</Defs>
