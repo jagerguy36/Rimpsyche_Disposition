@@ -90,10 +90,9 @@ namespace Maux36.RimPsyche.Disposition
         }
         public static void TagThoughts()
         {
-            List<string> integratedMods = new List<string>();
+            List<string> integratedMapDefs = new List<string>();
             foreach (var mapDef in DefDatabase<ThoughtTagMappingDef>.AllDefs)
             {
-                var MappingDefName = mapDef.defName;
                 foreach (var mapping in mapDef.moodThoughtMaps)
                 {
                     RimpsycheFormula formula = GetFormulaFromTag(mapping.tag);
@@ -130,12 +129,12 @@ namespace Maux36.RimPsyche.Disposition
                     }
                     RegisterStageThought(mapping.defName, OpinionThoughtTagDB, formulaStages);
                 }
-                integratedMods.Add(MappingDefName);
+                integratedMapDefs.Add(mapDef.defName);
             }
 
-            if (integratedMods.Count > 0)
+            if (integratedMapDefs.Count > 0)
             {
-                Log.Message("[Rimpsyche - Disposition] tagged thoughts from: " + string.Join(", ", integratedMods));
+                Log.Message("[Rimpsyche - Disposition] tagged thoughts from: " + string.Join(", ", integratedMapDefs));
             }
         }
         public static void RegisterThoughts(IEnumerable<string> defNames, Dictionary<int, RimpsycheFormula> targetDb, RimpsycheFormula value)
@@ -150,7 +149,7 @@ namespace Maux36.RimPsyche.Disposition
                 }
                 else
                 {
-                    Log.Warning($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
+                    Log.Warning($"[Rimpsyche - Disposition] Could not find ThoughtDef named '{defName}' to tag.");
                 }
             }
         }
@@ -160,6 +159,12 @@ namespace Maux36.RimPsyche.Disposition
             if (thoughtDef != null)
             {
                 //Log.Message($"Tagging ThoughDef: {thoughtDef.defName}");
+                int stageCount = thoughtDef.stages?.Count ?? 0;
+                if (values.Count != stageCount)
+                {
+                    Log.Error($"[Rimpsyche - Disposition] Mismatch in '{defName}': Provided stage tag formulas count ({values.Count}) does not match ThoughtDef stages count ({stageCount}).");
+                    return;
+                }
                 for (int i = 0; i < values.Count; i++)
                 {
                     targetDb[(i << 16) | thoughtDef.shortHash] = values[i];
@@ -167,7 +172,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             else
             {
-                Log.Warning($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
+                Log.Warning($"[Rimpsyche - Disposition] Could not find ThoughtDef named '{defName}' to tag.");
             }
         }
         private static RimpsycheFormula GetFormulaFromTag(ThoughtTag tag)
