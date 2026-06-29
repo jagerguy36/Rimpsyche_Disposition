@@ -156,5 +156,52 @@
         </defNames>
       </li>
     </opinionThoughtMaps>
+    <stageMoodThoughtMaps>
+      <li>
+        <defName>Mousekin_Thought_KnowColonistExecuted</defName>
+        <stageTags>
+          <li>Tag_JustifiedGuilt</li> <!--justified execution-->
+          <li>Tag_Empathy</li> <!--someone was euthanized-->
+          <li>Tag_Empathy_M</li> <!--someone was executed-->
+          <li>Tag_Empathy_M</li> <!--someone was organ-murdered-->
+        </stageTags>
+      </li>
+      <li>
+        <defName>Mousekin_Thought_KnowGuestExecuted</defName>
+        <stageTags>
+          <li>Tag_JustifiedGuilt</li> <!--justified execution-->
+          <li>Tag_Empathy</li> <!--someone was euthanized-->
+          <li>Tag_Empathy_M</li> <!--someone was executed-->
+          <li>Tag_Empathy_M</li> <!--someone was organ-murdered-->
+        </stageTags>
+      </li>
+    </stageMoodThoughtMaps>
+    <stageOpinionThoughtMaps>
+      <li>
+        <defName>Mousekin_Thought_FaithAffinityOpinions</defName>
+        <stageTags>
+          <li>None</li> <!--Apostates vs Nones-->
+          <li>None</li> <!--Apostates vs Apostate-->
+          <li>None</li> <!--Apostates vs Devotionist -->
+          <li>None</li> <!--Apostates vs Pious -->
+          <li>Tag_Judgemental</li> <!--Apostates vs Inquisitionist-->
+          <li>None</li> <!--Devotionist vs Nones-->
+          <li>Tag_Judgemental</li> <!--Devotionist vs Apostate-->
+          <li>Tag_Judgemental</li> <!--Devotionist vs Devotionist -->
+          <li>None</li> <!--Devotionist vs Pious -->
+          <li>Tag_Judgemental</li> <!--Devotionist vs Inquisitionist -->
+          <li>None</li> <!--Pious vs Nones-->
+          <li>Tag_Judgemental</li> <!--Pious vs Apostate-->
+          <li>Tag_Judgemental</li> <!--Pious vs Devotionist -->
+          <li>Tag_Judgemental</li> <!--Pious vs Pious -->
+          <li>Tag_Judgemental</li> <!--Pious vs Inquisitionist -->
+          <li>Tag_Morality</li> <!--Inquisitionist vs Nones-->
+          <li>Tag_Morality</li> <!--Inquisitionist vs Apostate-->
+          <li>Tag_Morality</li> <!--Inquisitionist vs Devotionist -->
+          <li>Tag_Morality</li> <!--Inquisitionist vs Pious -->
+          <li>Tag_Morality</li> <!--Inquisitionist vs Inquisitionist-->
+        </stageTags>
+      </li>
+    </stageOpinionThoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>

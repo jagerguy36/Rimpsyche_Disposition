@@ -397,5 +397,55 @@
         </defNames>
       </li>
     </opinionThoughtMaps>
+    <stageMoodThoughtMaps>
+      <li>
+        <defName>KnowGuestExecuted</defName>
+        <stageTags>
+          <li>Tag_JustifiedGuilt</li> <!--justified execution-->
+          <li>Tag_Empathy</li> <!--someone was euthanized-->
+          <li>Tag_Empathy_M</li> <!--someone was executed-->
+          <li>Tag_Empathy_M</li> <!--someone was organ-murdered-->
+          <li>Tag_Empathy_M</li> <!--someone was ripscanned-->
+        </stageTags>
+      </li>
+      <li>
+        <defName>KnowColonistExecuted</defName>
+        <stageTags>
+          <li>Tag_JustifiedGuilt</li> <!--justified execution-->
+          <li>Tag_Empathy</li> <!--someone was euthanized-->
+          <li>Tag_Empathy_M</li> <!--someone was executed-->
+          <li>Tag_Empathy_M</li> <!--someone was organ-murdered-->
+          <li>Tag_Empathy_M</li> <!--someone was ripscanned-->
+        </stageTags>
+      </li>
+      <li>
+        <defName>NeedJoy</defName>
+        <stageTags>
+          <li>Tag_Needy</li>
+          <li>Tag_Needy</li>
+          <li>Tag_Needy</li>
+          <li>Tag_Affluence</li>
+          <li>Tag_Affluence</li>
+        </stageTags>
+      </li>
+      <li>
+        <defName>NeedComfort</defName>
+        <stageTags>
+          <li>Tag_Needy</li>
+          <li>Tag_Affluence</li>
+          <li>Tag_Affluence</li>
+          <li>Tag_Affluence</li>
+          <li>Tag_Affluence</li>
+        </stageTags>
+      </li>
+      <li>
+        <defName>NeedRoomSize</defName>
+        <stageTags>
+          <li>Tag_Needy</li>
+          <li>Tag_Needy</li>
+          <li>Tag_Affluence</li>
+        </stageTags>
+      </li>
+    </stageMoodThoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>

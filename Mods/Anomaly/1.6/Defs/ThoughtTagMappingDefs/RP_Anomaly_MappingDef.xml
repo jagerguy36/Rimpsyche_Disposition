@@ -65,5 +65,14 @@
         </defNames>
       </li>
     </opinionThoughtMaps>
+    <stageMoodThoughtMaps>
+      <li>
+        <defName>UnnaturalDarkness</defName>
+        <stageTags>
+          <li>Tag_Fear</li>
+          <li>None</li>
+        </stageTags>
+      </li>
+    </stageMoodThoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>
