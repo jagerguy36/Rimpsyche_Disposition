@@ -86,30 +86,15 @@ namespace Maux36.RimPsyche.Disposition
 
         public static void Initialize()
         {
-            LoadModCompatibility();
-            // AddBaseThoughts();
-            // ModCompat();
+            TagThoughts();
         }
-        private static void AddBaseThoughts()
-        {
-            CoreDB.AddDefs_Vanilla(MoodThoughtTagDB, OpinionThoughtTagDB);
-        }
-        public static void ModCompat()
-        {
-            if (ModsConfig.RoyaltyActive) RoyaltyDB.AddDefs_Royalty(MoodThoughtTagDB, OpinionThoughtTagDB);
-            if (ModsConfig.IdeologyActive) IdeologyDB.AddDefs_Ideology(MoodThoughtTagDB, OpinionThoughtTagDB);
-            if (ModsConfig.BiotechActive) BiotechDB.AddDefs_Biotech(MoodThoughtTagDB, OpinionThoughtTagDB);
-            if (ModsConfig.AnomalyActive) AnomalyDB.AddDefs_Anomaly(MoodThoughtTagDB, OpinionThoughtTagDB);
-            if (ModsConfig.OdysseyActive) OdysseyDB.AddDefs_Odyssey(MoodThoughtTagDB, OpinionThoughtTagDB);
-            MiscModDB.AddDefs_MiscMods(MoodThoughtTagDB, OpinionThoughtTagDB);
-        }
-        public static void LoadModCompatibility()
+        public static void TagThoughts()
         {
             List<string> integratedMods = new List<string>();
-            foreach (var compDef in DefDatabase<RimpsycheCompatibilityDef>.AllDefs)
+            foreach (var mapDef in DefDatabase<ThoughtTagMappingDef>.AllDefs)
             {
-                var modId = compDef.modContentPack.packageIdInt;
-                foreach (var mapping in compDef.moodThoughtMaps)
+                var MappingDefName = mapDef.defName;
+                foreach (var mapping in mapDef.moodThoughtMaps)
                 {
                     RimpsycheFormula formula = GetFormulaFromTag(mapping.tag);
                     if (formula != null)
@@ -117,7 +102,7 @@ namespace Maux36.RimPsyche.Disposition
                         RegisterThoughts(mapping.defNames, MoodThoughtTagDB, formula);
                     }
                 }
-                foreach (var mapping in compDef.opinionThoughtMaps)
+                foreach (var mapping in mapDef.opinionThoughtMaps)
                 {
                     RimpsycheFormula formula = GetFormulaFromTag(mapping.tag);
                     if (formula != null)
@@ -126,38 +111,63 @@ namespace Maux36.RimPsyche.Disposition
                     }
                 }
 
-                foreach (var mapping in compDef.stageMoodThoughtMaps)
+                foreach (var mapping in mapDef.stageMoodThoughtMaps)
                 {
-                    if (thought != null)
+                    List<RimpsycheFormula> formulaStages = new List<RimpsycheFormula>(mapping.stageTags.Count);
+                    for (int i = 0; i < mapping.stageTags.Count; i++)
                     {
-                        RimpsycheFormula[] formulaStages = new RimpsycheFormula[mapping.stages.Count];
-                        for (int i = 0; i < mapping.stageTags.Count; i++)
-                        {
-                            formulaStages[i] = GetFormulaFromTag(mapping.stages[i]);
-                        }
-                        RegisterStageThought(mapping.defName, MoodThoughtTagDB, formulaStages);
+                        formulaStages[i] = GetFormulaFromTag(mapping.stageTags[i]);
                     }
+                    RegisterStageThought(mapping.defName, MoodThoughtTagDB, formulaStages);
                 }
 
-                foreach (var mapping in compDef.stageOpinionThoughtMaps)
+                foreach (var mapping in mapDef.stageOpinionThoughtMaps)
                 {
-                    if (thought != null)
+                    List<RimpsycheFormula> formulaStages = new List<RimpsycheFormula>(mapping.stageTags.Count);
+                    for (int i = 0; i < mapping.stageTags.Count; i++)
                     {
-                        RimpsycheFormula[] formulaStages = new RimpsycheFormula[mapping.stages.Count];
-                        for (int i = 0; i < mapping.stageTags.Count; i++)
-                        {
-                            formulaStages[i] = GetFormulaFromTag(mapping.stages[i]);
-                        }
-                        RegisterStageThought(mapping.defName, OpinionThoughtTagDB, formulaStages);
+                        formulaStages[i] = GetFormulaFromTag(mapping.stageTags[i]);
                     }
+                    RegisterStageThought(mapping.defName, OpinionThoughtTagDB, formulaStages);
                 }
-
-                integratedMods.Add(modId);
+                integratedMods.Add(MappingDefName);
             }
 
             if (integratedMods.Count > 0)
             {
                 Log.Message("[Rimpsyche - Disposition] tagged thoughts from: " + string.Join(", ", integratedMods));
+            }
+        }
+        public static void RegisterThoughts(IEnumerable<string> defNames, Dictionary<int, RimpsycheFormula> targetDb, RimpsycheFormula value)
+        {
+            foreach (var defName in defNames)
+            {
+                var thoughtDef = DefDatabase<ThoughtDef>.GetNamed(defName, false);
+                if (thoughtDef != null)
+                {
+                    //Log.Message($"Tagging ThoughDef: {thoughtDef.defName}");
+                    targetDb[(0 << 16) | thoughtDef.shortHash] = value;
+                }
+                else
+                {
+                    Log.Warning($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
+                }
+            }
+        }
+        public static void RegisterStageThought(string defName, Dictionary<int, RimpsycheFormula> targetDb, List<RimpsycheFormula> values)
+        {
+            var thoughtDef = DefDatabase<ThoughtDef>.GetNamed(defName, false);
+            if (thoughtDef != null)
+            {
+                //Log.Message($"Tagging ThoughDef: {thoughtDef.defName}");
+                for (int i = 0; i < values.Count; i++)
+                {
+                    targetDb[(i << 16) | thoughtDef.shortHash] = values[i];
+                }
+            }
+            else
+            {
+                Log.Warning($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
             }
         }
         private static RimpsycheFormula GetFormulaFromTag(ThoughtTag tag)
@@ -218,6 +228,4 @@ namespace Maux36.RimPsyche.Disposition
             }
         }
     }
-
-    //Harmony
 }

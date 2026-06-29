@@ -54,8 +54,7 @@ namespace Maux36.RimPsyche.Disposition
         Tag_Preference,
         Tag_Openmindedness,
         // Only Stage
-        Tag_JustifiedGuilt,
-        Tag_Needy_Art
+        Tag_JustifiedGuilt
     }
 
     public class ThoughtTagMappingDef : Def
