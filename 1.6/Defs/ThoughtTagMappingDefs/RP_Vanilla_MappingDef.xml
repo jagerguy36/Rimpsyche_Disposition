@@ -274,6 +274,7 @@
         <defNames>
           <li>DeadMansApparel</li>
           <li>Naked</li>
+          <li>SharedBed</li>
           <li>WrongApparelGender</li>
         </defNames>
       </li>
@@ -366,12 +367,6 @@
           <li>KilledMyMother</li>
           <li>KilledMySister</li>
           <li>KilledMySon</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Decency</tag>
-        <defNames>
-          <li>SharedBed</li>
         </defNames>
       </li>
       <li>

@@ -43,12 +43,12 @@ namespace Maux36.RimPsyche.Disposition
             //cache miss
             //First try OpinionThoughtTagDB
             float eval = -1f;
-            if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(__instance.def.shortHash, out RimpsycheFormula opinionFormula))
+            if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(hashKey, out RimpsycheFormula opinionFormula))
             {
                 if (opinionFormula != null)
                 {
                     eval = compPsyche.Evaluate(opinionFormula);
-                    __result *= value;
+                    __result *= eval;
                 }
             }
             cache[hashKey] = eval;
