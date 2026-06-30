@@ -53,16 +53,13 @@ namespace Maux36.RimPsyche.Disposition
         Tag_Judgemental,
         Tag_Preference,
         Tag_Openmindedness,
-        // Only Stage
         Tag_JustifiedGuilt
     }
 
     public class ThoughtTagMappingDef : Def
     {
-        public List<ThoughtTagMapping> moodThoughtMaps = new List<ThoughtTagMapping>();
-        public List<ThoughtTagMapping> opinionThoughtMaps = new List<ThoughtTagMapping>();
-        public List<StageThoughtTagMapping> stageMoodThoughtMaps = new List<StageThoughtTagMapping>();
-        public List<StageThoughtTagMapping> stageOpinionThoughtMaps = new List<StageThoughtTagMapping>();
+        public List<ThoughtTagMapping> thoughtMaps = new List<ThoughtTagMapping>();
+        public List<StageThoughtTagMapping> stageThoughtMaps = new List<StageThoughtTagMapping>();
     }
 
     public class ThoughtTagMapping

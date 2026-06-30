@@ -44,7 +44,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             //cache miss
             float eval = -1f;
-            if (ThoughtUtil.MoodThoughtTagDB.TryGetValue(hashKey, out RimpsycheFormula thoughtFormula))
+            if (ThoughtTagDB.TryGetValue(hashKey, out RimpsycheFormula thoughtFormula))
             {
                 //Log.Message($"{pawn.Name} registered {thought.def.defName} with stage: {thought.CurStageIndex}. Key: {hashKey}");
                 if (thoughtFormula != null)
@@ -72,8 +72,7 @@ namespace Maux36.RimPsyche.Disposition
             }
         }
 
-        public static Dictionary<int, RimpsycheFormula> MoodThoughtTagDB = [];
-        public static Dictionary<int, RimpsycheFormula> OpinionThoughtTagDB = [];
+        public static Dictionary<int, RimpsycheFormula> ThoughtTagDB = [];
 
         static ThoughtUtil()
         {
@@ -90,46 +89,28 @@ namespace Maux36.RimPsyche.Disposition
         }
         public static void TagThoughts()
         {
-            List<string> integratedMapDefs = new List<string>();
+            HashSet<string> integratedMapDefs = new HashSet<string>();
             foreach (var mapDef in DefDatabase<ThoughtTagMappingDef>.AllDefs)
             {
-                foreach (var mapping in mapDef.moodThoughtMaps)
+                foreach (var mapping in mapDef.thoughtMaps)
                 {
                     RimpsycheFormula formula = GetFormulaFromTag(mapping.tag);
                     if (formula != null)
                     {
-                        RegisterThoughts(mapping.defNames, MoodThoughtTagDB, formula);
-                    }
-                }
-                foreach (var mapping in mapDef.opinionThoughtMaps)
-                {
-                    RimpsycheFormula formula = GetFormulaFromTag(mapping.tag);
-                    if (formula != null)
-                    {
-                        RegisterThoughts(mapping.defNames, OpinionThoughtTagDB, formula);
+                        RegisterThoughts(mapping.defNames, ThoughtTagDB, formula);
                     }
                 }
 
-                foreach (var mapping in mapDef.stageMoodThoughtMaps)
+                foreach (var mapping in mapDef.stageThoughtMaps)
                 {
                     List<RimpsycheFormula> formulaStages = new List<RimpsycheFormula>(mapping.stageTags.Count);
                     for (int i = 0; i < mapping.stageTags.Count; i++)
                     {
-                        formulaStages[i] = GetFormulaFromTag(mapping.stageTags[i]);
+                        formulaStages.Add(GetFormulaFromTag(mapping.stageTags[i]));
                     }
-                    RegisterStageThought(mapping.defName, MoodThoughtTagDB, formulaStages);
+                    RegisterStageThought(mapping.defName, ThoughtTagDB, formulaStages);
                 }
-
-                foreach (var mapping in mapDef.stageOpinionThoughtMaps)
-                {
-                    List<RimpsycheFormula> formulaStages = new List<RimpsycheFormula>(mapping.stageTags.Count);
-                    for (int i = 0; i < mapping.stageTags.Count; i++)
-                    {
-                        formulaStages[i] = GetFormulaFromTag(mapping.stageTags[i]);
-                    }
-                    RegisterStageThought(mapping.defName, OpinionThoughtTagDB, formulaStages);
-                }
-                integratedMapDefs.Add(mapDef.defName);
+                integratedMapDefs.Add(mapDef.label??mapDef.defName);
             }
 
             if (integratedMapDefs.Count > 0)
@@ -227,6 +208,7 @@ namespace Maux36.RimPsyche.Disposition
                 case ThoughtTag.Tag_Judgemental: return FormulaDB.Tag_Judgemental;
                 case ThoughtTag.Tag_Preference: return FormulaDB.Tag_Preference;
                 case ThoughtTag.Tag_Openmindedness: return FormulaDB.Tag_Openmindedness;
+                case ThoughtTag.Tag_JustifiedGuilt: return FormulaDB.Tag_JustifiedGuilt;
                 default:
                     Log.Warning($"[Rimpsyche - Disposition] Unhandled or invalid ThoughtTag discovered: {tag}");
                     return null;

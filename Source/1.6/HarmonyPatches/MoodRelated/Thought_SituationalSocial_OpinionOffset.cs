@@ -30,10 +30,10 @@ namespace Maux36.RimPsyche.Disposition
 
             //Individual Thoughts
             if (!useIndividualThoughtsSetting) return;
-
+            //var originalOffset = __result;
             int stageIndex = __instance.CurStageIndex;
             int hashKey = (stageIndex << 16) | __instance.def.shortHash;
-            var cache = compPsyche.OpinionEvaluationCache;
+            var cache = compPsyche.ThoughtEvaluationCache;
             //cache hit
             if (cache.TryGetValue(hashKey, out float value))
             {
@@ -43,15 +43,18 @@ namespace Maux36.RimPsyche.Disposition
             //cache miss
             //First try OpinionThoughtTagDB
             float eval = -1f;
-            if (ThoughtUtil.OpinionThoughtTagDB.TryGetValue(hashKey, out RimpsycheFormula opinionFormula))
+            if (ThoughtUtil.ThoughtTagDB.TryGetValue(hashKey, out RimpsycheFormula opinionFormula))
             {
+                //Log.Message($"{___pawn.Name} registered {__instance.def.defName} with stage: {__instance.CurStageIndex}. Key: {hashKey}");
                 if (opinionFormula != null)
                 {
                     eval = compPsyche.Evaluate(opinionFormula);
                     __result *= eval;
                 }
             }
+            //if (eval < 0) Log.Message($"{___pawn.Name} blacklisted {__instance.def.defName} with stage: {__instance.CurStageIndex}");
             cache[hashKey] = eval;
+            //Log.Message($"{___pawn.Name} opinion with defname {__instance.def.defName} | originalOffset {originalOffset} became {__result}");
         }
     }
 }
