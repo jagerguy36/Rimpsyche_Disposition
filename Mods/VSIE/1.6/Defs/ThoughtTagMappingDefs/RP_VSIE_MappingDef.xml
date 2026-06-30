@@ -1,39 +1,19 @@
 <?xml version="1.0" ?>
 <Defs>
   <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
-    <defName>RP_MAP_VSIE</defName>
-    <moodThoughtMaps>
+    <defName>RPD_map_VSIE</defName>
+    <label>VSIE</label>
+    <thoughtMaps>
       <li>
         <tag>Tag_Gathering</tag>
         <defNames>
           <li>VSIE_AttendedBingeParty</li>
           <li>VSIE_AttendedBirthdayParty</li>
+          <li>VSIE_AttendedMyWedding</li>
           <li>VSIE_AttendedOutdoorParty</li>
+          <li>VSIE_DidNotAttendWedding</li>
           <li>VSIE_HadBirthdayParty</li>
           <li>VSIE_HadNiceChatWithBeer</li>
-          <li>VSIE_SharingBurden</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Sympathy</tag>
-        <defNames>
-          <li>VSIE_VentedOnMe</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Loved</tag>
-        <defNames>
-          <li>VSIE_GotSomeLovin</li>
-          <li>VSIE_JealouslyMyPartnerDatedSomeoneElse</li>
-        </defNames>
-      </li>
-    </moodThoughtMaps>
-    <opinionThoughtMaps>
-      <li>
-        <tag>Tag_Gathering</tag>
-        <defNames>
-          <li>VSIE_AttendedMyWedding</li>
-          <li>VSIE_DidNotAttendWedding</li>
           <li>VSIE_SharingBurden</li>
         </defNames>
       </li>
@@ -67,6 +47,6 @@
           <li>VSIE_IngestedHumanFlesh</li>
         </defNames>
       </li>
-    </opinionThoughtMaps>
+    </thoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>

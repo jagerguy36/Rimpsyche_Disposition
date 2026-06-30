@@ -1,20 +1,27 @@
 <?xml version="1.0" ?>
 <Defs>
   <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
-    <defName>RP_MAP_Haut</defName>
-    <moodThoughtMaps>
+    <defName>RPD_map_Haut</defName>
+    <label>HautTraits</label>
+    <thoughtMaps>
       <li>
         <tag>Tag_Art</tag>
         <defNames>
           <li>HVT_NeedBeautyAestheticist</li>
-          <li>HVT_WAUW</li>
+          <li MayRequire="Ludeon.RimWorld.Odyssey">HVT_WAUW</li>
         </defNames>
       </li>
       <li>
         <tag>Tag_Fear</tag>
         <defNames>
           <li>HVT_Agrizoophobia</li>
-          <li>HVT_HauntingPresence</li>
+          <li MayRequire="Ludeon.RimWorld.Anomaly">HVT_HauntingPresence</li>
+        </defNames>
+      </li>
+      <li>
+        <tag>Tag_Bond</tag>
+        <defNames>
+          <li>HVT_BondsOfLoyalty</li>
         </defNames>
       </li>
       <li>
@@ -52,26 +59,13 @@
       <li>
         <tag>Tag_Judgemental</tag>
         <defNames>
-          <li>HVT_XenogenePurism</li>
-        </defNames>
-      </li>
-    </moodThoughtMaps>
-    <opinionThoughtMaps>
-      <li>
-        <tag>Tag_Bond</tag>
-        <defNames>
-          <li>HVT_BondsOfLoyalty</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Judgemental</tag>
-        <defNames>
-          <li>HVT_GenePurism</li>
-          <li>HVT_Intolerance</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">HVT_GenePurism</li>
+          <li MayRequire="Ludeon.RimWorld.Ideology">HVT_Intolerance</li>
           <li>HVT_TextileVsNaked</li>
-          <li>HVT_VsDoubtful</li>
+          <li MayRequire="Ludeon.RimWorld.Ideology">HVT_VsDoubtful</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">HVT_XenogenePurism</li>
         </defNames>
       </li>
-    </opinionThoughtMaps>
+    </thoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>

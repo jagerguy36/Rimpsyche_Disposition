@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
 <Defs>
   <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
-    <defName>RP_MAP_Royalty</defName>
-    <moodThoughtMaps>
+    <defName>RPD_map_Royalty</defName>
+    <label>Royalty</label>
+    <thoughtMaps>
       <li>
         <tag>Tag_Affluence</tag>
         <defNames>
@@ -38,14 +39,12 @@
           <li>ListeningToPiano</li>
         </defNames>
       </li>
-    </moodThoughtMaps>
-    <opinionThoughtMaps>
       <li>
         <tag>Tag_Loved</tag>
         <defNames>
           <li>PsychicLove</li>
         </defNames>
       </li>
-    </opinionThoughtMaps>
+    </thoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>

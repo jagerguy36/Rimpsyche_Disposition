@@ -1,11 +1,13 @@
 <?xml version="1.0" ?>
 <Defs>
   <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
-    <defName>RP_MAP_Odyssey</defName>
-    <moodThoughtMaps>
+    <defName>RPD_map_Odyssey</defName>
+    <label>Odyssey</label>
+    <thoughtMaps>
       <li>
         <tag>Tag_Empathy_M</tag>
         <defNames>
+          <li>SlaughteredFish_Know_Prohibited</li>
           <li>SlaughteredFish_Know_Prohibited_Mood</li>
         </defNames>
       </li>
@@ -13,6 +15,7 @@
         <tag>Tag_Empathy_J</tag>
         <defNames>
           <li>SlaughteredFish_Disapproved</li>
+          <li>SlaughteredFish_Know_Disapproved</li>
           <li>SlaughteredFish_Know_Disapproved_Mood</li>
         </defNames>
       </li>
@@ -25,26 +28,12 @@
           <li>SpaceHabitat_Mood</li>
         </defNames>
       </li>
-    </moodThoughtMaps>
-    <opinionThoughtMaps>
-      <li>
-        <tag>Tag_Empathy_M</tag>
-        <defNames>
-          <li>SlaughteredFish_Know_Prohibited</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Empathy_J</tag>
-        <defNames>
-          <li>SlaughteredFish_Know_Disapproved</li>
-        </defNames>
-      </li>
       <li>
         <tag>Tag_Affluence</tag>
         <defNames>
           <li>MadeStatueOfMe</li>
         </defNames>
       </li>
-    </opinionThoughtMaps>
+    </thoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>

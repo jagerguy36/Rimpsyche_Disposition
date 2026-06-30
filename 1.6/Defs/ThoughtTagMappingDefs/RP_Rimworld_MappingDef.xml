@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
 <Defs>
   <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
-    <defName>RP_MAP_Vanilla</defName>
-    <moodThoughtMaps>
+    <defName>RPD_map_Rimworld</defName>
+    <label>Rimworld</label>
+    <thoughtMaps>
       <li>
         <tag>Tag_Preference</tag>
         <defNames>
@@ -17,6 +18,7 @@
           <li>AteHumanlikeMeatAsIngredient</li>
           <li>AteHumanlikeMeatDirect</li>
           <li>ButcheredHumanlikeCorpse</li>
+          <li>ButcheredHumanlikeCorpseOpinion</li>
           <li>KnowButcheredHumanlikeCorpse</li>
           <li>KnowColonistOrganHarvested</li>
           <li>KnowGuestOrganHarvested</li>
@@ -99,11 +101,18 @@
       <li>
         <tag>Tag_Loved</tag>
         <defNames>
+          <li>Affair</li>
+          <li>BrokeUpWithMe</li>
           <li>BrokeUpWithMeMood</li>
+          <li>CheatedOnMe</li>
           <li>CheatedOnMeMood</li>
+          <li>DivorcedMe</li>
           <li>DivorcedMeMood</li>
           <li>GotMarried</li>
           <li>GotSomeLovin</li>
+          <li>HoneymoonPhase</li>
+          <li>OpinionOfMyLover</li>
+          <li>RejectedMyProposal</li>
           <li>RejectedMyProposalMood</li>
           <li>WantToSleepWithSpouseOrLover</li>
         </defNames>
@@ -218,8 +227,14 @@
       <li>
         <tag>Tag_Harmed</tag>
         <defNames>
+          <li>BotchedMySurgery</li>
+          <li>ForcedMeToTakeDrugs</li>
           <li>ForcedMeToTakeDrugsMood</li>
+          <li>ForcedMeToTakeLuciferium</li>
           <li>ForcedMeToTakeLuciferiumMood</li>
+          <li>HarmedMe</li>
+          <li>HoldingMePrisoner</li>
+          <li>KilledMyFriend</li>
           <li>MyOrganHarvested</li>
           <li>WasImprisoned</li>
         </defNames>
@@ -260,13 +275,30 @@
       <li>
         <tag>Tag_Harmed_Loved</tag>
         <defNames>
+          <li>KilledMyFiance</li>
+          <li>KilledMyLover</li>
+          <li>KilledMySpouse</li>
           <li>SoldMyLovedOne</li>
         </defNames>
       </li>
       <li>
         <tag>Tag_Harmed_Bond</tag>
         <defNames>
+          <li>KilledMyBondedAnimal</li>
+          <li>SoldMyBondedAnimal</li>
           <li>SoldMyBondedAnimalMood</li>
+        </defNames>
+      </li>
+      <li>
+        <tag>Tag_Harmed_Kin</tag>
+        <defNames>
+          <li>KilledMyBrother</li>
+          <li>KilledMyDaughter</li>
+          <li>KilledMyFather</li>
+          <li>KilledMyKin</li>
+          <li>KilledMyMother</li>
+          <li>KilledMySister</li>
+          <li>KilledMySon</li>
         </defNames>
       </li>
       <li>
@@ -297,79 +329,6 @@
         </defNames>
       </li>
       <li>
-        <tag>Tag_Bond</tag>
-        <defNames>
-          <li>BondedAnimalMaster</li>
-          <li>NotBondedAnimalMaster</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Art</tag>
-        <defNames>
-          <li>Aurora</li>
-        </defNames>
-      </li>
-    </moodThoughtMaps>
-    <opinionThoughtMaps>
-      <li>
-        <tag>Tag_Empathy_M</tag>
-        <defNames>
-          <li>ButcheredHumanlikeCorpseOpinion</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Loved</tag>
-        <defNames>
-          <li>Affair</li>
-          <li>BrokeUpWithMe</li>
-          <li>CheatedOnMe</li>
-          <li>DivorcedMe</li>
-          <li>GotSomeLovin</li>
-          <li>HoneymoonPhase</li>
-          <li>OpinionOfMyLover</li>
-          <li>RejectedMyProposal</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Harmed</tag>
-        <defNames>
-          <li>BotchedMySurgery</li>
-          <li>ForcedMeToTakeDrugs</li>
-          <li>ForcedMeToTakeLuciferium</li>
-          <li>HarmedMe</li>
-          <li>HoldingMePrisoner</li>
-          <li>KilledMyFriend</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Harmed_Loved</tag>
-        <defNames>
-          <li>KilledMyFiance</li>
-          <li>KilledMyLover</li>
-          <li>KilledMySpouse</li>
-          <li>SoldMyLovedOne</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Harmed_Bond</tag>
-        <defNames>
-          <li>KilledMyBondedAnimal</li>
-          <li>SoldMyBondedAnimal</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Harmed_Kin</tag>
-        <defNames>
-          <li>KilledMyBrother</li>
-          <li>KilledMyDaughter</li>
-          <li>KilledMyFather</li>
-          <li>KilledMyKin</li>
-          <li>KilledMyMother</li>
-          <li>KilledMySister</li>
-          <li>KilledMySon</li>
-        </defNames>
-      </li>
-      <li>
         <tag>Tag_Judgemental</tag>
         <defNames>
           <li>BodyPuristDisgust</li>
@@ -391,8 +350,21 @@
           <li>SoldPrisoner</li>
         </defNames>
       </li>
-    </opinionThoughtMaps>
-    <stageMoodThoughtMaps>
+      <li>
+        <tag>Tag_Bond</tag>
+        <defNames>
+          <li>BondedAnimalMaster</li>
+          <li>NotBondedAnimalMaster</li>
+        </defNames>
+      </li>
+      <li>
+        <tag>Tag_Art</tag>
+        <defNames>
+          <li>Aurora</li>
+        </defNames>
+      </li>
+    </thoughtMaps>
+    <stageThoughtMaps>
       <li>
         <defName>KnowGuestExecuted</defName>
         <stageTags>
@@ -400,7 +372,7 @@
           <li>Tag_Empathy</li> <!--someone was euthanized-->
           <li>Tag_Empathy_M</li> <!--someone was executed-->
           <li>Tag_Empathy_M</li> <!--someone was organ-murdered-->
-          <li>Tag_Empathy_M</li> <!--someone was ripscanned-->
+          <li MayRequire="Ludeon.RimWorld.Biotech">Tag_Empathy_M</li> <!--someone was ripscanned-->
         </stageTags>
       </li>
       <li>
@@ -410,7 +382,7 @@
           <li>Tag_Empathy</li> <!--someone was euthanized-->
           <li>Tag_Empathy_M</li> <!--someone was executed-->
           <li>Tag_Empathy_M</li> <!--someone was organ-murdered-->
-          <li>Tag_Empathy_M</li> <!--someone was ripscanned-->
+          <li MayRequire="Ludeon.RimWorld.Biotech">Tag_Empathy_M</li> <!--someone was ripscanned-->
         </stageTags>
       </li>
       <li>
@@ -441,6 +413,6 @@
           <li>Tag_Affluence</li>
         </stageTags>
       </li>
-    </stageMoodThoughtMaps>
+    </stageThoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>

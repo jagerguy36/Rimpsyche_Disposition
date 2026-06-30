@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
 <Defs>
   <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
-    <defName>RP_MAP_Biotech</defName>
-    <moodThoughtMaps>
+    <defName>RPD_map_Biotech</defName>
+    <label>Biotech</label>
+    <thoughtMaps>
       <li>
         <tag>Tag_Judgemental</tag>
         <defNames>
@@ -12,6 +13,8 @@
           <li>BloodfeederDied_Reviled</li>
           <li>Bloodfeeder_ReveredBloodfeeder</li>
           <li>Bloodfeeder_ReviledBloodfeeder</li>
+          <li>Bloodfeeders_Revered_Opinion_Bloodfeeder</li>
+          <li>Bloodfeeders_Reviled_Opinion_Bloodfeeder</li>
           <li>ChildLabor_Encouraged_ChildAssignedRecreation</li>
           <li>ChildLabor_Encouraged_ChildAssignedWork</li>
           <li>GrowthVat_Essential_ChildNotInGrowthVat</li>
@@ -19,6 +22,7 @@
           <li>GrowthVat_Prohibited_ChildInGrowthVat</li>
           <li>GrowthVat_Prohibited_ChildNotInGrowthVat</li>
           <li>GrowthVat_Prohibited_GrowthVatInColony</li>
+          <li>PreferredXenotype</li>
           <li>PreferredXenotypeMakeup</li>
           <li>SelfDislikedXenotype</li>
         </defNames>
@@ -28,12 +32,14 @@
         <defNames>
           <li>EnslavedChild</li>
           <li>KilledChild</li>
+          <li>KilledChild_Opinion</li>
         </defNames>
       </li>
       <li>
         <tag>Tag_Empathy_Kin</tag>
         <defNames>
           <li>BabyBorn</li>
+          <li>KilledMyBirthMother</li>
           <li>Miscarried</li>
           <li>MyBirthMotherDied</li>
           <li>PregnancyTerminated</li>
@@ -58,7 +64,16 @@
         <tag>Tag_Harmed</tag>
         <defNames>
           <li>FedOn</li>
+          <li>FedOn_Social</li>
           <li>XenogermHarvested_Prisoner</li>
+        </defNames>
+      </li>
+      <li>
+        <tag>Tag_Gathering</tag>
+        <defNames>
+          <li>GaveLesson</li>
+          <li>PlayedWithMe</li>
+          <li>WasTaught</li>
         </defNames>
       </li>
       <li>
@@ -87,42 +102,6 @@
           <li>Recluse</li>
         </defNames>
       </li>
-    </moodThoughtMaps>
-    <opinionThoughtMaps>
-      <li>
-        <tag>Tag_Judgemental</tag>
-        <defNames>
-          <li>Bloodfeeders_Revered_Opinion_Bloodfeeder</li>
-          <li>Bloodfeeders_Reviled_Opinion_Bloodfeeder</li>
-          <li>PreferredXenotype</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Empathy_M</tag>
-        <defNames>
-          <li>KilledChild_Opinion</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Empathy_Kin</tag>
-        <defNames>
-          <li>KilledMyBirthMother</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Harmed</tag>
-        <defNames>
-          <li>FedOn_Social</li>
-        </defNames>
-      </li>
-      <li>
-        <tag>Tag_Gathering</tag>
-        <defNames>
-          <li>GaveLesson</li>
-          <li>PlayedWithMe</li>
-          <li>WasTaught</li>
-        </defNames>
-      </li>
-    </opinionThoughtMaps>
+    </thoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>

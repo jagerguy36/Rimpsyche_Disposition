@@ -9,7 +9,7 @@
 		<li IfModActive="ceteam.combatextended">Mods/CombatExtended/1.6</li>
 		<li IfModActive="consolidatedtraits.lc.rw">Mods/ConsolidatedTraits/1.6</li>
 		<li IfModActive="dubwise.dubsbadhygiene">Mods/DBH/1.6</li>
-		<li IfModActive="hautarche.hautstraits">Mods/Haut_Added_Trait/1.6</li>
+		<li IfModActive="hautarche.hautstraits">Mods/HautTraits/1.6</li>
 		<li IfModActive="Ludeon.RimWorld.Ideology">Mods/Ideology/1.6</li>
 		<li IfModActive="sumghai.mousekinrace">Mods/MouseKin/1.6</li>
 		<li IfModActive="Ludeon.RimWorld.Odyssey">Mods/Odyssey/1.6</li>

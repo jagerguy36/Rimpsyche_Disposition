@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
 <Defs>
   <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
-    <defName>RP_MAP_VCE</defName>
-    <moodThoughtMaps>
+    <defName>RPD_map_VCE</defName>
+    <label>VCE</label>
+    <thoughtMaps>
       <li>
         <tag>Tag_Affluence</tag>
         <defNames>
@@ -29,6 +30,6 @@
           <li>VCE_SmokeleafButterHigh</li>
         </defNames>
       </li>
-    </moodThoughtMaps>
+    </thoughtMaps>
   </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
 </Defs>
