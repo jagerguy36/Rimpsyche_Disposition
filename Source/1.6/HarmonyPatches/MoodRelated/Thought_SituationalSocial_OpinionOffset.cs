@@ -43,12 +43,12 @@ namespace Maux36.RimPsyche.Disposition
             //cache miss
             //First try OpinionThoughtTagDB
             float eval = -1f;
-            if (ThoughtUtil.ThoughtTagDB.TryGetValue(hashKey, out RimpsycheFormula opinionFormula))
+            if (ThoughtUtil.ThoughtTagDB.TryGetValue(hashKey, out RimpsycheFormula tagFormula))
             {
                 //Log.Message($"{___pawn.Name} registered {__instance.def.defName} with stage: {__instance.CurStageIndex}. Key: {hashKey}");
-                if (opinionFormula != null)
+                if (tagFormula != null)
                 {
-                    eval = compPsyche.Evaluate(opinionFormula);
+                    eval = compPsyche.Evaluate(tagFormula);
                     __result *= eval;
                 }
             }
