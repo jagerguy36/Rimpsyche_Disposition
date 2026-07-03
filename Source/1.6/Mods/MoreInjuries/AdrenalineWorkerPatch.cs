@@ -1,24 +1,15 @@
 ﻿using HarmonyLib;
 using MoreInjuries;
 using MoreInjuries.Defs.WellKnown;
-using System;
 using System.Reflection;
 using UnityEngine;
 using Verse;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Maux36.RimPsyche.Disposition.MoreInjuries
 {
     [HarmonyPatch]
     public static class AdrenalineWorkerPatch
     {
-        public static bool Prepare()
-        {
-            if (RimpsycheDispositionSettings.useFightorFlight)
-                return true;
-            return false;
-        }
-
         static MethodBase TargetMethod()
         {
             var type = AccessTools.TypeByName(

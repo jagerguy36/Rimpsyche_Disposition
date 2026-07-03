@@ -10,6 +10,11 @@ namespace Maux36.RimPsyche.Disposition.MoreInjuries
     {
         static HarmonyInit()
         {
+            if (!RimpsycheDispositionSettings.useFightorFlight)
+            {
+                Log.Message("[Rimpsyche - Disposition] Not using Fight or Flight. Skip patching More Injuries");
+                return;
+            }
             var harmony = new Harmony("rimworld.mod.Maux.RimPsyche.Disposition.MoreInjuries");
             try
             {
