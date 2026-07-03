@@ -14,11 +14,11 @@ namespace Maux36.RimPsyche.Disposition.Ideology
             try
             {
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
-                Log.Message($"[Rimpsyche Disposition] Ideology patched");
+                Log.Message($"[Rimpsyche - Disposition] Ideology patched");
             }
             catch (Exception e)
             {
-                Log.Error($"[Rimpsyche] Ideology patch failed: {e}");
+                Log.Error($"[Rimpsyche - Disposition] Ideology patch failed: {e}");
             }
         }
     }

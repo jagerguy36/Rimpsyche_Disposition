@@ -17,7 +17,7 @@ namespace Maux36.RimPsyche.Disposition
                 }
                 else
                 {
-                    Log.Warning($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
+                    Log.Warning($"[Rimpsyche - Disposition] Could not find ThoughtDef named '{defName}'.");
                 }
             }
         }
@@ -30,7 +30,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             else
             {
-                Log.Warning($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
+                Log.Warning($"[Rimpsyche - Disposition] Could not find ThoughtDef named '{defName}'.");
             }
         }
         public static void RegisterStageThought(string defName, Dictionary<int, RimpsycheFormula> targetDb, List<RimpsycheFormula> values)
@@ -45,7 +45,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             else
             {
-                Log.Warning($"[Rimpsyche] Could not find ThoughtDef named '{defName}'.");
+                Log.Warning($"[Rimpsyche - Disposition] Could not find ThoughtDef named '{defName}'.");
             }
         }
     }

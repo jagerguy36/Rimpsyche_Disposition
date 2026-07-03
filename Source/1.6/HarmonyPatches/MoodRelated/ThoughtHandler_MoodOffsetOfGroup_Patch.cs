@@ -36,7 +36,7 @@ namespace Maux36.RimPsyche.Disposition
             }
             if (!patched)
             {
-                Log.Error("[Rimpsyche] Mood thought transpiler failed to patch");
+                Log.Error("[Rimpsyche - Disposition] Mood thought transpiler failed to patch");
             }
         }
     }

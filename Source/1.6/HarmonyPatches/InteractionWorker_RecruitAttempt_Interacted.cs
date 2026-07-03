@@ -42,7 +42,7 @@ namespace Maux36.RimPsyche.Disposition
                 }
                 yield return instr;
             }
-            if (!injected) Log.Warning("[Rimpsyche] InteractionWorker_RecruitAttempt_Interacted: failed to inject multiplier (pattern not found).");
+            if (!injected) Log.Warning("[RimPsyche - Disposition] InteractionWorker_RecruitAttempt_Interacted: failed to inject multiplier (pattern not found).");
         }
     }
 
