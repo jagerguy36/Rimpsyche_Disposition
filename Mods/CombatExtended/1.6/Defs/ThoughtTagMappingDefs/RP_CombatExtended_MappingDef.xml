@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<Defs>
+  <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
+    <defName>RPD_map_CombatExtended</defName>
+    <label>CombatExtended</label>
+    <thoughtMaps>
+      <li>
+        <tag>Tag_Fear</tag>
+        <defNames>
+          <li>Suppressed</li>
+        </defNames>
+      </li>
+    </thoughtMaps>
+  </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
+</Defs>

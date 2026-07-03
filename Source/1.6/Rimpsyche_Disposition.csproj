@@ -70,14 +70,7 @@
     <Compile Include="HarmonyPatches\ShameRelated\SituationalThoughtHandler_Notify_SituationalThoughtsDirty.cs" />
     <Compile Include="JoyGiverDB\MiscModJoyGiverDB.cs" />
     <Compile Include="JoyGiverDB\JoyGiverDB.cs" />
-    <Compile Include="MoodDB\AnomalyDB.cs" />
-    <Compile Include="MoodDB\BiotechDB.cs" />
-    <Compile Include="MoodDB\CoreDB.cs" />
-    <Compile Include="MoodDB\IdeologyDB.cs" />
-    <Compile Include="MoodDB\MiscModDB.cs" />
-    <Compile Include="MoodDB\OdysseyDB.cs" />
-    <Compile Include="MoodDB\RoyaltyDB.cs" />
-    <Compile Include="MoodDB\BaseThoughtDB.cs" />
+    <Compile Include="Defs\ThoughtTagMappingDef.cs" />
     <Compile Include="StatParts\Deliberation\PsycheDeliberationCookingSpeedStatPart.cs" />
     <Compile Include="Utils\FightorFlightUtil.cs" />
     <Compile Include="DefOfDisposition.cs" />

@@ -48,7 +48,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
             }
             else
             {
-                Log.Message("[RimPsyche] failed to patch Current Terror Description.");
+                Log.Message("[Rimpsyche - Disposition] failed to patch Current Terror Description.");
             }
             return codes;
         }

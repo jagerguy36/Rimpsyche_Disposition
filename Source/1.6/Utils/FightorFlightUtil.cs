@@ -36,6 +36,23 @@ namespace Maux36.RimPsyche.Disposition
             return true;
         }
 
+        public static void ApplyAdrenaline(Pawn pawn, float gain)
+        {
+            if (gain > 0f)
+            {
+                HealthUtility.AdjustSeverity(pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
+            }
+        }
+        public static void NotifyDamageTaken(Pawn pawn, float damage, float psycheAdrenalineValue)
+        {
+            float dmgPercent = damage / pawn.health.LethalDamageThreshold;
+            float gain = psycheAdrenalineValue * dmgPercent;
+            if (gain > 0f)
+            {
+                HealthUtility.AdjustSeverity(pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
+            }
+        }
+
         public static bool DangerousToBeAt(Pawn pawn, IntVec3 location, int threatDistSquared=threatDistSquared)
         {
             tmpInvIds.Clear();

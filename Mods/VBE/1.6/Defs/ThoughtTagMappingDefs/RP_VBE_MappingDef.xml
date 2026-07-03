@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<Defs>
+  <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
+    <defName>RPD_map_VBE</defName>
+    <label>VBE</label>
+    <thoughtMaps>
+      <li>
+        <tag>Tag_Affluence</tag>
+        <defNames>
+          <li>VBE_DrankTea</li>
+          <li>VCE_AteCheese</li>
+        </defNames>
+      </li>
+    </thoughtMaps>
+  </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
+</Defs>

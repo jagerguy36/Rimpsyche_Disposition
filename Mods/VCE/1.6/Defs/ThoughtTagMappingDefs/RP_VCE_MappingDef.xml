@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<Defs>
+  <Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
+    <defName>RPD_map_VCE</defName>
+    <label>VCE</label>
+    <thoughtMaps>
+      <li>
+        <tag>Tag_Affluence</tag>
+        <defNames>
+          <li>VCE_AteCheese</li>
+          <li>VCE_AteFineDessert</li>
+          <li>VCE_AteFineGrill</li>
+          <li>VCE_AteFriedGoods</li>
+          <li>VCE_AteGourmetDessert</li>
+          <li>VCE_AteGourmetGrill</li>
+          <li>VCE_AteGourmetMeal</li>
+          <li>VCE_AteLavishDessert</li>
+          <li>VCE_AteLavishGrill</li>
+          <li>VCE_AteSimpleDessert</li>
+          <li>VCE_AteSimpleGrill</li>
+          <li>VCE_ConsumedAgave</li>
+          <li>VCE_ConsumedCannedGoods</li>
+          <li>VCE_ConsumedChocolateSyrup</li>
+          <li>VCE_ConsumedDigestibleResurrectorNanites</li>
+          <li>VCE_ConsumedInsectJelly</li>
+          <li>VCE_ConsumedMayo</li>
+          <li>VCE_ConsumedSalt</li>
+          <li>VCE_ConsumedSpices</li>
+          <li>VCE_ConsumedSugar</li>
+          <li>VCE_SmokeleafButterHigh</li>
+        </defNames>
+      </li>
+    </thoughtMaps>
+  </Maux36.RimPsyche.Disposition.ThoughtTagMappingDef>
+</Defs>

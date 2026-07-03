@@ -15,7 +15,7 @@ namespace Maux36.RimPsyche.Disposition
             currentVersion = content.ModMetaData.ModVersion;
             settings = GetSettings<RimpsycheDispositionSettings>();
 
-            if (!ModsConfig.IsActive("maux36.rimpsyche"))
+            if (ModLister.GetActiveModWithIdentifier("maux36.rimpsyche", ignorePostfix: true) == null)
             {
                 Log.Error("[Rimpsyche - Disposition] Rimpsyche not loaded. The dependency was not met and the game will not run correctly");
             }

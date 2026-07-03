@@ -10,14 +10,14 @@ namespace Maux36.RimPsyche.Disposition
         public static void AddDefs_Mods(Dictionary<int, RimpsycheFormula> JoyChanceDB)
         {
             //Dubs Bad Hygiene
-            if (ModsConfig.IsActive("dubwise.dubsbadhygiene"))
+            if (Rimpsyche_Utility.IsModActive("dubwise.dubsbadhygiene"))
             {
                 RegisterJoyChanceMultiplier("UseHotTub", JoyChanceDB, UseHotTubChanceMultiplier);
                 RegisterJoyChanceMultiplier("WatchWashingMachine", JoyChanceDB, WatchWashingMachineChanceMultiplier);
             }
 
             //Vanilla Furniture Expanded
-            if (ModsConfig.IsActive("vanillaexpanded.vfecore"))
+            if (Rimpsyche_Utility.IsModActive("vanillaexpanded.vfecore"))
             {
                 RegisterJoyChanceMultiplier("Play_Roulette", JoyChanceDB, Play_RouletteChanceMultiplier);
                 RegisterJoyChanceMultiplier("Play_Arcade", JoyChanceDB, Play_ArcadeChanceMultiplier);
@@ -30,7 +30,7 @@ namespace Maux36.RimPsyche.Disposition
             }
 
             //Misc. Training
-            if (ModsConfig.IsActive("haplo.miscellaneous.training"))
+            if (Rimpsyche_Utility.IsModActive("haplo.miscellaneous.training"))
             {
                 RegisterJoyChanceMultiplier("ShootSomeArrows", JoyChanceDB, TrainShootingChanceMultiplier);
                 RegisterJoyChanceMultiplier("PracticeShooting", JoyChanceDB, TrainShootingChanceMultiplier);
@@ -38,14 +38,14 @@ namespace Maux36.RimPsyche.Disposition
             }
 
             //Vanilla Factions Expanded - Medieval 2
-            if (ModsConfig.IsActive("oskarpotocki.vfe.medieval2"))
+            if (Rimpsyche_Utility.IsModActive("oskarpotocki.vfe.medieval2"))
             {
                 RegisterJoyChanceMultiplier("VFEM2_Play_Archery", JoyChanceDB, TrainShootingChanceMultiplier);
                 RegisterJoyChanceMultiplier("VFEM2_Play_TrainingDummy", JoyChanceDB, TrainMeleeChanceMultiplier);
             }
 
             //Medieval Overhaul
-            if (ModsConfig.IsActive("dankpyon.medieval.overhaul"))
+            if (Rimpsyche_Utility.IsModActive("dankpyon.medieval.overhaul"))
             {
                 RegisterJoyChanceMultiplier("DankPyon_Play_CupAndDice", JoyChanceDB, JoyGiverDB.Play_PokerChanceMultiplier);
                 RegisterJoyChanceMultiplier("DankPyon_Play_Tarocco", JoyChanceDB, JoyGiverDB.Play_ChessChanceMultiplier);
@@ -53,7 +53,7 @@ namespace Maux36.RimPsyche.Disposition
             }
 
             //Rimbody
-            if (ModsConfig.IsActive("maux36.rimbody"))
+            if (Rimpsyche_Utility.IsModActive("maux36.rimbody"))
             {
                 RegisterJoyChanceMultiplier("Rimbody_WorkoutJoy", JoyChanceDB, WorkoutChanceMultiplier);
             }

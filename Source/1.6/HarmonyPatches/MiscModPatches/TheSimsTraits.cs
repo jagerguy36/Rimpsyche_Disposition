@@ -28,7 +28,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             public static bool Prepare()
             {
-                if (ModsConfig.IsActive("goji.thesimstraits") && RimpsycheDispositionSettings.useFightorFlight)
+                if (Rimpsyche_Utility.IsModActive("goji.thesimstraits") && RimpsycheDispositionSettings.useFightorFlight)
                     return true;
                 return false;
             }
@@ -48,17 +48,15 @@ namespace Maux36.RimPsyche.Disposition
                     typeof(DamageInfo?),
                     typeof(DamageWorker.DamageResult)
                 });
-                var newHediffField = AccessTools.Field(typeof(DefOfDisposition), nameof(DefOfDisposition.Rimpsyche_AdrenalineRush));
-                var adjustSeverityMethod = AccessTools.Method(typeof(HealthUtility), nameof(HealthUtility.AdjustSeverity));
+                var applyAdrenalineMethod = AccessTools.Method(typeof(FightorFlightUtil), nameof(FightorFlightUtil.ApplyAdrenaline));
 
                 for (int i = 0; i < codes.Count; i++)
                 {
                     if (i + 8 < codes.Count && codes[i].opcode == OpCodes.Ldloc_S && codes[i + 8].Calls(addHediffMethod))
                     {
                         yield return codes[i];
-                        yield return new CodeInstruction(OpCodes.Ldsfld, newHediffField);
                         yield return new CodeInstruction(OpCodes.Ldc_R4, 1f);
-                        yield return new CodeInstruction(OpCodes.Call, adjustSeverityMethod);
+                        yield return new CodeInstruction(OpCodes.Call, applyAdrenalineMethod);
 
                         // Need to remove the pop IL line as well.
                         i += 9;
@@ -74,7 +72,7 @@ namespace Maux36.RimPsyche.Disposition
         {
             public static bool Prepare()
             {
-                if (ModsConfig.IsActive("goji.thesimstraits") && RimpsycheDispositionSettings.useFightorFlight)
+                if (Rimpsyche_Utility.IsModActive("goji.thesimstraits") && RimpsycheDispositionSettings.useFightorFlight)
                     return true;
                 return false;
             }
@@ -94,19 +92,17 @@ namespace Maux36.RimPsyche.Disposition
                     typeof(DamageInfo?),
                     typeof(DamageWorker.DamageResult)
                 });
-                var newHediffField = AccessTools.Field(typeof(DefOfDisposition), nameof(DefOfDisposition.Rimpsyche_AdrenalineRush));
-                var adjustSeverityMethod = AccessTools.Method(typeof(HealthUtility), nameof(HealthUtility.AdjustSeverity));
+                var applyAdrenalineMethod = AccessTools.Method(typeof(FightorFlightUtil), nameof(FightorFlightUtil.ApplyAdrenaline));
                 for (int i = 0; i < codes.Count; i++)
                 {
                     if (i + 8 < codes.Count && codes[i + 8].Calls(addHediffMethod))
                     {
                         yield return codes[i];
-                        yield return new CodeInstruction(OpCodes.Ldsfld, newHediffField);
                         //To make RP_adrenaline dissapear in 600tick (the same as TS_adrenaline), the severity needs to be 0.048f
                         //However, since RP_adrenaline does not grant any bonus until sev becomes 0.1, we're buffing it a bit.
                         //This stacks with bravety fight or flight. But with Daredevil, even gentle pawns can get adrenaline.
                         yield return new CodeInstruction(OpCodes.Ldc_R4, 0.060f);
-                        yield return new CodeInstruction(OpCodes.Call, adjustSeverityMethod);
+                        yield return new CodeInstruction(OpCodes.Call, applyAdrenalineMethod);
 
                         // Need to remove the pop IL line as well.
                         i += 9;
