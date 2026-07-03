@@ -1,4 +1,4 @@
-Rimpsyche Disposition Module
+# Rimpsyche Disposition Module
 
 ## Steam Workshop
 [Steam Page](https://steamcommunity.com/sharedfiles/filedetails/?id=3578212339)
