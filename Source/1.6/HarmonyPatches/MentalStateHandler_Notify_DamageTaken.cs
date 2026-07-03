@@ -43,12 +43,7 @@ namespace Maux36.RimPsyche.Disposition
                         }
                         //Fight
                         float adrenalineMult = compPsyche.Evaluate(FormulaDB.AdrenalineGain);
-                        float dmgPercent = dinfo.Amount/___pawn.health.LethalDamageThreshold;
-                        float gain = adrenalineMult * dmgPercent;
-                        if (gain > 0f)
-                        {
-                            HealthUtility.AdjustSeverity(___pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
-                        }
+                        FightorFlightUtil.NotifyDamageTaken(___pawn, dinfo.Amount, adrenalineMult);
                         return false;
                     }
                     else
