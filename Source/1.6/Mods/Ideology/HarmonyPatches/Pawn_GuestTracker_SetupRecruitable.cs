@@ -46,7 +46,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
             }
             if (!found)
             {
-                Log.Warning("[Rimpsyche] Could not find the target instruction for Pawn_GuestTracker.SetGuestStatus transpiler patch. (Ideology)");
+                Log.Warning("[Rimpsyche - Disposition] Could not find the target instruction for Pawn_GuestTracker.SetGuestStatus transpiler patch. (Ideology)");
             }
             return codes;
         }

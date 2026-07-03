@@ -14,6 +14,7 @@
 		<li IfModActive="sumghai.mousekinrace">Mods/MouseKin/1.6</li>
 		<li IfModActive="Ludeon.RimWorld.Odyssey">Mods/Odyssey/1.6</li>
 		<li IfModActive="Ludeon.RimWorld.Royalty">Mods/Royalty/1.6</li>
+		<li IfModActive="th3fr3d.extendedinjuries">Mods/MoreInjuries/1.6</li>
 		<li IfModNotActive="haskilaik.rimpsychedisposition.russian">Mods/RussianTranslation_CreeeesP</li>
 		<li IfModActive="mlie.syrindividuality">Mods/SYR_Individuality/1.6</li>
 		<li IfModActive="goji.thesimstraits">Mods/TheSimsTraits/1.6</li>
