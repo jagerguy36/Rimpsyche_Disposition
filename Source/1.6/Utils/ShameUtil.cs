@@ -34,14 +34,12 @@ namespace Maux36.RimPsyche.Disposition
             return true;
         }
 
-        //TODO: RegionBased search with better performance and better location selection.
-        //Also check TryFindDirectFleeDestination
         public static IntVec3 FindHideInShameLocation(Pawn pawn)
         {
             IntVec3 position = pawn.Position;
             IntVec3 bestCell = position;
             FloatRange temperature = pawn.ComfortableTemperatureRange();
-            List<Pawn> all_pawns = ScanObservers(pawn, maxDistSquared);
+            List<Pawn> all_pawns = ScanPotentialObservers(pawn, maxDistSquared);
 
             // Find best candidate
             int bestScore = -100;
@@ -120,7 +118,7 @@ namespace Maux36.RimPsyche.Disposition
         //         ).ToList();
         //     return all_pawns;
         // }
-        public static List<Pawn> ScanObservers(Pawn pawn, int distSquared = sightDistSquared) //For finding suitable hiding location
+        public static List<Pawn> ScanPotentialObservers(Pawn pawn, int distSquared = sightDistSquared) //For finding suitable hiding location
         {
             List<Pawn> all_pawns = new();
             tmpInvIds.Clear();
@@ -141,7 +139,7 @@ namespace Maux36.RimPsyche.Disposition
                         && list[i] is Pawn otherPawn
                         && (otherPawn.RaceProps.Humanlike)
                         && !loverIdHash.Contains(otherPawn.thingIDNumber)
-                        && otherPawn.Position.DistanceToSquared(pawnPos) < distSquared
+                        // && otherPawn.Position.DistanceToSquared(pawnPos) < distSquared //Relevant dist check will be done by MightBeSeen anyway
                         && otherPawn.Awake()
                     )
                     {
