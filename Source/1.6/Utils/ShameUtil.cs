@@ -13,9 +13,8 @@ namespace Maux36.RimPsyche.Disposition
         private const int runDistanceMax = 50; //How far the pawn will move
         private const int maxDistSquared = (sightDistance + runDistanceMax) * (sightDistance + runDistanceMax);
         private const int sightDistSquared = sightDistance * sightDistance;
-        private static HashSet<Pawn> tmpLovePartners = new HashSet<Pawn>{};
-        private static List<Pawn> tmpObservers = new List<Pawn>();
-        private static HashSet<int> tmpInvIds = new HashSet<int> { };
+        private static HashSet<int> tmpLovePartnersId = new HashSet<int>{};
+        private static HashSet<int> tmpInvIds = new HashSet<int>{};
 
         public static bool CanFeelShame(Pawn pawn)
         {
@@ -109,88 +108,87 @@ namespace Maux36.RimPsyche.Disposition
             }
             return bestCell;
         }
-        public static List<Pawn> ScanObservers(Pawn pawn, int distSquared = sightDistSquared)
+        // public static List<Pawn> ScanObservers_AllPawnsSpawned(Pawn pawn, int distSquared = sightDistSquared)
+        // {
+        //     var loverIdHash = ExistingLovePartnersId(pawn);
+        //     List<Pawn> all_pawns = pawn.Map.mapPawns.AllPawnsSpawned.Where(x
+        //         => x.RaceProps.Humanlike
+        //         && x.Position.DistanceToSquared(pawn.Position) < distSquared
+        //         && x.Awake()
+        //         && x != pawn
+        //         && !loverIdHash.Contains(x.thingIDNumber)
+        //         ).ToList();
+        //     return all_pawns;
+        // }
+        public static List<Pawn> ScanObservers(Pawn pawn, int distSquared = sightDistSquared) //For finding suitable hiding location
         {
-            var loverHash = ExistingLovePartners(pawn);
-            List<Pawn> all_pawns = pawn.Map.mapPawns.AllPawnsSpawned.Where(x
-                => x.RaceProps.Humanlike
-                && x.Position.DistanceToSquared(pawn.Position) < distSquared
-                && x.Awake()
-                && x != pawn
-                && !loverHash.Contains(x)
-                ).ToList();
-            return all_pawns;
-        }
-        public static List<Pawn> ScanObservers_R(Pawn pawn, int distSquared = sightDistSquared)
-        {
-            tmpObservers.Clear();
+            List<Pawn> all_pawns = new();
             tmpInvIds.Clear();
             tmpInvIds.Add(pawn.thingIDNumber);
-            var loverHash = ExistingLovePartners(pawn);
+            var loverIdHash = ExistingLovePartnersId(pawn);
             Region region = pawn.GetRegion();
             if (region == null)
             {
-                return tmpObservers;
+                return all_pawns;
             }
-            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region to) => (to.extentsClose.ClosestDistSquaredTo(pawn.Position) <= distSquared), delegate (Region reg)
+            var pawnPos = pawn.Position;
+            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region to) => (to.extentsClose.ClosestDistSquaredTo(pawnPos) <= distSquared), delegate (Region reg)
             {
                 List<Thing> list = reg.ListerThings.ThingsInGroup(ThingRequestGroup.Pawn);
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (!tmpInvIds.Contains(list[i].thingIDNumber)
+                    if (tmpInvIds.Add(list[i].thingIDNumber)
                         && list[i] is Pawn otherPawn
                         && (otherPawn.RaceProps.Humanlike)
-                        && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared
+                        && !loverIdHash.Contains(otherPawn.thingIDNumber)
+                        && otherPawn.Position.DistanceToSquared(pawnPos) < distSquared
                         && otherPawn.Awake()
-                        && !loverHash.Contains(otherPawn)
                     )
                     {
-                        tmpObservers.Add(otherPawn);
+                        all_pawns.Add(otherPawn);
                     }
-                    tmpInvIds.Add(list[i].thingIDNumber);
                 }
                 return false;
             }, 99999);
-            return tmpObservers;
+            return all_pawns;
         }
-
-        public static bool MightBeSeen(List<Pawn> otherPawns, IntVec3 cell, Pawn pawn, int distSquared = sightDistSquared)
+        public static bool MightBeSeen(List<Pawn> otherPawns, IntVec3 cell, Pawn pawn, int distSquared = sightDistSquared) //Used with ScanObservers()
         {
             return otherPawns.Any(x
                     => x.Position.DistanceToSquared(cell) < distSquared
-                    && x.Awake()
                     && GenSight.LineOfSight(x.Position, cell, pawn.Map)
                     );
         }
+        //For checking pawn's current parameter for any obserers
         public static bool BeingSeen(Pawn pawn, int distSquared = sightDistSquared)
         {
+            bool foundObserver = false;
             tmpInvIds.Clear();
             tmpInvIds.Add(pawn.thingIDNumber);
-            var loverHash = ExistingLovePartners(pawn);
-            bool foundObserver = false;
+            var loverIdHash = ExistingLovePartnersId(pawn);
             Region region = pawn.GetRegion();
             if (region == null)
             {
                 return false;
             }
-            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region to) => (to.door == null || to.door.Open) && (to.extentsClose.ClosestDistSquaredTo(pawn.Position) <= distSquared), delegate (Region reg)
+            var pawnPos = pawn.Position;
+            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region to) => (to.door == null || to.door.Open) && (to.extentsClose.ClosestDistSquaredTo(pawnPos) <= distSquared), delegate (Region reg)
             {
                 List<Thing> list = reg.ListerThings.ThingsInGroup(ThingRequestGroup.Pawn);
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (!tmpInvIds.Contains(list[i].thingIDNumber)
+                    if (tmpInvIds.Add(list[i].thingIDNumber)
                         && list[i] is Pawn otherPawn
                         && (otherPawn.RaceProps.Humanlike)
-                        && !loverHash.Contains(otherPawn)
-                        && otherPawn.Position.DistanceToSquared(pawn.Position) < distSquared
+                        && !loverIdHash.Contains(otherPawn.thingIDNumber)
+                        && otherPawn.Position.DistanceToSquared(pawnPos) < distSquared
                         && otherPawn.Awake()
-                        && GenSight.LineOfSightToThing(pawn.Position, otherPawn, pawn.Map)
+                        && GenSight.LineOfSightToThing(otherPawn, pawnPos, pawn.Map)
                     )
                     {
                         foundObserver = true;
                         break;
                     }
-                    tmpInvIds.Add(list[i].thingIDNumber);
                 }
                 return foundObserver;
             }, 99999);
@@ -248,18 +246,18 @@ namespace Maux36.RimPsyche.Disposition
             return breaker.TryDoMentalBreak(taggedString, result);
         }
 
-        public static HashSet<Pawn> ExistingLovePartners(Pawn pawn)
+        public static HashSet<int> ExistingLovePartnersId(Pawn pawn)
         {
-            tmpLovePartners.Clear();
+            tmpLovePartnersId.Clear();
             List<DirectPawnRelation> directRelations = pawn.relations.DirectRelations;
             for (int i = 0; i < directRelations.Count; i++)
             {
                 if (LovePartnerRelationUtility.IsLovePartnerRelation(directRelations[i].def) && (!directRelations[i].otherPawn.Spawned))
                 {
-                    tmpLovePartners.Add(directRelations[i].otherPawn);
+                    tmpLovePartnersId.Add(directRelations[i].otherPawn).thingIDNumber;
                 }
             }
-            return tmpLovePartners;
+            return tmpLovePartnersId;
         }
     }
 }
