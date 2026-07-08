@@ -36,23 +36,6 @@ namespace Maux36.RimPsyche.Disposition
             return true;
         }
 
-        public static void ApplyAdrenaline(Pawn pawn, float gain)
-        {
-            if (gain > 0f)
-            {
-                HealthUtility.AdjustSeverity(pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
-            }
-        }
-        public static void NotifyDamageTaken(Pawn pawn, float damage, float psycheAdrenalineValue)
-        {
-            float dmgPercent = damage / pawn.health.LethalDamageThreshold;
-            float gain = psycheAdrenalineValue * dmgPercent;
-            if (gain > 0f)
-            {
-                HealthUtility.AdjustSeverity(pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
-            }
-        }
-
         public static bool DangerousToBeAt(Pawn pawn, IntVec3 location, int threatDistSquared=threatDistSquared)
         {
             tmpInvIds.Clear();
@@ -97,23 +80,40 @@ namespace Maux36.RimPsyche.Disposition
                 List<Thing> list = reg.ListerThings.ThingsInGroup(ThingRequestGroup.AttackTarget);
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (!tmpInvIds.Contains(list[i].thingIDNumber) && ShouldInduceFear(list[i], pawn, potentialThreatDistSquared))
+                    if (tmpInvIds.Add(list[i].thingIDNumber) && ShouldInduceFear(list[i], pawn, potentialThreatDistSquared))
                     {
                         tmpThreats.Add(list[i]);
                     }
-                    tmpInvIds.Add(list[i].thingIDNumber);
                 }
                 return false;
             }, 99999);
             if (tmpThreats.Count > 0)
             {
-                position = CellFinderLoose.GetFleeDest(pawn, tmpThreats, potentialThreatDistance);
+                position = CellFinderLoose.GetFleeDest(pawn, tmpThreats, threatDistSquared);
             }
             else
             {
                 position = RCellFinder.RandomWanderDestFor(pawn, pawn.Position, 7f, (pawn, loc, root) => WanderRoomUtility.IsValidWanderDest(pawn, loc, root), Danger.Deadly);
             }
+            tmpThreats.Clear();
             return position;
+        }
+
+        public static void ApplyAdrenaline(Pawn pawn, float gain)
+        {
+            if (gain > 0f)
+            {
+                HealthUtility.AdjustSeverity(pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
+            }
+        }
+        public static void NotifyDamageTaken(Pawn pawn, float damage, float psycheAdrenalineValue)
+        {
+            float dmgPercent = damage / pawn.health.LethalDamageThreshold;
+            float gain = psycheAdrenalineValue * dmgPercent;
+            if (gain > 0f)
+            {
+                HealthUtility.AdjustSeverity(pawn, DefOfDisposition.Rimpsyche_AdrenalineRush, gain);
+            }
         }
     }
 }
