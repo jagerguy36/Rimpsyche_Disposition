@@ -181,7 +181,7 @@ namespace Maux36.RimPsyche.Disposition
                         && !loverIdHash.Contains(otherPawn.thingIDNumber)
                         && otherPawn.Position.DistanceToSquared(pawnPos) < distSquared
                         && otherPawn.Awake()
-                        && GenSight.LineOfSightToThing(otherPawn, pawnPos, pawn.Map)
+                        && GenSight.LineOfSightToThing(otherPawn.Position, pawn, pawn.Map)
                     )
                     {
                         foundObserver = true;
@@ -252,7 +252,7 @@ namespace Maux36.RimPsyche.Disposition
             {
                 if (LovePartnerRelationUtility.IsLovePartnerRelation(directRelations[i].def) && (!directRelations[i].otherPawn.Spawned))
                 {
-                    tmpLovePartnersId.Add(directRelations[i].otherPawn).thingIDNumber;
+                    tmpLovePartnersId.Add(directRelations[i].otherPawn.thingIDNumber);
                 }
             }
             return tmpLovePartnersId;
