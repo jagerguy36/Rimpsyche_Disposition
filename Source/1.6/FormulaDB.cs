@@ -50,7 +50,7 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float bravery = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
-                if (bravery > 0.4f)
+                if (bravery > -0.4f)
                 {
                     return 0f;
                 }
@@ -85,7 +85,6 @@ namespace Maux36.RimPsyche.Disposition
         //General mood
         private static readonly float optimismC = RimpsycheDispositionSettings.moodOptimismC;
         public static readonly float emotionalityC = RimpsycheDispositionSettings.moodEmotionalityC;
-        private static readonly float individualC = RimpsycheDispositionSettings.moodIndividualC;
         public static RimpsycheFormula PositiveMoodOffsetMultiplier = new(
             "PositiveMoodOffsetMultiplier",
             (tracker) =>
