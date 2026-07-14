@@ -3,7 +3,7 @@
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Industrious</defName>
     <positiveLabel>faster workspeed</positiveLabel>
-    <negativeLabel>slwoer workspeed</negativeLabel>
+    <negativeLabel>slower workspeed</negativeLabel>
     <positiveDescription>The pawn works more diligently.</positiveDescription>
     <negativeDescription>The pawn works at a leisurely pace.</negativeDescription>
     <threshold>0.3</threshold>
@@ -16,9 +16,8 @@
     <defName>RPD_Desc_Ambitious</defName>
     <positiveLabel>sense of ambition</positiveLabel>
     <positiveDescription>The pawn feels greater sense of achievement, but grows unhappy if they accomplish nothing for too long.</positiveDescription>
-    <threshold>0.3</threshold>
-    <strongThreshold>0.5</strongThreshold>
-    <extremeThreshold>0.7</extremeThreshold>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.AmbitiousDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
@@ -50,9 +49,8 @@
     <defName>RPD_Desc_Stoic</defName>
     <positiveLabel>low emotional variance</positiveLabel>
     <positiveDescription>The pawn experiences weaker emotional highs and lows.</positiveDescription>
-    <threshold>0.3</threshold>
-    <strongThreshold>0.5</strongThreshold>
-    <extremeThreshold>0.7</extremeThreshold>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.StoicDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
@@ -60,9 +58,8 @@
     <defName>RPD_Desc_Modest</defName>
     <positiveLabel>may hide in shame</positiveLabel>
     <positiveDescription>The pawn becomes embarrassed when dressed improperly and may flee in shame.</positiveDescription>
-    <threshold>0.1</threshold>
-    <strongThreshold>0.4</strongThreshold>
-    <extremeThreshold>0.7</extremeThreshold>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.ModestDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
@@ -80,7 +77,7 @@
     <defName>RPD_Desc_Cowardly</defName>
     <positiveLabel>Choose flight</positiveLabel>
     <positiveDescription>The pawn may panic and flee after being injured.</positiveDescription>
-    <threshold>0.1</threshold>
+    <threshold>0.15</threshold>
     <strongThreshold>0.4</strongThreshold>
     <extremeThreshold>0.7</extremeThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.CowardlyDescriptorWorker</workerClass>
@@ -104,9 +101,8 @@
     <negativeLabel>room insensitive</negativeLabel>
     <positiveDescription>The pawn's work speed depends heavily on having an appropriate workspace.</positiveDescription>
     <negativeDescription>The pawn's work speed is less affected by their workspace.</negativeDescription>
-    <threshold>0.3</threshold>
-    <strongThreshold>0.5</strongThreshold>
-    <extremeThreshold>0.7</extremeThreshold>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.OrganizedDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
