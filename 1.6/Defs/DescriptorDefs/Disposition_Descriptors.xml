@@ -1,21 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  <Maux36.RimPsyche.PsycheDescriptorDef>
-    <defName>RPD_Desc_Industrious</defName>
-    <positiveLabel>fast workspeed</positiveLabel>
-    <negativeLabel>slow workspeed</negativeLabel>
-    <positiveDescription>The pawn works more diligently.</positiveDescription>
-    <negativeDescription>The pawn works at a leisurely pace.</negativeDescription>
-    <threshold>0.3</threshold>
-    <strongThreshold>0.5</strongThreshold>
-    <extremeThreshold>0.7</extremeThreshold>
-    <workerClass>Maux36.RimPsyche.Disposition.IndustriousDescriptorWorker</workerClass>
-  </Maux36.RimPsyche.PsycheDescriptorDef>
-
+  <!-- Non-stat -->
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Ambitious</defName>
-    <positiveLabel>Achievement driven</positiveLabel>
-    <positiveDescription>The pawn feels greater sense of achievement, but grows unhappy if they accomplish nothing for too long.</positiveDescription>
+    <positiveLabel>achievement driven</positiveLabel>
+    <positiveDescription>Gains more mood from Sense of Achievement.</positiveDescription>
+    <negativeDescription>Gains less mood from Sense of Achievement.</negativeDescription>
     <threshold>0.4</threshold>
     <strongThreshold>0.8</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.AmbitiousDescriptorWorker</workerClass>
@@ -23,10 +13,10 @@
 
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Resilient</defName>
-    <positiveLabel>low mental break threshold</positiveLabel>
-    <negativeLabel>high mental break threshold</negativeLabel>
-    <positiveDescription>The pawn is less likely to suffer mental breaks.</positiveDescription>
-    <negativeDescription>The pawn is more likely to suffer mental breaks.</negativeDescription>
+    <positiveLabel>stress resistant</positiveLabel>
+    <negativeLabel>stress sensitive</negativeLabel>
+    <positiveDescription>Lower mental break chance under mental break threshold. May trigger Resilient Spirit.</positiveDescription>
+    <negativeDescription>Higher mental break chance under mental break threshold.</negativeDescription>
     <threshold>0.3</threshold>
     <strongThreshold>0.5</strongThreshold>
     <extremeThreshold>0.7</extremeThreshold>
@@ -35,10 +25,10 @@
 
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Optimistic</defName>
-    <positiveLabel>positive mood bias</positiveLabel>
-    <negativeLabel>negative mood bias</negativeLabel>
-    <positiveDescription>Positive events affect the pawn more strongly, while negative events affect them less.</positiveDescription>
-    <negativeDescription>Negative events affect the pawn more strongly, while positive events affect them less.</negativeDescription>
+    <positiveLabel>positive outlook</positiveLabel>
+    <negativeLabel>negative outlook</negativeLabel>
+    <positiveDescription>Mood has a positive bias.</positiveDescription>
+    <negativeDescription>Mood has a negative bias.</negativeDescription>
     <threshold>0.3</threshold>
     <strongThreshold>0.5</strongThreshold>
     <extremeThreshold>0.7</extremeThreshold>
@@ -47,17 +37,29 @@
 
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Stoic</defName>
-    <positiveLabel>reduced mood variance</positiveLabel>
-    <positiveDescription>The pawn experiences weaker emotional highs and lows.</positiveDescription>
+    <positiveLabel>emotionally intense</positiveLabel>
+    <negativeLabel>emotionally stable</negativeLabel>
+    <positiveDescription>All mood effects are strengthened.</positiveDescription>
+    <negativeDescription>All mood effects are reduced.</negativeDescription>
     <threshold>0.4</threshold>
     <strongThreshold>0.8</strongThreshold>
-    <workerClass>Maux36.RimPsyche.Disposition.StoicDescriptorWorker</workerClass>
+    <workerClass>Maux36.RimPsyche.Disposition.EmotionalDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Moodswing</defName>
+    <positiveLabel>slow mood changes</positiveLabel>
+    <negativeLabel>fast mood changes</negativeLabel>
+    <positiveDescription>Mood bar moves slower.</positiveDescription>
+    <negativeDescription>Mood bar moves faster.</negativeDescription>
+    <threshold>0.55</threshold>
+    <workerClass>Maux36.RimPsyche.Disposition.MoodswingDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Modest</defName>
     <positiveLabel>overwhelmed by shame</positiveLabel>
-    <positiveDescription>The pawn becomes embarrassed when dressed improperly and may flee in shame.</positiveDescription>
+    <positiveDescription>May get overwhelmed by shame when dressed inappropriately.</positiveDescription>
     <threshold>0.1</threshold>
     <strongThreshold>0.3</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.ModestDescriptorWorker</workerClass>
@@ -66,7 +68,7 @@
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Fierce</defName>
     <positiveLabel>adrenaline rush</positiveLabel>
-    <positiveDescription>The pawn may experience adrenaline rush after being injured.</positiveDescription>
+    <positiveDescription>May experience an adrenaline rush after being injured.</positiveDescription>
     <threshold>0.15</threshold>
     <strongThreshold>0.4</strongThreshold>
     <extremeThreshold>0.7</extremeThreshold>
@@ -75,8 +77,8 @@
 
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Cowardly</defName>
-    <positiveLabel>flee in panic</positiveLabel>
-    <positiveDescription>The pawn may panic and flee after being injured.</positiveDescription>
+    <positiveLabel>flight response</positiveLabel>
+    <positiveDescription>May panic and flee after being injured.</positiveDescription>
     <threshold>0.15</threshold>
     <strongThreshold>0.4</strongThreshold>
     <extremeThreshold>0.7</extremeThreshold>
@@ -87,33 +89,95 @@
     <defName>RPD_Desc_Experimental</defName>
     <positiveLabel>high quality variance</positiveLabel>
     <negativeLabel>low quality variance</negativeLabel>
-    <positiveDescription>The pawn's work quality varies more, and they occasionally experiment to produce unexpectedly good or poor results.</positiveDescription>
-    <negativeDescription>The pawn consistently produces work of similar quality.</negativeDescription>
+    <positiveDescription>Higher item quality variance. More likely to experiment.</positiveDescription>
+    <negativeDescription>Lower item quality variance. Less likely to experiment.</negativeDescription>
     <threshold>0.3</threshold>
     <strongThreshold>0.5</strongThreshold>
     <extremeThreshold>0.7</extremeThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.ExperimentalDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
+  <!-- Stats -->
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Deliberate</defName>
+    <positiveLabel>deliberate pace</positiveLabel>
+    <negativeLabel>hasty pace</negativeLabel>
+    <positiveDescription>Lower work and aiming speed. Less likely to make mistakes or miss shots.</positiveDescription>
+    <negativeDescription>Higher work and aiming speed. More likely to make mistakes or miss shots.</negativeDescription>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.DeliberationDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Industrious</defName>
+    <positiveLabel>fast work speed</positiveLabel>
+    <negativeLabel>slow work speed</negativeLabel>
+    <positiveDescription>Higher global workspeed.</positiveDescription>
+    <negativeDescription>Lower global workspeed.</negativeDescription>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.IndustriousDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Tense</defName>
+    <positiveLabel>easily stressed</positiveLabel>
+    <negativeLabel>unbothered</negativeLabel>
+    <positiveDescription>Higher mental break threshold.</positiveDescription>
+    <negativeDescription>Lower mental break threshold.</negativeDescription>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.TenseDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Tactful</defName>
+    <positiveLabel>negotiates well</positiveLabel>
+    <negativeLabel>negotiates poorly</negativeLabel>
+    <positiveDescription>Higher negotiation ability and better trade prices.</positiveDescription>
+    <negativeDescription>Lower negotiation ability and worse trade prices.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.TactfulDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Organized</defName>
     <positiveLabel>workspace sensitive</positiveLabel>
     <negativeLabel>workspace insensitive</negativeLabel>
-    <positiveDescription>The pawn's work speed depends heavily on having an appropriate workspace.</positiveDescription>
-    <negativeDescription>The pawn's work speed is less affected by their workspace.</negativeDescription>
+    <positiveDescription>Higher workspace room role sensitivity.</positiveDescription>
+    <negativeDescription>Lower workspace room role sensitivity.</negativeDescription>
     <threshold>0.4</threshold>
     <strongThreshold>0.8</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.OrganizedDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
-  <!-- Deliberation -->
-  <!-- reflectiveness -->
-  <!-- Trading -->
-  <!-- Loyalty -->
-  <!-- TAG: Empathy -->
-  <!-- TAG: Affluence and Need -->
-  <!-- TAG: Judgemental and morality -->
-  <!-- Consider: Tension/Tenacity break -->
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Brace</defName>
+    <positiveLabel>high pain tolerance</positiveLabel>
+    <negativeLabel>low pain tolerance</negativeLabel>
+    <positiveDescription>Higher pain shock threshold.</positiveDescription>
+    <negativeDescription>Lower pain shock threshold.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.BraceDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Reflection</defName>
+    <positiveLabel>pensive</positiveLabel>
+    <negativeLabel>action oriented</negativeLabel>
+    <positiveDescription>Higher research speed and meditation focus gain speed.</positiveDescription>
+    <negativeDescription>Lower research speed and meditation focus gain speed.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ReflectionDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
 
 </Defs>
 
