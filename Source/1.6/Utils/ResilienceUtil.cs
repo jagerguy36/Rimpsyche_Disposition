@@ -52,8 +52,8 @@ namespace Maux36.RimPsyche.Disposition
             "ResilientSpiritChance",
             (tracker) =>
             {
-                float mult = 0.125f * (1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity)) + 0.025f * (1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Discipline));
-                return mult;
+                float chance = 0.25f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity) + 0.025f * (1 + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Discipline));
+                return chance;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
