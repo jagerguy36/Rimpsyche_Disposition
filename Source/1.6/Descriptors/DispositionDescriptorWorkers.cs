@@ -12,15 +12,9 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Ambition);
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Ambition, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Ambition);
         }
     }
 
@@ -41,17 +35,10 @@ namespace Maux36.RimPsyche.Disposition
                 return (score + 0.1f * discipline) / 1.1f;
             }
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Tenacity, direction)}");
-            if (!direction)
-                sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Discipline, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Tenacity);
+            Blame(PersonalityDefOf.Rimpsyche_Discipline, PsycheDescDirection.Positive, compPsyche => bScore <= 0f);
         }
     }
     //General Mood
@@ -62,15 +49,9 @@ namespace Maux36.RimPsyche.Disposition
             var optimism = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
             return optimism;
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Optimism, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Optimism);
         }
     }
     //Mood Strength
@@ -80,15 +61,9 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality);
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Emotionality, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Emotionality);
         }
     }
     //Mood Swing: MoodRisingSpeedMultiplier, MoodFallingSpeedMultiplier
@@ -98,15 +73,9 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Stability);
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Stability, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Stability);
         }
     }
     //Hide in shame
@@ -116,15 +85,9 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Evaluate(FormulaDB.ModestShameGain) * 10f / 3f;
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Propriety, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Propriety);
         }
     }
     public class FierceDescriptorWorker : PsycheDescriptorWorker
@@ -133,21 +96,13 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Evaluate(FormulaDB.AdrenalineGain) / 9f;
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            //float bravery = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Bravery);
-            //float aggresiveness = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Aggressiveness);
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
             //if (bravery <= 0.4f || bravery + aggresiveness <= 0f)
             //    sb.AppendLine($"    {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Bravery, direction)}");
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Aggressiveness, direction)}");
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Tension, direction)}");
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Stability, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Aggressiveness);
+            Blame(PersonalityDefOf.Rimpsyche_Tension);
+            Blame(PersonalityDefOf.Rimpsyche_Stability);
         }
     }
     public class CowardlyDescriptorWorker : PsycheDescriptorWorker
@@ -157,17 +112,11 @@ namespace Maux36.RimPsyche.Disposition
             if (compPsyche.Evaluate(FormulaDB.FlightThreshold) <= 0f) return 0f;
             return compPsyche.Evaluate(FormulaDB.FlightChance);
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Aggressiveness, !direction)}");
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Tenacity, !direction)}");
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Bravery, !direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Aggressiveness);
+            Blame(PersonalityDefOf.Rimpsyche_Tenacity);
+            Blame(PersonalityDefOf.Rimpsyche_Bravery);
         }
     }
     public class ExperimentalDescriptorWorker : PsycheDescriptorWorker
@@ -176,15 +125,9 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Experimentation);
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Experimentation, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Experimentation);
         }
     }
 
@@ -194,15 +137,9 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Deliberation);
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Deliberation, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Deliberation);
         }
     }
     public class IndustriousDescriptorWorker : PsycheDescriptorWorker
@@ -211,15 +148,9 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Diligence);
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Diligence, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Diligence);
         }
     }
     //Mentalbreak threshold
@@ -230,15 +161,9 @@ namespace Maux36.RimPsyche.Disposition
             var score = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Tension);
             return score;
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Tension, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Tension);
         }
     }
     //Trade, Negotiation etc
@@ -251,17 +176,11 @@ namespace Maux36.RimPsyche.Disposition
             var score = (tact + 0.2f * confidence) / 1.2f;
             return score;
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Tact, direction)}");
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Confidence, direction)}");
-            sb.AppendLine($"  {GetNeutralBlame(compPsyche, PersonalityDefOf.Rimpsyche_SelfInterest)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Tact);
+            Blame(PersonalityDefOf.Rimpsyche_Confidence);
+            Blame(PersonalityDefOf.Rimpsyche_SelfInterest, PsycheDescDirection.Neutral);
         }
     }
     public class OrganizedDescriptorWorker : PsycheDescriptorWorker
@@ -270,15 +189,9 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Organization);
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Organization, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Organization);
         }
     }
     public class BraceDescriptorWorker : PsycheDescriptorWorker
@@ -288,16 +201,10 @@ namespace Maux36.RimPsyche.Disposition
             var offset = compPsyche.Evaluate(PsychePainShockThresholdStatPart.PainShockThresholdOffset); //0.35f base
             return offset / 0.35f;
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Bravery, direction)}");
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Tenacity, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Bravery);
+            Blame(PersonalityDefOf.Rimpsyche_Tenacity);
         }
     }
     public class ReflectionDescriptorWorker : PsycheDescriptorWorker
@@ -306,15 +213,9 @@ namespace Maux36.RimPsyche.Disposition
         {
             return compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Reflectiveness);
         }
-        protected override string GetTooltip(CompPsyche compPsyche)
+        protected override void SetupBlamers()
         {
-            bool direction = bScore > 0f;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(bDescription);
-            sb.AppendLine();
-            sb.AppendLine("RPC_DescriptorBlame".Translate());
-            sb.AppendLine($"  {GetBlame(compPsyche, PersonalityDefOf.Rimpsyche_Reflectiveness, direction)}");
-            return sb.ToString();
+            Blame(PersonalityDefOf.Rimpsyche_Reflectiveness);
         }
     }
 }
