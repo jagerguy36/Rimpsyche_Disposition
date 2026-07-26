@@ -5,9 +5,8 @@
     <defName>RPD_Desc_Ambitious</defName>
     <positiveLabel>achievement driven</positiveLabel>
     <positiveDescription>Higher achievement mood.</positiveDescription>
-    <negativeDescription>Lower achievement mood.</negativeDescription>
-    <threshold>0.4</threshold>
-    <strongThreshold>0.8</strongThreshold>
+    <negativeDescription>Lower achievement drive.</negativeDescription>
+    <threshold>0.55</threshold>
     <workerClass>Maux36.RimPsyche.Disposition.AmbitiousDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
@@ -50,8 +49,9 @@
     <negativeLabel>emotionally stable</negativeLabel>
     <positiveDescription>Stronger mood effects.</positiveDescription>
     <negativeDescription>Reduced mood effects.</negativeDescription>
-    <threshold>0.4</threshold>
-    <strongThreshold>0.8</strongThreshold>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.EmotionalDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
@@ -79,8 +79,7 @@
     <positiveLabel>adrenaline rush</positiveLabel>
     <positiveDescription>May experience an adrenaline rush after being injured.</positiveDescription>
     <threshold>0.15</threshold>
-    <strongThreshold>0.4</strongThreshold>
-    <extremeThreshold>0.7</extremeThreshold>
+    <strongThreshold>0.55</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.FierceDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
@@ -89,8 +88,7 @@
     <positiveLabel>flight response</positiveLabel>
     <positiveDescription>May panic and flee after being injured.</positiveDescription>
     <threshold>0.15</threshold>
-    <strongThreshold>0.4</strongThreshold>
-    <extremeThreshold>0.7</extremeThreshold>
+    <strongThreshold>0.55</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.CowardlyDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
@@ -100,9 +98,8 @@
     <negativeLabel>low quality variance</negativeLabel>
     <positiveDescription>Higher item quality variance. More likely to experiment.</positiveDescription>
     <negativeDescription>Lower item quality variance. Less likely to experiment.</negativeDescription>
-    <threshold>0.3</threshold>
-    <strongThreshold>0.5</strongThreshold>
-    <extremeThreshold>0.7</extremeThreshold>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.ExperimentalDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
@@ -112,9 +109,8 @@
     <negativeLabel>low art quality</negativeLabel>
     <positiveDescription>Higher art quality.</positiveDescription>
     <negativeDescription>Lower art quality.</negativeDescription>
-    <threshold>0.3</threshold>
-    <strongThreshold>0.5</strongThreshold>
-    <extremeThreshold>0.7</extremeThreshold>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.ArtQualityDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
@@ -135,8 +131,7 @@
     <negativeLabel>eclectic learning</negativeLabel>
     <positiveDescription>Learn high level skills faster.</positiveDescription>
     <negativeDescription>Learn low level skills fasterd.</negativeDescription>
-    <threshold>0.4</threshold>
-    <strongThreshold>0.8</strongThreshold>
+    <threshold>0.55</threshold>
     <workerClass>Maux36.RimPsyche.Disposition.FocusedLearningDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 

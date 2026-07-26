@@ -40,8 +40,8 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 float conviction = (confidence - openness) * 0.5f;
                 float sincerity = 0.25f * ((conviction * (3f + authenticity) + (1 - authenticity))); //-1~1
                 float tact = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tact); //-1~1
-                float result = 1f + 0.2f * (tact + sincerity);
-                return result;
+                float conversionPower = (tact + sincerity) * 0.5f;
+                return Rimpsyche_Utility.AsMult(conversionPower, 1.5f);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
