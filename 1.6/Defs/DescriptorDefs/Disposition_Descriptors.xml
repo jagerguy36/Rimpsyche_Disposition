@@ -130,7 +130,7 @@
     <positiveLabel>focused learning</positiveLabel>
     <negativeLabel>eclectic learning</negativeLabel>
     <positiveDescription>Learn high level skills faster.</positiveDescription>
-    <negativeDescription>Learn low level skills fasterd.</negativeDescription>
+    <negativeDescription>Learn low level skills faster.</negativeDescription>
     <threshold>0.55</threshold>
     <workerClass>Maux36.RimPsyche.Disposition.FocusedLearningDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
