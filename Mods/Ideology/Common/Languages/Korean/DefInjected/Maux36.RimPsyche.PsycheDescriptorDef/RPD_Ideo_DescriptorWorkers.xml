@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- RPD_Desc_SlaveWill -->
+  <RPD_Desc_SlaveWill.positiveLabel>강한 의지</RPD_Desc_SlaveWill.positiveLabel>
+  <RPD_Desc_SlaveWill.negativeLabel>약한 의지</RPD_Desc_SlaveWill.negativeLabel>
+  <RPD_Desc_SlaveWill.positiveDescription>(노예) 의지가 더 높으며 천천히 감소함.</RPD_Desc_SlaveWill.positiveDescription>
+  <RPD_Desc_SlaveWill.negativeDescription>(노예) 의지가 더 낮으며 빠르게 감소함.</RPD_Desc_SlaveWill.negativeDescription>
+
+  <!-- RPD_Desc_SuppressionResistance -->
+  <RPD_Desc_SuppressionResistance.positiveLabel>억압 저항</RPD_Desc_SuppressionResistance.positiveLabel>
+  <RPD_Desc_SuppressionResistance.negativeLabel>억압 취약</RPD_Desc_SuppressionResistance.negativeLabel>
+  <RPD_Desc_SuppressionResistance.positiveDescription>(노예) 높은 억압 상태를 유지하기 어려움.</RPD_Desc_SuppressionResistance.positiveDescription>
+  <RPD_Desc_SuppressionResistance.negativeDescription>(노예) 높은 억압 상태를 유지하기 쉬움.</RPD_Desc_SuppressionResistance.negativeDescription>
+
+  <!-- RPD_Desc_SuppressionPower -->
+  <RPD_Desc_SuppressionPower.positiveLabel>뛰어난 억압력</RPD_Desc_SuppressionPower.positiveLabel>
+  <RPD_Desc_SuppressionPower.negativeLabel>미흡한 억압력</RPD_Desc_SuppressionPower.negativeLabel>
+  <RPD_Desc_SuppressionPower.positiveDescription>(노예) 억압 위력 증가.</RPD_Desc_SuppressionPower.positiveDescription>
+  <RPD_Desc_SuppressionPower.negativeDescription>(노예) 억압 위력 감소.</RPD_Desc_SuppressionPower.negativeDescription>
+
+  <!-- RPD_Desc_Terror -->
+  <RPD_Desc_Terror.positiveLabel>대담함</RPD_Desc_Terror.positiveLabel>
+  <RPD_Desc_Terror.negativeLabel>겁쟁이</RPD_Desc_Terror.negativeLabel>
+  <RPD_Desc_Terror.positiveDescription>(노예) 공포를 잘 느끼지 않음.</RPD_Desc_Terror.positiveDescription>
+  <RPD_Desc_Terror.negativeDescription>(노예) 공포를 더 쉽게 느낌.</RPD_Desc_Terror.negativeDescription>
+
+  <!-- RPD_Desc_Certaintylossfactor -->
+  <RPD_Desc_Certaintylossfactor.positiveLabel>확고한 믿음</RPD_Desc_Certaintylossfactor.positiveLabel>
+  <RPD_Desc_Certaintylossfactor.negativeLabel>흔들리는 믿음</RPD_Desc_Certaintylossfactor.negativeLabel>
+  <RPD_Desc_Certaintylossfactor.positiveDescription>전역 믿음 감소계수 감소.</RPD_Desc_Certaintylossfactor.positiveDescription>
+  <RPD_Desc_Certaintylossfactor.negativeDescription>전역 믿음 감소계수 증가.</RPD_Desc_Certaintylossfactor.negativeDescription>
+
+  <!-- RPD_Desc_ConversionPower -->
+  <RPD_Desc_ConversionPower.positiveLabel>강력한 설파력</RPD_Desc_ConversionPower.positiveLabel>
+  <RPD_Desc_ConversionPower.negativeLabel>미약한 설파력</RPD_Desc_ConversionPower.negativeLabel>
+  <RPD_Desc_ConversionPower.positiveDescription>사상 전파 위력 증가.</RPD_Desc_ConversionPower.positiveDescription>
+  <RPD_Desc_ConversionPower.negativeDescription>사상 전파 위력 감소.</RPD_Desc_ConversionPower.negativeDescription>
+
+  <!-- RPD_Desc_IdeoSpreadMult -->
+  <RPD_Desc_IdeoSpreadMult.positiveLabel>열정적 포교</RPD_Desc_IdeoSpreadMult.positiveLabel>
+  <RPD_Desc_IdeoSpreadMult.negativeLabel>소극적 포교</RPD_Desc_IdeoSpreadMult.negativeLabel>
+  <RPD_Desc_IdeoSpreadMult.positiveDescription>사상 전파 확률 증가.</RPD_Desc_IdeoSpreadMult.positiveDescription>
+  <RPD_Desc_IdeoSpreadMult.negativeDescription>사상 전파 확률 감소.</RPD_Desc_IdeoSpreadMult.negativeDescription>
+
+  <!-- Thoughts -->
+
+  <!-- RPD_Desc_ThoughtCharity -->
+  <RPD_Desc_ThoughtCharity.positiveDescription>자선 활동에 관한 일에 더 민감함.</RPD_Desc_ThoughtCharity.positiveDescription>
+  <RPD_Desc_ThoughtCharity.negativeDescription>자선 활동에 관한 일에 더 둔감함.</RPD_Desc_ThoughtCharity.negativeDescription>
+
+</LanguageData>

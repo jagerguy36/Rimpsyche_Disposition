@@ -50,7 +50,7 @@
 
   <!-- Ideology -->
   <RP_Stat_BraveryTerrorMultiplier>용기</RP_Stat_BraveryTerrorMultiplier>
-  <RP_Stat_ResilienceSuppressionFall>강인함</RP_Stat_ResilienceSuppressionFall>
+  <RP_Stat_TenacitySuppressionFall>강인함</RP_Stat_TenacitySuppressionFall>
   <RP_Stat_AggressivenessSuppression>공격성</RP_Stat_AggressivenessSuppression>
   <RP_Stat_CertaintyLossMult>사회성, 확신</RP_Stat_CertaintyLossMult>
   <RP_Stat_IdeoSpreadMult>수다스러움, 열성</RP_Stat_IdeoSpreadMult>
