@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text;
 using UnityEngine;
+using Verse;
 
 namespace Maux36.RimPsyche.Disposition.Ideology
 {
@@ -80,6 +81,8 @@ namespace Maux36.RimPsyche.Disposition.Ideology
     {
         protected override float Score(CompPsyche compPsyche)
         {
+            if (Find.IdeoManager.classicMode)
+                return 0f;
             var confidence = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Confidence);
             var openness = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
             var trust = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Trust);
@@ -98,6 +101,8 @@ namespace Maux36.RimPsyche.Disposition.Ideology
     {
         protected override float Score(CompPsyche compPsyche)
         {
+            if (Find.IdeoManager.classicMode)
+                return 0f;
             float confidence = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Confidence);
             float openness = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
             float authenticity = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Authenticity);
@@ -119,6 +124,8 @@ namespace Maux36.RimPsyche.Disposition.Ideology
     {
         protected override float Score(CompPsyche compPsyche)
         {
+            if (Find.IdeoManager.classicMode)
+                return 0f;
             float confidence = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Confidence);
             float openness = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
             float passion = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Passion);
