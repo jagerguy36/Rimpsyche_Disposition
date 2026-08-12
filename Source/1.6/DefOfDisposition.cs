@@ -23,5 +23,10 @@ namespace Maux36.RimPsyche.Disposition
         public static FleckDef RimpsycheMote_PanicAttack;
 
         public static ThoughtDef Rimpsyche_ShameOverwhelmed;
+
+        static DefOfDisposition()
+        {
+            DefOfHelper.EnsureInitializedInCtor(typeof(DefOfDisposition));
+        }
     }
 }
