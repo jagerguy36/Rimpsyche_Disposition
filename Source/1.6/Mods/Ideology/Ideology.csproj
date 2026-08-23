@@ -63,8 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DescriptorWorkers\RPD_Ideo_DescriptorWorkers.cs" />
     <Compile Include="HarmonyInit.cs" />
     <Compile Include="HarmonyPatches\CompAbilityEffect_Counsel_Patch.cs" />
+    <Compile Include="HarmonyPatches\InteractionWorker_EnslaveAttempt_Interacted.cs" />
     <Compile Include="HarmonyPatches\ITab_Pawn_Visitor_DoSlaveTab_Patch.cs" />
     <Compile Include="HarmonyPatches\Pawn_GuestTracker_SetupRecruitable.cs" />
     <Compile Include="HarmonyPatches\SlaveRebellionUtility_IncrementSuppression.cs" />

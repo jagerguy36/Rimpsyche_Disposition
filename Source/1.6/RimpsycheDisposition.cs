@@ -8,7 +8,7 @@ namespace Maux36.RimPsyche.Disposition
     public class RimpsycheDisposition : Mod
     {
         public static RimpsycheDispositionSettings settings;
-        public const string CoreRequirement = "1.0.39";
+        public const string CoreRequirement = "1.0.42";
         public static string currentVersion;
         public RimpsycheDisposition(ModContentPack content) : base(content)
         {

@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+<!-- Non-stat -->
+
+  <!-- RPD_Desc_Ambitious -->
+  <RPD_Desc_Ambitious.positiveLabel>높은 성취욕</RPD_Desc_Ambitious.positiveLabel>
+  <RPD_Desc_Ambitious.positiveDescription>성취에 의한 무드 상승폭 증가.</RPD_Desc_Ambitious.positiveDescription>
+  <RPD_Desc_Ambitious.negativeDescription>성취욕 감소.</RPD_Desc_Ambitious.negativeDescription>
+
+  <!-- RPD_Desc_Tenacious -->
+  <RPD_Desc_Tenacious.positiveLabel>스트레스 저항</RPD_Desc_Tenacious.positiveLabel>
+  <RPD_Desc_Tenacious.negativeLabel>스트레스 취약</RPD_Desc_Tenacious.negativeLabel>
+  <RPD_Desc_Tenacious.positiveDescription>정신 이상 발생 가능성 감소.</RPD_Desc_Tenacious.positiveDescription>
+  <RPD_Desc_Tenacious.negativeDescription>정신 이상 발생 가능성 증가.</RPD_Desc_Tenacious.negativeDescription>
+
+  <!-- RPD_Desc_Resilient -->
+  <RPD_Desc_Resilient.positiveLabel>강인한 정신</RPD_Desc_Resilient.positiveLabel>
+  <RPD_Desc_Resilient.positiveDescription>정신 이상 시 "강인한 정신력"이 대신 발생할 수 있음.</RPD_Desc_Resilient.positiveDescription>
+
+  <!-- RPD_Desc_Optimistic -->
+  <RPD_Desc_Optimistic.positiveLabel>낙관적 사고</RPD_Desc_Optimistic.positiveLabel>
+  <RPD_Desc_Optimistic.negativeLabel>비관적 사고</RPD_Desc_Optimistic.negativeLabel>
+  <RPD_Desc_Optimistic.positiveDescription>무드에 긍정적인 편향 부여.</RPD_Desc_Optimistic.positiveDescription>
+  <RPD_Desc_Optimistic.negativeDescription>무드에 부정적인 편향 부여.</RPD_Desc_Optimistic.negativeDescription>
+
+  <!-- RPD_Desc_Stoic -->
+  <RPD_Desc_Stoic.positiveLabel>풍부한 감수성</RPD_Desc_Stoic.positiveLabel>
+  <RPD_Desc_Stoic.negativeLabel>무덤덤함</RPD_Desc_Stoic.negativeLabel>
+  <RPD_Desc_Stoic.positiveDescription>전반적 무드 영향 증가.</RPD_Desc_Stoic.positiveDescription>
+  <RPD_Desc_Stoic.negativeDescription>전반적 무드 영향 감소.</RPD_Desc_Stoic.negativeDescription>
+
+  <!-- RPD_Desc_Moodswing -->
+  <RPD_Desc_Moodswing.positiveLabel>완만한 감정선</RPD_Desc_Moodswing.positiveLabel>
+  <RPD_Desc_Moodswing.negativeLabel>역동적 감정선</RPD_Desc_Moodswing.negativeLabel>
+  <RPD_Desc_Moodswing.positiveDescription>무드가 더 천천히 변화함.</RPD_Desc_Moodswing.positiveDescription>
+  <RPD_Desc_Moodswing.negativeDescription>무드가 더 급격히 변화함.</RPD_Desc_Moodswing.negativeDescription>
+
+  <!-- RPD_Desc_Modest -->
+  <RPD_Desc_Modest.positiveLabel>체면치레</RPD_Desc_Modest.positiveLabel>
+  <RPD_Desc_Modest.positiveDescription>부적절한 의복 착용 시 수치심에 휩싸일 수 있음.</RPD_Desc_Modest.positiveDescription>
+
+  <!-- RPD_Desc_Fierce -->
+  <RPD_Desc_Fierce.positiveLabel>아드레날린 러시</RPD_Desc_Fierce.positiveLabel>
+  <RPD_Desc_Fierce.positiveDescription>부상을 입었을 때 아드레날린 러시를 경험할 수 있음.</RPD_Desc_Fierce.positiveDescription>
+
+  <!-- RPD_Desc_Cowardly -->
+  <RPD_Desc_Cowardly.positiveLabel>새가슴</RPD_Desc_Cowardly.positiveLabel>
+  <RPD_Desc_Cowardly.positiveDescription>전투 중 부상을 입을 경우 공황에 빠져 도망칠 수 있음.</RPD_Desc_Cowardly.positiveDescription>
+
+  <!-- RPD_Desc_Experimental -->
+  <RPD_Desc_Experimental.positiveLabel>큰 품질 편차</RPD_Desc_Experimental.positiveLabel>
+  <RPD_Desc_Experimental.negativeLabel>작은 품질 편차</RPD_Desc_Experimental.negativeLabel>
+  <RPD_Desc_Experimental.positiveDescription>아이템 제작 품질 편차 증가. 실험적인 시도를 할 가능성 증가.</RPD_Desc_Experimental.positiveDescription>
+  <RPD_Desc_Experimental.negativeDescription>아이템 제작 품질 편차 감소. 실험적인 시도를 할 가능성 감소.</RPD_Desc_Experimental.negativeDescription>
+
+  <!-- RPD_Desc_ArtQuality -->
+  <RPD_Desc_ArtQuality.positiveLabel>높은 예술성</RPD_Desc_ArtQuality.positiveLabel>
+  <RPD_Desc_ArtQuality.negativeLabel>낮은 예술성</RPD_Desc_ArtQuality.negativeLabel>
+  <RPD_Desc_ArtQuality.positiveDescription>예술품 품질 증가.</RPD_Desc_ArtQuality.positiveDescription>
+  <RPD_Desc_ArtQuality.negativeDescription>예술품 품질 감소.</RPD_Desc_ArtQuality.negativeDescription>
+
+  <!-- RPD_Desc_AddictionChance -->
+  <RPD_Desc_AddictionChance.positiveLabel>낮은 중독 확률</RPD_Desc_AddictionChance.positiveLabel>
+  <RPD_Desc_AddictionChance.negativeLabel>높은 중독 확률</RPD_Desc_AddictionChance.negativeLabel>
+  <RPD_Desc_AddictionChance.positiveDescription>약물 중독 확률 감소.</RPD_Desc_AddictionChance.positiveDescription>
+  <RPD_Desc_AddictionChance.negativeDescription>약물 중독 확률 증가.</RPD_Desc_AddictionChance.negativeDescription>
+
+  <!-- RPD_Desc_FocusLearning -->
+  <RPD_Desc_FocusLearning.positiveLabel>심화 학습</RPD_Desc_FocusLearning.positiveLabel>
+  <RPD_Desc_FocusLearning.negativeLabel>초보 탈출</RPD_Desc_FocusLearning.negativeLabel>
+  <RPD_Desc_FocusLearning.positiveDescription>숙련된 기술을 더 빠르게 습득함.</RPD_Desc_FocusLearning.positiveDescription>
+  <RPD_Desc_FocusLearning.negativeDescription>미숙한 기술을 더 빠르게 습득함.</RPD_Desc_FocusLearning.negativeDescription>
+
+  <!-- RPD_Desc_Resistance -->
+  <RPD_Desc_Resistance.positiveLabel>높은 저항심</RPD_Desc_Resistance.positiveLabel>
+  <RPD_Desc_Resistance.negativeLabel>낮은 저항심</RPD_Desc_Resistance.negativeLabel>
+  <RPD_Desc_Resistance.positiveDescription>포섭 저항심이 높으며 천천히 감소함.</RPD_Desc_Resistance.positiveDescription>
+  <RPD_Desc_Resistance.negativeDescription>포섭 저항심이 낮으며 빠르게 감소함.</RPD_Desc_Resistance.negativeDescription>
+
+  <!-- Stats -->
+
+  <!-- RPD_Desc_Deliberate -->
+  <RPD_Desc_Deliberate.positiveLabel>신중한 페이스</RPD_Desc_Deliberate.positiveLabel>
+  <RPD_Desc_Deliberate.negativeLabel>성급한 페이스</RPD_Desc_Deliberate.negativeLabel>
+  <RPD_Desc_Deliberate.positiveDescription>작업 및 조준 속도가 감소. 실수나 사격 실패 확률 감소.</RPD_Desc_Deliberate.positiveDescription>
+  <RPD_Desc_Deliberate.negativeDescription>작업 및 조준 속도가 증가. 실수나 사격 실패 확률 증가.</RPD_Desc_Deliberate.negativeDescription>
+
+  <!-- RPD_Desc_Industrious -->
+  <RPD_Desc_Industrious.positiveLabel>빠른 작업 속도</RPD_Desc_Industrious.positiveLabel>
+  <RPD_Desc_Industrious.negativeLabel>느린 작업 속도</RPD_Desc_Industrious.negativeLabel>
+  <RPD_Desc_Industrious.positiveDescription>전역 작업 속도 증가.</RPD_Desc_Industrious.positiveDescription>
+  <RPD_Desc_Industrious.negativeDescription>전역 작업 속도 감소.</RPD_Desc_Industrious.negativeDescription>
+
+  <!-- RPD_Desc_Tense -->
+  <RPD_Desc_Tense.positiveLabel>유리멘탈</RPD_Desc_Tense.positiveLabel>
+  <RPD_Desc_Tense.negativeLabel>강철멘탈</RPD_Desc_Tense.negativeLabel>
+  <RPD_Desc_Tense.positiveDescription>정신 이상 임계치 증가.</RPD_Desc_Tense.positiveDescription>
+  <RPD_Desc_Tense.negativeDescription>정신 이상 임계치 감소.</RPD_Desc_Tense.negativeDescription>
+
+  <!-- RPD_Desc_NegoiationAbility -->
+  <RPD_Desc_NegoiationAbility.positiveLabel>뛰어난 협상력</RPD_Desc_NegoiationAbility.positiveLabel>
+  <RPD_Desc_NegoiationAbility.negativeLabel>미흡한 협상력</RPD_Desc_NegoiationAbility.negativeLabel>
+  <RPD_Desc_NegoiationAbility.positiveDescription>외교 영향력 증가.</RPD_Desc_NegoiationAbility.positiveDescription>
+  <RPD_Desc_NegoiationAbility.negativeDescription>외교 영향력 감소.</RPD_Desc_NegoiationAbility.negativeDescription>
+
+  <!-- RPD_Desc_TradePrice -->
+  <RPD_Desc_TradePrice.positiveLabel>흥정의 달인</RPD_Desc_TradePrice.positiveLabel>
+  <RPD_Desc_TradePrice.negativeLabel>서툰 흥정</RPD_Desc_TradePrice.negativeLabel>
+  <RPD_Desc_TradePrice.positiveDescription>거래 가격 개선.</RPD_Desc_TradePrice.positiveDescription>
+  <RPD_Desc_TradePrice.negativeDescription>거래 가격 악화.</RPD_Desc_TradePrice.negativeDescription>
+
+  <!-- RPD_Desc_Organized -->
+  <RPD_Desc_Organized.positiveLabel>작업 공간 민감</RPD_Desc_Organized.positiveLabel>
+  <RPD_Desc_Organized.negativeLabel>작업 공간 둔감</RPD_Desc_Organized.negativeLabel>
+  <RPD_Desc_Organized.positiveDescription>작업장 역할에 따른 작업속도 민감도 증가.</RPD_Desc_Organized.positiveDescription>
+  <RPD_Desc_Organized.negativeDescription>작업장 역할에 따른 작업속도 민감도 감소.</RPD_Desc_Organized.negativeDescription>
+
+  <!-- RPD_Desc_Brace -->
+  <RPD_Desc_Brace.positiveLabel>높은 통증 내성</RPD_Desc_Brace.positiveLabel>
+  <RPD_Desc_Brace.negativeLabel>낮은 통증 내성</RPD_Desc_Brace.negativeLabel>
+  <RPD_Desc_Brace.positiveDescription>고통 한계 증가.</RPD_Desc_Brace.positiveDescription>
+  <RPD_Desc_Brace.negativeDescription>고통 한계 감소.</RPD_Desc_Brace.negativeDescription>
+
+  <!-- RPD_Desc_Reflection -->
+  <RPD_Desc_Reflection.positiveLabel>명상적</RPD_Desc_Reflection.positiveLabel>
+  <RPD_Desc_Reflection.negativeLabel>행동 지향적</RPD_Desc_Reflection.negativeLabel>
+  <RPD_Desc_Reflection.positiveDescription>연구 속도 및 명상 집중 획득 속도 증가.</RPD_Desc_Reflection.positiveDescription>
+  <RPD_Desc_Reflection.negativeDescription>연구 속도 및 명상 집중 획득 속도 감소.</RPD_Desc_Reflection.negativeDescription>
+
+  <!-- Thoughts -->
+
+  <!-- RPD_Desc_ThoughtSympathy -->
+  <RPD_Desc_ThoughtSympathy.positiveDescription>타인에게 해를 입히는 것에 더 민감함.</RPD_Desc_ThoughtSympathy.positiveDescription>
+  <RPD_Desc_ThoughtSympathy.negativeDescription>타인에게 해를 입히는 것에 더 둔감함.</RPD_Desc_ThoughtSympathy.negativeDescription>
+
+  <!-- RPD_Desc_ThoughtHarmed -->
+  <RPD_Desc_ThoughtHarmed.positiveDescription>해를 입는 것에 더 민감함.</RPD_Desc_ThoughtHarmed.positiveDescription>
+  <RPD_Desc_ThoughtHarmed.negativeDescription>해를 입는 것에 더 둔감함.</RPD_Desc_ThoughtHarmed.negativeDescription>
+
+  <!-- RPD_Desc_ThoughtDecency -->
+  <RPD_Desc_ThoughtDecency.positiveDescription>품위 및 예의 유지에 더 민감함.</RPD_Desc_ThoughtDecency.positiveDescription>
+  <RPD_Desc_ThoughtDecency.negativeDescription>품위 및 예의 유지에 더 둔감함.</RPD_Desc_ThoughtDecency.negativeDescription>
+
+  <!-- RPD_Desc_ThoughtNeed -->
+  <RPD_Desc_ThoughtNeed.positiveDescription>욕구 및 사치 충족에 더 민감함.</RPD_Desc_ThoughtNeed.positiveDescription>
+  <RPD_Desc_ThoughtNeed.negativeDescription>욕구 및 사치 충족에 더 둔감함.</RPD_Desc_ThoughtNeed.negativeDescription>
+
+  <!-- RPD_Desc_ThoughtSocial -->
+  <RPD_Desc_ThoughtSocial.positiveDescription>사교 행사를 중요하게 생각함.</RPD_Desc_ThoughtSocial.positiveDescription>
+  <RPD_Desc_ThoughtSocial.negativeDescription>사교 행사를 사소하게 생각함.</RPD_Desc_ThoughtSocial.negativeDescription>
+
+  <!-- RPD_Desc_ThoughtBonds -->
+  <RPD_Desc_ThoughtBonds.positiveDescription>지인에 관한 일에 대해 더 민감함.</RPD_Desc_ThoughtBonds.positiveDescription>
+  <RPD_Desc_ThoughtBonds.negativeDescription>지인에 관한 일에 대해 더 둔감함.</RPD_Desc_ThoughtBonds.negativeDescription>
+
+  <!-- RPD_Desc_ThoughtOutsiders -->
+  <RPD_Desc_ThoughtOutsiders.positiveDescription>외부인에 관한 일에 더 민감함.</RPD_Desc_ThoughtOutsiders.positiveDescription>
+  <RPD_Desc_ThoughtOutsiders.negativeDescription>외지인에 관한 일에 더 둔감함.</RPD_Desc_ThoughtOutsiders.negativeDescription>
+
+  <!-- RPD_Desc_ThoughtMorality -->
+  <RPD_Desc_ThoughtMorality.positiveDescription>도덕적 문제에 더 민감함.</RPD_Desc_ThoughtMorality.positiveDescription>
+  <RPD_Desc_ThoughtMorality.negativeDescription>도덕적 문제에 더 둔감함.</RPD_Desc_ThoughtMorality.negativeDescription>
+
+  <!-- RPD_Desc_ThoughtJudgemental -->
+  <RPD_Desc_ThoughtJudgemental.positiveDescription>가치판단 문제에 더 민감함.</RPD_Desc_ThoughtJudgemental.positiveDescription>
+  <RPD_Desc_ThoughtJudgemental.negativeDescription>가치판단 문제에 더 둔감함.</RPD_Desc_ThoughtJudgemental.negativeDescription>
+
+</LanguageData>

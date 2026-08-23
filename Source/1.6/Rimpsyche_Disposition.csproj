@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Descriptors\DispositionDescriptorWorkers.cs" />
     <Compile Include="HarmonyPatches\JoyGiver_GetChance_Patch.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\EndlessGrowth_Patches.cs" />
     <Compile Include="HarmonyPatches\MiscModPatches\SocioButterfly_Patch.cs" />

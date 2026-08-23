@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_SlaveWill</defName>
+    <positiveLabel>high will</positiveLabel>
+    <negativeLabel>low will</negativeLabel>
+    <positiveDescription>Higher, slow-decaying will.</positiveDescription>
+    <negativeDescription>Lower, fast-decaying will.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.Ideology.SlaveWillDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_SuppressionResistance</defName>
+    <positiveLabel>hard to suppress</positiveLabel>
+    <negativeLabel>easy to suppress</negativeLabel>
+    <positiveDescription>Harder to maintain high suppression.</positiveDescription>
+    <negativeDescription>Easier to maintain high suppression.</negativeDescription>
+    <threshold>0.55</threshold>
+    <workerClass>Maux36.RimPsyche.Disposition.Ideology.SuppressionResistanceDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_SuppressionPower</defName>
+    <positiveLabel>high suppression power</positiveLabel>
+    <negativeLabel>low suppression power</negativeLabel>
+    <positiveDescription>Higher suppression power.</positiveDescription>
+    <negativeDescription>Lower suppression power.</negativeDescription>
+    <threshold>0.55</threshold>
+    <workerClass>Maux36.RimPsyche.Disposition.Ideology.SuppressionPowerDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Terror</defName>
+    <positiveLabel>hard to terrify</positiveLabel>
+    <negativeLabel>easy to terrify</negativeLabel>
+    <positiveDescription>Harder to terrify.</positiveDescription>
+    <negativeDescription>Easier to terrify.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.Ideology.TerrorDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Certaintylossfactor</defName>
+    <positiveLabel>certain</positiveLabel>
+    <negativeLabel>uncertain</negativeLabel>
+    <positiveDescription>Lower certainty loss factor.</positiveDescription>
+    <negativeDescription>Higher certainty loss factor.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.Ideology.CertaintylossfactorDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ConversionPower</defName>
+    <positiveLabel>strong conversion</positiveLabel>
+    <negativeLabel>weak conversion</negativeLabel>
+    <positiveDescription>Stronger conversion power.</positiveDescription>
+    <negativeDescription>Weaker conversion power.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.Ideology.ConversionPowerDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_IdeoSpreadMult</defName>
+    <positiveLabel>proselytizing</positiveLabel>
+    <negativeLabel>nonproselytizing</negativeLabel>
+    <positiveDescription>Higher chance to spread ideology.</positiveDescription>
+    <negativeDescription>Lower chance to spread ideology.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.Ideology.IdeoSpreadMultDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+<!-- Thoughts -->
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtCharity</defName>
+    <positiveDescription>Heightened thoughts about charity.</positiveDescription>
+    <negativeDescription>Diminished thoughts about charity.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.Ideology.ThoughtCharityDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+</Defs>
+

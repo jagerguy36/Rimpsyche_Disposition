@@ -39,14 +39,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 float trust = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Trust);
                 float conviction = (confidence - openness) * 0.5f; // -1~1
                 float shake = (trust - conviction) * 0.5f; // -1~1
-                if (shake >= 0f)
-                {
-                    return 0.5f * shake + 1f;
-                }
-                else
-                {
-                    return shake / 3f + 1f;
-                }
+                return Rimpsyche_Utility.AsMult(shake, 1.5f);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );

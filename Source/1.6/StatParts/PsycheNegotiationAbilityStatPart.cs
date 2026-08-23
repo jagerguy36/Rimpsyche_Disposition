@@ -13,7 +13,7 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    val *= compPsyche.Evaluate(NegotiationAbilityOffset);
+                    val *= compPsyche.Evaluate(NegotiationAbilityFactor);
                 }
             }
         }
@@ -25,18 +25,19 @@ namespace Maux36.RimPsyche.Disposition
                 var compPsyche = pawn.compPsyche();
                 if (compPsyche?.Enabled == true)
                 {
-                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_NegotiationAbilityOffset".Translate() + ": x" + compPsyche.Evaluate(NegotiationAbilityOffset).ToStringPercent() + "\n";
+                    return "RP_Stat_Psyche".Translate() + "\n    " + "RP_Stat_NegotiationAbilityOffset".Translate() + ": x" + compPsyche.Evaluate(NegotiationAbilityFactor).ToStringPercent() + "\n";
                 }
             }
             return null;
         }
 
-        public static RimpsycheFormula NegotiationAbilityOffset = new(
-            "NegotiationAbilityOffset",
+        public static RimpsycheFormula NegotiationAbilityFactor = new(
+            "NegotiationAbilityFactor",
             (tracker) =>
             {
-                float negotiationOffset = 1f + (0.1f * (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tact) + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Confidence)) * (1.25f - 0.5f * Mathf.Abs(tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest))));
-                return negotiationOffset;
+                var baselinemult = 1f + 0.1f * (tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Tact) + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Confidence));
+                var interestmult = 1.05f - 0.1f * Mathf.Abs(tracker.GetPersonality(PersonalityDefOf.Rimpsyche_SelfInterest));
+                return baselinemult * interestmult; //0.76~1.26
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
