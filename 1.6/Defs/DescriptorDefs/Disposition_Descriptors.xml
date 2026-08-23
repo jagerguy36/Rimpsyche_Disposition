@@ -26,8 +26,7 @@
     <defName>RPD_Desc_Resilient</defName>
     <positiveLabel>resilient spirit</positiveLabel>
     <positiveDescription>May gain Renewed Resolve during hardship.</positiveDescription>
-    <threshold>0.4</threshold>
-    <strongThreshold>0.8</strongThreshold>
+    <threshold>0.55</threshold>
     <workerClass>Maux36.RimPsyche.Disposition.ResilientDescriptorWorker</workerClass>
   </Maux36.RimPsyche.PsycheDescriptorDef>
 
