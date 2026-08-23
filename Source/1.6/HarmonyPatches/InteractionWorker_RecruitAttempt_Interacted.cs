@@ -56,8 +56,8 @@ namespace Maux36.RimPsyche.Disposition
                 return 1f;
             }
             var loyalty = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
-            //Log.Message($"Pawn {recipient.Name} loyalty: {loyalty}. | Multiplier: {1f + -loyalty * 0.5f}");
-            return 1f + - (loyalty * 0.5f);
+            //Log.Message($"Pawn {recipient.Name} loyalty: {loyalty}. | Multiplier: {1f + -loyalty * 0.25f}");
+            return 1f + - (loyalty * 0.25f);
         }
     }
 }

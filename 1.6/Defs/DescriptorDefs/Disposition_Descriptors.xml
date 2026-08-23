@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!-- Non-stat -->
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Ambitious</defName>
+    <positiveLabel>achievement driven</positiveLabel>
+    <positiveDescription>Higher achievement mood.</positiveDescription>
+    <negativeDescription>Lower achievement drive.</negativeDescription>
+    <threshold>0.55</threshold>
+    <workerClass>Maux36.RimPsyche.Disposition.AmbitiousDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Tenacious</defName>
+    <positiveLabel>stress resistant</positiveLabel>
+    <negativeLabel>stress sensitive</negativeLabel>
+    <positiveDescription>Lower mental break trigger chance.</positiveDescription>
+    <negativeDescription>Higher mental break trigger chance.</negativeDescription>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.TenaciousDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Resilient</defName>
+    <positiveLabel>resilient spirit</positiveLabel>
+    <positiveDescription>May gain Renewed Resolve during hardship.</positiveDescription>
+    <threshold>0.55</threshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ResilientDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Optimistic</defName>
+    <positiveLabel>positive outlook</positiveLabel>
+    <negativeLabel>negative outlook</negativeLabel>
+    <positiveDescription>Mood has a positive bias.</positiveDescription>
+    <negativeDescription>Mood has a negative bias.</negativeDescription>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.OptimisticDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Stoic</defName>
+    <positiveLabel>emotionally intense</positiveLabel>
+    <negativeLabel>emotionally stable</negativeLabel>
+    <positiveDescription>Stronger mood effects.</positiveDescription>
+    <negativeDescription>Reduced mood effects.</negativeDescription>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.EmotionalDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Moodswing</defName>
+    <positiveLabel>slow mood changes</positiveLabel>
+    <negativeLabel>fast mood changes</negativeLabel>
+    <positiveDescription>Mood bar moves slower.</positiveDescription>
+    <negativeDescription>Mood bar moves faster.</negativeDescription>
+    <threshold>0.55</threshold>
+    <workerClass>Maux36.RimPsyche.Disposition.MoodswingDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Modest</defName>
+    <positiveLabel>overwhelmed by shame</positiveLabel>
+    <positiveDescription>May get overwhelmed by shame when dressed inappropriately.</positiveDescription>
+    <threshold>0.1</threshold>
+    <strongThreshold>0.3</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ModestDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Fierce</defName>
+    <positiveLabel>adrenaline rush</positiveLabel>
+    <positiveDescription>May experience an adrenaline rush after being injured.</positiveDescription>
+    <threshold>0.15</threshold>
+    <strongThreshold>0.55</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.FierceDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Cowardly</defName>
+    <positiveLabel>flight response</positiveLabel>
+    <positiveDescription>May panic and flee after being injured.</positiveDescription>
+    <threshold>0.15</threshold>
+    <strongThreshold>0.55</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.CowardlyDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Experimental</defName>
+    <positiveLabel>high quality variance</positiveLabel>
+    <negativeLabel>low quality variance</negativeLabel>
+    <positiveDescription>Higher item quality variance. More likely to experiment.</positiveDescription>
+    <negativeDescription>Lower item quality variance. Less likely to experiment.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ExperimentalDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ArtQuality</defName>
+    <positiveLabel>high art quality</positiveLabel>
+    <negativeLabel>low art quality</negativeLabel>
+    <positiveDescription>Higher art quality.</positiveDescription>
+    <negativeDescription>Lower art quality.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ArtQualityDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_AddictionChance</defName>
+    <positiveLabel>low addiction chance</positiveLabel>
+    <negativeLabel>high addiction chance</negativeLabel>
+    <positiveDescription>Lower addiction chance.</positiveDescription>
+    <negativeDescription>Higher addiction chance.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.AddictionChanceDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_FocusLearning</defName>
+    <positiveLabel>focused learning</positiveLabel>
+    <negativeLabel>eclectic learning</negativeLabel>
+    <positiveDescription>Learn high level skills faster.</positiveDescription>
+    <negativeDescription>Learn low level skills faster.</negativeDescription>
+    <threshold>0.55</threshold>
+    <workerClass>Maux36.RimPsyche.Disposition.FocusedLearningDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Resistance</defName>
+    <positiveLabel>high resistance</positiveLabel>
+    <negativeLabel>low resistance</negativeLabel>
+    <positiveDescription>Higher, slow-decaying resistance.</positiveDescription>
+    <negativeDescription>Lower, fast-decaying resistance.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ResistanceDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <!-- Stats -->
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Deliberate</defName>
+    <positiveLabel>deliberate pace</positiveLabel>
+    <negativeLabel>hasty pace</negativeLabel>
+    <positiveDescription>Lower work and aiming speed. Less likely to make mistakes or miss shots.</positiveDescription>
+    <negativeDescription>Higher work and aiming speed. More likely to make mistakes or miss shots.</negativeDescription>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.DeliberationDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Industrious</defName>
+    <positiveLabel>fast work speed</positiveLabel>
+    <negativeLabel>slow work speed</negativeLabel>
+    <positiveDescription>Higher global workspeed.</positiveDescription>
+    <negativeDescription>Lower global workspeed.</negativeDescription>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.IndustriousDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Tense</defName>
+    <positiveLabel>easily stressed</positiveLabel>
+    <negativeLabel>unbothered</negativeLabel>
+    <positiveDescription>Higher mental break threshold.</positiveDescription>
+    <negativeDescription>Lower mental break threshold.</negativeDescription>
+    <threshold>0.3</threshold>
+    <strongThreshold>0.5</strongThreshold>
+    <extremeThreshold>0.7</extremeThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.TenseDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_NegoiationAbility</defName>
+    <positiveLabel>negotiates well</positiveLabel>
+    <negativeLabel>negotiates poorly</negativeLabel>
+    <positiveDescription>Higher negotiation ability.</positiveDescription>
+    <negativeDescription>Lower negotiation ability.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.NegotiationAbilityDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_TradePrice</defName>
+    <positiveLabel>good haggler</positiveLabel>
+    <negativeLabel>bad haggler</negativeLabel>
+    <positiveDescription>Better trade prices.</positiveDescription>
+    <negativeDescription>Worse trade prices.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.TradePriceDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Organized</defName>
+    <positiveLabel>workspace sensitive</positiveLabel>
+    <negativeLabel>workspace insensitive</negativeLabel>
+    <positiveDescription>Higher workspace room role sensitivity.</positiveDescription>
+    <negativeDescription>Lower workspace room role sensitivity.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.OrganizedDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Brace</defName>
+    <positiveLabel>high pain tolerance</positiveLabel>
+    <negativeLabel>low pain tolerance</negativeLabel>
+    <positiveDescription>Higher pain shock threshold.</positiveDescription>
+    <negativeDescription>Lower pain shock threshold.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.BraceDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_Reflection</defName>
+    <positiveLabel>pensive</positiveLabel>
+    <negativeLabel>action oriented</negativeLabel>
+    <positiveDescription>Higher research speed and meditation focus gain speed.</positiveDescription>
+    <negativeDescription>Lower research speed and meditation focus gain speed.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ReflectionDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+<!-- Thoughts -->
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtSympathy</defName>
+    <type>ThoughtTag</type>
+    <positiveDescription>Heightened thoughts about harming others.</positiveDescription>
+    <negativeDescription>Diminished thoughts about harming others.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ThoughtSympathyDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtHarmed</defName>
+    <type>ThoughtTag</type>
+    <positiveDescription>Heightened thoughts about being harmed.</positiveDescription>
+    <negativeDescription>Diminished thoughts about being harmed.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ThoughtHarmedDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtDecency</defName>
+    <type>ThoughtTag</type>
+    <positiveDescription>Heightened thoughts about decency.</positiveDescription>
+    <negativeDescription>Diminished thoughts about decency.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ThoughtDecencyDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtNeed</defName>
+    <type>ThoughtTag</type>
+    <positiveDescription>Heightened thoughts about needs and luxury.</positiveDescription>
+    <negativeDescription>Diminished thoughts about needs and luxury.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ThoughtNeedDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtSocial</defName>
+    <type>ThoughtTag</type>
+    <positiveDescription>Heightened thoughts about social occasions.</positiveDescription>
+    <negativeDescription>Diminished thoughts about social occasions.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ThoughtSocialDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtBonds</defName>
+    <type>ThoughtTag</type>
+    <positiveDescription>Heightened thoughts about loved ones.</positiveDescription>
+    <negativeDescription>Diminished thoughts about loved ones.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ThoughtBondsDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtOutsiders</defName>
+    <type>ThoughtTag</type>
+    <positiveDescription>Heightened thoughts about outsiders.</positiveDescription>
+    <negativeDescription>Diminished thoughts about outsiders.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ThoughtOutsidersDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtMorality</defName>
+    <type>ThoughtTag</type>
+    <positiveDescription>Heightened thoughts about moral issues.</positiveDescription>
+    <negativeDescription>Diminished thoughts about moral issues.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ThoughtMoralityDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+  <Maux36.RimPsyche.PsycheDescriptorDef>
+    <defName>RPD_Desc_ThoughtJudgemental</defName>
+    <type>ThoughtTag</type>
+    <positiveDescription>Heightened thoughts about judgemental issues.</positiveDescription>
+    <negativeDescription>Diminished thoughts about judgemental issues.</negativeDescription>
+    <threshold>0.4</threshold>
+    <strongThreshold>0.8</strongThreshold>
+    <workerClass>Maux36.RimPsyche.Disposition.ThoughtJudgementalDescriptorWorker</workerClass>
+  </Maux36.RimPsyche.PsycheDescriptorDef>
+
+</Defs>
+

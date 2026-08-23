@@ -11,6 +11,7 @@
 		<li IfModActive="dubwise.dubsbadhygiene">Mods/DBH/1.6</li>
 		<li IfModActive="hautarche.hautstraits">Mods/HautTraits/1.6</li>
 		<li IfModActive="Ludeon.RimWorld.Ideology">Mods/Ideology/1.6</li>
+		<li IfModActive="Ludeon.RimWorld.Ideology">Mods/Ideology/Common</li>
 		<li IfModActive="sumghai.mousekinrace">Mods/MouseKin/1.6</li>
 		<li IfModActive="Ludeon.RimWorld.Odyssey">Mods/Odyssey/1.6</li>
 		<li IfModActive="Ludeon.RimWorld.Royalty">Mods/Royalty/1.6</li>

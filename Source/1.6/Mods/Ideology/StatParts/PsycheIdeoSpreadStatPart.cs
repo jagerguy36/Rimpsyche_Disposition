@@ -41,15 +41,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
                 float zealousy = 0.25f * ((conviction * (3f - passion) + (1 + passion))); //-1~1
                 float talkativeness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Talkativeness); //-1~1
                 float spread = 0.5f * (talkativeness + zealousy);
-
-                if (spread >= 0f)
-                {
-                    return 0.5f * spread + 1f;
-                }
-                else
-                {
-                    return spread / 3f + 1f;
-                }
+                return Rimpsyche_Utility.AsMult(spread, 1.5f);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
