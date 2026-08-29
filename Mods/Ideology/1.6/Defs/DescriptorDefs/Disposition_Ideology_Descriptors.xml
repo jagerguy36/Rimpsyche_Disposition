@@ -44,10 +44,10 @@
 
   <Maux36.RimPsyche.PsycheDescriptorDef>
     <defName>RPD_Desc_Certaintylossfactor</defName>
-    <positiveLabel>certain</positiveLabel>
-    <negativeLabel>uncertain</negativeLabel>
-    <positiveDescription>Lower certainty loss factor.</positiveDescription>
-    <negativeDescription>Higher certainty loss factor.</negativeDescription>
+    <positiveLabel>uncertain</positiveLabel>
+    <negativeLabel>certain</negativeLabel>
+    <positiveDescription>Higher certainty loss factor.</positiveDescription>
+    <negativeDescription>Lower certainty loss factor.</negativeDescription>
     <threshold>0.4</threshold>
     <strongThreshold>0.8</strongThreshold>
     <workerClass>Maux36.RimPsyche.Disposition.Ideology.CertaintylossfactorDescriptorWorker</workerClass>
