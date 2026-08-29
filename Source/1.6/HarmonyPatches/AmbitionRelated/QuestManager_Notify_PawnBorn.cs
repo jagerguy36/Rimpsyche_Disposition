@@ -13,7 +13,7 @@ namespace Maux36.RimPsyche.Disposition
             Pawn pawn = baby as Pawn;
             if(pawn != null)
             {
-                if(pawn.Faction.IsPlayer)
+                if(pawn.Faction?.IsPlayer == true)
                 {
                     foreach (Pawn colonist in pawn.MapHeld.mapPawns.FreeColonistsSpawned)
                     {
