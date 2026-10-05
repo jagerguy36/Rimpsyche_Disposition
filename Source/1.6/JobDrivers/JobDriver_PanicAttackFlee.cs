@@ -21,6 +21,7 @@ namespace Maux36.RimPsyche.Disposition
         }
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
+		    pawn.Map.pawnDestinationReservationManager.Reserve(pawn, job, job.GetTarget(TargetIndex.A).Cell);
             return true;
         }
 
