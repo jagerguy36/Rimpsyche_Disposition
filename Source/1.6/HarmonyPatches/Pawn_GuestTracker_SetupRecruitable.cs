@@ -13,7 +13,7 @@ namespace Maux36.RimPsyche.Disposition
     {
         static bool Prefix(ref bool ___recruitable, Pawn ___pawn)
         {
-            if (___pawn?.compPsyche() is not { } compPsyche)
+            if (___pawn?.compPsyche() is not { Enabled: true } compPsyche)
                 return true;
             var loyalty = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Loyalty);
             //var newNonrecruitableChance = 2f * loyalty * HealthTuning.NonRecruitableChanceOverPopulationIntentCurve.Evaluate(StorytellerUtilityPopulation.PopulationIntent);
@@ -84,7 +84,7 @@ namespace Maux36.RimPsyche.Disposition
             var compPsyche = pawn.compPsyche();
             if (compPsyche?.Enabled != true)
             {
-                return pawn.kindDef.initialResistanceRange.Value.RandomInRange;
+                return pawn.kindDef.initialWillRange.Value.RandomInRange;
             }
             var tenacity = compPsyche.Personality.GetPersonality(PersonalityDefOf.Rimpsyche_Tenacity);
             var range = pawn.kindDef.initialWillRange.Value;

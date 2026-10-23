@@ -250,7 +250,7 @@ namespace Maux36.RimPsyche.Disposition
             List<DirectPawnRelation> directRelations = pawn.relations.DirectRelations;
             for (int i = 0; i < directRelations.Count; i++)
             {
-                if (LovePartnerRelationUtility.IsLovePartnerRelation(directRelations[i].def) && (!directRelations[i].otherPawn.Spawned))
+                if (LovePartnerRelationUtility.IsLovePartnerRelation(directRelations[i].def) && directRelations[i].otherPawn.Spawned)
                 {
                     tmpLovePartnersId.Add(directRelations[i].otherPawn.thingIDNumber);
                 }
