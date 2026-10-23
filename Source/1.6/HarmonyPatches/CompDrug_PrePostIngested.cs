@@ -17,6 +17,7 @@ namespace Maux36.RimPsyche.Disposition
                 var getAddictivenessMethod = AccessTools.Method(typeof(DrugStatsUtility), nameof(DrugStatsUtility.GetAddictivenessAtTolerance));
                 var getAdjustedAddictionChanceMethod = AccessTools.Method(typeof(CompDrug_PrePostIngested_Patch), nameof(GetAdjustedAddictionChance));
                 var codes = new List<CodeInstruction>(instructions);
+                bool patched = false;
 
                 for (int i = 0; i < codes.Count; i++)
                 {
@@ -25,7 +26,12 @@ namespace Maux36.RimPsyche.Disposition
                     {
                         yield return new CodeInstruction(OpCodes.Ldarg_1);
                         yield return new CodeInstruction(OpCodes.Call, getAdjustedAddictionChanceMethod);
+                        patched = true;
                     }
+                }
+                if (!patched)
+                {
+                    Log.Error("[Rimpsyche - Disposition] Addiction chance transpiler failed to patch");
                 }
             }
 

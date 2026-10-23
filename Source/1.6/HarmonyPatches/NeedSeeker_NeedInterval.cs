@@ -21,6 +21,8 @@ namespace Maux36.RimPsyche.Disposition
                 var fldSeekerFall = AccessTools.Field(typeof(NeedDef), nameof(NeedDef.seekerFallPerHour)); 
                 var getRisingMultiplierMethod = AccessTools.Method(typeof(Patch_NeedSeeker_NeedInterval), nameof(GetRisingMultiplier));
                 var getFallingMultiplierMethod = AccessTools.Method(typeof(Patch_NeedSeeker_NeedInterval), nameof(GetFallingMultiplier));
+                bool patchedRise = false;
+                bool patchedFall = false;
 
                 for (int i = 0; i < codes.Count - 2; i++)
                 {
@@ -33,6 +35,7 @@ namespace Maux36.RimPsyche.Disposition
                         codes.Insert(i + 4, new CodeInstruction(OpCodes.Call, getRisingMultiplierMethod)); // call method
                         codes.Insert(i + 5, new CodeInstruction(OpCodes.Mul));
                         i += 5;
+                        patchedRise = true;
                     }
 
                     // seekerFallPerHour * 0.06
@@ -44,7 +47,12 @@ namespace Maux36.RimPsyche.Disposition
                         codes.Insert(i + 4, new CodeInstruction(OpCodes.Call, getFallingMultiplierMethod));
                         codes.Insert(i + 5, new CodeInstruction(OpCodes.Mul));
                         i += 5;
+                        patchedFall = true;
                     }
+                }
+                if (!patchedRise || !patchedFall)
+                {
+                    Log.Error("[Rimpsyche - Disposition] Mood seeker transpiler failed to patch");
                 }
 
                 return codes;

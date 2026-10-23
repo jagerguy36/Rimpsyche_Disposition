@@ -19,6 +19,7 @@ namespace Maux36.RimPsyche.Disposition
             var moodOffsetMethod = AccessTools.Method(typeof(Thought), nameof(Thought.MoodOffset));
             var moodMultiplierMethod = AccessTools.Method(typeof(ThoughtUtil), nameof(ThoughtUtil.MoodMultiplier));
             var pawnField = AccessTools.PropertyGetter(typeof(LocalTargetInfo), nameof(LocalTargetInfo.Pawn));
+            bool patched = false;
 
             for (int i = 0; i < codes.Count; i++)
             {
@@ -30,7 +31,12 @@ namespace Maux36.RimPsyche.Disposition
                     yield return new CodeInstruction(OpCodes.Callvirt, pawnField); // load pawn
                     yield return new CodeInstruction(codes[i - 1]); // load thought
                     yield return new CodeInstruction(OpCodes.Call, moodMultiplierMethod); // call MoodMultiplier
+                    patched = true;
                 }
+            }
+            if (!patched)
+            {
+                Log.Error("[Rimpsyche - Disposition] Counsel mood transpiler failed to patch");
             }
         }
     }
