@@ -33,7 +33,7 @@ namespace Maux36.RimPsyche.Disposition
                     return true;
                 }
 
-                if (RimpsycheDispositionSettings.showResilientSpiritMote)
+                if (RimpsycheDispositionSettings.showResilientSpiritMote && pawn.Spawned)
                 {
                     MoteBubble mote = (MoteBubble)ThingMaker.MakeThing(DefOfDisposition.RimpsycheMote_ResilientSpirit, null);
                     mote.Attach(pawn);
