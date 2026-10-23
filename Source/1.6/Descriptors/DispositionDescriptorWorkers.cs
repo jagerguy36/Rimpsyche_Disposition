@@ -175,7 +175,7 @@ namespace Maux36.RimPsyche.Disposition
         protected override float Score(CompPsyche compPsyche)
         {
             var score = compPsyche.Evaluate(PsycheNegotiationAbilityStatPart.NegotiationAbilityFactor); //0.76~1.26
-            score -= score;
+            score -= 1f;
             if (score > 0f)
                 score /= 0.26f;
             else

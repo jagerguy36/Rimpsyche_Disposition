@@ -57,7 +57,7 @@ namespace Maux36.RimPsyche.Disposition
                     return val * compPsyche.Evaluate(AmbitionAccomplishmentMood) * pTick;
                 }
                 var mult = Mathf.Min(0f, Mathf.Max(maxMinusTick, pTick) - compPsyche.Evaluate(AmbitionDissatisfactionTick)) / dayTick; // In days: (x - (8*A - 10))
-                return mult;
+                return val * mult;
 
             }
             return val;
