@@ -90,7 +90,9 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float mult = 1f;
-                float optimismMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * optimismC;
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                if (optimism > 0f) optimism *= 0.5f; // Reduce boosting power
+                float optimismMult = 1f + optimism * optimismC;
                 float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * emotionalityC;
                 return mult * optimismMult * emotionalityMult;
             },
@@ -102,7 +104,9 @@ namespace Maux36.RimPsyche.Disposition
             (tracker) =>
             {
                 float mult = 1f;
-                float optimismMult = 1f - tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism) * optimismC;
+                float optimism = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Optimism);
+                if (optimism < 0f) optimism *= 0.5f; // Reduce boosting power
+                float optimismMult = 1f - optimism * optimismC;
                 float emotionalityMult = 1f + tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Emotionality) * emotionalityC;
                 return mult * optimismMult * emotionalityMult;
             },
@@ -655,6 +659,15 @@ namespace Maux36.RimPsyche.Disposition
             {
                 float openness = tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Openness);
                 return ThoughtUtil.MoodMultCurve(openness);
+            },
+            RimpsycheFormulaManager.FormulaIdDict
+        );
+        public static RimpsycheFormula Tag_Superficial = new(
+            "Tag_Superficial",
+            (tracker) =>
+            {
+                float authenticityFactor = 1f - 0.5f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Authenticity);
+                return authenticityFactor;
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
