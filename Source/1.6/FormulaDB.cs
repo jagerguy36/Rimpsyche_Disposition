@@ -666,8 +666,8 @@ namespace Maux36.RimPsyche.Disposition
             "Tag_Superficial",
             (tracker) =>
             {
-                float authenticityFactor = 1f - 0.5f * tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Authenticity);
-                return authenticityFactor;
+                float superficial = -tracker.GetPersonality(PersonalityDefOf.Rimpsyche_Authenticity);
+                return ThoughtUtil.MoodMultCurve(superficial);
             },
             RimpsycheFormulaManager.FormulaIdDict
         );
