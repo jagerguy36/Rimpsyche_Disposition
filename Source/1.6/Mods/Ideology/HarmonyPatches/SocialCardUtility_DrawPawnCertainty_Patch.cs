@@ -45,7 +45,7 @@ namespace Maux36.RimPsyche.Disposition.Ideology
             }
             else
             {
-                Log.Message("[Rimpsyche - Disposition] failed to patch Certainty Change Per Day UI.");
+                Log.Error("[Rimpsyche - Disposition] failed to patch Certainty Change Per Day UI.");
             }
             return codes;
         }

@@ -99,9 +99,13 @@ namespace Maux36.RimPsyche.Disposition
             if (listing_Standard.ButtonText("RimpsycheDispositionDefaultSetting".Translate(), "RimpsycheDispositionDefaultSettingTooltip".Translate()))
             {
                 //General Moods
-                RimpsycheDispositionSettings.moodEmotionalityC = RimpsycheDispositionSettings.default_moodOptimismC;
-                RimpsycheDispositionSettings.moodOptimismC = RimpsycheDispositionSettings.default_moodEmotionalityC;
+                RimpsycheDispositionSettings.moodEmotionalityC = RimpsycheDispositionSettings.default_moodEmotionalityC;
+                RimpsycheDispositionSettings.moodOptimismC = RimpsycheDispositionSettings.default_moodOptimismC;
                 RimpsycheDispositionSettings.moodIndividualC = RimpsycheDispositionSettings.default_moodIndividualC;
+                RimpsycheDispositionSettings.joyIndividualC = RimpsycheDispositionSettings.default_joyIndividualC;
+                RimpsycheDispositionSettings.useIndividualThoughts = true;
+                RimpsycheDispositionSettings.useIndividualJoychance = true;
+                RimpsycheDispositionSettings.usePerformanceModeThought = false;
 
                 RimpsycheDispositionSettings.useExperimentation = true;
                 RimpsycheDispositionSettings.useSenseOfProgress = true;

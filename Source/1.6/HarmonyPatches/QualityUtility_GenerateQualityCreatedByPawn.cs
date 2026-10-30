@@ -18,6 +18,7 @@ namespace Maux36.RimPsyche.Disposition
             var codes = new List<CodeInstruction>(instructions);
             var originalMethod = AccessTools.Method(typeof(QualityUtility), "GenerateQualityCreatedByPawn", new[] { typeof(int), typeof(bool) });
             var replacementMethod = AccessTools.Method(typeof(Maux36.RimPsyche.Disposition.QualityUtil), "GenerateQualityCreatedByPawnWithPsyche");
+            bool patched = false;
 
             for (int i = 0; i < codes.Count; i++)
             {
@@ -28,8 +29,13 @@ namespace Maux36.RimPsyche.Disposition
                     codes.Insert(i + 1, new CodeInstruction(OpCodes.Ldarg_1)); //SkillDef
                     codes.Insert(i + 2, new CodeInstruction(OpCodes.Ldc_R4, 0f)); //0f
                     codes[i + 3] = new CodeInstruction(OpCodes.Call, replacementMethod);
+                    patched = true;
                     break;
                 }
+            }
+            if (!patched)
+            {
+                Log.Error("[Rimpsyche - Disposition] Quality generation transpiler failed to patch");
             }
             return codes;
         }

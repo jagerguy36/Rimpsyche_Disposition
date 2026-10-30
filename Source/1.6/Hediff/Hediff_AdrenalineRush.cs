@@ -18,7 +18,7 @@ namespace Maux36.RimPsyche.Disposition
                 severityInt = Mathf.Clamp(value, def.minSeverity, def.maxSeverity);
                 if (CurStageIndex != curStageIndex)
                 {
-                    if (RimpsycheDispositionSettings.showAdrenalineMote && curStageIndex < CurStageIndex && 0 < CurStageIndex)
+                    if (RimpsycheDispositionSettings.showAdrenalineMote && pawn.Spawned && curStageIndex < CurStageIndex && 0 < CurStageIndex)
                     {
                         MoteBubble mote = (MoteBubble)ThingMaker.MakeThing(DefOfDisposition.RimpsycheMote_AdrenalineRush, null);
                         mote.Attach(pawn);

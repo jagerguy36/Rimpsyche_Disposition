@@ -13,7 +13,8 @@ namespace Maux36.RimPsyche.Disposition
             Pawn pawn = baby as Pawn;
             if(pawn != null)
             {
-                if(pawn.Faction?.IsPlayer == true)
+                // Babies born in a caravan have no map
+                if(pawn.Faction?.IsPlayer == true && pawn.MapHeld != null)
                 {
                     foreach (Pawn colonist in pawn.MapHeld.mapPawns.FreeColonistsSpawned)
                     {

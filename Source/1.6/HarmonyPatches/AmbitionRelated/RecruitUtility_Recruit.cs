@@ -10,7 +10,8 @@ namespace Maux36.RimPsyche.Disposition
     {
         private static void Prefix(Pawn pawn, Faction faction, Pawn recruiter)
         {
-            if(pawn.Faction?.IsPlayer != true)
+            // Quest joins can recruit prisoners/slaves who are away in a caravan
+            if(pawn.Faction?.IsPlayer != true && pawn.MapHeld != null)
             {
                 if (pawn.RaceProps.Humanlike)
                 {
@@ -35,7 +36,7 @@ namespace Maux36.RimPsyche.Disposition
                             if (compPsyche?.Enabled == true)
                             {
                                 //0~2(market value) * 1~2 (ambition)
-                                compPsyche.ProgressMade(marketvalueMult * compPsyche.Evaluate(AmbitionRecruitProgress), causeIndex: 3, reason: "RP_Tamed".Translate(pawn.LabelShort));
+                                compPsyche.ProgressMade(marketvalueMult * compPsyche.Evaluate(AmbitionTameProgress), causeIndex: 3, reason: "RP_Tamed".Translate(pawn.LabelShort));
                             }
                         }
                     }

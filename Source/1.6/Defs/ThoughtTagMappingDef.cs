@@ -53,7 +53,8 @@ namespace Maux36.RimPsyche.Disposition
         Tag_Judgemental,
         Tag_Preference,
         Tag_Openmindedness,
-        Tag_JustifiedGuilt
+        Tag_JustifiedGuilt,
+        Tag_Superficial
     }
 
     public class ThoughtTagMappingDef : Def

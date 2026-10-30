@@ -20,6 +20,7 @@ namespace Maux36.RimPsyche.Disposition
             MethodInfo customMethod = AccessTools.Method(typeof(Maux36.RimPsyche.Disposition.ResilienceUtil), "TestResilientSpirit");
             var skiplabel = generator.DefineLabel();
             var normallabel = generator.DefineLabel();
+            bool patched = false;
 
             for (int i = 0; i < codes.Count; i++)
             {
@@ -36,8 +37,13 @@ namespace Maux36.RimPsyche.Disposition
                     yield return new CodeInstruction(OpCodes.Ldc_I4_0).WithLabels(skiplabel);
                     yield return new CodeInstruction(OpCodes.Ret);
                     yield return new CodeInstruction(OpCodes.Ldarg_2).WithLabels(normallabel);
+                    patched = true;
                 }
                 else yield return instr;
+            }
+            if (!patched)
+            {
+                Log.Error("[Rimpsyche - Disposition] Resilient spirit transpiler failed to patch");
             }
         }
     }

@@ -36,7 +36,7 @@ namespace Maux36.RimPsyche.Disposition
             return true;
         }
 
-        public static bool DangerousToBeAt(Pawn pawn, IntVec3 location, int threatDistSquared=threatDistSquared)
+        public static bool DangerousToBeAt(Pawn pawn, int threatDistSquared=threatDistSquared)
         {
             tmpInvIds.Clear();
             tmpInvIds.Add(pawn.thingIDNumber);

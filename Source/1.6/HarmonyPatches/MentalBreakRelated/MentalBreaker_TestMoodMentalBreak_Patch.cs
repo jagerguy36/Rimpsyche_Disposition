@@ -16,6 +16,7 @@ namespace Maux36.RimPsyche.Disposition
             FieldInfo pawnField = AccessTools.Field(typeof(MentalBreaker), "pawn");
             MethodInfo getMultiplierMethod = AccessTools.Method(typeof(MentalBreaker_TestMoodMentalBreak_Patch), nameof(GetMultiplier));
             var code = new List<CodeInstruction>(instructions);
+            bool patched = false;
             for (int i = 0; i < code.Count; i++)
             {
                 if (code[i].Calls(mtbEventOccursMethod))
@@ -29,7 +30,12 @@ namespace Maux36.RimPsyche.Disposition
                     };
                     code.InsertRange(i - 2, instructionsToInsert);
                     i += instructionsToInsert.Count;
+                    patched = true;
                 }
+            }
+            if (!patched)
+            {
+                Log.Error("[Rimpsyche - Disposition] Mood mental break interval transpiler failed to patch");
             }
             return code;
         }

@@ -28,7 +28,6 @@
   <RP_MentalStateReason_Shame>Сгорает от сыда</RP_MentalStateReason_Shame>
 
   <!-- Части характеристик -->
-  <RP_Stat_Psyche>Личность</RP_Stat_Psyche>
   <RP_Stat_ShootingAccuracyPawnOffset>Осмотрительность</RP_Stat_ShootingAccuracyPawnOffset>
   <RP_Stat_AimingDelayFactorOffset>Осмотрительность</RP_Stat_AimingDelayFactorOffset>
   <RP_Stat_DeliberationYield>Осмотрительность</RP_Stat_DeliberationYield>

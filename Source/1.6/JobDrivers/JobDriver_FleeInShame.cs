@@ -12,6 +12,7 @@ namespace Maux36.RimPsyche.Disposition
         private const int breakTick = 8750; //Three and a half hours
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
+		    pawn.Map.pawnDestinationReservationManager.Reserve(pawn, job, job.GetTarget(TargetIndex.A).Cell);
             return true;
         }
 

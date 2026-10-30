@@ -21,6 +21,7 @@ namespace Maux36.RimPsyche.Disposition
         }
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
+		    pawn.Map.pawnDestinationReservationManager.Reserve(pawn, job, job.GetTarget(TargetIndex.A).Cell);
             return true;
         }
 
@@ -63,12 +64,13 @@ namespace Maux36.RimPsyche.Disposition
                     {
                         FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, DefOfDisposition.RimpsycheMote_PanicAttack);
                     }
-                    if (FightorFlightUtil.DangerousToBeAt(pawn, pawn.Position))
+                    if (FightorFlightUtil.DangerousToBeAt(pawn))
                     {
                         LocalTargetInfo newTarget = FightorFlightUtil.FindHideInFearLocation(pawn);
                         if (newTarget != TargetLocA)
                         {
                             job.SetTarget(TargetIndex.A, newTarget);
+                            pawn.Map.pawnDestinationReservationManager.Reserve(pawn, job, newTarget.Cell);
                             JumpToToil(gotoToil);
                         }
                     }

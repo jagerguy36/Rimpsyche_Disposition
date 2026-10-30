@@ -209,6 +209,7 @@ namespace Maux36.RimPsyche.Disposition
                 case ThoughtTag.Tag_Preference: return FormulaDB.Tag_Preference;
                 case ThoughtTag.Tag_Openmindedness: return FormulaDB.Tag_Openmindedness;
                 case ThoughtTag.Tag_JustifiedGuilt: return FormulaDB.Tag_JustifiedGuilt;
+                case ThoughtTag.Tag_Superficial: return FormulaDB.Tag_Superficial;
                 default:
                     Log.Warning($"[Rimpsyche - Disposition] Unhandled or invalid ThoughtTag discovered: {tag}");
                     return null;
