@@ -70,6 +70,7 @@ namespace Maux36.RimPsyche.Disposition
                         if (newTarget != TargetLocA)
                         {
                             job.SetTarget(TargetIndex.A, newTarget);
+                            pawn.Map.pawnDestinationReservationManager.ReleaseClaimedBy(pawn, job);
                             pawn.Map.pawnDestinationReservationManager.Reserve(pawn, job, newTarget.Cell);
                             JumpToToil(gotoToil);
                         }
